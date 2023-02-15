@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// Control the layout behaviors and styling of a `Form` presentation.
@@ -284,3 +285,4 @@ public struct Settings {
         self.rating = rating
     }
 }
+#endif
