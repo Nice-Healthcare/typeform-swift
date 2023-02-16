@@ -3,16 +3,16 @@ import Typeform
 
 /// `MedicalIntake.json` Field References
 public extension Reference {
-    static let date = UUID(uuidString: "62bbe9cc-c797-4b7a-ad1d-d4328f7f8589")!
-    static let dropdown = UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!
-    static let group = UUID(uuidString: "778d214e-b9e1-4fca-a0ed-922369858b36")!
-    static let longText = UUID(uuidString: "eeab74bc-284c-4dc7-a948-4ba045980ccf")!
-    static let multipleChoice_Many = UUID(uuidString: "ab337720-ca51-402a-aa47-8ec8f316ba46")!
-    static let multipleChoice_One = UUID(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")!
-    static let number = UUID(uuidString: "3e8760df-4a6e-47f2-8b03-0ef2e72ac35f")!
-    static let rating = UUID(uuidString: "7f117917-1c53-4524-a334-fe3f60e229dd")!
-    static let shortText = UUID(uuidString: "d7a86703-22e8-495b-95b2-543cd3f7dde6")!
-    static let yesNo = UUID(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")!
+    static let date = Reference(uuidString: "62bbe9cc-c797-4b7a-ad1d-d4328f7f8589")!
+    static let dropdown = Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!
+    static let group = Reference(uuidString: "778d214e-b9e1-4fca-a0ed-922369858b36")!
+    static let longText = Reference(uuidString: "eeab74bc-284c-4dc7-a948-4ba045980ccf")!
+    static let multipleChoice_Many = Reference(uuidString: "ab337720-ca51-402a-aa47-8ec8f316ba46")!
+    static let multipleChoice_One = Reference(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")!
+    static let number = Reference(uuidString: "3e8760df-4a6e-47f2-8b03-0ef2e72ac35f")!
+    static let rating = Reference(uuidString: "7f117917-1c53-4524-a334-fe3f60e229dd")!
+    static let shortText = Reference(uuidString: "d7a86703-22e8-495b-95b2-543cd3f7dde6")!
+    static let yesNo = Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")!
 }
 
 public extension Field {

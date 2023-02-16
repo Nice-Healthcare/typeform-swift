@@ -17,7 +17,7 @@ final class FormPositionTests: TypeformTests {
         
         XCTAssertNil(group)
         XCTAssertEqual(field.id, "5kmu6eCtBcYH")
-        XCTAssertEqual(field.ref, UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))
+        XCTAssertEqual(field.ref, Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))
         XCTAssertEqual(field.title, "What state do you live in?")
         XCTAssertEqual(field.type, .dropdown)
     }

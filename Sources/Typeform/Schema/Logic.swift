@@ -6,7 +6,7 @@ public struct Logic: Hashable, Decodable {
         case field
     }
     
-    public let ref: UUID
+    public let ref: Reference
     public let type: Kind
     public let actions: [Action]
 }

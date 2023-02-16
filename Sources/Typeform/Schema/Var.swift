@@ -10,7 +10,7 @@ public struct Var: Hashable, Decodable {
     
     public enum Value: Hashable, Decodable {
         case bool(Bool)
-        case ref(UUID)
+        case ref(Reference)
         case string(String)
     }
     
@@ -27,7 +27,7 @@ public struct Var: Hashable, Decodable {
         type = try container.decode(VarType.self, forKey: .type)
         switch type {
         case .choice, .field:
-            let ref = try container.decode(UUID.self, forKey: .value)
+            let ref = try container.decode(Reference.self, forKey: .value)
             value = .ref(ref)
         case .constant:
             if let bool = try? container.decode(Bool.self, forKey: .value) {

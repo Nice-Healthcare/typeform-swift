@@ -28,12 +28,12 @@ extension Collection where Element == Var {
             }
             
             return responseValue == bool
-        case .ref(let uuid):
+        case .ref(let reference):
             switch response {
             case .choice(let choice):
-                return choice.ref == uuid
+                return choice.ref == reference
             case .choices(let choices):
-                return choices.map { $0.ref }.contains(uuid)
+                return choices.map { $0.ref }.contains(reference)
             default:
                 return false
             }

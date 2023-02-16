@@ -8,7 +8,7 @@ final class FormScreenTests: TypeformTests {
         let welcomeScreen = try XCTUnwrap(screen as? WelcomeScreen)
         
         XCTAssertEqual(welcomeScreen.id, "DmQFaO34DUcM")
-        XCTAssertEqual(welcomeScreen.ref, UUID(uuidString: "122872b0-4de9-42c2-9204-fdec922538af"))
+        XCTAssertEqual(welcomeScreen.ref, Reference(uuidString: "122872b0-4de9-42c2-9204-fdec922538af"))
         XCTAssertTrue(welcomeScreen.title.hasPrefix("Hello and thanks for reaching out"))
         XCTAssertEqual(welcomeScreen.properties.button_text, "Start")
     }
