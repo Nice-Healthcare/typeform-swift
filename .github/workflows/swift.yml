@@ -1,0 +1,26 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  SwiftActions:
+    strategy:
+      matrix:
+        os: [macos-12, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v3
+
+    - name: Swift Build
+      uses: SwiftActions/SwiftBuild@86ef22926beddfe33b5c5da8860e9af581a6139d
+
+    - name: Swift Test
+      uses: SwiftActions/SwiftTest@5eae89b6a7ac20a100192bf1349a8eb90cd3f631
