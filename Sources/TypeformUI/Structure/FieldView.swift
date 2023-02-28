@@ -17,6 +17,7 @@ struct FieldView<Header: View, Footer: View>: View {
     @State private var validated: Bool = false
     @State private var next: Position?
     @State private var cancel: Bool = false
+    @FocusState private var focused: Bool
     
     private var nextTitle: String {
         switch field.properties {
@@ -90,7 +91,8 @@ struct FieldView<Header: View, Footer: View>: View {
                             settings: settings,
                             responses: $responses,
                             validations: field.validations,
-                            validated: $validated
+                            validated: $validated,
+                            focused: $focused
                         )
                     case .multipleChoice(let properties):
                         MultipleChoiceView(
@@ -126,7 +128,8 @@ struct FieldView<Header: View, Footer: View>: View {
                             settings: settings,
                             responses: $responses,
                             validations: field.validations,
-                            validated: $validated
+                            validated: $validated,
+                            focused: $focused
                         )
                     case .statement:
                         EmptyView()
@@ -177,6 +180,7 @@ struct FieldView<Header: View, Footer: View>: View {
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
+                    focused = false
                     if settings.presentation.skipWelcomeScreen && responses.isEmpty {
                         conclusion(.canceled)
                     } else {

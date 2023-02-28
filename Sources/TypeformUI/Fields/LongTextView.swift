@@ -11,6 +11,7 @@ struct LongTextView: View {
     var responses: Binding<Responses>
     var validations: Validations?
     var validated: Binding<Bool>?
+    var focused: FocusState<Bool>.Binding
     
     @State private var value: String = ""
     
@@ -45,6 +46,7 @@ struct LongTextView: View {
                         #endif
                 }
             }
+            .focused(focused)
             .frame(idealHeight: 200, maxHeight: 200)
             .overlay(
                 shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth)
@@ -87,12 +89,14 @@ struct LongTextView: View {
 }
 
 struct LongTextView_Previews: PreviewProvider {
+    @FocusState static var focused: Bool
     static var previews: some View {
         LongTextView(
             reference: .longText,
             properties: .preview,
             settings: Settings(),
-            responses: .constant([:])
+            responses: .constant([:]),
+            focused: $focused
         )
     }
 }
