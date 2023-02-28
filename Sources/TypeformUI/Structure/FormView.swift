@@ -60,7 +60,9 @@ public struct FormView<Header: View, Footer: View>: View {
                     )
                 }
             }
+            #if os(iOS) || os(watchOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }
