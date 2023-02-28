@@ -60,6 +60,7 @@ public struct FormView<Header: View, Footer: View>: View {
                     )
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
