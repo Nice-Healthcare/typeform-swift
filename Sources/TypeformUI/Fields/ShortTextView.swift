@@ -11,6 +11,7 @@ struct ShortTextView: View {
     var responses: Binding<Responses>
     var validations: Validations?
     var validated: Binding<Bool>?
+    var focused: FocusState<Bool>.Binding
     
     @State private var value: String = ""
     
@@ -23,6 +24,7 @@ struct ShortTextView: View {
             
             TextField("", text: $value)
                 .fieldStyle(settings: settings)
+                .focused(focused)
         }
         .onAppear {
             let entry = responses.wrappedValue[reference]
@@ -61,12 +63,14 @@ struct ShortTextView: View {
 }
 
 struct ShortTextView_Previews: PreviewProvider {
+    @FocusState static var focused: Bool
     static var previews: some View {
         ShortTextView(
             reference: .shortText,
             properties: .preview,
             settings: Settings(),
-            responses: .constant([:])
+            responses: .constant([:]),
+            focused: $focused
         )
     }
 }
