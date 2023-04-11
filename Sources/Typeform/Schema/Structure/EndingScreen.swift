@@ -19,7 +19,7 @@ public struct EndingScreen: Screen, Hashable, Codable {
             var container = encoder.singleValueContainer()
             switch self {
             case .`default`:
-                try container.encodeNil()
+                try container.encode("default_tys")
             case .ref(let reference):
                 try container.encode(reference)
             }
@@ -36,7 +36,7 @@ public struct EndingScreen: Screen, Hashable, Codable {
     public init(
         id: String = "",
         ref: Ref = .`default`,
-        type: String = "",
+        type: String = "thankyou_screen",
         title: String = "",
         attachment: ScreenAttachment? = nil,
         properties: ScreenProperties = ScreenProperties()
@@ -47,5 +47,21 @@ public struct EndingScreen: Screen, Hashable, Codable {
         self.title = title
         self.attachment = attachment
         self.properties = properties
+    }
+    
+    /// The _default_ 'Thank You' screen.
+    ///
+    /// - note: A unique id of 'DefaultTyScreen' is used in place of a sudo-random string of other entities.
+    public static var defaultThankYou: EndingScreen {
+        EndingScreen(
+            id: "DefaultTyScreen",
+            ref: .default,
+            type: "thankyou_screen",
+            title: "All done!, Thanks for you time.",
+            properties: ScreenProperties(
+                share_icons: false,
+                show_button: false
+            )
+        )
     }
 }

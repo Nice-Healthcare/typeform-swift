@@ -70,4 +70,22 @@ final class SchemeTests: TypeformTests {
         }
         """)
     }
+    
+    func testEncodeDefaultThankYou() throws {
+        let screen = EndingScreen.defaultThankYou
+        let data = try TypeformTests.prettyEncoder.encode(screen)
+        let json = try XCTUnwrap(String(data: data, encoding: .utf8))
+        XCTAssertEqual(json, """
+        {
+          "id" : "DefaultTyScreen",
+          "properties" : {
+            "share_icons" : false,
+            "show_button" : false
+          },
+          "ref" : "default_tys",
+          "title" : "All done!, Thanks for you time.",
+          "type" : "thankyou_screen"
+        }
+        """)
+    }
 }
