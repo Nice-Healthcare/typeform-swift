@@ -1,10 +1,12 @@
 import Foundation
 
-public struct YesNo: Hashable, Decodable {
+public struct YesNo: Hashable, Codable {
     
     public let description: String?
     
-    public init(description: String? = nil) {
+    public init(
+        description: String? = nil
+    ) {
         self.description = description
     }
 }

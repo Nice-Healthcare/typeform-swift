@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Op: String, Decodable {
+public enum Op: String, Codable {
     case always
     case and
     case equal

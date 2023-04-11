@@ -1,14 +1,14 @@
 import Foundation
 
-public struct Var: Hashable, Decodable {
+public struct Var: Hashable, Codable {
     
-    public enum VarType: String, Decodable {
+    public enum VarType: String, Codable {
         case choice
         case constant
         case field
     }
     
-    public enum Value: Hashable, Decodable {
+    public enum Value: Hashable, Codable {
         case bool(Bool)
         case ref(Reference)
         case string(String)
@@ -21,6 +21,14 @@ public struct Var: Hashable, Decodable {
     
     public let type: VarType
     public let value: Value
+    
+    public init(
+        type: VarType = .constant,
+        value: Value = .bool(false)
+    ) {
+        self.type = type
+        self.value = value
+    }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -38,6 +46,19 @@ public struct Var: Hashable, Decodable {
                 let context = DecodingError.Context(codingPath: [CodingKeys.value], debugDescription: "Unknown `Var.value` for Type '\(type)'.")
                 throw DecodingError.dataCorrupted(context)
             }
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(type, forKey: .type)
+        switch value {
+        case .ref(let reference):
+            try container.encode(reference, forKey: .value)
+        case .bool(let bool):
+            try container.encode(bool, forKey: .value)
+        case .string(let string):
+            try container.encode(string, forKey: .value)
         }
     }
 }

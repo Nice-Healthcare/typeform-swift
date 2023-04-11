@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Dropdown: Hashable, Decodable {
+public struct Dropdown: Hashable, Codable {
     public let choices: [Choice]
     public let randomize: Bool
     public let alphabetical_order: Bool

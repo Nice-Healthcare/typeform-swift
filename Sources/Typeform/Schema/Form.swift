@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Form: Hashable, Identifiable, Decodable {
+public struct Form: Hashable, Identifiable, Codable {
     
-    public enum Kind: String, Decodable {
+    public enum Kind: String, Codable {
         case quiz
     }
     
@@ -39,4 +39,38 @@ public struct Form: Hashable, Identifiable, Decodable {
     public let lastUpdatedAt: Date
     public let welcomeScreens: [WelcomeScreen]
     public let endingScreens: [EndingScreen]
+    
+    public init(
+        id: String = "",
+        type: Kind = .quiz,
+        logic: [Logic] = [],
+        theme: Theme = Theme(),
+        title: String = "",
+        links: Links = Links(),
+        fields: [Field] = [],
+        hidden: [String] = [],
+        settings: Settings = Settings(),
+        workspace: Workspace = Workspace(),
+        createdAt: Date = Date(),
+        publishedAt: Date = Date(),
+        lastUpdatedAt: Date = Date(),
+        welcomeScreens: [WelcomeScreen] = [],
+        endingScreens: [EndingScreen] = []
+    ) {
+        self.id = id
+        self.type = type
+        self.logic = logic
+        self.theme = theme
+        self.title = title
+        self.links = links
+        self.fields = fields
+        self.hidden = hidden
+        self.settings = settings
+        self.workspace = workspace
+        self.createdAt = createdAt
+        self.publishedAt = publishedAt
+        self.lastUpdatedAt = lastUpdatedAt
+        self.welcomeScreens = welcomeScreens
+        self.endingScreens = endingScreens
+    }
 }

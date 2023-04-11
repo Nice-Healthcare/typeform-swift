@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Field: Hashable, Identifiable, Decodable {
+public struct Field: Hashable, Identifiable, Codable {
     
-    public enum Kind: String, Decodable {
+    public enum Kind: String, Codable {
         case date
         case dropdown
         case group
@@ -15,7 +15,7 @@ public struct Field: Hashable, Identifiable, Decodable {
         case yes_no
     }
     
-    public enum Properties: Hashable, Decodable {
+    public enum Properties: Hashable, Codable {
         case date(DateStamp)
         case dropdown(Dropdown)
         case group(Group)
@@ -44,7 +44,7 @@ public struct Field: Hashable, Identifiable, Decodable {
     public let properties: Properties
     public let validations: Validations?
     
-    internal init(
+    public init(
         id: String = "",
         ref: Reference = Reference(),
         type: Kind = .yes_no,
@@ -98,6 +98,37 @@ public struct Field: Hashable, Identifiable, Decodable {
         case .yes_no:
             let yesNo = try container.decode(YesNo.self, forKey: .properties)
             properties = .yesNo(yesNo)
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(ref, forKey: .ref)
+        try container.encode(type, forKey: .type)
+        try container.encode(title, forKey: .title)
+        try container.encodeIfPresent(validations, forKey: .validations)
+        switch properties {
+        case .date(let dateStamp):
+            try container.encode(dateStamp, forKey: .properties)
+        case .dropdown(let dropdown):
+            try container.encode(dropdown, forKey: .properties)
+        case .group(let group):
+            try container.encode(group, forKey: .properties)
+        case .longText(let longText):
+            try container.encode(longText, forKey: .properties)
+        case .multipleChoice(let multipleChoice):
+            try container.encode(multipleChoice, forKey: .properties)
+        case .number(let number):
+            try container.encode(number, forKey: .properties)
+        case .rating(let rating):
+            try container.encode(rating, forKey: .properties)
+        case .shortText(let shortText):
+            try container.encode(shortText, forKey: .properties)
+        case .statement(let statement):
+            try container.encode(statement, forKey: .properties)
+        case .yesNo(let yesNo):
+            try container.encode(yesNo, forKey: .properties)
         }
     }
 }
