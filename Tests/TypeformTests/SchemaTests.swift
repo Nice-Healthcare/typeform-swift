@@ -11,12 +11,19 @@ final class SchemeTests: TypeformTests {
         )
         let data = try TypeformTests.prettyEncoder.encode(form)
         let json = try XCTUnwrap(String(data: data, encoding: .utf8))
+        
+        #if os(Linux)
+        let distantPast = "0001-12-30T00:00:00+00:00"
+        #else
+        let distantPast = "0001-01-01T00:00:00+00:00"
+        #endif
+        
         XCTAssertEqual(json, """
         {
           "_links" : {
             "display" : "https:\\/\\/www.typeform.com"
           },
-          "created_at" : "0001-01-01T00:00:00+00:00",
+          "created_at" : "\(distantPast)",
           "fields" : [
 
           ],
@@ -24,11 +31,11 @@ final class SchemeTests: TypeformTests {
 
           ],
           "id" : "",
-          "last_updated_at" : "0001-01-01T00:00:00+00:00",
+          "last_updated_at" : "\(distantPast)",
           "logic" : [
 
           ],
-          "published_at" : "0001-01-01T00:00:00+00:00",
+          "published_at" : "\(distantPast)",
           "settings" : {
             "are_uploads_public" : false,
             "capabilities" : {
