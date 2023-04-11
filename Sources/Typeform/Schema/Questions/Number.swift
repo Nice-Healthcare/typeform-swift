@@ -1,5 +1,11 @@
 import Foundation
 
-public struct Number: Hashable, Decodable {
+public struct Number: Hashable, Codable {
     public let description: String?
+    
+    public init(
+        description: String? = nil
+    ) {
+        self.description = description
+    }
 }

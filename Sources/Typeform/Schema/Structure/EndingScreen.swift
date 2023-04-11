@@ -1,8 +1,8 @@
 import Foundation
 
-public struct EndingScreen: Screen, Hashable, Decodable {
+public struct EndingScreen: Screen, Hashable, Codable {
     
-    public enum Ref: Hashable, Decodable {
+    public enum Ref: Hashable, Codable {
         case `default`
         case ref(Reference)
         
@@ -14,6 +14,16 @@ public struct EndingScreen: Screen, Hashable, Decodable {
                 self = .default
             }
         }
+        
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+            case .`default`:
+                try container.encode("default_tys")
+            case .ref(let reference):
+                try container.encode(reference)
+            }
+        }
     }
     
     public let id: String
@@ -22,4 +32,36 @@ public struct EndingScreen: Screen, Hashable, Decodable {
     public let title: String
     public let attachment: ScreenAttachment?
     public let properties: ScreenProperties
+    
+    public init(
+        id: String = "",
+        ref: Ref = .`default`,
+        type: String = "thankyou_screen",
+        title: String = "",
+        attachment: ScreenAttachment? = nil,
+        properties: ScreenProperties = ScreenProperties()
+    ) {
+        self.id = id
+        self.ref = ref
+        self.type = type
+        self.title = title
+        self.attachment = attachment
+        self.properties = properties
+    }
+    
+    /// The _default_ 'Thank You' screen.
+    ///
+    /// - note: A unique id of 'DefaultTyScreen' is used in place of a sudo-random string of other entities.
+    public static var defaultThankYou: EndingScreen {
+        EndingScreen(
+            id: "DefaultTyScreen",
+            ref: .default,
+            type: "thankyou_screen",
+            title: "All done!, Thanks for you time.",
+            properties: ScreenProperties(
+                share_icons: false,
+                show_button: false
+            )
+        )
+    }
 }

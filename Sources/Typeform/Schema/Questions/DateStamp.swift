@@ -1,7 +1,17 @@
 import Foundation
 
-public struct DateStamp: Hashable, Decodable {
+public struct DateStamp: Hashable, Codable {
     public let separator: String
     public let structure: String
     public let description: String?
+    
+    public init(
+        separator: String = "",
+        structure: String = "",
+        description: String? = nil
+    ) {
+        self.separator = separator
+        self.structure = structure
+        self.description = description
+    }
 }

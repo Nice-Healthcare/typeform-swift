@@ -1,5 +1,3 @@
-import Foundation
-
 public enum TypeformError: Error {
     case couldNotDetermineNext(_ position: Position)
     case multipleLogicForField
