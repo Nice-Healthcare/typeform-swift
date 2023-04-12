@@ -50,6 +50,8 @@ struct MultipleChoiceView: View {
         .onAppear {
             let entry = responses.wrappedValue[reference]
             switch entry {
+            case .choice(let choice):
+                selections = [choice]
             case .choices(let choices):
                 selections = choices
             default:
@@ -59,10 +61,18 @@ struct MultipleChoiceView: View {
             determineValidity()
         }
         .onChange(of: selections) { newValue in
-            if !newValue.isEmpty {
-                responses.wrappedValue[reference] = .choices(selections)
+            if properties.allow_multiple_selection {
+                if !newValue.isEmpty {
+                    responses.wrappedValue[reference] = .choices(newValue)
+                } else {
+                    responses.wrappedValue[reference] = nil
+                }
             } else {
-                responses.wrappedValue[reference] = nil
+                if let choice = newValue.first {
+                    responses.wrappedValue[reference] = .choice(choice)
+                } else {
+                    responses.wrappedValue[reference] = nil
+                }
             }
             
             determineValidity()
