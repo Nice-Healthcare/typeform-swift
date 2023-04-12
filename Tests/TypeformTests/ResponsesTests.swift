@@ -12,6 +12,26 @@ final class ResponsesTests: TypeformTests {
         label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider"
     )
     
+    /// Verify the `Reference.valueEncodingCase` options.
+    ///
+    /// - note: The double quote is correct; JSON fragment.
+    func testReferenceEncoding() throws {
+        Reference.valueEncodingCase = .automatic
+        var data = try TypeformTests.encoder.encode(visitReason)
+        var value = try XCTUnwrap(String(data: data, encoding: .utf8))
+        XCTAssertEqual(value, #""AEA7A268-64D4-4F16-920A-B9AFE317E3B6""#)
+        
+        Reference.valueEncodingCase = .uppercase
+        data = try TypeformTests.encoder.encode(visitReason)
+        value = try XCTUnwrap(String(data: data, encoding: .utf8))
+        XCTAssertEqual(value, #""AEA7A268-64D4-4F16-920A-B9AFE317E3B6""#)
+        
+        Reference.valueEncodingCase = .lowercase
+        data = try TypeformTests.encoder.encode(visitReason)
+        value = try XCTUnwrap(String(data: data, encoding: .utf8))
+        XCTAssertEqual(value, #""aea7a268-64d4-4f16-920a-b9afe317e3b6""#)
+    }
+    
     func testValidVisitReasonResponses() throws {
         responses[visitReason] = .choice(visitChoice)
         XCTAssertTrue(responses.validResponseValues(given: form.fields))
