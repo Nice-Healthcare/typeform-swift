@@ -23,28 +23,35 @@ struct MultipleChoiceView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
-            ForEach(choices) { choice in
-                Button {
-                    if properties.allow_multiple_selection {
-                        if let index = selections.firstIndex(of: choice) {
-                            selections.remove(at: index)
+        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
+            if let description = properties.description {
+                Text(description)
+                    .font(settings.typography.captionFont)
+            }
+            
+            VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
+                ForEach(choices) { choice in
+                    Button {
+                        if properties.allow_multiple_selection {
+                            if let index = selections.firstIndex(of: choice) {
+                                selections.remove(at: index)
+                            } else {
+                                selections.append(choice)
+                            }
                         } else {
-                            selections.append(choice)
+                            selections = [choice]
                         }
-                    } else {
-                        selections = [choice]
+                    } label: {
+                        Text(choice.label)
+                            .font(settings.typography.bodyFont)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                } label: {
-                    Text(choice.label)
-                        .font(settings.typography.bodyFont)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    .buttonStyle(ChoiceButtonStyle(
+                        allowsMultipleSelection: properties.allow_multiple_selection,
+                        selected: selections.contains(choice),
+                        settings: settings
+                    ))
                 }
-                .buttonStyle(ChoiceButtonStyle(
-                    allowsMultipleSelection: properties.allow_multiple_selection,
-                    selected: selections.contains(choice),
-                    settings: settings
-                ))
             }
         }
         .onAppear {
