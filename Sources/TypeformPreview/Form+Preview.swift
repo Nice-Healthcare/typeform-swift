@@ -33,6 +33,19 @@ public extension Form {
             preconditionFailure(error.localizedDescription)
         }
     }()
+    
+    static var medicalIntake24: Form = {
+        guard let url = Bundle.typeformPreview.url(forResource: "MedicalIntake24", withExtension: "json") else {
+            preconditionFailure("Unable to locate 'MedicalIntake.json' in Bundle.module.")
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            return try decoder.decode(Form.self, from: data)
+        } catch {
+            preconditionFailure(error.localizedDescription)
+        }
+    }()
 }
 
 public extension WelcomeScreen {

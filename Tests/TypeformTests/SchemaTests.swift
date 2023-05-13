@@ -95,4 +95,10 @@ final class SchemeTests: TypeformTests {
         }
         """)
     }
+    
+    func testDecodeIntake24() throws {
+        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "MedicalIntake24", withExtension: "json"))
+        let data = try Data(contentsOf: url)
+        _ = try Self.decoder.decode(Typeform.Form.self, from: data)
+    }
 }
