@@ -8,9 +8,9 @@ public extension Form {
         return decoder
     }()
     
-    static var medicalIntake22: Form = {
-        guard let url = Bundle.typeformPreview.url(forResource: "MedicalIntake", withExtension: "json") else {
-            preconditionFailure("Unable to locate 'MedicalIntake.json' in Bundle.module.")
+    private static func intakeForm(_ resource: String) -> Form {
+        guard let url = Bundle.typeformPreview.url(forResource: resource, withExtension: "json") else {
+            preconditionFailure("Unable to locate '\(resource).json' in Bundle.module.")
         }
 
         do {
@@ -19,33 +19,12 @@ public extension Form {
         } catch {
             preconditionFailure(error.localizedDescription)
         }
-    }()
+    }
     
-    static var medicalIntake23: Form = {
-        guard let url = Bundle.typeformPreview.url(forResource: "MedicalIntake23", withExtension: "json") else {
-            preconditionFailure("Unable to locate 'MedicalIntake.json' in Bundle.module.")
-        }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            return try decoder.decode(Form.self, from: data)
-        } catch {
-            preconditionFailure(error.localizedDescription)
-        }
-    }()
-    
-    static var medicalIntake24: Form = {
-        guard let url = Bundle.typeformPreview.url(forResource: "MedicalIntake24", withExtension: "json") else {
-            preconditionFailure("Unable to locate 'MedicalIntake.json' in Bundle.module.")
-        }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            return try decoder.decode(Form.self, from: data)
-        } catch {
-            preconditionFailure(error.localizedDescription)
-        }
-    }()
+    static var medicalIntake22 = intakeForm("MedicalIntake")
+    static var medicalIntake23 = intakeForm("MedicalIntake23")
+    static var medicalIntake24 = intakeForm("MedicalIntake24")
+    static var medicalIntake26 = intakeForm("MedicalIntake26")
 }
 
 public extension WelcomeScreen {
