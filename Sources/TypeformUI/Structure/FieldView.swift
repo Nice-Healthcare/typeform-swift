@@ -131,8 +131,15 @@ struct FieldView<Header: View, Footer: View>: View {
                             validated: $validated,
                             focused: $focused
                         )
-                    case .statement:
-                        EmptyView()
+                    case .statement(let properties):
+                        StatementView(
+                            reference: field.ref,
+                            properties: properties,
+                            settings: settings,
+                            responses: $responses,
+                            validations: field.validations,
+                            validated: $validated
+                        )
                     case .yesNo(let properties):
                         YesNoView(
                             reference: field.ref,

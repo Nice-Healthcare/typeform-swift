@@ -13,11 +13,12 @@ public extension Reference {
     static let rating = Reference(uuidString: "7f117917-1c53-4524-a334-fe3f60e229dd")!
     static let shortText = Reference(uuidString: "d7a86703-22e8-495b-95b2-543cd3f7dde6")!
     static let yesNo = Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")!
+    static let statement = Reference(uuidString: "8cd03d7e-412f-4be4-9e80-281f66675fca")!
 }
 
 public extension Field {
-    static func field(withRef ref: Reference) -> Field {
-        guard let position = Typeform.Form.medicalIntake23.parent(forFieldWithRef: ref) else {
+    static func field(withRef ref: Reference, in form: Form = .medicalIntake23) -> Field {
+        guard let position = form.parent(forFieldWithRef: ref) else {
             preconditionFailure("Couldn't locate field with reference '\(ref)'.")
         }
         
@@ -122,6 +123,16 @@ public extension YesNo {
     static var preview: YesNo = {
         guard case let .yesNo(properties) = Field.field(withRef: .yesNo).properties else {
             preconditionFailure("Couldn't case field to 'yes-no'.")
+        }
+        
+        return properties
+    }()
+}
+
+public extension Statement {
+    static var preview: Statement = {
+        guard case let .statement(properties) = Field.field(withRef: .statement, in: .medicalIntake26).properties else {
+            preconditionFailure("Couldn't case field to 'statement'.")
         }
         
         return properties
