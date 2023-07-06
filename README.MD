@@ -76,7 +76,7 @@ struct MyView: View {
 }
 ```
 
-## Support Question Types
+## Supported Question Types
 
 > Note, this library is _incomplete_; not every question type or condition has been implemented. Want to help fix a bug or make improvements? Consider becoming a contributor!
 
