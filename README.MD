@@ -25,11 +25,11 @@ let package = Package(
 
 ## Modules
 
-This library contains multiple modules which comprise a complete toolset for decoding, logic parsing, and display of Typeform questionaires.
+This library contains multiple modules which comprise a complete toolset for decoding, logic parsing, and display of Typeform questionnaires.
 
 ### Typeform
 
-This module contains the Typeform schema and additional models for navigating the logic and completion of a _form_. Start with the [`Form`](Sources/Typeform/Schema/Form.swift) structure, which is the entity retreived from the Typeform [API](https://www.typeform.com/developers/create/reference/retrieve-forms/).
+This module contains the Typeform schema and additional models for navigating the logic and completion of a _form_. Start with the [`Form`](Sources/Typeform/Schema/Form.swift) structure, which is the entity retrieved from the Typeform [API](https://www.typeform.com/developers/create/reference/retrieve-forms/).
 
 Forms contain [`Field`](Sources/Typeform/Schema/Field.swift)s and [`Logic`](Sources/Typeform/Schema/Logic.swift) which act up the _fields_. Given a particular [`Position`](Sources/Typeform/Models/Position.swift) - _the screen presented or question being asked_ - and [`Responses`](Sources/Typeform/Models/Responses.swift) - _answers given to previous questions_ - the next _position_ can be determined.
 
@@ -46,7 +46,7 @@ This module is used primarily internal to the library. It provides some example 
 
 ### TypeformUI
 
-The **TypeformUI** module is a **SwiftUI** implementation used to display and navigate through a Typeform questionaire. It is designed to be self-contained and customizable to fit in with your apps design.
+The **TypeformUI** module is a **SwiftUI** implementation used to display and navigate through a Typeform questionnaire. It is designed to be self-contained and customizable to fit in with your apps design.
 
 The [`FormView`](Sources/TypeformUI/Structure/FormView.swift) is initialized with a `Form` and a [`Conclusion`](Sources/TypeformUI/Conclusion.swift) function/lambda callback. In most cases, the _conclusion_ will include the _responses_ given by the individual questioned. (The only instance where they are not provided is the `canceled` case.)
 
@@ -93,18 +93,33 @@ All of the _structural_ components are supported: Welcome Screen, Ending, Statem
 
 ## Customization
 
-Every app is unique, so the ability to customize the look and feel of the questions presentation was built in to the library from the start. There are many ways to customize this library, primarily this includes the following…
+Every app is unique, so the ability to customize the look and feel of the questions presentation was built in to the library from the start.
+
+### Settings
+
+The `TypeformUI.Settings` structure allows for the customization of several aspects of the libraries interface presentation & localization.
 
 ### Navigation Style (Layout)
 
-* `callToAction`
-* `navigation`
-* `inline`
+There are several navigation styles available:
+
+| `callToAction`                                                                                                                                           | `inline`                                                                                             | `navigation`                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| ![Call-to-Action - Navigation Style](Readme/navigation-callToAction.png)                                                                                 | ![Inline - Navigation Style](Readme/navigation-inline.png)                                           | ![Navigation Bar - Navigation Style](Readme/navigation-navigation.png)      |
+| The 'Call-to-Action' navigation style anchors a button to the bottom of the views safe area. The button is always visible and content scrolls behind it. | The 'Inline' navigation style anchors the a button to the bottom of the content and scrolls with it. | The 'Navigation' navigation style fixes the button to the 'Navigation Bar'. |
 
 ### Typography & Theme
 
-`Settings.Typography`
+Four typography styles are used in the UI presentation and can be customized through `Settings.Typography`. Each typography style can be set with a `SwiftUI.Font` and `SwiftUI.Color`.
+
+| Title Font                                         | Prompt, Caption & Body Fonts                        |
+| -------------------------------------------------- | --------------------------------------------------- |
+| ![Title Font Example](Readme/typography-title.png) | ![Other Font Examples](Readme/typography-other.png) |
+
+The 'Title' font is used primarily on Welcome Screens, Thank-You/Ending Screens, and Statement Fields.
+
+Many other elements can be configured including colors, borders, padding, and spacing.
 
 ### Headers & Footers
 
-A _form_ can futher be customized by providing an optional _header_ and/or _footer_. These are completely custom views that will be displayed along with each _field_ (question).
+A _form_ can further be customized by providing an optional _header_ and/or _footer_. These are completely custom views that will be displayed along with each _field_ (question).
