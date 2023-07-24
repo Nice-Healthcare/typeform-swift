@@ -71,7 +71,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                         
                         if !isWelcome {
                             Button {
-                                conclusion(.completed(responses))
+                                conclusion(.completed(responses, screen as! EndingScreen))
                             } label: {
                                 Text(settings.localization.finish)
                             }
@@ -93,7 +93,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                     
                     if !isWelcome {
                         Button {
-                            conclusion(.completed(responses))
+                            conclusion(.completed(responses, screen as! EndingScreen))
                         } label: {
                             Text(settings.localization.finish)
                         }
@@ -110,7 +110,7 @@ struct ScreenView<Header: View, Footer: View>: View {
         .onAppear {
             next = try? form.next(from: .screen(screen), given: responses)
             if !isWelcome && settings.presentation.skipEndingScreen {
-                conclusion(.completed(responses))
+                conclusion(.completed(responses, screen as! EndingScreen))
             }
         }
         .toolbar {
@@ -132,7 +132,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                     
                     if !isWelcome {
                         Button {
-                            conclusion(.completed(responses))
+                            conclusion(.completed(responses, screen as! EndingScreen))
                         } label: {
                             Text(settings.localization.finish)
                         }

@@ -17,9 +17,6 @@ public struct Form: Hashable, Identifiable, Codable {
         case hidden
         case settings
         case workspace
-        case createdAt = "created_at"
-        case publishedAt = "published_at"
-        case lastUpdatedAt = "last_updated_at"
         case welcomeScreens = "welcome_screens"
         case endingScreens = "thankyou_screens"
     }
@@ -34,12 +31,6 @@ public struct Form: Hashable, Identifiable, Codable {
     public let hidden: [String]
     public let settings: Settings
     public let workspace: Workspace
-    @available(*, deprecated, message: "This is no longer in the API contract.")
-    public let createdAt: Date
-    @available(*, deprecated, message: "This is no longer in the API contract.")
-    public let publishedAt: Date
-    @available(*, deprecated, message: "This is no longer in the API contract.")
-    public let lastUpdatedAt: Date
     public let welcomeScreens: [WelcomeScreen]
     public let endingScreens: [EndingScreen]
     
@@ -54,9 +45,6 @@ public struct Form: Hashable, Identifiable, Codable {
         hidden: [String] = [],
         settings: Settings = Settings(),
         workspace: Workspace = Workspace(),
-        createdAt: Date = Date(),
-        publishedAt: Date = Date(),
-        lastUpdatedAt: Date = Date(),
         welcomeScreens: [WelcomeScreen] = [],
         endingScreens: [EndingScreen] = []
     ) {
@@ -70,9 +58,6 @@ public struct Form: Hashable, Identifiable, Codable {
         self.hidden = hidden
         self.settings = settings
         self.workspace = workspace
-        self.createdAt = createdAt
-        self.publishedAt = publishedAt
-        self.lastUpdatedAt = lastUpdatedAt
         self.welcomeScreens = welcomeScreens
         self.endingScreens = endingScreens
     }
@@ -89,9 +74,6 @@ public struct Form: Hashable, Identifiable, Codable {
         self.hidden = try container.decode([String].self, forKey: .hidden)
         self.settings = try container.decode(Settings.self, forKey: .settings)
         self.workspace = try container.decode(Workspace.self, forKey: .workspace)
-        self.createdAt = try container.decodeIfPresent(Date.self, forKey: .createdAt) ?? Date()
-        self.publishedAt = try container.decodeIfPresent(Date.self, forKey: .publishedAt) ?? Date()
-        self.lastUpdatedAt = try container.decodeIfPresent(Date.self, forKey: .lastUpdatedAt) ?? Date()
         self.welcomeScreens = try container.decode([WelcomeScreen].self, forKey: .welcomeScreens)
         self.endingScreens = try container.decode([EndingScreen].self, forKey: .endingScreens)
     }
