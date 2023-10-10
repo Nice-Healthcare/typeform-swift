@@ -25,6 +25,7 @@ public extension Form {
     static var medicalIntake23 = intakeForm("MedicalIntake23")
     static var medicalIntake24 = intakeForm("MedicalIntake24")
     static var medicalIntake26 = intakeForm("MedicalIntake26")
+    static var genericSlugs = intakeForm("GenericSlugs")
 }
 
 public extension WelcomeScreen {
