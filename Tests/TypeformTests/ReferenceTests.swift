@@ -12,6 +12,9 @@ final class ReferenceTests: TypeformTests {
         let data = try Data(contentsOf: url)
         let form = try Self.decoder.decode(Typeform.Form.self, from: data)
         
+        let launchField = try XCTUnwrap(form.fields.first)
+        XCTAssertEqual(launchField.id, "ShzJTN0Q8FUf")
+        
         let field = try XCTUnwrap(form.field(withId: "ylVxZah5X9Sq"))
         guard case .string(let value) = field.ref else {
             return XCTFail("Unexpected Field Ref Type")
