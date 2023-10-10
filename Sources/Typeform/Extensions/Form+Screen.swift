@@ -4,7 +4,7 @@ public extension Form {
     /// In a properly formatted `Form` this will be a `WelcomeScreen`. When no `WelcomeScreen` is available,
     /// the `defaultOrFirstEndingScreen` will be returned.
     var firstScreen: (any Screen)? {
-        if let screen = welcomeScreens.first {
+        if let screen = welcomeScreens?.first {
             return screen
         } else if let screen = defaultOrFirstEndingScreen {
             return screen

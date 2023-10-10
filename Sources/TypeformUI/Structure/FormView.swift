@@ -40,7 +40,7 @@ public struct FormView<Header: View, Footer: View>: View {
                         header: header,
                         footer: footer
                     )
-                } else if let field = form.fields.first, settings.presentation.skipWelcomeScreen {
+                } else if let field = form.fields.first {
                     FieldView(
                         responses: $responses,
                         form: form,

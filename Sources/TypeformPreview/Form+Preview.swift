@@ -29,7 +29,7 @@ public extension Form {
 
 public extension WelcomeScreen {
     static var preview: WelcomeScreen = {
-        guard let screen = Form.medicalIntake23.welcomeScreens.first else {
+        guard let screen = Form.medicalIntake23.welcomeScreens?.first else {
             preconditionFailure("Failed to find first 'WelcomeScreen'.")
         }
         

@@ -31,7 +31,7 @@ public struct Form: Hashable, Identifiable, Codable {
     public let hidden: [String]
     public let settings: Settings
     public let workspace: Workspace
-    public let welcomeScreens: [WelcomeScreen]
+    public let welcomeScreens: [WelcomeScreen]?
     public let endingScreens: [EndingScreen]
     
     public init(
@@ -45,7 +45,7 @@ public struct Form: Hashable, Identifiable, Codable {
         hidden: [String] = [],
         settings: Settings = Settings(),
         workspace: Workspace = Workspace(),
-        welcomeScreens: [WelcomeScreen] = [],
+        welcomeScreens: [WelcomeScreen]? = nil,
         endingScreens: [EndingScreen] = []
     ) {
         self.id = id
@@ -74,7 +74,7 @@ public struct Form: Hashable, Identifiable, Codable {
         self.hidden = try container.decode([String].self, forKey: .hidden)
         self.settings = try container.decode(Settings.self, forKey: .settings)
         self.workspace = try container.decode(Workspace.self, forKey: .workspace)
-        self.welcomeScreens = try container.decode([WelcomeScreen].self, forKey: .welcomeScreens)
+        self.welcomeScreens = try container.decodeIfPresent([WelcomeScreen].self, forKey: .welcomeScreens)
         self.endingScreens = try container.decode([EndingScreen].self, forKey: .endingScreens)
     }
 }
