@@ -1,0 +1,6290 @@
+{
+  "id": "mjFneHz8",
+  "type": "quiz",
+  "title": "New Intake V1",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/jKFBYs"
+  },
+  "theme": {
+    "href": "https://api.typeform.com/themes/qHWOQ7"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "percentage",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": false,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "capabilities": {
+      "e2e_encryption": {
+        "enabled": false,
+        "modifiable": false
+      }
+    }
+  },
+  "thankyou_screens": [
+    {
+      "id": "jnukhXHG2JQD",
+      "ref": "ending-thank-you",
+      "title": "Thank you for sharing your health concern with us. After clicking next, you will be taken to a scheduling page.\n\nPlease note: you must have a virtual visit before a home visit can be scheduled.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "again"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://images.typeform.com/images/KBwPZPU8qJiE"
+      }
+    },
+    {
+      "id": "dcibvQBHp4Zo",
+      "ref": "ending-state-not-available",
+      "title": "We’re sorry, Specialty providers are not licensed in that state. ",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Exit",
+        "description": "Learn more about the states where we operate on our website: Specialty.healthcare/locations"
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "All done! Thanks for your time.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "ShzJTN0Q8FUf",
+      "title": "What state will you be in at the time of your appointment?",
+      "ref": "appointment-state",
+      "properties": {
+        "description": "We'll find providers licensed in that state",
+        "randomize": false,
+        "alphabetical_order": true,
+        "choices": [
+          {
+            "id": "kOSqLhtUkdVn",
+            "ref": "65fd22c3-32ec-4c92-b194-5aef3a10fe60",
+            "label": "Alabama"
+          },
+          {
+            "id": "uHkwLYKrIkWk",
+            "ref": "06c83fb6-1725-4c64-b555-df84bfa8e978",
+            "label": "Alaska"
+          },
+          {
+            "id": "rwoZImlkl5AH",
+            "ref": "7ce2d4b2-81f7-4cdd-b0ca-f5ec651abbce",
+            "label": "Arizona"
+          },
+          {
+            "id": "FUrxF8IIKS6R",
+            "ref": "7a52c8ec-a27c-40ed-bb5c-adff246798c1",
+            "label": "Arkansas"
+          },
+          {
+            "id": "sHGw1PRZp0tg",
+            "ref": "9eca5aaa-95a9-431f-870e-aafb6dfa9a19",
+            "label": "California"
+          },
+          {
+            "id": "baEfR2Qch2NC",
+            "ref": "f1fbd0f6-ac22-4b59-962b-f1a2abcb0ede",
+            "label": "Colorado"
+          },
+          {
+            "id": "qUKRJERy7TvW",
+            "ref": "b690abd1-78a6-4346-a353-4236e4fb5965",
+            "label": "Connecticut"
+          },
+          {
+            "id": "fF8SCiwCvQh1",
+            "ref": "1a3456c2-8394-4e19-9122-cd3b6f445c54",
+            "label": "Delaware"
+          },
+          {
+            "id": "icUiBtOMdQ8g",
+            "ref": "bb1754b4-8909-4319-ae7f-98a568ebf9ae",
+            "label": "DC"
+          },
+          {
+            "id": "kbpnmOItkB0L",
+            "ref": "bc169999-4c23-4bcf-9209-abee3c377b24",
+            "label": "Florida"
+          },
+          {
+            "id": "B1I6yq7yzagh",
+            "ref": "09f795d1-c8e2-43f2-9e9d-5d7c0430c112",
+            "label": "Georgia"
+          },
+          {
+            "id": "pPVw1AccjJMl",
+            "ref": "6e8a3c11-2a2c-4e6b-b2d3-6ae72df93537",
+            "label": "Hawaii"
+          },
+          {
+            "id": "tQRMJJIhL1C1",
+            "ref": "c25f058f-ada9-4b12-bce4-9f819bbc8bea",
+            "label": "Idaho"
+          },
+          {
+            "id": "Hq0UQM6sdz1i",
+            "ref": "606e3e08-c234-4828-bd0f-ba69bba908f0",
+            "label": "Illinois"
+          },
+          {
+            "id": "SUhjdmmVFYBP",
+            "ref": "68a23247-0658-4e9b-ba07-dc6c65ec7583",
+            "label": "Indiana"
+          },
+          {
+            "id": "yFRH60DjLpfd",
+            "ref": "ddd6f006-8f40-4512-9df0-6c7508a24420",
+            "label": "Iowa"
+          },
+          {
+            "id": "ka90jKOfhQXw",
+            "ref": "da76d9a6-d5d6-4305-b208-78910f2e817a",
+            "label": "Kansas"
+          },
+          {
+            "id": "8BCTnkhZYBm0",
+            "ref": "2022bac5-499e-421c-beab-cefc336c2bbc",
+            "label": "Kentucky"
+          },
+          {
+            "id": "SnAGT65fHidn",
+            "ref": "dec3bbdc-afdf-4c46-ae20-a248d023abb2",
+            "label": "Louisiana"
+          },
+          {
+            "id": "FqUcSv0rOlgc",
+            "ref": "86ea58cc-74c6-4b15-ac6d-9196469d758f",
+            "label": "Maine"
+          },
+          {
+            "id": "FIVKphoh8Jqv",
+            "ref": "8f3bfe75-594c-44e0-845b-656a1a7568c6",
+            "label": "Maryland"
+          },
+          {
+            "id": "dbw1skqjKl92",
+            "ref": "aafe8b8f-5f75-4e6a-a369-5c8e49d16029",
+            "label": "Massachusetts"
+          },
+          {
+            "id": "GiBmbPSpEu2U",
+            "ref": "9debe884-3a3f-42b1-84fa-8f6a088e2b44",
+            "label": "Michigan"
+          },
+          {
+            "id": "XvIHa9uipAKV",
+            "ref": "aa028c7c-ce34-428f-8563-35bce5201dc1",
+            "label": "Minnesota"
+          },
+          {
+            "id": "kf9jUq7dhG7k",
+            "ref": "faddfe28-ec7d-4509-92f0-ba61aa83a546",
+            "label": "Mississippi"
+          },
+          {
+            "id": "nCaknUAmlrpg",
+            "ref": "fd3f8a56-6e0e-4786-8604-b1ff12a8e0a6",
+            "label": "Missouri"
+          },
+          {
+            "id": "YemQeoVNrHzm",
+            "ref": "1d58d3c3-27e6-4b6c-8c96-6e3bafcb512f",
+            "label": "Montana"
+          },
+          {
+            "id": "XIbf77BniH08",
+            "ref": "c3608f2a-114c-4274-af42-747332f6578e",
+            "label": "Nebraska"
+          },
+          {
+            "id": "2FtEjVv6f3wx",
+            "ref": "5d8bf798-8068-41e9-956f-2bd03a0d1531",
+            "label": "Nevada"
+          },
+          {
+            "id": "Vd58xa5zbZQm",
+            "ref": "a2877de6-c50b-499a-98a0-a821c4ae047f",
+            "label": "New Hampshire"
+          },
+          {
+            "id": "LSlHUv3BzpYp",
+            "ref": "2c079aaf-cece-4084-8b8c-8840b1551779",
+            "label": "New Jersey"
+          },
+          {
+            "id": "u5dejS6hfmyv",
+            "ref": "2c575be6-bf1d-4b98-affe-c13fa731bd8b",
+            "label": "New Mexico"
+          },
+          {
+            "id": "bUJGAKGfA9ga",
+            "ref": "22865522-43a0-4637-acb4-a884f81d18a5",
+            "label": "New York"
+          },
+          {
+            "id": "azOdQ4NJIlPN",
+            "ref": "9790bfbb-0c81-436a-ac96-38042b6cee2c",
+            "label": "North Carolina"
+          },
+          {
+            "id": "s2Mn7XfpEF6i",
+            "ref": "61e2f465-c7c1-4aae-8efb-f764c7276ef6",
+            "label": "North Dakota"
+          },
+          {
+            "id": "UZ1Otds8MTOY",
+            "ref": "2fcf9300-4aa5-473e-b04c-c055ea85c44c",
+            "label": "Ohio"
+          },
+          {
+            "id": "ewiax4Mlsgzv",
+            "ref": "63a1cb8f-ad44-4204-a3ff-46e75060b5d5",
+            "label": "Oklahoma"
+          },
+          {
+            "id": "NXommrE34E8q",
+            "ref": "5d164b1f-9ca4-45a0-aee9-47d116501f6d",
+            "label": "Oregon"
+          },
+          {
+            "id": "WqhqNbXbgkqN",
+            "ref": "daf15a6a-3541-40d6-b016-892356786f27",
+            "label": "Pennsylvania"
+          },
+          {
+            "id": "RaxLGAJw7a7e",
+            "ref": "0ae32179-85ce-422d-a96a-5f24c9c98721",
+            "label": "Rhode Island"
+          },
+          {
+            "id": "VzgrtqLFMuNf",
+            "ref": "ad743db6-fe4c-4e8e-8368-f802f51458bd",
+            "label": "South Carolina"
+          },
+          {
+            "id": "2bbSAcGbbM95",
+            "ref": "92d7c4fe-8a93-4d89-be4f-0efda6b47053",
+            "label": "South Dakota"
+          },
+          {
+            "id": "8do6dhe2y23o",
+            "ref": "928c6f57-c402-46c5-8c2d-20e48d6331d2",
+            "label": "Tennessee"
+          },
+          {
+            "id": "zn47Zl95hA2D",
+            "ref": "1d6b4d0f-418a-49e9-aebc-37fbf76f4a7d",
+            "label": "Texas"
+          },
+          {
+            "id": "Y5eiynCpMIMv",
+            "ref": "cab81bbd-17f5-4440-bde9-53f3b60a2cc4",
+            "label": "Utah"
+          },
+          {
+            "id": "MQOHbcq4S3nM",
+            "ref": "7513a99e-1a90-468a-aa1a-ccd07d356f4c",
+            "label": "Vermont"
+          },
+          {
+            "id": "vQsIy6JRu1Qg",
+            "ref": "0b63f26f-2f39-4dbd-8266-36cf91928f2a",
+            "label": "Virginia"
+          },
+          {
+            "id": "v3eewokbtVH6",
+            "ref": "fd4d4b16-9651-4138-9678-9fe6e2646a1c",
+            "label": "Washington"
+          },
+          {
+            "id": "mUFgl6JuFFYW",
+            "ref": "370f1bf7-c3ac-438b-9e8d-27d01ef11d5e",
+            "label": "West Virginia"
+          },
+          {
+            "id": "mOBCpLdClaQ2",
+            "ref": "2c23da0b-a797-45f3-8b8b-fc2109e2b3eb",
+            "label": "Wisconsin"
+          },
+          {
+            "id": "1A7SU9PCZIRN",
+            "ref": "d186f524-49f5-4d30-b32e-f936e0aeea6d",
+            "label": "Wyoming"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "dropdown"
+    },
+    {
+      "id": "N2NnNq8Uc9lw",
+      "title": "If you are experiencing a medical emergency, please call 911 or seek immediate medical attention.",
+      "ref": "medical-emergency-confirmation",
+      "properties": {
+        "description": "Signs of an emergency may include:\n\n• Active suicidal/homicidal feelings\n\n• Chest pain or heart attack symptoms \n\n• Significant difficulty breathing\n\n• Stroke symptoms (facial drooping, arm weakness, speech difficulty)\n\n• Severe allergic reaction\n\n• Fever greater than 104.5°F\n\n• Coughing or vomiting blood\n\n• Sudden, severe, uncontrolled pain\n\n• Severe headache\n\n• Loss of consciousness/changes in mental status\n\n• Poisoning/inhalation of substances\n\n• Moderate to severe wounds/burns\n\n• Seizures\n\n• Significant trauma/head injury\n\n• Pregnancy complications (vaginal bleeding, cramping, or abdominal pain)",
+        "button_text": "Acknowledge \u0026 Continue",
+        "hide_marks": true
+      },
+      "type": "statement"
+    },
+    {
+      "id": "QRpIAIXKd3L5",
+      "title": "Are you currently enrolled in Medicaid?",
+      "ref": "medicaid-enrolled",
+      "properties": {
+        "description": "Some Specialty services are limited for Medicaid recipients."
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "yes_no"
+    },
+    {
+      "id": "hLVNU3GtFFav",
+      "title": "Specialty services are limited for Medicaid recipients.",
+      "ref": "medicaid-confirmation",
+      "properties": {
+        "description": "Prescriptions, as well as some lab and imaging services, are not available from Specialty if you are currently enrolled in Medicaid.\n\nFor more information contact Customer Support via chat.",
+        "button_text": "Okay",
+        "hide_marks": false
+      },
+      "type": "statement"
+    },
+    {
+      "id": "PERbju33tcLW",
+      "title": "What is the patient's age category?",
+      "ref": "age-category",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "ZJDO2DU6qLZl",
+            "ref": "2f202927-97b2-4d9c-aaef-1296fb68c5ba",
+            "label": "Minor, age 12 or under"
+          },
+          {
+            "id": "hEUb3ZEja2YP",
+            "ref": "e6a75660-04b1-445a-bdd4-13b95e5a2114",
+            "label": "Minor, 13-17 years of age"
+          },
+          {
+            "id": "00soaVDfr72A",
+            "ref": "a66c1065-4e4f-46fc-8a26-794cc46a59f9",
+            "label": "Adult, 18-64 years of age"
+          },
+          {
+            "id": "Cl3Yt3Ry5Fwr",
+            "ref": "99ae9cf5-3767-461e-a84f-3da8b7e36165",
+            "label": "Medicare Eligible, 65+ years of age"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "s4g0ruxPBu1z",
+      "title": "Will a legal guardian be present during the visit?",
+      "ref": "minor-consent-guardian-present",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "yes_no"
+    },
+    {
+      "id": "iCCQzg8YE4SL",
+      "title": "A consent form is required to treat a minor (13 or older) without an adult present. Check your chat messages after scheduling to complete and sign a consent form.",
+      "ref": "minor-consent-form-confirmation",
+      "properties": {
+        "button_text": "Okay",
+        "hide_marks": true
+      },
+      "type": "statement"
+    },
+    {
+      "id": "0qt3gKZpnfKM",
+      "title": "Patients 12 and under must have a legal guardian present for chat, virtual or home visits.",
+      "ref": "minor-consent-guardian-present-confirmation",
+      "properties": {
+        "button_text": "Okay",
+        "hide_marks": true
+      },
+      "type": "statement"
+    },
+    {
+      "id": "XcmvOIZw8Est",
+      "title": "Please select the patient's biological sex:",
+      "ref": "biological-sex",
+      "properties": {
+        "description": "Knowing a person's biological sex is essential for safe medical treatment. Please send us your gender, preferred pronouns, and/or preferred name through the Specialty Healthcare app chat so that we can make you more comfortable.",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "n72gCr4K6KKl",
+            "ref": "afd3955c-0510-4df4-9ba5-1f6603f1436e",
+            "label": "Female"
+          },
+          {
+            "id": "24UMhL8XHUcJ",
+            "ref": "a5e3cd94-58f6-4701-8632-dc3cc030dde5",
+            "label": "Male"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "Rz1UkLtuRVw2",
+      "title": "If you are the parent or legal guardian of a minor (under 18) needing care, please answer all questions in regards to the patient, not yourself.",
+      "ref": "minor-consent-guardian-answers-confirmation",
+      "properties": {
+        "button_text": "Continue",
+        "hide_marks": true
+      },
+      "type": "statement"
+    },
+    {
+      "id": "cPWq6C3GJcu4",
+      "title": "What was a recent height (in inches)?",
+      "ref": "minor-consent-recent-height",
+      "properties": {
+        "description": "This is important to know in case your child needs a medication. "
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "uYz24tE3L1Io",
+      "title": "What was a recent weight (in pounds)?  ",
+      "ref": "minor-consent-recent-weight",
+      "properties": {
+        "description": "This is important to know in case your child needs a medication. "
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "vJGg0ThYVq7D",
+      "title": "Health History",
+      "ref": "health-history-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": false,
+        "fields": [
+          {
+            "id": "naQAWN5YOObV",
+            "title": "Have you filled out a health history form for a previous Specialty visit?",
+            "ref": "health-history-form-completed",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "lE3xq4WHdeaT",
+            "title": "Has your health history changed since your last visit?",
+            "ref": "health-history-changed",
+            "properties": {
+              "description": "This includes changes to medications, current conditions, recent surgeries, hospitalizations, etc."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "LCNS7LS8bIRd",
+            "title": "Describe the changes to your health history.",
+            "ref": "health-history-changes",
+            "properties": {
+              "description": "This includes changes to medications, current conditions, recent surgeries, hospitalizations, etc."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "NOvT26pk4utA",
+      "title": "General Health History Questions",
+      "ref": "health-history-questions-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": false,
+        "fields": [
+          {
+            "id": "4P2XumFD1wzr",
+            "title": "Do you have a history of or currently have any of the following medical conditions?",
+            "ref": "health-history-conditions-history",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "pDZa9cxADITM",
+                  "ref": "9c02faba-8a92-4431-9c4c-12da6322536c",
+                  "label": "Healthy, no medical conditions"
+                },
+                {
+                  "id": "oy2bpFDNeGK7",
+                  "ref": "2e0e2837-9adb-4c8b-bc05-7791606a8ec1",
+                  "label": "Asthma / Reactive Airway Disease"
+                },
+                {
+                  "id": "fLCQ7V7jkOOf",
+                  "ref": "4905a831-2f2f-47e8-ad50-511bc8ff7368",
+                  "label": "Autoimmune conditions"
+                },
+                {
+                  "id": "Pls6cTYZ0oec",
+                  "ref": "4e1059dc-e6df-405f-a06a-e814cd95f74f",
+                  "label": "Cancer"
+                },
+                {
+                  "id": "YVPwm2uuwply",
+                  "ref": "4e8e10b8-d8f5-40b1-b762-57ef55634aa9",
+                  "label": "Heart defects or issues"
+                },
+                {
+                  "id": "N2g6mWbDJVGV",
+                  "ref": "abd04087-089c-4f14-956f-83a30424c554",
+                  "label": "Joint or bone issues"
+                },
+                {
+                  "id": "fCvnLyuzInDH",
+                  "ref": "5d1e9387-b3e6-4f73-aad7-1fbe94af8c8d",
+                  "label": "Vision or eye issues"
+                },
+                {
+                  "id": "PeTTd2ZQbmW7",
+                  "ref": "0eb0d174-eeac-4078-9a23-a90d52d63ce4",
+                  "label": "Hearing or ear issues"
+                },
+                {
+                  "id": "fXLgTcepOPHz",
+                  "ref": "8896fd2e-781b-483a-819a-52aa5c8726fd",
+                  "label": "Premature birth"
+                },
+                {
+                  "id": "6uGRIB3D27FQ",
+                  "ref": "42d3b41e-6482-41a5-a77a-d65b865655cc",
+                  "label": "High blood pressure issues"
+                },
+                {
+                  "id": "1XHkRYTYEnEA",
+                  "ref": "dc13b1d3-fc81-4db2-938b-dd95513b2c22",
+                  "label": "Thyroid issues"
+                },
+                {
+                  "id": "6CHx675xWfVP",
+                  "ref": "b8ed679a-5fd3-4d1a-b41d-7aa0483e1160",
+                  "label": "High cholesterol issues"
+                },
+                {
+                  "id": "Rqglt8PpqWKL",
+                  "ref": "ed16384f-1bb3-46eb-9d3e-8c07597d651c",
+                  "label": "Diabetes or other blood sugar issues"
+                },
+                {
+                  "id": "C1AFvI2pvQZU",
+                  "ref": "43869780-cf55-45b8-b6be-9c1c8aaf8783",
+                  "label": "Mental health concerns (depression, anxiety, etc.)"
+                },
+                {
+                  "id": "UkpCiSaITlz0",
+                  "ref": "6a4b2f33-2c83-4976-a341-a2eb81f2fc6e",
+                  "label": "Other"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "pdRLtMYiCXMW",
+            "title": "In a few words, please describe the other condition(s).",
+            "ref": "health-history-conditions-description",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "PmXBDPqZjZaC",
+            "title": "Tell us more about the conditions selected. ",
+            "ref": "health-history-conditions-description-detail",
+            "properties": {
+              "description": "Such as how old you were when diagnosed, if it's a current or past condition, etc."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          },
+          {
+            "id": "HTjaLwJNE8s7",
+            "title": "Do you take any medications or supplements?",
+            "ref": "health-history-medications-usage",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "ELPn907vOWFK",
+            "title": "Please list your medications and/or supplements.",
+            "ref": "health-history-medications",
+            "properties": {
+              "description": "For each medication, include the dose and directions."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          },
+          {
+            "id": "Ba8GouPJeiEF",
+            "title": "Do you have any medication allergies?",
+            "ref": "health-history-medications-allergies",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "PRYCwVfclKZ9",
+            "title": "Please list the medication and the allergic reaction when taken. ",
+            "ref": "health-history-medications-allergies-detail",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "S55ezVSqcjlm",
+            "title": "Have you had any surgeries?",
+            "ref": "health-history-surgeries",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "Iwlz03Nsntxv",
+            "title": "Please list the surgeries and their approximate date(s).",
+            "ref": "health-history-surgeries-dates",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "ld0xApHcMEKi",
+            "title": "Please describe any significant family medical history, including who had the condition(s). ",
+            "ref": "health-history-conditions-family",
+            "properties": {
+              "description": "Include biological parents, siblings and grandparents only. Add \"unknown\" if you don't know your biological family's medical history."
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "long_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "xddblKjydorA",
+      "title": "Children Health History Questions",
+      "ref": "health-history-minor-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": false,
+        "fields": [
+          {
+            "id": "UHN2yLQXWYle",
+            "title": "What is your child's immunization status?",
+            "ref": "health-history-minor-immunization-status",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "K5gr5wHZ6NPd",
+                  "ref": "893e2517-3eda-47ed-8c06-a38135013f64",
+                  "label": "Up to date on immunizations"
+                },
+                {
+                  "id": "vzhC7tz60Kzl",
+                  "ref": "4ea6a0b9-d9cd-41ed-9889-21c0f5047ec0",
+                  "label": "Not up to date on immunizations"
+                },
+                {
+                  "id": "kDT1Qi0ko1C4",
+                  "ref": "83955434-61c1-4f99-9a16-9e1f7e459bb4",
+                  "label": "I/We choose not to immunize"
+                },
+                {
+                  "id": "F2gx2ZPKgrj9",
+                  "ref": "f869ea46-ac73-47ae-9df4-c5559b003528",
+                  "label": "Our child medically cannot have all immunizations"
+                },
+                {
+                  "id": "g5T5s4JBaVh2",
+                  "ref": "7f8e9ef5-f66a-4825-a38c-8febcd39683c",
+                  "label": "Unsure"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "4H1L5beoUJKf",
+            "title": "Is anyone in your household a smoker? ",
+            "ref": "health-history-minor-smoker-in-household",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "RyxG4JKc4h8w",
+            "title": "Does this person smoke:",
+            "ref": "health-history-minor-smoker-location",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "BjNgD7eB8l7o",
+                  "ref": "3d0d8813-7e4d-49b9-aa02-0c5bd9372905",
+                  "label": "In the home"
+                },
+                {
+                  "id": "Ktgl3D9yxvOJ",
+                  "ref": "d0e107f7-c1a5-4f45-9b27-6ee87dde3be7",
+                  "label": "Outside of the home"
+                },
+                {
+                  "id": "JMgAICfvvVkD",
+                  "ref": "89cef8ec-2e29-4102-b131-b2596f1838ab",
+                  "label": "In the car"
+                }
+              ]
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "multiple_choice"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "yffAYR6jtxmo",
+      "title": "Female Health History Questions",
+      "ref": "health-history-questions-female-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": false,
+        "fields": [
+          {
+            "id": "rhDz2jf8nJk2",
+            "title": "Are you currently pregnant or breastfeeding?",
+            "ref": "health-history-female-pregnancy",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "BdvVZcsNk0yA",
+                  "ref": "2515e267-c610-4ba2-a822-bec70c961576",
+                  "label": "There is no chance of pregnancy and I am not breastfeeding"
+                },
+                {
+                  "id": "kjjJDjZcLjY5",
+                  "ref": "471678b8-9cec-4d03-a49d-7ab7a455fd03",
+                  "label": "There is a chance of pregnancy"
+                },
+                {
+                  "id": "YIsqmPp2MlC0",
+                  "ref": "07d37bcb-b12f-485b-9ff1-a795e588282d",
+                  "label": "I am currently pregnant"
+                },
+                {
+                  "id": "gzufg4zcsmmv",
+                  "ref": "7292bb0f-4c79-440a-a551-5ac9772d1840",
+                  "label": "I am currently breastfeeding"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "yvCbk0hqGQ8r",
+            "title": "When did your last menstrual cycle begin?",
+            "ref": "health-history-female-menstrual-cycle",
+            "properties": {
+              "separator": "/",
+              "structure": "MMDDYYYY"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "date"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "yjXM2mMisksN",
+      "title": "Adult Health History Questions",
+      "ref": "health-history-adult-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": false,
+        "fields": [
+          {
+            "id": "QM5laXpyk3nz",
+            "title": "Are you currently or were you ever a tobacco user?",
+            "ref": "health-history-adult-tobacco-use-usage",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "pcAGL47JJ6NK",
+            "title": "Which of the following best describes your tobacco use?",
+            "ref": "health-history-adult-tobacco-use-frequency",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "Rw3vngiKrDkF",
+                  "ref": "0bef2454-ae52-4c48-8a36-24c82f4c05bc",
+                  "label": "I currently smoke 1-10 cigarettes every day"
+                },
+                {
+                  "id": "ZrzdKPiwJEle",
+                  "ref": "5cf93941-aa9d-4b2c-a9cc-8155b8352ec6",
+                  "label": "I currently smoke 10-20 cigarettes every day"
+                },
+                {
+                  "id": "IoLNENAMYNlh",
+                  "ref": "507fa3ff-e65f-4e97-a6c2-fa57c3612790",
+                  "label": "I currently smoke 20 or more cigarettes  every day"
+                },
+                {
+                  "id": "p1hJYatjE5Jc",
+                  "ref": "e554b2c9-17e7-4cf3-be17-b332b582107b",
+                  "label": "I smoke cigarettes a few times a week"
+                },
+                {
+                  "id": "sRpPU3eMg85v",
+                  "ref": "ca221fef-ad4e-4689-9a9e-b87557b12480",
+                  "label": "I use smokeless chewing tobacco every day"
+                },
+                {
+                  "id": "mhtLl9dGe6hI",
+                  "ref": "432becb7-eb3c-4d0a-99ae-09138cafb636",
+                  "label": "I use smokeless chewing tobacco a few times a week"
+                },
+                {
+                  "id": "LjOk7Cw46TZO",
+                  "ref": "f179dda3-3f7b-4ae0-866a-1481c4b6cda9",
+                  "label": "I am a former tobacco user"
+                }
+              ]
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "KmwYWiDR7erf",
+            "title": "When did you quit using tobacco?",
+            "ref": "health-history-adult-tobacco-use-end-date",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "QvWCpQvNI00B",
+            "title": "How many years in total did you use tobacco?",
+            "ref": "health-history-adult-tobacco-use-total-years",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "XrCt6HdqIYwz",
+            "title": "What type of tobacco and how much per day did you use?",
+            "ref": "health-history-adult-tobacco-use-type",
+            "properties": {
+              "description": "This includes cigarettes, cigars, smokeless, etc."
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "MUkjtfMdvEtB",
+      "title": "How can we help?",
+      "ref": "reason-for-visit-category",
+      "properties": {
+        "description": "Select the type of care that best fits your needs for this visit.",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "RQkJtS2wj7q3",
+            "ref": "3faf5f88-5171-4933-af0f-210716bf1a60",
+            "label": "Acute Care: Treat recent symptoms like a cough, sore throat, rash, etc."
+          },
+          {
+            "id": "OlJBhapsu2Tm",
+            "ref": "ff708302-4546-4426-9e07-d329265a9d57",
+            "label": "Chronic Care: Support for long term health issues like diabetes, high blood pressure, thyroid problems, etc."
+          },
+          {
+            "id": "dNd3cuWQaxN7",
+            "ref": "173074a1-75b3-45d2-a6d6-298bfa2bb825",
+            "label": "Wellness \u0026 Preventive Care: Wellness exams, birth control management, etc."
+          },
+          {
+            "id": "xrg67o6u9XOZ",
+            "ref": "4f6732f3-d3b6-4c83-9c3e-a4945a004507",
+            "label": "Mental Health: Medication or therapy to address common mental health concerns"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "Tpuh6rUk8Kjr",
+      "title": "Acute Care",
+      "ref": "reason-for-visit-acute-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": true,
+        "fields": [
+          {
+            "id": "LDc1mT6b2bWF",
+            "title": "Which of the following best describes the reason for your visit?",
+            "ref": "reason-for-visit-acute",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "YJSuV9fxiLQF",
+                  "ref": "3c7619c0-14fe-4844-8910-d6e67999beb2",
+                  "label": "Allergy symptoms"
+                },
+                {
+                  "id": "AcFYlZ9OTzjP",
+                  "ref": "3861dee2-8937-401c-902a-4e50a0350c94",
+                  "label": "Cold or flu-like symptoms"
+                },
+                {
+                  "id": "3E68S6FzU8Od",
+                  "ref": "903b71dd-b2b6-4879-84de-af86c37aeecf",
+                  "label": "Other ear, nose, throat, or eye symptoms"
+                },
+                {
+                  "id": "dmuUBEwWsTnS",
+                  "ref": "ebd3a9a9-53b0-47fe-a211-8c9d11647d78",
+                  "label": "Urinary symptoms"
+                },
+                {
+                  "id": "snZ4GZLf4r4K",
+                  "ref": "43531281-cf7b-469a-b54c-bac6d9a80342",
+                  "label": "Skin or nail symptoms"
+                },
+                {
+                  "id": "MJUwVwy85qH0",
+                  "ref": "eadc4425-231b-4cff-ad37-2222495baaf5",
+                  "label": "Stomach or digestion issues"
+                },
+                {
+                  "id": "61Nd9TOMDjxX",
+                  "ref": "29f6a9fe-72c1-4000-82bd-35b55dbfaa09",
+                  "label": "Vaginal symptoms"
+                },
+                {
+                  "id": "nsxoABYbqgJG",
+                  "ref": "ac19a9ab-e4b6-49f6-bf77-0e6eb8e822f6",
+                  "label": "Muscle or joint symptoms"
+                },
+                {
+                  "id": "tHW3hDSl8y5e",
+                  "ref": "375a98f7-a000-4934-b348-4a5b688a3286",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "TEhk81gBfw9w",
+            "title": "Please describe the other health issue you’d like to discuss.",
+            "ref": "reason-for-visit-acute-other",
+            "properties": {
+              "description": "In a few words, describe your high-level issue or concern."
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "DOBiEElcyihp",
+            "title": "Is this a follow up to a recent Specialty visit?",
+            "ref": "reason-for-visit-acute-follow-up",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "TiWDujnbB9mA",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-allergies",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "U89GwlFxqwAq",
+                  "ref": "f907383e-5723-4047-a608-17041bffd90d",
+                  "label": "Runny or stuffy nose"
+                },
+                {
+                  "id": "ko19XSOSPAxB",
+                  "ref": "f5f888e3-5464-4375-933c-e0cee0ef1e01",
+                  "label": "Sneezing"
+                },
+                {
+                  "id": "gi6eWgfyfBWt",
+                  "ref": "588b23cd-491c-412d-8c59-c3c89a46f541",
+                  "label": "Itchy nose or eyes"
+                },
+                {
+                  "id": "1YmaMbXVaIdg",
+                  "ref": "608ca606-a8fc-474f-b3f4-a3d19a9fb43f",
+                  "label": "Red, watery, or irritated eyes"
+                },
+                {
+                  "id": "JguhEpCIjtUj",
+                  "ref": "cf512a30-7626-4981-a15d-5d84048b6f63",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "ffCLHkJJoG37",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-cold-flu",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "fuY4OPPoSBA5",
+                  "ref": "397c511b-a6fb-4a66-bfcc-988bf682f852",
+                  "label": "Fever (temperature above 100.4 F)"
+                },
+                {
+                  "id": "NZevhttd8Ifj",
+                  "ref": "3a4e35f6-de75-481f-838b-6de487312c83",
+                  "label": "Muscle aches"
+                },
+                {
+                  "id": "SF5odEzy0bE3",
+                  "ref": "41abcbef-e28b-4f3d-abf9-8f0390fff7a3",
+                  "label": "Chills or sweats"
+                },
+                {
+                  "id": "zrKu1goR9DxS",
+                  "ref": "7df763a6-1bb5-4723-a611-3c2b12b95fc7",
+                  "label": "Headache"
+                },
+                {
+                  "id": "TZuFjTgVTyii",
+                  "ref": "28421daf-b1db-4082-adb7-fcb2ca586ca5",
+                  "label": "Fatigue or weakness"
+                },
+                {
+                  "id": "T7SsQhchpmtG",
+                  "ref": "95000b12-a689-4ee9-82dc-2c358cb33eb7",
+                  "label": "Sore throat"
+                },
+                {
+                  "id": "WIgw2XyUlwG3",
+                  "ref": "49dccc8a-e611-48f1-bcf2-949a2041968f",
+                  "label": "Runny or stuffy nose"
+                },
+                {
+                  "id": "H2dgBaqCZSob",
+                  "ref": "eb70c222-c79b-4018-a6e4-94a61b57a4d1",
+                  "label": "Cough"
+                },
+                {
+                  "id": "TTsMSbNkw2gY",
+                  "ref": "a9b4cf63-3b27-49e3-95ea-abc7410dbf6c",
+                  "label": "Shortness of breath"
+                },
+                {
+                  "id": "1djEsRw57Mn0",
+                  "ref": "460a7ec6-20c6-4a7b-a033-b46ed6346728",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "wXeBZPj7oulN",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-ear-nose-throat-eyes",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "YCDIyjBnhxeG",
+                  "ref": "28e0eb7b-7f07-4071-8733-cf3ff3073ba6",
+                  "label": "Sore throat"
+                },
+                {
+                  "id": "OLIU4rAQDRx6",
+                  "ref": "17b17802-5049-41f9-803f-e59d54e716b1",
+                  "label": "Sinus pain or pressure"
+                },
+                {
+                  "id": "asrB5MeTg038",
+                  "ref": "a4cc7dc9-406f-49ca-a380-3f6b7fd2d7a0",
+                  "label": "Runny or stuffy nose"
+                },
+                {
+                  "id": "fKB2EZV5DyTf",
+                  "ref": "32ec94f9-7c3c-4bc8-904a-56f5c24e9fc4",
+                  "label": "Fever (temperature above 100.4 F)"
+                },
+                {
+                  "id": "1oThjq585oqK",
+                  "ref": "440728d0-31fc-4491-909b-b9478ccb7fe3",
+                  "label": "Ear pain or discomfort"
+                },
+                {
+                  "id": "DdoFDE7cRJ1f",
+                  "ref": "b88c15b1-a519-4678-83e6-fd2f2e7be6fa",
+                  "label": "Drainage of fluid from one or both ears"
+                },
+                {
+                  "id": "k8E4PbKkG9GK",
+                  "ref": "87d3b134-b660-430a-83bf-7d626a51fdc3",
+                  "label": "Itchy, red, or irritated eye(s)"
+                },
+                {
+                  "id": "u4c1klCMf5Hw",
+                  "ref": "d31b9dfd-1d13-479d-8d40-c221c4e7a825",
+                  "label": "Discharge or drainage from from or both eyes"
+                },
+                {
+                  "id": "aJ2hnmWLRr1d",
+                  "ref": "16f2bc9a-127b-4d48-b4b9-980adf985dec",
+                  "label": "Eye pain or swelling"
+                },
+                {
+                  "id": "F57T7zHX8w0I",
+                  "ref": "a58806cc-209f-4bb2-9f28-5de029787cb2",
+                  "label": "Sensitivity to light"
+                },
+                {
+                  "id": "rR8sK0YGUoDO",
+                  "ref": "69cc6764-4960-4262-adc4-78d0fbd00912",
+                  "label": "Blurry vision"
+                },
+                {
+                  "id": "7fUv6xaqw5ch",
+                  "ref": "7196bd6d-9a38-44fa-b725-8f42d8dc1e78",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "DIgvdS2xsgsD",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-urinary",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "1DUSno38CnMi",
+                  "ref": "fa8b161e-5a1e-46a7-b653-92516908fa63",
+                  "label": "A strong urge to urinate"
+                },
+                {
+                  "id": "zmqnuyl2tXxb",
+                  "ref": "95bd37f0-4e2d-4c70-94fb-a60bddde923d",
+                  "label": "A burning feeling while urinating"
+                },
+                {
+                  "id": "OHmcPcMZb6gS",
+                  "ref": "3d50e109-7f80-49a2-86a5-9054d5253f9f",
+                  "label": "Urinating often"
+                },
+                {
+                  "id": "RAQynho9FVrn",
+                  "ref": "96036164-a180-4d3c-990e-a2fd188987f4",
+                  "label": "Urine that appears cloudy"
+                },
+                {
+                  "id": "lhxIDTkFskAY",
+                  "ref": "99fd617b-c85f-4d80-aaa7-7536e512ca4c",
+                  "label": "Urine that appears pink or contains blood"
+                },
+                {
+                  "id": "UFoOIMQk13af",
+                  "ref": "e47789f5-114d-4d3e-97e8-1288ece93561",
+                  "label": "Fever (temperature above 100.4 F)"
+                },
+                {
+                  "id": "gzKEeolKx25J",
+                  "ref": "c212dbf7-6e09-44ae-bbd5-0119760a4f0b",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "4Z2BQETxISXE",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-skin-nails",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "CCqRqcrumLzD",
+                  "ref": "d0de4350-f940-4e83-bfdc-4f530588d724",
+                  "label": "Redness, itchiness, or irritation"
+                },
+                {
+                  "id": "1XIt7zlfgOYA",
+                  "ref": "2e67da25-532b-43f1-9842-37fe2f862840",
+                  "label": "Bumps on the skin"
+                },
+                {
+                  "id": "YmHqkh3qDdd9",
+                  "ref": "5c635cea-0f0e-4d06-b6df-da3841b04de1",
+                  "label": "Dry, flaky, or cracked skin"
+                },
+                {
+                  "id": "BQdmSE0Dsi0L",
+                  "ref": "64277aa1-0276-4148-954d-15a76b3e4a2a",
+                  "label": "Wart(s)"
+                },
+                {
+                  "id": "b2QeqakdkTsq",
+                  "ref": "1468e350-d334-4537-9e1c-87c7ec850fc9",
+                  "label": "A circular or ring-shaped rash"
+                },
+                {
+                  "id": "D6w3w2zCy9xx",
+                  "ref": "24bccd7c-26dd-49df-8c68-c75454115a58",
+                  "label": "Burning"
+                },
+                {
+                  "id": "v7MLZnhVj1L1",
+                  "ref": "3520265f-ab2f-44bd-8452-960b73392870",
+                  "label": "Swelling"
+                },
+                {
+                  "id": "LB41ArW1CtDi",
+                  "ref": "3c36e095-4f09-430a-b4ed-1a77022ca6bc",
+                  "label": "Draining or oozing"
+                },
+                {
+                  "id": "DiA0l4SBoBdy",
+                  "ref": "e7f4d4cf-fe7a-44e3-b7fd-b395a7f462de",
+                  "label": "Fever (temperature above 100.4 F)"
+                },
+                {
+                  "id": "unzfQXJGPean",
+                  "ref": "71a5f0b4-79f1-470e-961d-f6074127881e",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "bn4gOHCdrnwp",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-digestive",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "Qi1DmYHDlxh9",
+                  "ref": "78314de6-6cc7-42eb-a101-07c6097e12aa",
+                  "label": "Nausea"
+                },
+                {
+                  "id": "yKhXAOVaZbrM",
+                  "ref": "626f9f70-0f04-45a7-b50d-5d118700712f",
+                  "label": "Vomiting"
+                },
+                {
+                  "id": "JFqeWh71Tqwm",
+                  "ref": "4ae6a80a-ce5f-49fb-9e0e-770e15cf29a1",
+                  "label": "Diarrhea"
+                },
+                {
+                  "id": "HnlPqseqoTLJ",
+                  "ref": "7cf8f7ae-c9aa-4936-90d2-c42a6dc2e2e3",
+                  "label": "Stomach cramps or pain"
+                },
+                {
+                  "id": "ZlRiVDyvh2WN",
+                  "ref": "794d2107-4c00-4ac1-9b39-0396d36d2664",
+                  "label": "Fever (temperature above 100.4 F)"
+                },
+                {
+                  "id": "np8SEmpOwsdn",
+                  "ref": "77e0d6dc-b281-4733-a79b-85adac4e3cb9",
+                  "label": "Heartburn"
+                },
+                {
+                  "id": "PJpAZ2OBzrZk",
+                  "ref": "44fa6762-9395-45b5-9e0a-4e3ec1a9e35f",
+                  "label": "Constipation"
+                },
+                {
+                  "id": "akV4CuKG9CIL",
+                  "ref": "ab372e50-d08d-4db5-9ed9-064779138c73",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "0J1P7haTwzke",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-vaginal",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "kcV1mom1GMW5",
+                  "ref": "21f6227c-8d4a-42b6-99f8-0f8761dbad2b",
+                  "label": "Vaginal itching or irritation"
+                },
+                {
+                  "id": "520e3k7DClsZ",
+                  "ref": "ed303ec6-d782-4e35-91ba-78a2cf128475",
+                  "label": "Pain during intercourse"
+                },
+                {
+                  "id": "n1jk89qR8wFb",
+                  "ref": "0c9c6c32-a613-4e75-9ba4-14e2fec9d3d8",
+                  "label": "Pain during urination"
+                },
+                {
+                  "id": "7Q3A50JqE2cu",
+                  "ref": "05559c9b-94a5-4f84-825e-746637cd3ee0",
+                  "label": "Change in color, odor or amount of vaginal discharge"
+                },
+                {
+                  "id": "m2FxDmNWwaxg",
+                  "ref": "7fd1230f-61c1-41b6-ad56-552ece9c77ec",
+                  "label": "Bleeding or spotting"
+                },
+                {
+                  "id": "mui1r39zbfmd",
+                  "ref": "a5fd2961-2e6b-4966-9360-6b82c91865d9",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "kuyH9XepqcoP",
+            "title": "Which body region is your primary concern?",
+            "ref": "reason-for-visit-acute-body-region",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "y0bItuLxhMYp",
+                  "ref": "cea12acb-a861-4de6-9baa-f667ef52b553",
+                  "label": "Head/Neck"
+                },
+                {
+                  "id": "PRun58Q2pZK4",
+                  "ref": "8c89bf58-4446-41d5-b82b-e1af430e696a",
+                  "label": "Upper Back"
+                },
+                {
+                  "id": "7VAi4NvHoEnd",
+                  "ref": "0e41d6fc-9f18-46b8-8c12-112b23557275",
+                  "label": "Lower Back"
+                },
+                {
+                  "id": "jOWTC3dCGjiN",
+                  "ref": "4b6fd97e-a7d2-44c0-b2d8-a0b210bbab2b",
+                  "label": "Shoulder"
+                },
+                {
+                  "id": "pBYdP3qcgGSd",
+                  "ref": "82f512c2-d4e5-48a6-ad16-2871dd785f80",
+                  "label": "Arm"
+                },
+                {
+                  "id": "OLNTpV2PbPd0",
+                  "ref": "8c595c4b-dd32-4c83-959d-5806491dc7f0",
+                  "label": "Hand/Wrist"
+                },
+                {
+                  "id": "mBT38jVAFG4w",
+                  "ref": "9f2aff56-5d92-4d8a-88c9-ac1a3582ff33",
+                  "label": "Hip"
+                },
+                {
+                  "id": "mfq65d9YRD6v",
+                  "ref": "53124767-b24b-4810-a8ca-eeae3a91efce",
+                  "label": "Pelvis"
+                },
+                {
+                  "id": "N6BlgdeI6YmV",
+                  "ref": "2907c23f-2201-40ce-a53f-3577fd7fa696",
+                  "label": "Knee"
+                },
+                {
+                  "id": "IeES6yQDATfY",
+                  "ref": "fc57a489-3602-4139-839e-a66438bfd95e",
+                  "label": "Leg"
+                },
+                {
+                  "id": "U8c3XzIAtRrs",
+                  "ref": "a4e71def-5289-44c5-a57a-59bab23a4527",
+                  "label": "Ankle/Foot"
+                },
+                {
+                  "id": "Q5akwphP050t",
+                  "ref": "c456531e-00b2-4489-b628-e03b3116356d",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "PS7g1lzxqap3",
+            "title": "Please describe the other body region.",
+            "ref": "reason-for-visit-acute-body-region-other",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "cNjcDmNN9PaB",
+            "title": "Are you experiencing any of the following symptoms?",
+            "ref": "reason-for-visit-acute-symptoms",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "VrjXNI0HhUi4",
+                  "ref": "54e72f34-a6fe-4aac-8906-450abbd43c0c",
+                  "label": "Pain or tenderness"
+                },
+                {
+                  "id": "sy1m1D8s0NjN",
+                  "ref": "5aaba848-945a-4f30-88c8-c790f51a09e6",
+                  "label": "Stiffness"
+                },
+                {
+                  "id": "fjPn4ULPDVXX",
+                  "ref": "59ee2e76-dcdf-4231-a172-17fb53b78726",
+                  "label": "Swelling"
+                },
+                {
+                  "id": "hwoThjHjSAP1",
+                  "ref": "3b1ecf5d-e845-4f26-9238-7cf4e03f3729",
+                  "label": "Numbness or tingling"
+                },
+                {
+                  "id": "riSrnBOk400t",
+                  "ref": "d8662545-7894-4452-9ba5-312475d86449",
+                  "label": "Decreased range of motion"
+                },
+                {
+                  "id": "aT39ePL0jDM2",
+                  "ref": "ba43db08-09ba-4d7a-adf5-6c1a4a24fa9e",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "dgwLWfLJgbpN",
+            "title": "Please describe your other symptoms.",
+            "ref": "reason-for-visit-acute-symptoms-other",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "H0G8adtYB5NL",
+            "title": "What was your most recent temperature?",
+            "ref": "reason-for-visit-acute-symptoms-temperature",
+            "properties": {
+              "description": "Answer in degrees Fahrenheit"
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "HzC8w0naRrTh",
+            "title": "Which of the following best describes your shortness of breath? ",
+            "ref": "reason-for-visit-acute-symptoms-shortness-of-breath",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "u8PicUCugony",
+                  "ref": "85a924fb-a854-432a-b16d-cd40114bfd32",
+                  "label": "Mild - Causes slight limitation during ordinary activities"
+                },
+                {
+                  "id": "wb0IgEUv6QYM",
+                  "ref": "833b913a-b777-495e-acad-ae4de6361e7e",
+                  "label": "Moderate - Causes limitation during low-impact activities like walking slowly or getting dressed"
+                },
+                {
+                  "id": "g9LkBu5p2HLE",
+                  "ref": "1f3cbcce-590c-4cb0-bc77-1d7c6e2c5cb0",
+                  "label": "Severe - Shortness of breath is present even at rest"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "HvLZIMwlt2cj",
+            "title": "How long have you been experiencing these symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-duration",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "4JfhaBEenN3h",
+                  "ref": "cdfe04d6-a27e-4e7e-ad2c-150a9ba96d2b",
+                  "label": "About a day"
+                },
+                {
+                  "id": "TZ1JfPi9rUyE",
+                  "ref": "cbb62583-1787-46f7-8890-dff2f0610a6b",
+                  "label": "2-4 days"
+                },
+                {
+                  "id": "ZhZAfcSlWrjc",
+                  "ref": "ed597893-0793-42fc-80e8-60fc51d1ee29",
+                  "label": "About a week"
+                },
+                {
+                  "id": "MOqgQFY56CZn",
+                  "ref": "2137a6e7-fd40-482e-b156-8bbd3e4fb623",
+                  "label": "1-2 weeks"
+                },
+                {
+                  "id": "i9RSdqfmByMB",
+                  "ref": "e590a0b9-a428-41a5-84a3-f7e4ba73f236",
+                  "label": "2-4 weeks"
+                },
+                {
+                  "id": "wK2HmMD4EHVE",
+                  "ref": "de18619b-d0be-4899-b657-e4725ae50b8a",
+                  "label": "1 month or more"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "TY4yIJBNwDGo",
+            "title": "To what extent are your daily activities limited by your symptoms?",
+            "ref": "reason-for-visit-acute-symptoms-effect",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "eXempfFAlq84",
+                  "ref": "205e89bc-e4ae-4312-a186-adda4faae98e",
+                  "label": "Not at all limited"
+                },
+                {
+                  "id": "2ADql9NHG1iS",
+                  "ref": "9c9e7833-c496-4764-a559-a42f9a511f6b",
+                  "label": "Somewhat limited"
+                },
+                {
+                  "id": "o0dkCROkfva5",
+                  "ref": "1e94d200-c4ad-4239-b37a-a3e509cda736",
+                  "label": "Severely limited"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "zzNwMQoomd75",
+            "title": "Sharing a photo can help your provider.",
+            "ref": "reason-for-visit-acute-photo-confirmation",
+            "properties": {
+              "description": "For symptoms you can see, like a rash or sore throat, uploading a photo to your Documents  will help your provider create a treatment plan.",
+              "button_text": "Okay",
+              "hide_marks": true
+            },
+            "type": "statement"
+          },
+          {
+            "id": "iNKc1C9lLl2K",
+            "title": "Tell us more about the reason for your visit.",
+            "ref": "reason-for-visit-acute-detail",
+            "properties": {
+              "description": "Share more about your symptoms or concerns and what you would like to discuss during your visit."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "DVBHGm5wl7BT",
+      "title": "Chronic Care",
+      "ref": "reason-for-visit-chronic-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": true,
+        "fields": [
+          {
+            "id": "oEUUaPz7gXv6",
+            "title": "Which of the following health issues would you like to discuss?",
+            "ref": "reason-for-visit-chronic",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "akBjK2ND19Pd",
+                  "ref": "ffc77ee4-75b0-47cf-b1ae-da5c76cd7fa8",
+                  "label": "Type 2 diabetes or prediabetes"
+                },
+                {
+                  "id": "JWXtkuT3YlDo",
+                  "ref": "020b6707-af6c-4339-a048-93a03b5cf16c",
+                  "label": "High blood pressure"
+                },
+                {
+                  "id": "D88BeqZvDkXZ",
+                  "ref": "d1ae282d-31d6-442d-83ce-1ee539a93d27",
+                  "label": "High cholesterol"
+                },
+                {
+                  "id": "uhtX5mCJ91gh",
+                  "ref": "333a518c-5169-4daa-85dd-53a4be43345a",
+                  "label": "Thyroid disorder"
+                },
+                {
+                  "id": "RNZni7gyV8iH",
+                  "ref": "de5b4c7f-6227-431c-8071-22f71bdd36dc",
+                  "label": "Seasonal allergies"
+                },
+                {
+                  "id": "t7Ikr5EyRj93",
+                  "ref": "359058d9-ffa4-499f-bb00-d6f1f36b65b4",
+                  "label": "Asthma, COPD, or other respiratory conditions"
+                },
+                {
+                  "id": "af8t7R4n43wQ",
+                  "ref": "85551a15-8f95-4cbc-bff1-b4253026143f",
+                  "label": "Stomach, digestion, or bowel issues"
+                },
+                {
+                  "id": "gp9tljLc9GHj",
+                  "ref": "c04d52ed-79e2-47c7-8dbe-b226b25c3b7d",
+                  "label": "Muscle, joint, or bone issues"
+                },
+                {
+                  "id": "2rAi0hEkmeUX",
+                  "ref": "2c09d438-3942-48c9-998e-60ac03bdf235",
+                  "label": "Weight management"
+                },
+                {
+                  "id": "h3usP0nF7yJE",
+                  "ref": "51bc6892-059a-469f-aa95-fa871414781d",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "STQP5021iuW5",
+            "title": "Please describe the other health issue you’d like to discuss.",
+            "ref": "reason-for-visit-chronic-other",
+            "properties": {
+              "description": "In a few words, describe your high-level issue or concern."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "YOPZyjRn23bP",
+            "title": "Which of the following best describes your needs for this visit?",
+            "ref": "reason-for-visit-chronic-needs",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "q7wQQWFg7D0L",
+                  "ref": "d8a336bd-d8cd-4473-a276-632eb3022608",
+                  "label": "A general check-in on my condition(s)"
+                },
+                {
+                  "id": "fX7mT4fbR7PC",
+                  "ref": "47700f55-1001-4bf4-9367-0f39d8167b9b",
+                  "label": "Address specific concerns about my condition(s)"
+                },
+                {
+                  "id": "6mSpUmOYmqSw",
+                  "ref": "7de7d3d7-677e-4294-878d-ecbd38fe1a89",
+                  "label": "Manage medications"
+                },
+                {
+                  "id": "NLkjpOWJ5B7W",
+                  "ref": "280ab67e-eee4-422f-b848-884dd3afa15a",
+                  "label": "Discuss lab or imaging results"
+                },
+                {
+                  "id": "NTPpcT6SdNnn",
+                  "ref": "3307770b-e1bd-4fe6-a672-ef70d7df1c0b",
+                  "label": "Something else"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "jlSWVwUdTke3",
+            "title": "Is this a follow up to a previous Specialty visit?",
+            "ref": "reason-for-visit-chronic-follow-up",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "IHHOug1vM0nP",
+            "title": "Tell us more about the reason for your visit.",
+            "ref": "reason-for-visit-chronic-detail",
+            "properties": {
+              "description": "Share any questions, concerns, or topics you’d like to cover during your visit."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "wVFEh4jGPS5W",
+      "title": "Wellness and Preventive Care",
+      "ref": "reason-for-visit-wellness-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": true,
+        "fields": [
+          {
+            "id": "qH5UQnPK08mI",
+            "title": "Which of the following best describes the reason for your wellness visit?",
+            "ref": "reason-for-visit-wellness",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "jfrHcDLTsdJZ",
+                  "ref": "39a3d16a-2859-44d1-b3b5-4509f522e134",
+                  "label": "Wellness exam (adult)"
+                },
+                {
+                  "id": "qeccITdGkpwN",
+                  "ref": "8a3e5c2e-608e-4038-b3b5-edcdbdc3000f",
+                  "label": "Well child exam (under 18)"
+                },
+                {
+                  "id": "aaToN4vjovJC",
+                  "ref": "1b0ada4b-347b-442a-90ca-0ffa14e17de3",
+                  "label": "Birth control management"
+                },
+                {
+                  "id": "xjS7BsOXgGLs",
+                  "ref": "e3863fbf-cdae-430e-aae6-24ee32d2ce00",
+                  "label": "Camp or sports physical"
+                },
+                {
+                  "id": "dS7h7PuNmXSI",
+                  "ref": "828636f4-4acc-4f06-85cb-a0a8e8f60d96",
+                  "label": "Pre-op physical"
+                },
+                {
+                  "id": "CYHSTOtI0WYx",
+                  "ref": "3e33f448-231d-42a0-8037-a8e2110de259",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "8rwLSOPaz74b",
+            "title": "Please describe the other reason for your wellness visit.",
+            "ref": "reason-for-visit-wellness-other",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "g9kGtHUYiSg9",
+            "title": "Is this a follow up to a previous Specialty wellness visit?",
+            "ref": "reason-for-visit-wellness-follow-up",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "1aWSpT8DT2E8",
+            "title": "Is this visit an employer-sponsored wellness program requirement?",
+            "ref": "reason-for-visit-wellness-employeer-requirement",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "yes_no"
+          },
+          {
+            "id": "botFInIdR4ME",
+            "title": "By typing my name below, I consent to Specialty Healthcare informing my employer that I fulfilled the wellness/biometric visit requirement. Further, I consent to Specialty Healthcare sharing my biometric data with my health insurance carrier in order to obtain an incentive.",
+            "ref": "reason-for-visit-wellness-employeer-requirement-consent",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "eULa3LgJGwyH",
+            "title": "When did you have your last physical exam?",
+            "ref": "reason-for-visit-wellness-last-physical-exam-date",
+            "properties": {
+              "description": "Select an approximate date",
+              "separator": "/",
+              "structure": "MMDDYYYY"
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "date"
+          },
+          {
+            "id": "AJ7Bw0j9PaIH",
+            "title": "What was a recent height (in inches)?",
+            "ref": "reason-for-visit-wellness-recent-height",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "CEXrfQ2cUBwX",
+            "title": "What was a recent weight (in pounds)?",
+            "ref": "reason-for-visit-wellness-recent-weight",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "41vq2YHbF31v",
+            "title": "Which of the following best describes your diet on a typical day?",
+            "ref": "reason-for-visit-wellness-diet",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "0NJ703saOvSw",
+                  "ref": "e37f7761-7a52-496f-bc9e-4d79d7047297",
+                  "label": "Not balanced (mostly processed foods or fast food)"
+                },
+                {
+                  "id": "B6ZJchDcyunm",
+                  "ref": "1bf570a7-5ed0-430a-b524-dfbe5929be02",
+                  "label": "Somewhat balanced (a mix of processed with some fresh foods)"
+                },
+                {
+                  "id": "AtedVS077aKp",
+                  "ref": "a8ec251d-5c76-478b-9f34-f5af27bb42a3",
+                  "label": "Well balanced (regularly eating fresh fruits and vegetables, whole grains)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "JJcJHIt5xoYa",
+            "title": "Which of the following best describes your physical activity on a typical day?",
+            "ref": "reason-for-visit-wellness-physical-activity",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "37S3J36vm8je",
+                  "ref": "ac0d5110-08de-4585-bc11-039fffafe911",
+                  "label": "Mostly sedentary, without much movement throughout the day"
+                },
+                {
+                  "id": "4RVRerLtOzf5",
+                  "ref": "cdef4edf-43fe-4693-8d95-5b057763a75d",
+                  "label": "Light movement during the day such as walking"
+                },
+                {
+                  "id": "Tzp57yPRnyPN",
+                  "ref": "4c160393-650b-4609-93a5-f23535ceb2d4",
+                  "label": "Regular exercise or other activity like a physically demanding job"
+                },
+                {
+                  "id": "WtbfX4STSvLA",
+                  "ref": "f311fa89-a244-48d8-beb5-8b511849bf1b",
+                  "label": "High intensity exercise or activity throughout the day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "baKOT5FEqVrC",
+            "title": "Have you struggled with any of the following recently?",
+            "ref": "reason-for-visit-wellness-symptoms",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "fUDvBvuTy0q8",
+                  "ref": "104cd924-003f-4c96-b10c-be53974eb653",
+                  "label": "Feeling down or depressed"
+                },
+                {
+                  "id": "476qFpLz0wMo",
+                  "ref": "ef12eb9d-6c06-4e93-8328-e8628a69ea31",
+                  "label": "Feeling anxious or on edge"
+                },
+                {
+                  "id": "F1liORLXzBZX",
+                  "ref": "cd942755-4f9a-419a-bdbd-2a326c07711f",
+                  "label": "Feeling stressed or burned out"
+                },
+                {
+                  "id": "RGfoulLJHYQ9",
+                  "ref": "80b66fd5-de38-494d-acad-1e060f1c438b",
+                  "label": "Having trouble sleeping"
+                },
+                {
+                  "id": "cjhyd6EHhD79",
+                  "ref": "78be6296-b38a-416e-be05-a17e21a0bf33",
+                  "label": "None of the above"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "HQM2YM61lhB1",
+            "title": "Tell us more about the reason for your wellness visit.",
+            "ref": "reason-for-visit-wellness-detail",
+            "properties": {
+              "description": "Share any questions, concerns, or topics you’d like to cover during your visit."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "1cvWbSNifuAK",
+      "title": "Mental Health",
+      "ref": "reason-for-visit-mental-health-intro",
+      "properties": {
+        "button_text": "Continue",
+        "show_button": true,
+        "fields": [
+          {
+            "id": "usmHVEzumi6E",
+            "title": "Which of the following best describes the reason you’re seeking mental health care?",
+            "ref": "reason-for-visit-mental-health",
+            "properties": {
+              "description": "Select all that apply",
+              "randomize": false,
+              "allow_multiple_selection": true,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "gmtnbh0aqoso",
+                  "ref": "e51db1d4-a081-4dac-a123-1b572430b1be",
+                  "label": "Feeling down or depressed"
+                },
+                {
+                  "id": "xqUuWcwZlFjl",
+                  "ref": "91dbbc25-25b4-482b-b79d-dba1620b0b16",
+                  "label": "Feeling anxious or on edge"
+                },
+                {
+                  "id": "QsbxOGqKsDly",
+                  "ref": "0bb80644-c889-4f47-b636-62b386e021db",
+                  "label": "Feeling stressed or burned out"
+                },
+                {
+                  "id": "SjwVCc187mmZ",
+                  "ref": "dc8854da-57df-4175-8a23-f1959dbf15bd",
+                  "label": "Having trouble sleeping"
+                },
+                {
+                  "id": "vpF6iGyzgY6t",
+                  "ref": "4012f97d-535c-4d76-b5cb-d6b97b4d4013",
+                  "label": "Other (please describe)"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "t4CW9lafTnDv",
+            "title": "Please describe the other mental health issue you’d like to discuss.",
+            "ref": "d05ce504-7b64-4f1f-840b-adf1c10b0f7b",
+            "properties": {
+              "description": "In a few words, describe your high-level issue or concern."
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "TiSRX1XaCI4I",
+            "title": "Mental health at Specialty starts with a primary care exam.",
+            "ref": "reason-for-visit-mental-health-primary-care-confirmation",
+            "properties": {
+              "description": "Our integrated mental health approach starts with a primary care provider who will:\n\n- Learn about your physical and mental health\n- Manage mental health medications if needed\n- Provide a referral to our therapy program if it’s likely to meet your needs",
+              "button_text": "Okay",
+              "hide_marks": false
+            },
+            "type": "statement"
+          },
+          {
+            "id": "1HglOB1oJey1",
+            "title": "For the next few questions, think about the last 2 weeks. How often have you been bothered by any of the following problems?",
+            "ref": "reason-for-visit-mental-health-concern-confirmation",
+            "properties": {
+              "button_text": "Continue",
+              "hide_marks": true
+            },
+            "type": "statement"
+          },
+          {
+            "id": "rk08b4eTO1wk",
+            "title": "Little interest or pleasure in doing things:",
+            "ref": "reason-for-visit-mental-health-concern-interest",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "9jlkrDPVAEI9",
+                  "ref": "e3b42c7e-5eb0-467b-8115-43332759e5f1",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "zeLHGngRrxjd",
+                  "ref": "25b3b844-a743-4973-a099-8288902b6913",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "lqauRvAkRAYt",
+                  "ref": "0513c871-4bb9-4652-9137-d374aa88fb98",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "DZVCLenAgY1f",
+                  "ref": "b39b0fd2-756e-44c1-a275-2c853855c663",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "uX4IeNFbNN6M",
+            "title": "Feeling down, depressed, or hopeless:",
+            "ref": "reason-for-visit-mental-health-concern-depressed",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "fEAJJbeuUn0l",
+                  "ref": "e0e02b82-57a1-4430-9352-7ed4d1bee8c4",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "jvTfeLykTB6B",
+                  "ref": "9d5938ce-6d04-41c6-97de-331f83c6c436",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "lfKl9R47ERtN",
+                  "ref": "709a3170-5a94-41b6-b64c-781fe4cd7b9f",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "kni8NuCIHV0t",
+                  "ref": "e199cfa5-5aa4-4b85-a8bc-31795960d5c8",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "oU6xBbMbR5fA",
+            "title": "Trouble sleeping or sleeping too much:",
+            "ref": "reason-for-visit-mental-health-concern-sleep",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "cZ8qzoCn6H74",
+                  "ref": "41f1c381-db76-49f1-a437-ea8891a1cbb6",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "SpUgQPLiygHY",
+                  "ref": "d9371045-499d-4e39-b65d-2ff8fe94fa77",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "iIYkcq8uaV3n",
+                  "ref": "b956eb38-b63b-408c-82ae-746651cffc45",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "iKdh1pTzxyII",
+                  "ref": "57c24fd8-5c26-486f-92f4-4d1b6dd61204",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "8qRv1nBAvyk7",
+            "title": "Feeling tired or having little energy:",
+            "ref": "reason-for-visit-mental-health-concern-energy",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "NUFjYHkwOePp",
+                  "ref": "5eebc2d7-1121-4241-9618-6450d94b4f3f",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "HNCTgZdMg0Bc",
+                  "ref": "a30c517e-1531-4c7d-b370-8d4a6e589643",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "U9K3YWVCbkd2",
+                  "ref": "00eb7134-8a6b-4b1e-95e8-4050b9e6393f",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "i3KS0zTg693h",
+                  "ref": "079010c6-a1c8-49f5-97e0-e406f7c9ade3",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "7FJkL04IzgMt",
+            "title": "Poor appetite or overeating:",
+            "ref": "reason-for-visit-mental-health-concern-appetite",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "4eg5Sd5ipAci",
+                  "ref": "57d22e48-1f0c-488f-9ca1-8e47dcbf2a6d",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "cL3I3z54Brx4",
+                  "ref": "fb09b572-e244-4095-a762-a1bd8d469e4d",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "Ao3r0hRpJiu9",
+                  "ref": "a0733b27-d556-4aa9-a116-b4d11ec9540a",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "z7cIMwvy8g79",
+                  "ref": "04aa6251-25cf-4340-993d-b31bdbe17e95",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "Mddfcmse4guQ",
+            "title": "Feeling bad about yourself — or that you are a failure or have let yourself or your family down:",
+            "ref": "reason-for-visit-mental-health-concern-failure",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "mA75SboUarMD",
+                  "ref": "0317608e-c36c-48a3-8516-304bbf8ba051",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "NkQww2Kn8xmh",
+                  "ref": "43cfb72c-3a13-454c-9aae-05c9146282e3",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "BpzxnATC8wGn",
+                  "ref": "84d9c1a3-e43a-4307-982b-411f22ea5217",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "hH06US81LhQl",
+                  "ref": "2aa76deb-fd02-4b71-ac76-34ec71d328c4",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "zDXWXlcggmhv",
+            "title": "Trouble concentrating on things, such as reading the newspaper or watching television:",
+            "ref": "reason-for-visit-mental-health-concern-concentration",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "9gscuLBp85nt",
+                  "ref": "51976a22-2f04-4f7c-9a3c-d0ba39032107",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "lsyccYd416W0",
+                  "ref": "fdeb3f98-7789-40cf-83b8-46dbb6032d2e",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "BEAzg9EIieEU",
+                  "ref": "4db5bedf-a71f-4f48-b577-048a4eebb533",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "I8voZxFymwFP",
+                  "ref": "d96a605c-7f4f-44c6-8f3c-52e29e9f0ff7",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "0ac5eSWGLP4P",
+            "title": "Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual:",
+            "ref": "reason-for-visit-mental-health-concern-behavior-change",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "NJ4RETYAxoRh",
+                  "ref": "f4deb0ef-a380-4798-9f23-03b51659aca1",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "grMmBZigEDGS",
+                  "ref": "f0982ed6-e837-4059-9c5a-4518cdb84398",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "2UUVEuORdmHE",
+                  "ref": "5ab7b04a-bd07-42ad-ab4a-88698a9fded5",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "4dzsmmWHXnVD",
+                  "ref": "1ec6e568-503c-42f3-8494-ff672b65add9",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "46HcNBVdVyaZ",
+            "title": "Thoughts that you would be better off dead or of hurting yourself:",
+            "ref": "reason-for-visit-mental-health-concern-self-harm",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "md50BHkX7yea",
+                  "ref": "dd6a9f77-71f2-4831-bb3c-4c7148ff2d7b",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "Izu59NDo0ouV",
+                  "ref": "216c9d06-05a0-469c-b6df-cd2e9a9e92fb",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "2wBudLfHkmZs",
+                  "ref": "268ee281-407d-4526-9098-68f7dbb7f570",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "lBKLSlFZ3mBA",
+                  "ref": "6a20d345-99d6-4c50-a3cb-69c9594f8937",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "52pzvwtJinwT",
+            "title": "Feeling nervous, anxious or on edge:",
+            "ref": "reason-for-visit-mental-health-concern-nervous",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "7RbhRiZrLS30",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "SH2EhC5le6Qh",
+                  "ref": "4762ae8d-353e-48f0-8a82-f5bf5361b0d3",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "TCoUgm91avj2",
+                  "ref": "d56057f2-ef48-4f14-8b6b-6bb134be3e9a",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "cSm0MyAjtaaY",
+                  "ref": "84a7e72d-bf66-4419-90f1-7ff70f05316f",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "j824w9jBBAgk",
+            "title": "Not being able to stop or control worrying:",
+            "ref": "reason-for-visit-mental-health-concern-worried",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "8EbLXMiIZ9tk",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "bczDvahMNXI7",
+                  "ref": "dcc62a12-348d-4bf9-8fcb-686be9cf7de7",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "t2Rctl6f7jwa",
+                  "ref": "fafd2407-0d6c-4ae2-9bc6-56598095d101",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "3OQIge1F0US0",
+                  "ref": "b4bf712e-b4be-4cb9-944d-adfe7c0c6882",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "ZYqVXyasD7PL",
+            "title": "Worrying too much about different things:",
+            "ref": "reason-for-visit-mental-health-concern-worried-different-things",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "xGuBW5LaZiDN",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "V42UlDgN4rxc",
+                  "ref": "a3e1dacf-0530-4d10-80e6-b4d2344ce37c",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "2YFBWQb8aCi1",
+                  "ref": "80bda946-c186-43ce-92d8-e0bc2e5f6fec",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "HMziHrYLm7Ot",
+                  "ref": "287ed1ba-368f-4c85-96e9-cb4181f352de",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "gTxLneVbVqsF",
+            "title": "Trouble relaxing:",
+            "ref": "reason-for-visit-mental-health-concern-trouble-relaxing",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "xGxHO4h89sL7",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "W4xGOMtmfZyH",
+                  "ref": "e5bab387-40ef-42f5-9f2f-bf6a9c57e3d4",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "IN28aeWhBNs3",
+                  "ref": "47142e2e-2d14-4588-b1b0-0c9468ebb50c",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "NJ7olR4PmhKb",
+                  "ref": "1f150e4c-d57c-4580-b2cf-ac07a46626bc",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "M4rIznRVjh6A",
+            "title": "Being so restless that it's hard to sit still:",
+            "ref": "reason-for-visit-mental-health-concern-restless",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "oIGvyq6uJPCg",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "mJOizWsmQxCe",
+                  "ref": "1f687f04-c465-47a3-84db-7cbed0bde6c3",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "YqDatu3KpQ62",
+                  "ref": "52f6fabf-a24d-4702-a5d0-f2a6a1595993",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "6S6Wxowgfl8A",
+                  "ref": "52a3750b-cc69-4f3a-9000-c7115527c694",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "NRhYFd2tNeGc",
+            "title": "Becoming easily annoyed or irritable:",
+            "ref": "reason-for-visit-mental-health-concern-irritable",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "KNdC2r8xsYOJ",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "wwoXzvkh3GHp",
+                  "ref": "7b31781e-1481-45a5-99cc-43cf2c523b94",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "iH7e4IYOvDzV",
+                  "ref": "ff5e5fba-d5b8-4a31-bf1b-cc89dcecfcdb",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "PPm7iLT1RRZO",
+                  "ref": "6feade6a-5b9c-4783-b82f-f2d9af5e6ae7",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "XjRdEPuD7GKm",
+            "title": "Feeling afraid as if something awful might\nhappen:",
+            "ref": "reason-for-visit-mental-health-concern-afraid",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "eMYdl2JopMG8",
+                  "ref": "3f683b57-64aa-4c14-a673-5cde09566ded",
+                  "label": "0 - Not at all"
+                },
+                {
+                  "id": "1dv85rUC26J9",
+                  "ref": "50d8515f-feb4-4900-8ce1-ddbe298c3be6",
+                  "label": "1 - Several days"
+                },
+                {
+                  "id": "ydb8E43alv6G",
+                  "ref": "9b02843b-8ca3-42d4-a8be-e16e7bf5331a",
+                  "label": "2 - More than half the days"
+                },
+                {
+                  "id": "1XvKVCBT4fVw",
+                  "ref": "f4341a1c-332f-42c7-859f-7c4905aba3ec",
+                  "label": "3 - Nearly every day"
+                }
+              ]
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "hsOwcyQ2Ucty",
+            "title": "If you answered \"Several days\", \"More than half the days\", or \"Nearly every day\" to any of the previous questions about problems...how difficult have these problems made it for you to do your work, take care of things at  home, or get along with other people?",
+            "ref": "reason-for-visit-mental-health-concern-effect",
+            "properties": {
+              "description": "Skip if you answered \"Not at all\" to all previous questions.",
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "GRBAiJgv1ZGm",
+                  "ref": "e8261ae1-ec19-483d-a497-9b4c3a5861df",
+                  "label": "Not difficult at all"
+                },
+                {
+                  "id": "DzPfchJKRjxL",
+                  "ref": "1feb8565-38af-4bf5-92e4-f38e1a951ae7",
+                  "label": "Somewhat difficult"
+                },
+                {
+                  "id": "pY6IBPGHxcKc",
+                  "ref": "c7877d63-c5b4-48fb-9564-42a21cafe976",
+                  "label": "Very difficult"
+                },
+                {
+                  "id": "oedGqAhHNGKq",
+                  "ref": "0d99bb16-fe33-4512-bc67-4161263a4edf",
+                  "label": "Extremely difficult"
+                }
+              ]
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "UH3QxbVuewm2",
+            "title": "Tell us more about why you’re seeking mental health care.",
+            "ref": "reason-for-visit-mental-health-detail",
+            "properties": {
+              "description": "Share any questions, concerns, or topics you’d like to cover during your visit."
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "long_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "ylVxZah5X9Sq",
+      "title": "What is your preferred pharmacy name and address?",
+      "ref": "preferred-pharmacy",
+      "properties": {
+        "description": "Note: Walgreens does not participate in Specialty’s free medication program."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    }
+  ],
+  "hidden": [
+    "patientid",
+    "sixty_five_plus_eligible"
+  ],
+  "logic": [
+    {
+      "type": "field",
+      "ref": "health-history-medications-usage",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-medications"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-medications-usage"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-medications-allergies"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "age-category",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "minor-consent-guardian-present-confirmation"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "age-category"
+              },
+              {
+                "type": "choice",
+                "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "minor-consent-guardian-present"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "age-category"
+              },
+              {
+                "type": "choice",
+                "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "biological-sex"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-changed",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-changes"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-changed"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-adult-tobacco-use-usage",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-adult-tobacco-use-frequency"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-adult-tobacco-use-usage"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-medications-allergies",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-medications-allergies-detail"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-medications-allergies"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-surgeries"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-surgeries",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-surgeries-dates"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-surgeries"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-conditions-family"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-adult-tobacco-use-frequency",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-adult-tobacco-use-end-date"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-adult-tobacco-use-frequency"
+              },
+              {
+                "type": "choice",
+                "value": "f179dda3-3f7b-4ae0-866a-1481c4b6cda9"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "minor-consent-guardian-present",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "biological-sex"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "minor-consent-guardian-present"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "minor-consent-form-confirmation"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "minor-consent-guardian-present"
+              },
+              {
+                "type": "constant",
+                "value": false
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "biological-sex"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "appointment-state",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "thankyou",
+              "value": "ending-state-not-available"
+            }
+          },
+          "condition": {
+            "op": "or",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "65fd22c3-32ec-4c92-b194-5aef3a10fe60"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "06c83fb6-1725-4c64-b555-df84bfa8e978"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "7a52c8ec-a27c-40ed-bb5c-adff246798c1"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "9eca5aaa-95a9-431f-870e-aafb6dfa9a19"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "b690abd1-78a6-4346-a353-4236e4fb5965"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "1a3456c2-8394-4e19-9122-cd3b6f445c54"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "bb1754b4-8909-4319-ae7f-98a568ebf9ae"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "bc169999-4c23-4bcf-9209-abee3c377b24"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "09f795d1-c8e2-43f2-9e9d-5d7c0430c112"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "6e8a3c11-2a2c-4e6b-b2d3-6ae72df93537"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "606e3e08-c234-4828-bd0f-ba69bba908f0"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "68a23247-0658-4e9b-ba07-dc6c65ec7583"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "da76d9a6-d5d6-4305-b208-78910f2e817a"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2022bac5-499e-421c-beab-cefc336c2bbc"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "dec3bbdc-afdf-4c46-ae20-a248d023abb2"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "86ea58cc-74c6-4b15-ac6d-9196469d758f"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "8f3bfe75-594c-44e0-845b-656a1a7568c6"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "aafe8b8f-5f75-4e6a-a369-5c8e49d16029"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "9debe884-3a3f-42b1-84fa-8f6a088e2b44"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "faddfe28-ec7d-4509-92f0-ba61aa83a546"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "fd3f8a56-6e0e-4786-8604-b1ff12a8e0a6"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "1d58d3c3-27e6-4b6c-8c96-6e3bafcb512f"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "a2877de6-c50b-499a-98a0-a821c4ae047f"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2c079aaf-cece-4084-8b8c-8840b1551779"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "22865522-43a0-4637-acb4-a884f81d18a5"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "9790bfbb-0c81-436a-ac96-38042b6cee2c"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "61e2f465-c7c1-4aae-8efb-f764c7276ef6"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2fcf9300-4aa5-473e-b04c-c055ea85c44c"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "63a1cb8f-ad44-4204-a3ff-46e75060b5d5"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "daf15a6a-3541-40d6-b016-892356786f27"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "0ae32179-85ce-422d-a96a-5f24c9c98721"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "ad743db6-fe4c-4e8e-8368-f802f51458bd"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "92d7c4fe-8a93-4d89-be4f-0efda6b47053"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "928c6f57-c402-46c5-8c2d-20e48d6331d2"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "1d6b4d0f-418a-49e9-aebc-37fbf76f4a7d"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "7513a99e-1a90-468a-aa1a-ccd07d356f4c"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "0b63f26f-2f39-4dbd-8266-36cf91928f2a"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "370f1bf7-c3ac-438b-9e8d-27d01ef11d5e"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "appointment-state"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "d186f524-49f5-4d30-b32e-f936e0aeea6d"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "medical-emergency-confirmation"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "375a98f7-a000-4934-b348-4a5b688a3286"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-follow-up"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-body-region",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-body-region-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-body-region"
+              },
+              {
+                "type": "choice",
+                "value": "c456531e-00b2-4489-b628-e03b3116356d"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-allergies",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-allergies"
+              },
+              {
+                "type": "choice",
+                "value": "cf512a30-7626-4981-a15d-5d84048b6f63"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-vaginal",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-vaginal"
+              },
+              {
+                "type": "choice",
+                "value": "a5fd2961-2e6b-4966-9360-6b82c91865d9"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-chronic",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-chronic-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-chronic"
+              },
+              {
+                "type": "choice",
+                "value": "51bc6892-059a-469f-aa95-fa871414781d"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-chronic-needs"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-wellness",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-wellness"
+              },
+              {
+                "type": "choice",
+                "value": "3e33f448-231d-42a0-8037-a8e2110de259"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-follow-up"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-wellness-last-physical-exam-date",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-diet"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "age-category"
+              },
+              {
+                "type": "choice",
+                "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-detail"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "age-category"
+              },
+              {
+                "type": "choice",
+                "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-recent-height"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "biological-sex",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-form-completed"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              },
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "minor-consent-guardian-answers-confirmation"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-minor-smoker-location",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-female-pregnancy"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "biological-sex"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "afd3955c-0510-4df4-9ba5-1f6603f1436e"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-minor-smoker-in-household",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-minor-smoker-location"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-minor-smoker-in-household"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-female-pregnancy"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-minor-smoker-in-household"
+                  },
+                  {
+                    "type": "constant",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "biological-sex"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "afd3955c-0510-4df4-9ba5-1f6603f1436e"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-conditions-family",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-minor-immunization-status"
+            }
+          },
+          "condition": {
+            "op": "or",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-female-pregnancy"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+                  }
+                ]
+              },
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "biological-sex"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "afd3955c-0510-4df4-9ba5-1f6603f1436e"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-adult-tobacco-use-usage"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-form-completed",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-female-pregnancy"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-form-completed"
+                  },
+                  {
+                    "type": "constant",
+                    "value": true
+                  }
+                ]
+              },
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "biological-sex"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "afd3955c-0510-4df4-9ba5-1f6603f1436e"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-changed"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-form-completed"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-conditions-history"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-female-menstrual-cycle",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-adult-tobacco-use-usage"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+                  }
+                ]
+              },
+              {
+                "op": "is_not",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-form-completed"
+                  },
+                  {
+                    "type": "constant",
+                    "value": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-conditions-history",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-conditions-description"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "health-history-conditions-history"
+              },
+              {
+                "type": "choice",
+                "value": "6a4b2f33-2c83-4976-a341-a2eb81f2fc6e"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-conditions-description-detail"
+            }
+          },
+          "condition": {
+            "op": "or",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2e0e2837-9adb-4c8b-bc05-7791606a8ec1"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "4905a831-2f2f-47e8-ad50-511bc8ff7368"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "4e1059dc-e6df-405f-a06a-e814cd95f74f"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "4e8e10b8-d8f5-40b1-b762-57ef55634aa9"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "abd04087-089c-4f14-956f-83a30424c554"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "5d1e9387-b3e6-4f73-aad7-1fbe94af8c8d"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "0eb0d174-eeac-4078-9a23-a90d52d63ce4"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "8896fd2e-781b-483a-819a-52aa5c8726fd"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "42d3b41e-6482-41a5-a77a-d65b865655cc"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "dc13b1d3-fc81-4db2-938b-dd95513b2c22"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "b8ed679a-5fd3-4d1a-b41d-7aa0483e1160"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "ed16384f-1bb3-46eb-9d3e-8c07597d651c"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "health-history-conditions-history"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "43869780-cf55-45b8-b6be-9c1c8aaf8783"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-medications-usage"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-wellness-employeer-requirement",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-last-physical-exam-date"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-wellness-employeer-requirement"
+              },
+              {
+                "type": "constant",
+                "value": false
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-employeer-requirement-consent"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-wellness-follow-up",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-last-physical-exam-date"
+            }
+          },
+          "condition": {
+            "op": "or",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "2f202927-97b2-4d9c-aaef-1296fb68c5ba"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "age-category"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "e6a75660-04b1-445a-bdd4-13b95e5a2114"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "reason-for-visit-wellness"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "8a3e5c2e-608e-4038-b3b5-edcdbdc3000f"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness-employeer-requirement"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms"
+              },
+              {
+                "type": "choice",
+                "value": "ba43db08-09ba-4d7a-adf5-6c1a4a24fa9e"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-follow-up",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-allergies"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "3c7619c0-14fe-4844-8910-d6e67999beb2"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-cold-flu"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "3861dee2-8937-401c-902a-4e50a0350c94"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-ear-nose-throat-eyes"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "903b71dd-b2b6-4879-84de-af86c37aeecf"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-urinary"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "ebd3a9a9-53b0-47fe-a211-8c9d11647d78"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-skin-nails"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "43531281-cf7b-469a-b54c-bac6d9a80342"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-digestive"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "eadc4425-231b-4cff-ad37-2222495baaf5"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-vaginal"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "29f6a9fe-72c1-4000-82bd-35b55dbfaa09"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-body-region"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "ac19a9ab-e4b6-49f6-bf77-0e6eb8e822f6"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-photo-confirmation"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute"
+              },
+              {
+                "type": "choice",
+                "value": "375a98f7-a000-4934-b348-4a5b688a3286"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-photo-confirmation"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-cold-flu",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-cold-flu"
+              },
+              {
+                "type": "choice",
+                "value": "460a7ec6-20c6-4a7b-a033-b46ed6346728"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-cold-flu"
+              },
+              {
+                "type": "choice",
+                "value": "397c511b-a6fb-4a66-bfcc-988bf682f852"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-shortness-of-breath"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-cold-flu"
+              },
+              {
+                "type": "choice",
+                "value": "a9b4cf63-3b27-49e3-95ea-abc7410dbf6c"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-ear-nose-throat-eyes",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-ear-nose-throat-eyes"
+              },
+              {
+                "type": "choice",
+                "value": "7196bd6d-9a38-44fa-b725-8f42d8dc1e78"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-ear-nose-throat-eyes"
+              },
+              {
+                "type": "choice",
+                "value": "32ec94f9-7c3c-4bc8-904a-56f5c24e9fc4"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-urinary",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-urinary"
+              },
+              {
+                "type": "choice",
+                "value": "c212dbf7-6e09-44ae-bbd5-0119760a4f0b"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-urinary"
+              },
+              {
+                "type": "choice",
+                "value": "e47789f5-114d-4d3e-97e8-1288ece93561"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-skin-nails",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-skin-nails"
+              },
+              {
+                "type": "choice",
+                "value": "71a5f0b4-79f1-470e-961d-f6074127881e"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-skin-nails"
+              },
+              {
+                "type": "choice",
+                "value": "e7f4d4cf-fe7a-44e3-b7fd-b395a7f462de"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-digestive",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-other"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-digestive"
+              },
+              {
+                "type": "choice",
+                "value": "ab372e50-d08d-4db5-9ed9-064779138c73"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-digestive"
+              },
+              {
+                "type": "choice",
+                "value": "794d2107-4c00-4ac1-9b39-0396d36d2664"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-other",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-cold-flu"
+              },
+              {
+                "type": "choice",
+                "value": "397c511b-a6fb-4a66-bfcc-988bf682f852"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-shortness-of-breath"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-cold-flu"
+              },
+              {
+                "type": "choice",
+                "value": "a9b4cf63-3b27-49e3-95ea-abc7410dbf6c"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-ear-nose-throat-eyes"
+              },
+              {
+                "type": "choice",
+                "value": "32ec94f9-7c3c-4bc8-904a-56f5c24e9fc4"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-urinary"
+              },
+              {
+                "type": "choice",
+                "value": "e47789f5-114d-4d3e-97e8-1288ece93561"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-skin-nails"
+              },
+              {
+                "type": "choice",
+                "value": "e7f4d4cf-fe7a-44e3-b7fd-b395a7f462de"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-temperature"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-digestive"
+              },
+              {
+                "type": "choice",
+                "value": "794d2107-4c00-4ac1-9b39-0396d36d2664"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-temperature",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-shortness-of-breath"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-acute-symptoms-cold-flu"
+              },
+              {
+                "type": "choice",
+                "value": "a9b4cf63-3b27-49e3-95ea-abc7410dbf6c"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-category",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-category"
+              },
+              {
+                "type": "choice",
+                "value": "3faf5f88-5171-4933-af0f-210716bf1a60"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-chronic"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-category"
+              },
+              {
+                "type": "choice",
+                "value": "ff708302-4546-4426-9e07-d329265a9d57"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-wellness"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-category"
+              },
+              {
+                "type": "choice",
+                "value": "173074a1-75b3-45d2-a6d6-298bfa2bb825"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-mental-health"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-category"
+              },
+              {
+                "type": "choice",
+                "value": "4f6732f3-d3b6-4c83-9c3e-a4945a004507"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "medicaid-enrolled",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "medicaid-confirmation"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "medicaid-enrolled"
+              },
+              {
+                "type": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "age-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-mental-health",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "d05ce504-7b64-4f1f-840b-adf1c10b0f7b"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "reason-for-visit-mental-health"
+              },
+              {
+                "type": "choice",
+                "value": "4012f97d-535c-4d76-b5cb-d6b97b4d4013"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-mental-health-primary-care-confirmation"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-mental-health-primary-care-confirmation",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-mental-health-concern-confirmation"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-effect",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-photo-confirmation"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-duration",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-effect"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-changes",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-category"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "health-history-medications-allergies-detail",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-surgeries"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "minor-consent-guardian-present-confirmation",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "biological-sex"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "minor-consent-form-confirmation",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "biological-sex"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "preferred-pharmacy",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "thankyou",
+              "value": "ending-thank-you"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-detail",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "preferred-pharmacy"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-chronic-detail",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "preferred-pharmacy"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-wellness-detail",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "preferred-pharmacy"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "minor-consent-recent-weight",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "health-history-form-completed"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "reason-for-visit-acute-symptoms-shortness-of-breath",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "reason-for-visit-acute-symptoms-duration"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    }
+  ],
+  "_links": {
+    "display": "https://tohanuk.typeform.com/to/mjFneHz8",
+    "responses": "https://api.typeform.com/forms/mjFneHz8/responses"
+  }
+}

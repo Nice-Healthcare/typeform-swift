@@ -1,6 +1,8 @@
 import Foundation
 
-public struct Reference: Hashable, RawRepresentable, Codable {
+public enum Reference: Hashable, RawRepresentable, Codable {
+    case string(String)
+    case uuid(UUID)
     
     /// Controls the behavior of `Reference` encoding.
     ///
@@ -17,12 +19,40 @@ public struct Reference: Hashable, RawRepresentable, Codable {
     
     public static var valueEncodingCase: ValueEncodingCase = .lowercase
     
-    public var rawValue: UUID
+    public static func make(with value: String) -> Reference {
+        if let uuid = UUID(uuidString: value) {
+            return .uuid(uuid)
+        }
+        
+        return .string(value)
+    }
     
-    public var uuidString: String { rawValue.uuidString }
+    public var rawValue: String {
+        get {
+            switch self {
+            case .string(let string): return string
+            case .uuid(let uuid): return uuid.uuidString
+            }
+        }
+        set {
+            self = Self.make(with: newValue)
+        }
+    }
     
-    public init(rawValue: UUID) {
-        self.rawValue = rawValue
+    public var uuidString: String? {
+        guard case .uuid(let uuid) = self else {
+            return nil
+        }
+        
+        return uuid.uuidString
+    }
+    
+    public init?(rawValue: String) {
+        self = Self.make(with: rawValue)
+    }
+    
+    public init(string: String) {
+        self = .string(string)
     }
     
     public init?(uuidString: String) {
@@ -30,27 +60,42 @@ public struct Reference: Hashable, RawRepresentable, Codable {
             return nil
         }
         
-        rawValue = uuid
+        self = .uuid(uuid)
     }
     
     public init() {
-        rawValue = UUID()
+        self = .string("")
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.rawValue = try container.decode(UUID.self)
+        
+        do {
+            let uuid = try container.decode(UUID.self)
+            self = .uuid(uuid)
+            return
+        } catch {
+        }
+        
+        let rawValue = try container.decode(String.self)
+        self = .string(rawValue)
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        switch Self.valueEncodingCase {
-        case .automatic:
-            try container.encode(rawValue)
-        case .uppercase:
-            try container.encode(rawValue.uuidString.uppercased())
-        case .lowercase:
-            try container.encode(rawValue.uuidString.lowercased())
+        
+        switch self {
+        case .string(let string):
+            try container.encode(string)
+        case .uuid(let uuid):
+            switch Self.valueEncodingCase {
+            case .automatic:
+                try container.encode(uuid)
+            case .uppercase:
+                try container.encode(uuid.uuidString.uppercased())
+            case .lowercase:
+                try container.encode(uuid.uuidString.lowercased())
+            }
         }
     }
 }

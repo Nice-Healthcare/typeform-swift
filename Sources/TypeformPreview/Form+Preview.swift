@@ -25,11 +25,12 @@ public extension Form {
     static var medicalIntake23 = intakeForm("MedicalIntake23")
     static var medicalIntake24 = intakeForm("MedicalIntake24")
     static var medicalIntake26 = intakeForm("MedicalIntake26")
+    static var genericSlugs = intakeForm("GenericSlugs")
 }
 
 public extension WelcomeScreen {
     static var preview: WelcomeScreen = {
-        guard let screen = Form.medicalIntake23.welcomeScreens.first else {
+        guard let screen = Form.medicalIntake23.welcomeScreens?.first else {
             preconditionFailure("Failed to find first 'WelcomeScreen'.")
         }
         

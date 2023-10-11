@@ -55,9 +55,6 @@ final class SchemeTests: TypeformTests {
           },
           "title" : "",
           "type" : "quiz",
-          "welcome_screens" : [
-
-          ],
           "workspace" : {
             "href" : "https:\\/\\/www.typeform.com"
           }

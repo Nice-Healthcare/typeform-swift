@@ -8,10 +8,11 @@ public struct EndingScreen: Screen, Hashable, Codable {
         
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
-            if let ref = try? container.decode(Reference.self) {
-                self = .ref(ref)
-            } else {
+            let reference = try container.decode(Reference.self)
+            if case .string(let stringValue) = reference, stringValue == EndingScreen.defaultTYSKey {
                 self = .default
+            } else {
+                self = .ref(reference)
             }
         }
         
@@ -19,12 +20,14 @@ public struct EndingScreen: Screen, Hashable, Codable {
             var container = encoder.singleValueContainer()
             switch self {
             case .`default`:
-                try container.encode("default_tys")
+                try container.encode(EndingScreen.defaultTYSKey)
             case .ref(let reference):
                 try container.encode(reference)
             }
         }
     }
+    
+    public static let defaultTYSKey = "default_tys"
     
     public let id: String
     public let ref: Ref
