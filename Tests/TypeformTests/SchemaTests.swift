@@ -16,9 +16,6 @@ final class SchemeTests: TypeformTests {
           "fields" : [
 
           ],
-          "hidden" : [
-
-          ],
           "id" : "",
           "logic" : [
 

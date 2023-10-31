@@ -28,7 +28,7 @@ public struct Form: Hashable, Identifiable, Codable {
     public let title: String
     public let links: Links
     public let fields: [Field]
-    public let hidden: [String]
+    public let hidden: [String]?
     public let settings: Settings
     public let workspace: Workspace
     public let welcomeScreens: [WelcomeScreen]?
@@ -42,7 +42,7 @@ public struct Form: Hashable, Identifiable, Codable {
         title: String = "",
         links: Links = Links(),
         fields: [Field] = [],
-        hidden: [String] = [],
+        hidden: [String]? = nil,
         settings: Settings = Settings(),
         workspace: Workspace = Workspace(),
         welcomeScreens: [WelcomeScreen]? = nil,
@@ -60,21 +60,5 @@ public struct Form: Hashable, Identifiable, Codable {
         self.workspace = workspace
         self.welcomeScreens = welcomeScreens
         self.endingScreens = endingScreens
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.type = try container.decode(Form.Kind.self, forKey: .type)
-        self.logic = try container.decode([Logic].self, forKey: .logic)
-        self.theme = try container.decode(Theme.self, forKey: .theme)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.links = try container.decode(Links.self, forKey: .links)
-        self.fields = try container.decode([Field].self, forKey: .fields)
-        self.hidden = try container.decode([String].self, forKey: .hidden)
-        self.settings = try container.decode(Settings.self, forKey: .settings)
-        self.workspace = try container.decode(Workspace.self, forKey: .workspace)
-        self.welcomeScreens = try container.decodeIfPresent([WelcomeScreen].self, forKey: .welcomeScreens)
-        self.endingScreens = try container.decode([EndingScreen].self, forKey: .endingScreens)
     }
 }
