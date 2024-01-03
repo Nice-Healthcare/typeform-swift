@@ -13,13 +13,13 @@ extension Condition {
         case .always:
             return true
         case .and:
-            return !satisfied.contains(false)
+            return !satisfied.isEmpty && !satisfied.contains(false)
         case .or:
-            return satisfied.contains(true)
+            return !satisfied.isEmpty && satisfied.contains(true)
         case .is:
-            return !satisfied.contains(false)
+            return !satisfied.isEmpty && !satisfied.contains(false)
         case .isNot:
-            return !satisfied.contains(true)
+            return !satisfied.isEmpty && !satisfied.contains(true)
         case .equal:
             print("Unexpected Condition.Op \(#function) \(#fileID) \(#line)")
             return nil

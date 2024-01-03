@@ -52,10 +52,14 @@ class TypeformTests: XCTestCase {
     
     private(set) var form: Form!
     
+    open var jsonResource: String {
+        "MedicalIntake23"
+    }
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "MedicalIntake23", withExtension: "json"))
+        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: jsonResource, withExtension: "json"))
         let data = try Data(contentsOf: url)
         form = try Self.decoder.decode(Typeform.Form.self, from: data)
     }
