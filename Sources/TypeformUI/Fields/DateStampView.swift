@@ -61,7 +61,7 @@ struct DateStampView: View {
             
             determineValidity()
         }
-        .onChange(of: toggle) { newValue in
+        .onChange(of: toggle) { _ in
             if toggle {
                 responses.wrappedValue[reference] = nil
             } else {
@@ -70,7 +70,7 @@ struct DateStampView: View {
             
             determineValidity()
         }
-        .onChange(of: value) { newValue in
+        .onChange(of: value) { _ in
             if toggle {
                 responses.wrappedValue[reference] = nil
             } else {

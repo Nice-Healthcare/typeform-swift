@@ -25,7 +25,6 @@ public extension Field {
         guard case .field(let field, _) = position else {
             preconditionFailure("Couldn't locate field with reference '\(ref)'.")
         }
-
         
         return field
     }

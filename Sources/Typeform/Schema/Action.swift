@@ -13,6 +13,7 @@ public struct Action: Hashable, Codable {
             case ending = "thankyou"
         }
         
+        // swiftlint:disable type_name
         public struct To: Hashable, Codable {
             public let type: ToType
             public let value: Reference
@@ -33,6 +34,7 @@ public struct Action: Hashable, Codable {
         ) {
             self.to = to
         }
+        // swiftlint:enable type_name
     }
     
     enum CodingKeys: String, CodingKey {

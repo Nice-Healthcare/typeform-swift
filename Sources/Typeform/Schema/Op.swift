@@ -1,5 +1,6 @@
 import Foundation
 
+// swiftlint:disable type_name
 public enum Op: String, Codable {
     case always
     case and
@@ -8,3 +9,4 @@ public enum Op: String, Codable {
     case isNot = "is_not"
     case or
 }
+// swiftlint:enable type_name
