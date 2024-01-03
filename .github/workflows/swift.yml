@@ -68,8 +68,7 @@ jobs:
         update-comment: true
 
     - name: Lint Annotations
-      uses: 
-      if: matrix.os == 'ubuntu-latest'
       uses: norio-nomura/action-swiftlint@3.2.1
+      if: matrix.os == 'ubuntu-latest'
       env:
         DIFF_BASE: ${{ github.base_ref }}
