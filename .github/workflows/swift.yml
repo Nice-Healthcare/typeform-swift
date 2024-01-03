@@ -36,7 +36,8 @@ jobs:
     - name: Build
       run: swift build -v
 
-    - name: Test
+    - name: Test (Reporting)
+      if: matrix.os == 'macos-latest'
       run: swift test --enable-code-coverage -v 2>&1 | xcbeautify --report junit
 
     - name: Code Coverage
@@ -66,6 +67,10 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         lcov-file: build/reports/coverage.lcov
         update-comment: true
+
+    - name: Test (Execution Only)
+      if: matrix.os == 'ubuntu-latest'
+      run: swift test -v
 
     - name: Lint Annotations
       uses: norio-nomura/action-swiftlint@3.2.1
