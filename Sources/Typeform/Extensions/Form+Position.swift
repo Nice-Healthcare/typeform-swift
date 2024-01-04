@@ -1,4 +1,5 @@
 public extension Form {
+    // swiftlint:disable cyclomatic_complexity
     /// Determine the next `Field` or `Screen` given the provided `Responses`.
     ///
     /// - parameters:
@@ -99,4 +100,5 @@ public extension Form {
             throw TypeformError.couldNotDetermineNext(position)
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 }

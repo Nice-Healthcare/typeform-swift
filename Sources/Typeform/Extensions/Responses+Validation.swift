@@ -10,6 +10,7 @@ public extension Responses {
         invalidResponseValues(given: fields).isEmpty
     }
     
+    // swiftlint:disable cyclomatic_complexity
     /// Collection of invalid `Reference` keys based on expected `ResponseValue` types.
     ///
     /// For instance: if a `MultipleChoice` field which only allows a single-selection has more than one `Choice`,
@@ -71,4 +72,5 @@ public extension Responses {
             return nil
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 }

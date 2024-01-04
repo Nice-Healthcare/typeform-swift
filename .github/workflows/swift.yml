@@ -7,20 +7,70 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  PACKAGE_NAME: Typeform
+
 jobs:
   SwiftActions:
     strategy:
       matrix:
-        os: [macos-12, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+
+    permissions:
+      actions: read
+      checks: write
+      pull-requests: write
 
     steps:
     - name: Checkout Source
       uses: actions/checkout@v3
 
-    - name: Swift Build
-      uses: SwiftActions/SwiftBuild@86ef22926beddfe33b5c5da8860e9af581a6139d
+    - name: Package Resolution
+      run: swift package resolve
 
-    - name: Swift Test
-      uses: SwiftActions/SwiftTest@5eae89b6a7ac20a100192bf1349a8eb90cd3f631
+    - name: Build
+      run: swift build -v
+
+    - name: Test (Reporting)
+      if: matrix.os == 'macos-latest'
+      run: swift test --enable-code-coverage -v 2>&1 | xcbeautify --report junit
+
+    - name: Code Coverage
+      if: matrix.os == 'macos-latest'
+      run: xcrun llvm-cov export -format="lcov" .build/debug/${{ env.PACKAGE_NAME }}PackageTests.xctest/Contents/MacOS/${{ env.PACKAGE_NAME }}PackageTests -instr-profile .build/debug/codecov/default.profdata > build/reports/coverage.lcov
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      if: matrix.os == 'macos-latest'
+      with:
+        name: test-results
+        path: |
+          build/reports/junit.xml
+          build/reports/coverage.lcov
+        retention-days: 7
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: matrix.os == 'macos-latest'
+      with:
+        files: build/reports/junit.xml
+
+    - name: Publish Code Coverage
+      uses: vebr/jest-lcov-reporter@v0.2.1
+      if: matrix.os == 'macos-latest'
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        lcov-file: build/reports/coverage.lcov
+        update-comment: true
+
+    - name: Test (Execution Only)
+      if: matrix.os == 'ubuntu-latest'
+      run: swift test -v
+
+    - name: Lint Annotations
+      uses: norio-nomura/action-swiftlint@3.2.1
+      if: matrix.os == 'ubuntu-latest'
+      env:
+        DIFF_BASE: ${{ github.base_ref }}

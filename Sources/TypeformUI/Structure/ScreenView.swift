@@ -1,3 +1,4 @@
+// swiftlint:disable force_cast
 #if canImport(SwiftUI)
 import SwiftUI
 import Typeform
@@ -86,7 +87,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                     Divider()
                         .foregroundColor(settings.callToAction.dividerColor)
                     
-                    if let next = self.next  {
+                    if let next = self.next {
                         navigation(next: next)
                             .padding(settings.callToAction.insets)
                     }
@@ -125,7 +126,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                 }
                 
                 if settings.presentation.layout == .navigation {
-                    if let next = self.next  {
+                    if let next = self.next {
                         navigation(next: next)
                             .buttonStyle(.borderless)
                     }
@@ -255,3 +256,4 @@ struct ScreenView_Previews: PreviewProvider {
     }
 }
 #endif
+// swiftlint:enable force_cast
