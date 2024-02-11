@@ -47,7 +47,7 @@ struct FieldView<Header: View, Footer: View>: View {
         self.conclusion = conclusion
         self.header = header
         self.footer = footer
-        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
     
@@ -236,7 +236,7 @@ struct FieldView<Header: View, Footer: View>: View {
         } label: {
             Text(nextTitle)
         }
-        .disabled(next == nil && !responseState.passesValidation)
+        .disabled(next == nil || responseState.invalid)
     }
 }
 
@@ -257,7 +257,7 @@ extension FieldView where Footer == EmptyView {
         self.conclusion = conclusion
         self.header = header
         self.footer = { Footer() }
-        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
 }
@@ -279,7 +279,7 @@ extension FieldView where Header == EmptyView {
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = footer
-        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
 }
@@ -300,7 +300,7 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = { Footer() }
-        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
 }

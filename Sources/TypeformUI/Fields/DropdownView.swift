@@ -66,9 +66,9 @@ struct DropdownView: View {
         }
         
         if let validations = self.validations, validations.required {
-            state.passesValidation = selected != nil
+            state.invalid = selected == nil
         } else {
-            state.passesValidation = true
+            state.invalid = false
         }
         
         self.state.wrappedValue = state

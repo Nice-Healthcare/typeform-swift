@@ -101,9 +101,9 @@ struct RatingView: View {
         }
         
         if let validations = self.validations, validations.required {
-            state.passesValidation = value != nil
+            state.invalid = value == nil
         } else {
-            state.passesValidation = true
+            state.invalid = false
         }
         
         self.state.wrappedValue = state

@@ -5,7 +5,6 @@ public enum TypeformError: Error {
     case noActionForChoice
     case noEntryForField
     case noLogicForField
-    case endOfForm
     
     case varCollectionMissingInvalidField
     case varCollectionMissingInvalidValue

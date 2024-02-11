@@ -1,16 +1,23 @@
 import Typeform
 
+/// A collective representation of a single `Responses` element.
 struct ResponseState: Equatable {
+    /// The `ResponseValue` for the given `Field` being presented.
     var response: ResponseValue?
-    var passesValidation: Bool
+    /// Indication of whether validation indicates a failure.
+    var invalid: Bool
     
-    init(response: ResponseValue? = nil, passesValidation: Bool = false) {
+    init(response: ResponseValue? = nil, invalid: Bool = true) {
         self.response = response
-        self.passesValidation = passesValidation
+        self.invalid = invalid
     }
     
-    init(field: Field, responses: Responses) {
+    init(for field: Field, given responses: Responses) {
         self.response = responses[field.ref]
-        self.passesValidation = false
+        if case .statement = field.properties {
+            self.invalid = false
+        } else {
+            self.invalid = true
+        }
     }
 }

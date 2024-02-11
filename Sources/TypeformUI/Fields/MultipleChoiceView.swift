@@ -94,12 +94,12 @@ struct MultipleChoiceView: View {
         
         if let validations = self.validations, validations.required {
             if properties.allow_multiple_selection {
-                state.passesValidation = !selections.isEmpty
+                state.invalid = selections.isEmpty
             } else {
-                state.passesValidation = selections.count == 1
+                state.invalid = selections.count != 1
             }
         } else {
-            state.passesValidation = true
+            state.invalid = false
         }
         
         self.state.wrappedValue = state

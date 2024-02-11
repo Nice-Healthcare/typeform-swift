@@ -80,9 +80,9 @@ struct DateStampView: View {
         }
         
         if let validations = self.validations, validations.required {
-            state.passesValidation = state.response != nil
+            state.invalid = state.response == nil
         } else {
-            state.passesValidation = true
+            state.invalid = false
         }
         
         self.state.wrappedValue = state

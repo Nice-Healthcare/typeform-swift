@@ -53,9 +53,9 @@ struct ShortTextView: View {
         }
         
         if let validations = self.validations, validations.required {
-            state.passesValidation = !value.isEmpty
+            state.invalid = value.isEmpty
         } else {
-            state.passesValidation = true
+            state.invalid = false
         }
         
         self.state.wrappedValue = state
