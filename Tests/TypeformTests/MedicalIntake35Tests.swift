@@ -2,7 +2,7 @@ import XCTest
 @testable import Typeform
 @testable import TypeformPreview
 
-class MedicalIntake35Tests : TypeformTests {
+class MedicalIntake35Tests: TypeformTests {
     
     override var jsonResource: String { "MedicalIntake35" }
     
@@ -54,7 +54,7 @@ class MedicalIntake35Tests : TypeformTests {
         
         let currentGroupField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-intro")))
         guard case .group(let currentGroup) = currentGroupField.properties else {
-            XCTFail()
+            XCTFail("Unexpected Properties")
             return
         }
         let currentField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-other")))
@@ -62,7 +62,7 @@ class MedicalIntake35Tests : TypeformTests {
         
         let next = try form.next(from: .field(currentField, currentGroup), given: responses)
         guard case .field(let field, let group) = next else {
-            XCTFail()
+            XCTFail("Unexpected Position")
             return
         }
 

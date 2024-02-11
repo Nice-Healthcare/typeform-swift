@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct MultipleChoiceView: View {
     
-    let reference: Reference
-    let properties: MultipleChoice
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: MultipleChoice
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     
     @State private var selections: [Choice] = []
     
@@ -46,61 +44,65 @@ struct MultipleChoiceView: View {
                             .font(settings.typography.bodyFont)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .buttonStyle(ChoiceButtonStyle(
-                        allowsMultipleSelection: properties.allow_multiple_selection,
-                        selected: selections.contains(choice),
-                        settings: settings
-                    ))
+                    .buttonStyle(
+                        ChoiceButtonStyle(
+                            allowsMultipleSelection: properties.allow_multiple_selection,
+                            selected: selections.contains(choice),
+                            settings: settings
+                        )
+                    )
                 }
             }
         }
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .choice(let choice):
-                selections = [choice]
-            case .choices(let choices):
-                selections = choices
-            default:
-                selections = []
-            }
-            
-            determineValidity()
+            registerState()
         }
-        .onChange(of: selections) { newValue in
-            if properties.allow_multiple_selection {
-                if !newValue.isEmpty {
-                    responses.wrappedValue[reference] = .choices(newValue)
-                } else {
-                    responses.wrappedValue[reference] = nil
-                }
-            } else {
-                if let choice = newValue.first {
-                    responses.wrappedValue[reference] = .choice(choice)
-                } else {
-                    responses.wrappedValue[reference] = nil
-                }
-            }
-            
-            determineValidity()
+        .onChange(of: selections) { _ in
+            updateState()
         }
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .choice(let choice):
+            selections = [choice]
+        case .choices(let choices):
+            selections = choices
+        default:
+            selections = []
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
-        }
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
         
         if properties.allow_multiple_selection {
-            validated.wrappedValue = !selections.isEmpty
+            if !selections.isEmpty {
+                state.response = .choices(selections)
+            } else {
+                state.response = nil
+            }
         } else {
-            validated.wrappedValue = selections.count == 1
+            if let choice = selections.first {
+                state.response = .choice(choice)
+            } else {
+                state.response = nil
+            }
         }
+        
+        if let validations = self.validations, validations.required {
+            if properties.allow_multiple_selection {
+                state.passesValidation = !selections.isEmpty
+            } else {
+                state.passesValidation = selections.count == 1
+            }
+        } else {
+            state.passesValidation = true
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
@@ -109,17 +111,15 @@ struct MultipleChoiceView_Previews: PreviewProvider {
         ScrollView {
             VStack(spacing: 20) {
                 MultipleChoiceView(
-                    reference: .multipleChoice_One,
+                    state: .constant(ResponseState()),
                     properties: .preview_One,
-                    settings: Settings(),
-                    responses: .constant([:])
+                    settings: Settings()
                 )
                 
                 MultipleChoiceView(
-                    reference: .multipleChoice_Many,
+                    state: .constant(ResponseState()),
                     properties: .preview_Many,
-                    settings: Settings(),
-                    responses: .constant([:])
+                    settings: Settings()
                 )
             }
             .padding()

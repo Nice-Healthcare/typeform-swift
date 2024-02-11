@@ -5,9 +5,9 @@ import TypeformPreview
 
 struct RejectedView: View {
     
-    @Binding var responses: Responses
     let form: Typeform.Form
     let settings: Settings
+    let responses: Responses
     let conclusion: (Conclusion) -> Void
     
     var body: some View {
@@ -66,9 +66,9 @@ struct RejectedView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             RejectedView(
-                responses: .constant([:]),
                 form: .medicalIntake23,
                 settings: Settings(),
+                responses: [:],
                 conclusion: { _ in }
             )
         }

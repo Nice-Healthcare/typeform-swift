@@ -5,7 +5,6 @@ import TypeformPreview
 
 struct FieldView<Header: View, Footer: View>: View {
     
-    @Binding var responses: Responses
     let form: Typeform.Form
     let field: Field
     let group: Typeform.Group?
@@ -14,7 +13,8 @@ struct FieldView<Header: View, Footer: View>: View {
     let header: () -> Header
     let footer: () -> Footer
     
-    @State private var validated: Bool = false
+    @State private var responseState: ResponseState
+    @State private var responses: Responses
     @State private var next: Position?
     @State private var cancel: Bool = false
     @FocusState private var focused: Bool
@@ -31,16 +31,15 @@ struct FieldView<Header: View, Footer: View>: View {
     }
     
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         field: Field,
         group: Typeform.Group?,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
-        _responses = responses
         self.form = form
         self.field = field
         self.group = group
@@ -48,6 +47,8 @@ struct FieldView<Header: View, Footer: View>: View {
         self.conclusion = conclusion
         self.header = header
         self.footer = footer
+        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responses = .init(initialValue: responses)
     }
     
     private var titleFont: Font { field.type == .group ? settings.typography.titleFont : settings.typography.promptFont }
@@ -66,88 +67,68 @@ struct FieldView<Header: View, Footer: View>: View {
                     switch field.properties {
                     case .date(let properties):
                         DateStampView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            validations: field.validations
                         )
                     case .dropdown(let properties):
                         DropdownView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            validations: field.validations
                         )
                     case .group:
                         EmptyView()
                     case .longText(let properties):
                         LongTextView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
                             validations: field.validations,
-                            validated: $validated,
                             focused: $focused
                         )
                     case .multipleChoice(let properties):
                         MultipleChoiceView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            validations: field.validations
                         )
                     case .number(let properties):
                         NumberView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            validations: field.validations
                         )
                     case .rating(let properties):
                         RatingView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            validations: field.validations
                         )
                     case .shortText(let properties):
                         ShortTextView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
                             validations: field.validations,
-                            validated: $validated,
                             focused: $focused
                         )
                     case .statement(let properties):
                         StatementView(
-                            reference: field.ref,
                             properties: properties,
-                            settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            settings: settings
                         )
                     case .yesNo(let properties):
                         YesNoView(
-                            reference: field.ref,
+                            state: $responseState,
                             properties: properties,
                             settings: settings,
-                            responses: $responses,
-                            validations: field.validations,
-                            validated: $validated
+                            validations: field.validations
                         )
                     }
                     
@@ -178,10 +159,8 @@ struct FieldView<Header: View, Footer: View>: View {
         .onAppear {
             determineNext()
         }
-        .onChange(of: validated) { _ in
-            determineNext()
-        }
-        .onChange(of: responses) { _ in
+        .onChange(of: responseState) { newValue in
+            responses[field.ref] = newValue.response
             determineNext()
         }
         .toolbar {
@@ -227,51 +206,50 @@ struct FieldView<Header: View, Footer: View>: View {
             switch next {
             case .field(let field, let group):
                 FieldView(
-                    responses: $responses,
                     form: form,
                     field: field,
                     group: group,
                     settings: settings,
+                    responses: responses,
                     conclusion: conclusion,
                     header: header,
                     footer: footer
                 )
             case .screen(let screen):
                 ScreenView(
-                    responses: $responses,
                     form: form,
                     screen: screen,
                     settings: settings,
+                    responses: responses,
                     conclusion: conclusion,
                     header: header,
                     footer: footer
                 )
             case .none:
                 RejectedView(
-                    responses: $responses,
                     form: form,
                     settings: settings,
+                    responses: responses,
                     conclusion: conclusion
                 )
             }
         } label: {
             Text(nextTitle)
         }
-        .disabled(next == nil && !validated)
+        .disabled(next == nil && !responseState.passesValidation)
     }
 }
 
 extension FieldView where Footer == EmptyView {
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         field: Field,
         group: Typeform.Group?,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header
     ) {
-        _responses = responses
         self.form = form
         self.field = field
         self.group = group
@@ -279,20 +257,21 @@ extension FieldView where Footer == EmptyView {
         self.conclusion = conclusion
         self.header = header
         self.footer = { Footer() }
+        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responses = .init(initialValue: responses)
     }
 }
 
 extension FieldView where Header == EmptyView {
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         field: Field,
         group: Typeform.Group?,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
-        _responses = responses
         self.form = form
         self.field = field
         self.group = group
@@ -300,19 +279,20 @@ extension FieldView where Header == EmptyView {
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = footer
+        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responses = .init(initialValue: responses)
     }
 }
 
 extension FieldView where Footer == EmptyView, Header == EmptyView {
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         field: Field,
         group: Typeform.Group?,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void
     ) {
-        _responses = responses
         self.form = form
         self.field = field
         self.group = group
@@ -320,23 +300,33 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = { Footer() }
+        _responseState = .init(initialValue: ResponseState(field: field, responses: responses))
+        _responses = .init(initialValue: responses)
     }
 }
 
-struct FieldView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            VStack {
-                FieldView(
-                    responses: .constant([:]),
-                    form: .medicalIntake23,
-                    field: .field(withRef: .multipleChoice_One),
-                    group: nil,
-                    settings: Settings(),
-                    conclusion: { _ in }
-                )
-            }
+#if swift(>=5.9)
+#Preview("Field View") {
+    NavigationView {
+        VStack {
+            FieldView(
+                form: .medicalIntake23,
+                field: .field(withRef: .multipleChoice_One),
+                group: nil,
+                settings: Settings(),
+                responses: [
+                    .multipleChoice_One: .choice(
+                        Choice(
+                            id: "Sx6ZqqmkAHOI",
+                            ref: Reference(uuidString: "4f6732f3-d3b6-4c83-9c3e-a4945a004507")!,
+                            label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider"
+                        )
+                    )
+                ],
+                conclusion: { _ in }
+            )
         }
     }
 }
+#endif
 #endif

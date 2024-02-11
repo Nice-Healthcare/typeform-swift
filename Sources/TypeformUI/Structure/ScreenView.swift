@@ -6,10 +6,10 @@ import TypeformPreview
 
 struct ScreenView<Header: View, Footer: View>: View {
     
-    @Binding var responses: Responses
     let form: Typeform.Form
     let screen: any Screen
     let settings: Settings
+    let responses: Responses
     let conclusion: (Conclusion) -> Void
     let header: () -> Header
     let footer: () -> Footer
@@ -30,18 +30,18 @@ struct ScreenView<Header: View, Footer: View>: View {
     }
     
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         screen: any Screen,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
-        _responses = responses
         self.form = form
         self.screen = screen
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = header
         self.footer = footer
@@ -148,21 +148,21 @@ struct ScreenView<Header: View, Footer: View>: View {
             switch next {
             case .field(let field, let group):
                 FieldView(
-                    responses: $responses,
                     form: form,
                     field: field,
                     group: group,
                     settings: settings,
+                    responses: responses,
                     conclusion: conclusion,
                     header: header,
                     footer: footer
                 )
             case .screen(let screen):
                 ScreenView(
-                    responses: $responses,
                     form: form,
                     screen: screen,
                     settings: settings,
+                    responses: responses,
                     conclusion: conclusion,
                     header: header,
                     footer: footer
@@ -176,17 +176,17 @@ struct ScreenView<Header: View, Footer: View>: View {
 
 extension ScreenView where Footer == EmptyView {
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         screen: any Screen,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header
     ) {
-        _responses = responses
         self.form = form
         self.screen = screen
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = header
         self.footer = { Footer() }
@@ -195,17 +195,17 @@ extension ScreenView where Footer == EmptyView {
 
 extension ScreenView where Header == EmptyView {
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         screen: any Screen,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
-        _responses = responses
         self.form = form
         self.screen = screen
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = footer
@@ -214,46 +214,46 @@ extension ScreenView where Header == EmptyView {
 
 extension ScreenView where Footer == EmptyView, Header == EmptyView {
     init(
-        responses: Binding<Responses>,
         form: Typeform.Form,
         screen: any Screen,
         settings: Settings,
+        responses: Responses,
         conclusion: @escaping (Conclusion) -> Void
     ) {
-        _responses = responses
         self.form = form
         self.screen = screen
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = { Footer() }
     }
 }
 
-struct ScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ScreenView(
-                responses: .constant([:]),
-                form: .medicalIntake23,
-                screen: WelcomeScreen.preview,
-                settings: Settings(),
-                conclusion: { _ in }
-            )
-        }
-        .previewDisplayName("Welcome Screen")
-        
-        NavigationView {
-            ScreenView(
-                responses: .constant([:]),
-                form: .medicalIntake23,
-                screen: EndingScreen.preview,
-                settings: Settings(),
-                conclusion: { _ in }
-            )
-        }
-        .previewDisplayName("Thank You Screen")
+#if swift(>=5.9)
+#Preview("Welcome Screen") {
+    NavigationView {
+        ScreenView(
+            form: .medicalIntake23,
+            screen: WelcomeScreen.preview,
+            settings: Settings(),
+            responses: [:],
+            conclusion: { _ in }
+        )
     }
 }
+
+#Preview("Thank You Screen") {
+    NavigationView {
+        ScreenView(
+            form: .medicalIntake23,
+            screen: EndingScreen.preview,
+            settings: Settings(),
+            responses: [:],
+            conclusion: { _ in }
+        )
+    }
+}
+#endif
 #endif
 // swiftlint:enable force_cast

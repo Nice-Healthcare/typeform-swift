@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct DateStampView: View {
     
-    let reference: Reference
-    let properties: DateStamp
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: DateStamp
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     
     @State private var toggle: Bool = false
     @State private var value: Date = Date()
@@ -51,57 +49,52 @@ struct DateStampView: View {
             }
         }
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .date(let date):
-                value = date
-            default:
-                value = Date()
-            }
-            
-            determineValidity()
+            registerState()
         }
         .onChange(of: toggle) { _ in
-            if toggle {
-                responses.wrappedValue[reference] = nil
-            } else {
-                responses.wrappedValue[reference] = .date(value)
-            }
-            
-            determineValidity()
+            updateState()
         }
         .onChange(of: value) { _ in
-            if toggle {
-                responses.wrappedValue[reference] = nil
-            } else {
-                responses.wrappedValue[reference] = .date(value)
-            }
-            
-            determineValidity()
+            updateState()
         }
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .date(let date):
+            value = date
+        default:
+            value = Date()
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
+        
+        if toggle {
+            state.response = nil
+        } else {
+            state.response = .date(value)
         }
         
-        validated.wrappedValue = true
+        if let validations = self.validations, validations.required {
+            state.passesValidation = state.response != nil
+        } else {
+            state.passesValidation = true
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
 struct DateStampView_Previews: PreviewProvider {
     static var previews: some View {
         DateStampView(
-            reference: .date,
+            state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings(),
-            responses: .constant([:])
+            settings: Settings()
         )
     }
 }
