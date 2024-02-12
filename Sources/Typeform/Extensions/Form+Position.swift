@@ -4,7 +4,7 @@ public extension Form {
     /// When preloading responses for the form, the _first_ field may no longer be the one desired to be shown.
     ///
     /// - parameters:
-    ///   - skipWelcomeScreen: Flag indicated wether a 'Welcome Screen' should be skipped if present.
+    ///   - skipWelcomeScreen: Flag indicated whether a 'Welcome Screen' should be skipped if present.
     ///   - responses: Any responses that are already known when the form is first presented.
     /// - returns: The first `Position` to be presented.
     func firstPosition(skipWelcomeScreen: Bool, given responses: Responses) throws -> Position {
@@ -77,7 +77,7 @@ private extension Form {
     func nextPosition(from field: Field, group: Group?, given responses: Responses) throws -> Position {
         let currentPosition: Position = .field(field, group)
         
-        // Is a response required of current position?
+        // Is a response required of the current position?
         if responses.responseRequired(for: field) {
             throw TypeformError.noEntryForField
         }
