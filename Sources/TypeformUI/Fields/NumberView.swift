@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct NumberView: View {
     
-    let reference: Reference
-    let properties: Number
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: Number
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     
     @State private var value: Int?
     
@@ -25,48 +23,49 @@ struct NumberView: View {
                 .fieldStyle(settings: settings)
         }
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .int(let int):
-                value = int
-            default:
-                value = nil
-            }
-            
-            determineValidity()
+            registerState()
         }
-        .onChange(of: value) { newValue in
-            if let response = newValue {
-                responses.wrappedValue[reference] = .int(response)
-            } else {
-                responses.wrappedValue[reference] = nil
-            }
-            
-            determineValidity()
+        .onChange(of: value) { _ in
+            updateState()
         }
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .int(let int):
+            value = int
+        default:
+            value = nil
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
+        
+        if let response = value {
+            state.response = .int(response)
+        } else {
+            state.response = nil
         }
         
-        validated.wrappedValue = value != nil
+        if let validations = self.validations, validations.required {
+            state.invalid = value == nil
+        } else {
+            state.invalid = false
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
 struct NumberView_Previews: PreviewProvider {
     static var previews: some View {
         NumberView(
-            reference: .number,
+            state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings(),
-            responses: .constant([:])
+            settings: Settings()
         )
     }
 }

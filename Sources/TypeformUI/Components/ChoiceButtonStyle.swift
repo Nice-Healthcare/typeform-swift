@@ -75,10 +75,9 @@ struct ChoiceButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
             MultipleChoiceView(
-                reference: .multipleChoice_One,
+                state: .constant(ResponseState()),
                 properties: .preview_One,
-                settings: Settings(),
-                responses: .constant([:])
+                settings: Settings()
             )
             .padding()
         }
@@ -86,10 +85,9 @@ struct ChoiceButtonStyle_Previews: PreviewProvider {
         
         ScrollView {
             MultipleChoiceView(
-                reference: .multipleChoice_Many,
+                state: .constant(ResponseState()),
                 properties: .preview_Many,
-                settings: Settings(),
-                responses: .constant([:])
+                settings: Settings()
             )
             .padding()
         }

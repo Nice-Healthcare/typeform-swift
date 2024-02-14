@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct YesNoView: View {
     
-    let reference: Reference
-    let properties: YesNo
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: YesNo
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     
     @State private var selected: Bool?
     
@@ -49,48 +47,49 @@ struct YesNoView: View {
             }
         }
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .bool(let bool):
-                selected = bool
-            default:
-                selected = nil
-            }
-            
-            determineValidity()
+            registerState()
         }
-        .onChange(of: selected) { newValue in
-            if let response = newValue {
-                responses.wrappedValue[reference] = .bool(response)
-            } else {
-                responses.wrappedValue[reference] = nil
-            }
-            
-            determineValidity()
+        .onChange(of: selected) { _ in
+            updateState()
         }
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .bool(let bool):
+            selected = bool
+        default:
+            selected = nil
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
+        
+        if let response = selected {
+            state.response = .bool(response)
+        } else {
+            state.response = nil
         }
         
-        validated.wrappedValue = selected != nil
+        if let validations = self.validations, validations.required {
+            state.invalid = selected == nil
+        } else {
+            state.invalid = false
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
 struct YesNoView_Previews: PreviewProvider {
     static var previews: some View {
         YesNoView(
-            reference: .yesNo,
+            state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings(),
-            responses: .constant([:])
+            settings: Settings()
         )
     }
 }

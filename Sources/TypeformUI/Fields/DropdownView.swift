@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct DropdownView: View {
     
-    let reference: Reference
-    let properties: Dropdown
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: Dropdown
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     
     @State private var selected: Choice?
     
@@ -40,48 +38,49 @@ struct DropdownView: View {
         .frame(maxWidth: .infinity, alignment: .trailing)
         .fieldStyle(settings: settings)
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .choice(let choice):
-                selected = choice
-            default:
-                selected = nil
-            }
-            
-            determineValidity()
+            registerState()
         }
-        .onChange(of: selected) { newValue in
-            if let choice = newValue {
-                responses.wrappedValue[reference] = .choice(choice)
-            } else {
-                responses.wrappedValue[reference] = nil
-            }
-            
-            determineValidity()
+        .onChange(of: selected) { _ in
+            updateState()
         }
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .choice(let choice):
+            selected = choice
+        default:
+            selected = nil
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
+        
+        if let choice = selected {
+            state.response = .choice(choice)
+        } else {
+            state.response = nil
         }
         
-        validated.wrappedValue = selected != nil
+        if let validations = self.validations, validations.required {
+            state.invalid = selected == nil
+        } else {
+            state.invalid = false
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
 struct DropdownView_Previews: PreviewProvider {
     static var previews: some View {
         DropdownView(
-            reference: .dropdown,
+            state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings(),
-            responses: .constant([:])
+            settings: Settings()
         )
     }
 }

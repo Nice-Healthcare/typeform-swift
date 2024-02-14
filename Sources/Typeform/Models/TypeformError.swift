@@ -1,4 +1,5 @@
 public enum TypeformError: Error {
+    case couldNotDetermineFirst
     case couldNotDetermineNext(_ position: Position)
     case multipleLogicForField
     case noActionForChoice

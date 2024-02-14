@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct LongTextView: View {
     
-    let reference: Reference
-    let properties: LongText
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: LongText
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     var focused: FocusState<Bool>.Binding
     
     @State private var value: String = ""
@@ -53,38 +51,40 @@ struct LongTextView: View {
             )
         }
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .string(let string):
-                value = string
-            default:
-                value = ""
-            }
-            
-            determineValidity()
+            registerState()
         }
-        .onChange(of: value) { newValue in
-            if newValue.isEmpty {
-                responses.wrappedValue[reference] = nil
-            } else {
-                responses.wrappedValue[reference] = .string(newValue)
-            }
-            
-            determineValidity()
+        .onChange(of: value) { _ in
+            updateState()
         }
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .string(let string):
+            value = string
+        default:
+            value = ""
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
+        
+        if value.isEmpty {
+            state.response = nil
+        } else {
+            state.response = .string(value)
         }
         
-        validated.wrappedValue = !value.isEmpty
+        if let validations = self.validations, validations.required {
+            state.invalid = value.isEmpty
+        } else {
+            state.invalid = false
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
@@ -92,10 +92,9 @@ struct LongTextView_Previews: PreviewProvider {
     @FocusState static var focused: Bool
     static var previews: some View {
         LongTextView(
-            reference: .longText,
+            state: .constant(ResponseState()),
             properties: .preview,
             settings: Settings(),
-            responses: .constant([:]),
             focused: $focused
         )
     }

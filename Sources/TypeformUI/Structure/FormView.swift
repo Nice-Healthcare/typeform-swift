@@ -7,21 +7,31 @@ public struct FormView<Header: View, Footer: View>: View {
     
     let form: Typeform.Form
     let settings: Settings
+    let responses: Responses
     let conclusion: (Conclusion) -> Void
     let header: () -> Header
     let footer: () -> Footer
     
-    @State private var responses: Responses = [:]
-    
+    /// Launching point for a **Typeform** `Form`.
+    ///
+    /// - parameters:
+    ///   - form: The `Form` which should be navigated.
+    ///   - settings: Presentation and localization settings used to configure the form display.
+    ///   - responses: A response map with answers to questions asked by the form. These fields will be skipped.
+    ///   - conclusion: Callback function that will be executed at the termination of the form display.
+    ///   - header: A `View` which will be displayed above the form content.
+    ///   - footer: A `View` which will be displayed below the form content.
     public init(
         form: Typeform.Form,
         settings: Settings = Settings(),
+        responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
         self.form = form
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = header
         self.footer = footer
@@ -30,32 +40,35 @@ public struct FormView<Header: View, Footer: View>: View {
     public var body: some View {
         NavigationView {
             ZStack {
-                if let screen = form.firstScreen, settings.presentation.skipWelcomeScreen == false {
-                    ScreenView(
-                        responses: $responses,
-                        form: form,
-                        screen: screen,
-                        settings: settings,
-                        conclusion: conclusion,
-                        header: header,
-                        footer: footer
-                    )
-                } else if let field = form.fields.first {
-                    FieldView(
-                        responses: $responses,
-                        form: form,
-                        field: field,
-                        group: nil,
-                        settings: settings,
-                        conclusion: conclusion,
-                        header: header,
-                        footer: footer
-                    )
+                if let position = try? form.firstPosition(skipWelcomeScreen: settings.presentation.skipWelcomeScreen, given: responses) {
+                    switch position {
+                    case .screen(let screen):
+                        ScreenView(
+                            form: form,
+                            screen: screen,
+                            settings: settings,
+                            responses: responses,
+                            conclusion: conclusion,
+                            header: header,
+                            footer: footer
+                        )
+                    case .field(let field, let group):
+                        FieldView(
+                            form: form,
+                            field: field,
+                            group: group,
+                            settings: settings,
+                            responses: responses,
+                            conclusion: conclusion,
+                            header: header,
+                            footer: footer
+                        )
+                    }
                 } else {
                     RejectedView(
-                        responses: $responses,
                         form: form,
                         settings: settings,
+                        responses: responses,
                         conclusion: conclusion
                     )
                 }
@@ -71,11 +84,13 @@ public extension FormView where Footer == EmptyView {
     init(
         form: Typeform.Form,
         settings: Settings = Settings(),
+        responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header
     ) {
         self.form = form
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = header
         self.footer = { Footer() }
@@ -86,11 +101,13 @@ public extension FormView where Header == EmptyView {
     init(
         form: Typeform.Form,
         settings: Settings = Settings(),
+        responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
         self.form = form
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = footer
@@ -101,22 +118,33 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
     init(
         form: Typeform.Form,
         settings: Settings = Settings(),
+        responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void
     ) {
         self.form = form
         self.settings = settings
+        self.responses = responses
         self.conclusion = conclusion
         self.header = { Header() }
         self.footer = { Footer() }
     }
 }
 
-struct FormView_Previews: PreviewProvider {
-    static var previews: some View {
-        FormView(
-            form: .medicalIntake23,
-            conclusion: { _ in }
-        )
-    }
+#if swift(>=5.9)
+#Preview("Form View") {
+    FormView(
+        form: .medicalIntake35,
+        responses: [
+            .string("appointment-state"): .choice(
+                Choice(
+                    id: "0H6r4PQIWFI6",
+                    ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
+                    label: "Minnesota"
+                )
+            )
+        ],
+        conclusion: { _ in }
+    )
 }
+#endif
 #endif

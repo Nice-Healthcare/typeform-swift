@@ -5,12 +5,10 @@ import TypeformPreview
 
 struct RatingView: View {
     
-    let reference: Reference
-    let properties: Rating
-    let settings: Settings
-    var responses: Binding<Responses>
+    var state: Binding<ResponseState>
+    var properties: Rating
+    var settings: Settings
     var validations: Validations?
-    var validated: Binding<Bool>?
     
     @State private var value: Int?
     
@@ -71,24 +69,10 @@ struct RatingView: View {
             }
         }
         .onAppear {
-            let entry = responses.wrappedValue[reference]
-            switch entry {
-            case .int(let int):
-                value = int
-            default:
-                value = 0
-            }
-            
-            determineValidity()
+            registerState()
         }
-        .onChange(of: value) { newValue in
-            if let response = newValue {
-                responses.wrappedValue[reference] = .int(response)
-            } else {
-                responses.wrappedValue[reference] = nil
-            }
-            
-            determineValidity()
+        .onChange(of: value) { _ in
+            updateState()
         }
     }
     
@@ -96,27 +80,42 @@ struct RatingView: View {
         (value ?? 0) >= step ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
     }
     
-    private func determineValidity() {
-        guard let validated = self.validated else {
-            return
+    private func registerState() {
+        switch state.wrappedValue.response {
+        case .int(let int):
+            value = int
+        default:
+            value = nil
         }
         
-        guard let validations = validations, validations.required else {
-            validated.wrappedValue = true
-            return
+        updateState()
+    }
+    
+    private func updateState() {
+        var state = self.state.wrappedValue
+        
+        if let response = value {
+            state.response = .int(response)
+        } else {
+            state.response = nil
         }
         
-        validated.wrappedValue = value != nil
+        if let validations = self.validations, validations.required {
+            state.invalid = value == nil
+        } else {
+            state.invalid = false
+        }
+        
+        self.state.wrappedValue = state
     }
 }
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
         RatingView(
-            reference: .rating,
+            state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings(),
-            responses: .constant([:])
+            settings: Settings()
         )
     }
 }
