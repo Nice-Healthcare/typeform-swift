@@ -1,5 +1,5 @@
 extension Collection where Element == Var {
-    func match(given responses: Responses) -> Bool? {
+    func match(given responses: Responses, op: Op) -> Bool? {
         guard !isEmpty else {
             return true
         }
@@ -44,11 +44,28 @@ extension Collection where Element == Var {
             }
             
             return responseValue == string
+        case .int(let int):
+            guard case .int(let responseValue) = response else {
+                print(TypeformError.responseTypeMismatch(Int.self))
+                return nil
+            }
+            
+            switch op {
+            case .equal:
+                return responseValue == int
+            case .greaterEqualThan:
+                return responseValue >= int
+            case .lowerEqualThan:
+                return responseValue <= int
+            default:
+                print(TypeformError.unexpectedOperation(op))
+                return nil
+            }
         }
     }
     
-    func compactMatch(given responses: Responses) -> [Bool] {
-        if let match = match(given: responses) {
+    func compactMatch(given responses: Responses, op: Op) -> [Bool] {
+        if let match = match(given: responses, op: op) {
             return [match]
         } else {
             return []

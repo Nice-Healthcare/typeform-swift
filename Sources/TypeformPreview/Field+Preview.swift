@@ -10,6 +10,7 @@ public extension Reference {
     static let multipleChoice_Many = Reference(uuidString: "ab337720-ca51-402a-aa47-8ec8f316ba46")!
     static let multipleChoice_One = Reference(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")!
     static let number = Reference(uuidString: "3e8760df-4a6e-47f2-8b03-0ef2e72ac35f")!
+    static let opinionScale = Reference(uuidString: "49bbbbb5-b2db-4fe6-9257-2cea7a21159f")!
     static let rating = Reference(uuidString: "7f117917-1c53-4524-a334-fe3f60e229dd")!
     static let shortText = Reference(uuidString: "d7a86703-22e8-495b-95b2-543cd3f7dde6")!
     static let yesNo = Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")!
@@ -92,6 +93,16 @@ public extension Number {
     static var preview: Number = {
         guard case let .number(properties) = Field.field(withRef: .number).properties else {
             preconditionFailure("Couldn't case field to 'number'.")
+        }
+        
+        return properties
+    }()
+}
+
+public extension OpinionScale {
+    static var preview: OpinionScale = {
+        guard case let .opinionScale(properties) = Field.field(withRef: .opinionScale, in: .ptIntake42).properties else {
+            preconditionFailure("Couldn't case field to 'opinionScale'.")
         }
         
         return properties

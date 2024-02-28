@@ -53,6 +53,10 @@ public extension Responses {
                 guard case .int = value else {
                     return key
                 }
+            case .opinionScale:
+                guard case .int = value else {
+                    return key
+                }
             case .rating:
                 guard case .int = value else {
                     return key

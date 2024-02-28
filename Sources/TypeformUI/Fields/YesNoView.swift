@@ -27,7 +27,7 @@ struct YesNoView: View {
                     Text(settings.localization.yes)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .buttonStyle(ChoiceButtonStyle(
+                .buttonStyle(IntermittentChoiceButtonStyle(
                     allowsMultipleSelection: false,
                     selected: selected == true,
                     settings: settings
@@ -39,7 +39,7 @@ struct YesNoView: View {
                     Text(settings.localization.no)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .buttonStyle(ChoiceButtonStyle(
+                .buttonStyle(IntermittentChoiceButtonStyle(
                     allowsMultipleSelection: false,
                     selected: selected == false,
                     settings: settings
