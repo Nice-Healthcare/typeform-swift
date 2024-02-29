@@ -58,6 +58,12 @@ struct OpinionScaleView: View {
                 }
             }
         }
+        .onAppear {
+            registerState()
+        }
+        .onChange(of: value) { _ in
+            updateState()
+        }
     }
     
     private func registerState() {
