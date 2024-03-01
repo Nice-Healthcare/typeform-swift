@@ -53,10 +53,14 @@ extension Collection where Element == Var {
             switch op {
             case .equal:
                 return responseValue == int
+            case .greaterThan:
+                return responseValue > int
             case .greaterEqualThan:
                 return responseValue >= int
             case .lowerEqualThan:
                 return responseValue <= int
+            case .lowerThan:
+                return responseValue < int
             default:
                 print(TypeformError.unexpectedOperation(op))
                 return nil
