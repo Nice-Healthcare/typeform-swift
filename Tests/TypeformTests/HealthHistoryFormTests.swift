@@ -4,9 +4,9 @@ import XCTest
 
 final class HealthHistoryFormTests: TypeformTests {
     
-    override var jsonResource: String { "HealthHistoryV1" }
+    override var jsonResource: String { "HealthHistoryV3" }
     
     func testDecoding() throws {
-        XCTAssertEqual(form.id, "dmsX77W1-testing")
+        XCTAssertEqual(form.id, "dmsX77W1")
     }
 }

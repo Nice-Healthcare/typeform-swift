@@ -22,7 +22,7 @@
       "properties" : {
 
       },
-      "ref" : "age-category",
+      "ref" : "patient-age",
       "title" : "What is your age?",
       "type" : "number",
       "validations" : {
@@ -38,18 +38,18 @@
           {
             "id" : "gYxjsy4loTDH",
             "label" : "Male",
-            "ref" : "biological-sex-answer-male"
+            "ref" : "sex-assigned-at-birth-answer-male"
           },
           {
             "id" : "ZemocFoiPPyM",
             "label" : "Female",
-            "ref" : "biological-sex-answer-female"
+            "ref" : "sex-assigned-at-birth-answer-female"
           }
         ],
         "randomize" : false,
         "vertical_alignment" : true
       },
-      "ref" : "biological-sex",
+      "ref" : "sex-assigned-at-birth",
       "title" : "What was your sex assigned at birth?",
       "type" : "multiple_choice",
       "validations" : {
@@ -485,8 +485,8 @@
       }
     }
   ],
-  "id" : "dmsX77W1-testing",
-  "last_updated_at" : "2024-02-26T17:18:10+00:00",
+  "id" : "dmsX77W1",
+  "last_updated_at" : "2024-02-29T22:11:56+00:00",
   "logic" : [
     {
       "actions" : [
@@ -530,7 +530,7 @@
           "details" : {
             "to" : {
               "type" : "field",
-              "value" : "age-category"
+              "value" : "patient-age"
             }
           }
         }
@@ -1162,7 +1162,7 @@
                 "vars" : [
                   {
                     "type" : "field",
-                    "value" : "age-category"
+                    "value" : "patient-age"
                   },
                   {
                     "type" : "constant",
@@ -1175,11 +1175,11 @@
                 "vars" : [
                   {
                     "type" : "field",
-                    "value" : "biological-sex"
+                    "value" : "sex-assigned-at-birth"
                   },
                   {
                     "type" : "choice",
-                    "value" : "biological-sex-answer-female"
+                    "value" : "sex-assigned-at-birth-answer-female"
                   }
                 ]
               }
@@ -1202,7 +1202,7 @@
                 "vars" : [
                   {
                     "type" : "field",
-                    "value" : "age-category"
+                    "value" : "patient-age"
                   },
                   {
                     "type" : "constant",
@@ -1215,11 +1215,11 @@
                 "vars" : [
                   {
                     "type" : "field",
-                    "value" : "biological-sex"
+                    "value" : "sex-assigned-at-birth"
                   },
                   {
                     "type" : "choice",
-                    "value" : "biological-sex-answer-male"
+                    "value" : "sex-assigned-at-birth-answer-male"
                   }
                 ]
               }
@@ -1239,7 +1239,7 @@
             "vars" : [
               {
                 "type" : "field",
-                "value" : "age-category"
+                "value" : "patient-age"
               },
               {
                 "type" : "constant",
@@ -1420,7 +1420,7 @@
   "theme" : {
     "href" : "https:\/\/api.typeform.com\/themes\/qHWOQ7"
   },
-  "title" : "Patient Health History V1",
+  "title" : "Patient Health History V3",
   "type" : "quiz",
   "workspace" : {
     "href" : "https:\/\/api.typeform.com\/workspaces\/CEvvDB"
