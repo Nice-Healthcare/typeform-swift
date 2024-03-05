@@ -20,6 +20,10 @@ public extension Form {
             }
         }
         
+        if field.type == .statement {
+            return .field(field, nil)
+        }
+        
         return try next(from: .field(field), given: responses)
     }
      

@@ -45,7 +45,15 @@ final class PTIntakeTests: TypeformTests {
             return
         }
         
-        XCTAssertEqual(statementField.id, "cLKRIr0wbDP9")
+        XCTAssertEqual(statementField.id, "iJolnxu6Sftn")
+        position = try form.next(from: position, given: responses)
+        
+        guard case let .field(continueField, _) = position else {
+            XCTFail("Unexpected Position")
+            return
+        }
+        
+        XCTAssertEqual(continueField.id, "cLKRIr0wbDP9")
         
         position = try form.next(from: position, given: responses)
         guard case let .field(reasonField, _) = position else {
