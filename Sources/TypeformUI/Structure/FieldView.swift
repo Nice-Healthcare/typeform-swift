@@ -103,6 +103,13 @@ struct FieldView<Header: View, Footer: View>: View {
                             settings: settings,
                             validations: field.validations
                         )
+                    case .opinionScale(let properties):
+                        OpinionScaleView(
+                            state: $responseState,
+                            properties: properties,
+                            settings: settings,
+                            validations: field.validations
+                        )
                     case .rating(let properties):
                         RatingView(
                             state: $responseState,

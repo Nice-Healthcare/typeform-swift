@@ -20,6 +20,10 @@ public extension Form {
             }
         }
         
+        if field.type == .statement {
+            return .field(field, nil)
+        }
+        
         return try next(from: .field(field), given: responses)
     }
      
@@ -142,8 +146,15 @@ private extension Form {
         
         // Is there a next `Field`?
         if let index = fields.firstIndex(of: field) {
-            if (index + 1) < fields.count {
-                return .field(fields[index + 1])
+            switch index + 1 {
+            case let x where x == fields.count:
+                if let screen = defaultOrFirstEndingScreen {
+                    return .screen(screen)
+                }
+            case let x where x < fields.count:
+                return .field(fields[x])
+            default:
+                break
             }
         }
         

@@ -12,6 +12,7 @@ public struct Var: Hashable, Codable {
         case bool(Bool)
         case ref(Reference)
         case string(String)
+        case int(Int)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -40,6 +41,8 @@ public struct Var: Hashable, Codable {
         case .constant:
             if let bool = try? container.decode(Bool.self, forKey: .value) {
                 value = .bool(bool)
+            } else if let int = try? container.decode(Int.self, forKey: .value) {
+                value = .int(int)
             } else if let string = try? container.decode(String.self, forKey: .value) {
                 value = .string(string)
             } else {
@@ -59,6 +62,8 @@ public struct Var: Hashable, Codable {
             try container.encode(bool, forKey: .value)
         case .string(let string):
             try container.encode(string, forKey: .value)
+        case .int(let int):
+            try container.encode(int, forKey: .value)
         }
     }
 }

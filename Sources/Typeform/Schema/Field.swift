@@ -9,6 +9,7 @@ public struct Field: Hashable, Identifiable, Codable {
         case long_text
         case multiple_choice
         case number
+        case opinion_scale
         case rating
         case short_text
         case statement
@@ -22,6 +23,7 @@ public struct Field: Hashable, Identifiable, Codable {
         case longText(LongText)
         case multipleChoice(MultipleChoice)
         case number(Number)
+        case opinionScale(OpinionScale)
         case rating(Rating)
         case shortText(ShortText)
         case statement(Statement)
@@ -86,6 +88,9 @@ public struct Field: Hashable, Identifiable, Codable {
         case .number:
             let number = try container.decode(Number.self, forKey: .properties)
             properties = .number(number)
+        case .opinion_scale:
+            let optionScale = try container.decode(OpinionScale.self, forKey: .properties)
+            properties = .opinionScale(optionScale)
         case .rating:
             let rating = try container.decode(Rating.self, forKey: .properties)
             properties = .rating(rating)
@@ -121,6 +126,8 @@ public struct Field: Hashable, Identifiable, Codable {
             try container.encode(multipleChoice, forKey: .properties)
         case .number(let number):
             try container.encode(number, forKey: .properties)
+        case .opinionScale(let optionScale):
+            try container.encode(optionScale, forKey: .properties)
         case .rating(let rating):
             try container.encode(rating, forKey: .properties)
         case .shortText(let shortText):

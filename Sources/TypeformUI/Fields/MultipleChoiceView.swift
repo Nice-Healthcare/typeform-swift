@@ -45,7 +45,7 @@ struct MultipleChoiceView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .buttonStyle(
-                        ChoiceButtonStyle(
+                        IntermittentChoiceButtonStyle(
                             allowsMultipleSelection: properties.allow_multiple_selection,
                             selected: selections.contains(choice),
                             settings: settings

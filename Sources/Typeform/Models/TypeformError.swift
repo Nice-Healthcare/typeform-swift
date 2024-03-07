@@ -9,4 +9,5 @@ public enum TypeformError: Error {
     case varCollectionMissingInvalidField
     case varCollectionMissingInvalidValue
     case responseTypeMismatch(Any.Type)
+    case unexpectedOperation(Op)
 }

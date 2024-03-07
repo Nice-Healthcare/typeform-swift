@@ -27,6 +27,10 @@ public extension Form {
     static var medicalIntake26 = intakeForm("MedicalIntake26")
     static var medicalIntake35 = intakeForm("MedicalIntake35")
     static var genericSlugs = intakeForm("GenericSlugs")
+    static let ptIntake42 = intakeForm("PTIntake42")
+    static let primaryCare3 = intakeForm("PrimaryCareV3")
+    static let physicalTherapy3 = intakeForm("PhysicalTherapyV3")
+    static let healthHistory3 = intakeForm("HealthHistoryV3")
 }
 
 public extension WelcomeScreen {

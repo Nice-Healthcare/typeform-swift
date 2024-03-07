@@ -4,23 +4,29 @@ extension Condition {
         
         switch parameters {
         case .vars(let vars):
-            satisfied = vars.compactMatch(given: responses)
+            satisfied = vars.compactMatch(given: responses, op: op)
         case .conditions(let conditions):
             satisfied = conditions.compactMap { $0.satisfied(given: responses) }
         }
         
-        switch op {
-        case .always:
+        if case .always = op {
             return true
+        }
+        
+        guard !satisfied.isEmpty else {
+            return false
+        }
+        
+        switch op {
         case .and:
-            return !satisfied.isEmpty && !satisfied.contains(false)
+            return !satisfied.contains(false)
         case .or:
-            return !satisfied.isEmpty && satisfied.contains(true)
+            return satisfied.contains(true)
         case .is:
-            return !satisfied.isEmpty && !satisfied.contains(false)
+            return !satisfied.contains(false)
         case .isNot:
-            return !satisfied.isEmpty && !satisfied.contains(true)
-        case .equal:
+            return !satisfied.contains(true)
+        default:
             print("Unexpected Condition.Op \(#function) \(#fileID) \(#line)")
             return nil
         }
