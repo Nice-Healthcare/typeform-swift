@@ -43,10 +43,18 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
     }
     
     private var strokeWidth: Double {
-        if style == nil {
+        if style == .none {
             selected ? settings.rating.selectedStrokeWidth : settings.rating.unselectedStrokeWidth
         } else {
             selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
+        }
+    }
+    
+    private var foregroundColor: Color {
+        if style == .none {
+            selected ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
+        } else {
+            settings.typography.bodyColor
         }
     }
     
@@ -91,6 +99,7 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
             }
             
             configuration.label
+                .foregroundColor(foregroundColor)
         }
         .padding(.vertical, settings.interaction.contentVerticalInset)
         .padding(.horizontal, settings.interaction.contentHorizontalInset)
