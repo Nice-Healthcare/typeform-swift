@@ -28,33 +28,33 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
     
     private var backgroundColor: Color {
         if style == nil {
-            selected ? settings.rating.selectedBackgroundColor : settings.rating.unselectedBackgroundColor
+            return selected ? settings.rating.selectedBackgroundColor : settings.rating.unselectedBackgroundColor
         } else {
-            selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
+            return selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
         }
     }
     
     private var strokeColor: Color {
         if style == nil {
-            selected ? settings.rating.selectedStrokeColor : settings.rating.unselectedStrokeColor
+            return selected ? settings.rating.selectedStrokeColor : settings.rating.unselectedStrokeColor
         } else {
-            selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
+            return selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
         }
     }
     
     private var strokeWidth: Double {
         if style == .none {
-            selected ? settings.rating.selectedStrokeWidth : settings.rating.unselectedStrokeWidth
+            return selected ? settings.rating.selectedStrokeWidth : settings.rating.unselectedStrokeWidth
         } else {
-            selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
+            return selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
         }
     }
     
     private var foregroundColor: Color {
         if style == .none {
-            selected ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
+            return selected ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
         } else {
-            settings.typography.bodyColor
+            return settings.typography.bodyColor
         }
     }
     
