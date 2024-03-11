@@ -27,15 +27,27 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
     }
     
     private var backgroundColor: Color {
-        selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
+        if style == nil {
+            selected ? settings.rating.selectedBackgroundColor : settings.rating.unselectedBackgroundColor
+        } else {
+            selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
+        }
     }
     
     private var strokeColor: Color {
-        selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
+        if style == nil {
+            selected ? settings.rating.selectedStrokeColor : settings.rating.unselectedStrokeColor
+        } else {
+            selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
+        }
     }
     
     private var strokeWidth: Double {
-        selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
+        if style == nil {
+            selected ? settings.rating.selectedStrokeWidth : settings.rating.unselectedStrokeWidth
+        } else {
+            selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
+        }
     }
     
     private var shape: RoundedRectangle {

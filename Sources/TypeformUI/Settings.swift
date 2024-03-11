@@ -241,14 +241,32 @@ public struct Settings {
     }
     
     public struct Rating {
+        public var unselectedBackgroundColor: Color
+        public var unselectedStrokeColor: Color
+        public var unselectedStrokeWidth: Double
         public var unselectedForegroundColor: Color
+        public var selectedBackgroundColor: Color
+        public var selectedStrokeColor: Color
+        public var selectedStrokeWidth: Double
         public var selectedForegroundColor: Color
         
         public init(
+            unselectedBackgroundColor: Color = .blue.opacity(0.3),
+            unselectedStrokeColor: Color = .blue.opacity(0.5),
+            unselectedStrokeWidth: Double = 1.0,
             unselectedForegroundColor: Color = .black,
+            selectedBackgroundColor: Color = .blue.opacity(0.3),
+            selectedStrokeColor: Color = .blue.opacity(0.9),
+            selectedStrokeWidth: Double = 2.0,
             selectedForegroundColor: Color = .blue
         ) {
+            self.unselectedBackgroundColor = unselectedBackgroundColor
+            self.unselectedStrokeColor = unselectedStrokeColor
+            self.unselectedStrokeWidth = unselectedStrokeWidth
             self.unselectedForegroundColor = unselectedForegroundColor
+            self.selectedBackgroundColor = selectedBackgroundColor
+            self.selectedStrokeColor = selectedStrokeColor
+            self.selectedStrokeWidth = selectedStrokeWidth
             self.selectedForegroundColor = selectedForegroundColor
         }
     }
