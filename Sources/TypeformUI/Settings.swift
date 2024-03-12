@@ -163,9 +163,11 @@ public struct Settings {
         public var unselectedBackgroundColor: Color
         public var unselectedStrokeColor: Color
         public var unselectedStrokeWidth: Double
+        public var unselectedForegroundColor: Color
         public var selectedBackgroundColor: Color
         public var selectedStrokeColor: Color
         public var selectedStrokeWidth: Double
+        public var selectedForegroundColor: Color
         public var contentVerticalInset: Double
         public var contentHorizontalInset: Double
         public var contentCornerRadius: Double
@@ -174,9 +176,11 @@ public struct Settings {
             unselectedBackgroundColor: Color = .blue.opacity(0.2),
             unselectedStrokeColor: Color = .blue.opacity(0.5),
             unselectedStrokeWidth: Double = 1.0,
+            unselectedForegroundColor: Color = .white,
             selectedBackgroundColor: Color = .blue.opacity(0.5),
             selectedStrokeColor: Color = .blue.opacity(0.8),
             selectedStrokeWidth: Double = 2.0,
+            selectedForegroundColor: Color = .blue,
             contentVerticalInset: Double = 15.0,
             contentHorizontalInset: Double = 10.0,
             contentCornerRadius: Double = 6.0
@@ -184,9 +188,11 @@ public struct Settings {
             self.unselectedBackgroundColor = unselectedBackgroundColor
             self.unselectedStrokeColor = unselectedStrokeColor
             self.unselectedStrokeWidth = unselectedStrokeWidth
+            self.unselectedForegroundColor = unselectedForegroundColor
             self.selectedBackgroundColor = selectedBackgroundColor
             self.selectedStrokeColor = selectedStrokeColor
             self.selectedStrokeWidth = selectedStrokeWidth
+            self.selectedForegroundColor = selectedForegroundColor
             self.contentVerticalInset = contentVerticalInset
             self.contentHorizontalInset = contentHorizontalInset
             self.contentCornerRadius = contentCornerRadius
@@ -241,14 +247,32 @@ public struct Settings {
     }
     
     public struct Rating {
+        public var unselectedBackgroundColor: Color
+        public var unselectedStrokeColor: Color
+        public var unselectedStrokeWidth: Double
         public var unselectedForegroundColor: Color
+        public var selectedBackgroundColor: Color
+        public var selectedStrokeColor: Color
+        public var selectedStrokeWidth: Double
         public var selectedForegroundColor: Color
         
         public init(
+            unselectedBackgroundColor: Color = .blue.opacity(0.3),
+            unselectedStrokeColor: Color = .blue.opacity(0.5),
+            unselectedStrokeWidth: Double = 1.0,
             unselectedForegroundColor: Color = .black,
+            selectedBackgroundColor: Color = .blue.opacity(0.3),
+            selectedStrokeColor: Color = .blue.opacity(0.9),
+            selectedStrokeWidth: Double = 2.0,
             selectedForegroundColor: Color = .blue
         ) {
+            self.unselectedBackgroundColor = unselectedBackgroundColor
+            self.unselectedStrokeColor = unselectedStrokeColor
+            self.unselectedStrokeWidth = unselectedStrokeWidth
             self.unselectedForegroundColor = unselectedForegroundColor
+            self.selectedBackgroundColor = selectedBackgroundColor
+            self.selectedStrokeColor = selectedStrokeColor
+            self.selectedStrokeWidth = selectedStrokeWidth
             self.selectedForegroundColor = selectedForegroundColor
         }
     }

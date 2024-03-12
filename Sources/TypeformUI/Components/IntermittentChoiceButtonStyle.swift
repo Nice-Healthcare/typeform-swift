@@ -27,15 +27,35 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
     }
     
     private var backgroundColor: Color {
-        selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
+        if style == nil {
+            return selected ? settings.rating.selectedBackgroundColor : settings.rating.unselectedBackgroundColor
+        } else {
+            return selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
+        }
     }
     
     private var strokeColor: Color {
-        selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
+        if style == nil {
+            return selected ? settings.rating.selectedStrokeColor : settings.rating.unselectedStrokeColor
+        } else {
+            return selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
+        }
     }
     
     private var strokeWidth: Double {
-        selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
+        if style == .none {
+            return selected ? settings.rating.selectedStrokeWidth : settings.rating.unselectedStrokeWidth
+        } else {
+            return selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
+        }
+    }
+    
+    private var foregroundColor: Color {
+        if style == .none {
+            return selected ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
+        } else {
+            return settings.typography.bodyColor
+        }
     }
     
     private var shape: RoundedRectangle {
@@ -79,6 +99,7 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
             }
             
             configuration.label
+                .foregroundColor(foregroundColor)
         }
         .padding(.vertical, settings.interaction.contentVerticalInset)
         .padding(.horizontal, settings.interaction.contentHorizontalInset)
