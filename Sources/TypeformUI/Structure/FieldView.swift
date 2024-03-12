@@ -180,7 +180,7 @@ struct FieldView<Header: View, Footer: View>: View {
                         cancel = true
                     }
                 } label: {
-                    Text(settings.localization.cancel)
+                    Text(settings.localization.exit)
                 }
                 .buttonStyle(.borderless)
                 

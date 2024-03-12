@@ -120,7 +120,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                     Button {
                         conclusion(.canceled)
                     } label: {
-                        Text(settings.localization.cancel)
+                        Text(settings.localization.exit)
                     }
                     .buttonStyle(.borderless)
                 }

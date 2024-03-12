@@ -10,6 +10,7 @@ public struct Settings {
         public var finish: String
         public var yes: String
         public var no: String
+        public var exit: String
         public var abandonConfirmationTitle: String
         public var abandonConfirmationMessage: String
         public var abandonConfirmationAction: String
@@ -22,6 +23,7 @@ public struct Settings {
             finish: String = "Finish",
             yes: String = "Yes",
             no: String = "No",
+            exit: String = "Exit",
             abandonConfirmationTitle: String = "Abandon Form?",
             abandonConfirmationMessage: String = "Are you sure you want to abandon the form?",
             abandonConfirmationAction: String = "Abandon",
@@ -33,6 +35,7 @@ public struct Settings {
             self.finish = finish
             self.yes = yes
             self.no = no
+            self.exit = exit
             self.abandonConfirmationAction = abandonConfirmationAction
             self.abandonConfirmationTitle = abandonConfirmationTitle
             self.abandonConfirmationMessage = abandonConfirmationMessage
