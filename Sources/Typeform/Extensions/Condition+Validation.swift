@@ -1,5 +1,5 @@
 extension Condition {
-    func satisfied(given responses: Responses) -> Bool? {
+    func satisfied(given responses: Responses) -> Bool {
         if case .always = op {
             return true
         }
@@ -10,7 +10,7 @@ extension Condition {
         case .vars(let vars):
             satisfied = vars.compactMatch(given: responses, op: op)
         case .conditions(let conditions):
-            satisfied = conditions.compactMap { $0.satisfied(given: responses) }
+            satisfied = conditions.map { $0.satisfied(given: responses) }
         }
         
         guard !satisfied.isEmpty else {
