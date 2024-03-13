@@ -97,7 +97,7 @@ private extension Form {
         
         // Is there `Logic` that applies to this `Field`?
         if let logic = logic.first(where: { $0.ref == field.ref }) {
-            if let action = logic.actions.first(where: { $0.condition.satisfied(given: responses) == true }) {
+            if let action = logic.actions.first(where: { $0.condition.satisfied(given: responses) }) {
                 switch action.details.to.type {
                 case .field:
                     if let position = parent(forFieldWithRef: action.details.to.value) {

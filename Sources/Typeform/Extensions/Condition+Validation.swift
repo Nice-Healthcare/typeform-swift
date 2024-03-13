@@ -1,16 +1,16 @@
 extension Condition {
-    func satisfied(given responses: Responses) -> Bool? {
+    func satisfied(given responses: Responses) -> Bool {
+        if case .always = op {
+            return true
+        }
+        
         let satisfied: [Bool]
         
         switch parameters {
         case .vars(let vars):
             satisfied = vars.compactMatch(given: responses, op: op)
         case .conditions(let conditions):
-            satisfied = conditions.compactMap { $0.satisfied(given: responses) }
-        }
-        
-        if case .always = op {
-            return true
+            satisfied = conditions.map { $0.satisfied(given: responses) }
         }
         
         guard !satisfied.isEmpty else {
@@ -27,8 +27,8 @@ extension Condition {
         case .isNot:
             return !satisfied.contains(true)
         default:
-            print("Unexpected Condition.Op \(#function) \(#fileID) \(#line)")
-            return nil
+            // Equatable - [Var].compactMatch(given:op:)
+            return !satisfied.contains(false)
         }
     }
 }
