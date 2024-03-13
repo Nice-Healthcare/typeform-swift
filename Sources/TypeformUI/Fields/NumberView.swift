@@ -20,7 +20,9 @@ struct NumberView: View {
             }
             
             TextField("", value: $value, format: .number)
+                #if os(iOS) || os(tvOS)
                 .keyboardType(.numberPad)
+                #endif
                 .fieldStyle(settings: settings)
         }
         .onAppear {
