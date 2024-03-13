@@ -20,6 +20,7 @@ struct NumberView: View {
             }
             
             TextField("", value: $value, format: .number)
+                .keyboardType(.numberPad)
                 .fieldStyle(settings: settings)
         }
         .onAppear {
