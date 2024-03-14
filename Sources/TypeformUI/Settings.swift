@@ -88,24 +88,32 @@ public struct Settings {
     }
     
     public struct Typography {
+        /// `Font` applied to `Screen.title` and `Field.title` blocks.
         public var titleFont: Font
+        /// `Color` applied to `Screen.title` and `Field.title` blocks.
         public var titleColor: Color
+        /// `Font` applied to supplemental text blocks, like Date toggle.
         public var promptFont: Font
+        /// `Color` applied to supplemental text blocks, like Date toggle.
         public var promptColor: Color
+        /// `Font` applied to any other text element.
         public var bodyFont: Font
+        /// `Color` applied to any other text element.
         public var bodyColor: Color
+        /// `Font` applied to `Field.properties.description` blocks.
         public var captionFont: Font
+        /// `Color` applied to `Field.properties.description` blocks.
         public var captionColor: Color
         
         public init(
             titleFont: Font = .title,
             titleColor: Color = .black,
-            promptFont: Font = .title3,
-            promptColor: Color = .black,
+            promptFont: Font = .body,
+            promptColor: Color = .gray,
             bodyFont: Font = .body,
             bodyColor: Color = .black,
             captionFont: Font = .caption,
-            captionColor: Color = .black
+            captionColor: Color = .gray
         ) {
             self.titleFont = titleFont
             self.titleColor = titleColor

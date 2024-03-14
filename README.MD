@@ -90,6 +90,7 @@ All of the _structural_ components are supported: Welcome Screen, Ending, Statem
 * Multiple Choice
 * Yes/No
 * Dropdown
+* Opinion Scale
 
 ## Customization
 

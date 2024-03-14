@@ -99,6 +99,7 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
             }
             
             configuration.label
+                .font(settings.typography.bodyFont)
                 .foregroundColor(foregroundColor)
         }
         .padding(.vertical, settings.interaction.contentVerticalInset)

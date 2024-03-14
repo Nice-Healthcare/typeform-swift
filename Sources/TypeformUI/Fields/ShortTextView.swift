@@ -18,6 +18,7 @@ struct ShortTextView: View {
             if let description = properties.description {
                 Text(description)
                     .font(settings.typography.captionFont)
+                    .foregroundColor(settings.typography.captionColor)
             }
             
             TextField("", text: $value)

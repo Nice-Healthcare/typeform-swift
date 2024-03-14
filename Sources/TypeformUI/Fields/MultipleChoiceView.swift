@@ -25,6 +25,7 @@ struct MultipleChoiceView: View {
             if let description = properties.description {
                 Text(description)
                     .font(settings.typography.captionFont)
+                    .foregroundColor(settings.typography.captionColor)
             }
             
             VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
@@ -42,6 +43,7 @@ struct MultipleChoiceView: View {
                     } label: {
                         Text(choice.label)
                             .font(settings.typography.bodyFont)
+                            .foregroundColor(settings.typography.bodyColor)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .buttonStyle(

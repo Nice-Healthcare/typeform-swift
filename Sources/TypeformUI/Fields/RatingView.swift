@@ -60,8 +60,8 @@ struct RatingView: View {
                                 .padding([.leading, .trailing], 6)
                             
                             Text("\(step)")
-                                .font(settings.typography.bodyFont)
-                                .foregroundColor(settings.typography.bodyColor)
+                                .font(settings.typography.promptFont)
+                                .foregroundColor(settings.typography.promptColor)
                         }
                     }
                     .buttonStyle(.plain)
