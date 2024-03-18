@@ -14,8 +14,7 @@ struct OpinionScaleView: View {
     
     private var start: Int { properties.start_at_one ? 1 : 0 }
     private var end: Int { properties.start_at_one ? properties.steps : properties.steps - 1 }
-    private var range: Range<Int> { Range(start...end) }
-    private var sliderRange: ClosedRange<Double> { Double(start - 1)...Double(end) }
+    private var range: ClosedRange<Double> { Double(start - 1)...Double(end) }
     private var sliderValue: String {
         if let value = self.value {
             return "\(value)"
@@ -50,7 +49,7 @@ struct OpinionScaleView: View {
                         }
                     }
                 ),
-                in: sliderRange,
+                in: range,
                 step: 1.0
             )
             
