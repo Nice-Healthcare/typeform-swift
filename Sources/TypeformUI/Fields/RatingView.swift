@@ -77,7 +77,7 @@ struct RatingView: View {
     }
     
     private func color(forStep step: Int) -> Color {
-        (value ?? 0) >= step ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
+        (value ?? 0) >= step ? settings.rating.theme.selectedForegroundColor : settings.rating.theme.unselectedForegroundColor
     }
     
     private func registerState() {
