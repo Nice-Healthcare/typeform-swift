@@ -57,12 +57,15 @@ struct OpinionScaleView: View {
                 Text(leadingLabel)
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
+                    .frame(width: 120, alignment: .leading)
                 
                 Spacer()
                 
                 Text(trailingLabel)
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 120, alignment: .trailing)
             }
         }
         .onAppear {
