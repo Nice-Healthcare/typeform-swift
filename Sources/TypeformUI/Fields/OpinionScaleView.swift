@@ -37,9 +37,9 @@ struct OpinionScaleView: View {
                 value: Binding(
                     get: {
                         if let value = self.value {
-                            Double(value)
+                            return Double(value)
                         } else {
-                            Double(start - 1)
+                            return Double(start - 1)
                         }
                     }, set: { newValue in
                         if newValue == Double(start - 1) {
