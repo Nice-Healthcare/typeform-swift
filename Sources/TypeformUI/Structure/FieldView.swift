@@ -51,8 +51,6 @@ struct FieldView<Header: View, Footer: View>: View {
         _responses = .init(initialValue: responses)
     }
     
-    private var titleFont: Font { field.type == .group ? settings.typography.titleFont : settings.typography.promptFont }
-    
     var body: some View {
         VStack(spacing: 0) {
             header()
@@ -60,8 +58,8 @@ struct FieldView<Header: View, Footer: View>: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: settings.presentation.titleDescriptionVerticalSpacing) {
                     Text(field.title)
-                        .font(titleFont)
-                        .foregroundColor(settings.typography.promptColor)
+                        .font(settings.typography.titleFont)
+                        .foregroundColor(settings.typography.titleColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     switch field.properties {

@@ -10,11 +10,11 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
         case checkbox
     }
     
-    let style: IndicatorStyle?
+    let style: IndicatorStyle
     let selected: Bool
     let settings: Settings
     
-    init(style: IndicatorStyle? = nil, selected: Bool, settings: Settings) {
+    init(style: IndicatorStyle = .radio, selected: Bool, settings: Settings) {
         self.style = style
         self.selected = selected
         self.settings = settings
@@ -27,82 +27,48 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
     }
     
     private var backgroundColor: Color {
-        if style == nil {
-            return selected ? settings.rating.selectedBackgroundColor : settings.rating.unselectedBackgroundColor
-        } else {
-            return selected ? settings.interaction.selectedBackgroundColor : settings.interaction.unselectedBackgroundColor
-        }
+        selected ? settings.button.theme.selectedBackgroundColor : settings.button.theme.unselectedBackgroundColor
     }
     
     private var strokeColor: Color {
-        if style == nil {
-            return selected ? settings.rating.selectedStrokeColor : settings.rating.unselectedStrokeColor
-        } else {
-            return selected ? settings.interaction.selectedStrokeColor : settings.interaction.unselectedStrokeColor
-        }
+        selected ? settings.button.theme.selectedStrokeColor : settings.button.theme.unselectedStrokeColor
     }
     
     private var strokeWidth: Double {
-        if style == .none {
-            return selected ? settings.rating.selectedStrokeWidth : settings.rating.unselectedStrokeWidth
-        } else {
-            return selected ? settings.interaction.selectedStrokeWidth : settings.interaction.unselectedStrokeWidth
-        }
+        selected ? settings.button.theme.selectedStrokeWidth : settings.button.theme.unselectedStrokeWidth
     }
     
     private var foregroundColor: Color {
-        if style == .none {
-            return selected ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
-        } else {
-            return settings.typography.bodyColor
-        }
+        settings.typography.bodyColor
     }
     
     private var shape: RoundedRectangle {
-        RoundedRectangle(cornerRadius: settings.interaction.contentCornerRadius)
+        RoundedRectangle(cornerRadius: settings.button.cornerRadius)
     }
     
     func makeBody(configuration: Configuration) -> some View {
         HStack {
-            if let style = self.style {
-                ZStack {
-                    switch style {
-                    case .radio:
-                        Circle()
-                            .foregroundColor(selected ? settings.radio.selectedBackgroundColor : settings.radio.unselectedBackgroundColor)
-                        
-                        Circle()
-                            .stroke(selected ? settings.radio.selectedStrokeColor : settings.radio.unselectedStrokeColor, lineWidth: 1.0)
-                        
-                        if selected {
-                            Circle()
-                                .foregroundColor(settings.radio.selectedForegroundColor)
-                                .padding(4)
-                        }
-                    case .checkbox:
-                        RoundedRectangle(cornerRadius: settings.checkbox.cornerRadius)
-                            .foregroundColor(selected ? settings.checkbox.selectedBackgroundColor : settings.checkbox.unselectedBackgroundColor)
-                        
-                        RoundedRectangle(cornerRadius: settings.checkbox.cornerRadius)
-                            .stroke(selected ? settings.checkbox.selectedStrokeColor : settings.checkbox.unselectedStrokeColor, lineWidth: 1.0)
-                        
-                        if selected {
-                            Image(systemName: "checkmark")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(settings.checkbox.selectedForegroundColor)
-                                .padding(4)
-                        }
-                    }
+            Group {
+                switch style {
+                case .radio:
+                    Radio(
+                        radio: settings.radio,
+                        selected: selected
+                    )
+                case .checkbox:
+                    Checkbox(
+                        checkbox: settings.checkbox,
+                        selected: selected
+                    )
                 }
-                .frame(width: 20, height: 20)
             }
+            .frame(width: 20, height: 20)
             
             configuration.label
+                .font(settings.typography.bodyFont)
                 .foregroundColor(foregroundColor)
         }
-        .padding(.vertical, settings.interaction.contentVerticalInset)
-        .padding(.horizontal, settings.interaction.contentHorizontalInset)
+        .padding(settings.button.padding)
         .background(
             backgroundColor.clipShape(shape)
         )
@@ -133,15 +99,6 @@ struct ChoiceButtonStyle_Previews: PreviewProvider {
             .padding()
         }
         .previewDisplayName("Multiple Selection")
-        
-        ScrollView {
-            OpinionScaleView(
-                state: .constant(ResponseState()),
-                properties: .preview,
-                settings: Settings()
-            )
-        }
-        .previewDisplayName("Opinion Selection")
     }
 }
 #endif

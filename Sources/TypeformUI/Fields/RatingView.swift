@@ -60,8 +60,8 @@ struct RatingView: View {
                                 .padding([.leading, .trailing], 6)
                             
                             Text("\(step)")
-                                .font(settings.typography.bodyFont)
-                                .foregroundColor(settings.typography.bodyColor)
+                                .font(settings.typography.promptFont)
+                                .foregroundColor(settings.typography.promptColor)
                         }
                     }
                     .buttonStyle(.plain)
@@ -77,7 +77,7 @@ struct RatingView: View {
     }
     
     private func color(forStep step: Int) -> Color {
-        (value ?? 0) >= step ? settings.rating.selectedForegroundColor : settings.rating.unselectedForegroundColor
+        (value ?? 0) >= step ? settings.rating.theme.selectedForegroundColor : settings.rating.theme.unselectedForegroundColor
     }
     
     private func registerState() {

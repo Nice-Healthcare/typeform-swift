@@ -97,15 +97,26 @@ public struct Settings {
         public var captionFont: Font
         public var captionColor: Color
         
+        /// Initialize Typography Settings
+        ///
+        /// - parameters:
+        ///   - titleFont: `Font` applied to `Screen.title` and `Field.title` blocks.
+        ///   - titleColor: `Color` applied to `Screen.title` and `Field.title` blocks.
+        ///   - promptFont: `Font` applied to supplemental text blocks, like Date toggle.
+        ///   - promptColor: `Color` applied to supplemental text blocks, like Date toggle.
+        ///   - bodyFont: `Font` applied to any other text element.
+        ///   - bodyColor: `Color` applied to any other text element.
+        ///   - captionFont: `Font` applied to `Field.properties.description` blocks.
+        ///   - captionColor: `Color` applied to `Field.properties.description` blocks.
         public init(
             titleFont: Font = .title,
             titleColor: Color = .black,
-            promptFont: Font = .title3,
-            promptColor: Color = .black,
+            promptFont: Font = .body,
+            promptColor: Color = .gray,
             bodyFont: Font = .body,
             bodyColor: Color = .black,
             captionFont: Font = .caption,
-            captionColor: Color = .black
+            captionColor: Color = .gray
         ) {
             self.titleFont = titleFont
             self.titleColor = titleColor
@@ -162,6 +173,7 @@ public struct Settings {
         }
     }
     
+    @available(*, deprecated)
     public struct Interaction {
         public var unselectedBackgroundColor: Color
         public var unselectedStrokeColor: Color
@@ -202,14 +214,51 @@ public struct Settings {
         }
     }
     
+    public struct Button {
+        public var theme: IntermittentTheme
+        public var cornerRadius: Double
+        public var padding: EdgeInsets
+        
+        public init(
+            theme: IntermittentTheme = .button,
+            cornerRadius: Double = 6.0,
+            padding: EdgeInsets = EdgeInsets(top: 15.0, leading: 10.0, bottom: 15.0, trailing: 10.0)
+        ) {
+            self.theme = theme
+            self.cornerRadius = cornerRadius
+            self.padding = padding
+        }
+    }
+    
     public struct Checkbox {
+        public var theme: IntermittentTheme
+        @available(*, deprecated, renamed: "theme.unselectedBackgroundColor")
         public var unselectedBackgroundColor: Color
+        @available(*, deprecated, renamed: "theme.unselectedStrokeColor")
         public var unselectedStrokeColor: Color
+        @available(*, deprecated, renamed: "theme.selectedBackgroundColor")
         public var selectedBackgroundColor: Color
+        @available(*, deprecated, renamed: "theme.selectedStrokeColor")
         public var selectedStrokeColor: Color
+        @available(*, deprecated, renamed: "theme.selectedForegroundColor")
         public var selectedForegroundColor: Color
         public var cornerRadius: Double
         
+        public init(
+            theme: IntermittentTheme = .checkbox,
+            cornerRadius: Double = 3.0
+        ) {
+            self.theme = theme
+            self.cornerRadius = cornerRadius
+            
+            self.unselectedBackgroundColor = .white
+            self.unselectedStrokeColor = .black
+            self.selectedBackgroundColor = .black
+            self.selectedStrokeColor = .black
+            self.selectedForegroundColor = .white
+        }
+        
+        @available(*, deprecated, renamed: "init(theme:cornerRadius:)")
         public init(
             unselectedBackgroundColor: Color = .white,
             unselectedStrokeColor: Color = .black,
@@ -218,6 +267,7 @@ public struct Settings {
             selectedForegroundColor: Color = .white,
             cornerRadius: Double = 3.0
         ) {
+            self.theme = .checkbox
             self.unselectedBackgroundColor = unselectedBackgroundColor
             self.unselectedStrokeColor = unselectedStrokeColor
             self.selectedBackgroundColor = selectedBackgroundColor
@@ -228,12 +278,30 @@ public struct Settings {
     }
     
     public struct Radio {
+        public var theme: IntermittentTheme
+        @available(*, deprecated, renamed: "theme.unselectedBackgroundColor")
         public var unselectedBackgroundColor: Color
+        @available(*, deprecated, renamed: "theme.unselectedStrokeColor")
         public var unselectedStrokeColor: Color
+        @available(*, deprecated, renamed: "theme.selectedBackgroundColor")
         public var selectedBackgroundColor: Color
+        @available(*, deprecated, renamed: "theme.selectedStrokeColor")
         public var selectedStrokeColor: Color
+        @available(*, deprecated, renamed: "theme.selectedForegroundColor")
         public var selectedForegroundColor: Color
         
+        public init(
+            theme: IntermittentTheme = .radio
+        ) {
+            self.theme = theme
+            self.unselectedBackgroundColor = .white
+            self.unselectedStrokeColor = .black
+            self.selectedBackgroundColor = .white
+            self.selectedStrokeColor = .black
+            self.selectedForegroundColor = .blue
+        }
+        
+        @available(*, deprecated, renamed: "init(theme:)")
         public init(
             unselectedBackgroundColor: Color = .white,
             unselectedStrokeColor: Color = .black,
@@ -241,6 +309,7 @@ public struct Settings {
             selectedStrokeColor: Color = .black,
             selectedForegroundColor: Color = .blue
         ) {
+            self.theme = .radio
             self.unselectedBackgroundColor = unselectedBackgroundColor
             self.unselectedStrokeColor = unselectedStrokeColor
             self.selectedBackgroundColor = selectedBackgroundColor
@@ -250,15 +319,39 @@ public struct Settings {
     }
     
     public struct Rating {
+        public var theme: IntermittentTheme
+        @available(*, deprecated, renamed: "theme.unselectedBackgroundColor")
         public var unselectedBackgroundColor: Color
+        @available(*, deprecated, renamed: "theme.unselectedStrokeColor")
         public var unselectedStrokeColor: Color
+        @available(*, deprecated, renamed: "theme.unselectedStrokeWidth")
         public var unselectedStrokeWidth: Double
+        @available(*, deprecated, renamed: "theme.unselectedForegroundColor")
         public var unselectedForegroundColor: Color
+        @available(*, deprecated, renamed: "theme.selectedBackgroundColor")
         public var selectedBackgroundColor: Color
+        @available(*, deprecated, renamed: "theme.selectedStrokeColor")
         public var selectedStrokeColor: Color
+        @available(*, deprecated, renamed: "theme.selectedStrokeWidth")
         public var selectedStrokeWidth: Double
+        @available(*, deprecated, renamed: "theme.selectedForegroundColor")
         public var selectedForegroundColor: Color
         
+        public init(
+            theme: IntermittentTheme = .rating
+        ) {
+            self.theme = theme
+            self.unselectedBackgroundColor = .blue.opacity(0.3)
+            self.unselectedStrokeColor = .blue.opacity(0.5)
+            self.unselectedStrokeWidth = 1.0
+            self.unselectedForegroundColor = .black
+            self.selectedBackgroundColor = .blue.opacity(0.3)
+            self.selectedStrokeColor = .blue.opacity(0.9)
+            self.selectedStrokeWidth = 2.0
+            self.selectedForegroundColor = .blue
+        }
+        
+        @available(*, deprecated, renamed: "init(theme:)")
         public init(
             unselectedBackgroundColor: Color = .blue.opacity(0.3),
             unselectedStrokeColor: Color = .blue.opacity(0.5),
@@ -269,6 +362,7 @@ public struct Settings {
             selectedStrokeWidth: Double = 2.0,
             selectedForegroundColor: Color = .blue
         ) {
+            self.theme = .rating
             self.unselectedBackgroundColor = unselectedBackgroundColor
             self.unselectedStrokeColor = unselectedStrokeColor
             self.unselectedStrokeWidth = unselectedStrokeWidth
@@ -280,15 +374,23 @@ public struct Settings {
         }
     }
     
+    public struct OpinionScale {
+        public init() {
+        }
+    }
+    
     public var localization: Localization
     public var presentation: Presentation
     public var typography: Typography
     public var callToAction: CallToAction
     public var field: Field
+    @available(*, deprecated)
     public var interaction: Interaction
+    public var button: Button
     public var checkbox: Checkbox
     public var radio: Radio
     public var rating: Rating
+    public var opinionScale: OpinionScale
     
     public init(
         localization: Localization = Localization(),
@@ -297,9 +399,11 @@ public struct Settings {
         callToAction: CallToAction = CallToAction(),
         field: Field = Field(),
         interaction: Interaction = Interaction(),
+        button: Button = Button(),
         checkbox: Checkbox = Checkbox(),
         radio: Radio = Radio(),
-        rating: Rating = Rating()
+        rating: Rating = Rating(),
+        opinionScale: OpinionScale = OpinionScale()
     ) {
         self.localization = localization
         self.presentation = presentation
@@ -307,9 +411,11 @@ public struct Settings {
         self.callToAction = callToAction
         self.field = field
         self.interaction = interaction
+        self.button = button
         self.checkbox = checkbox
         self.radio = radio
         self.rating = rating
+        self.opinionScale = opinionScale
     }
 }
 #endif

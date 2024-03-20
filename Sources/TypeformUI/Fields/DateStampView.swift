@@ -33,8 +33,8 @@ struct DateStampView: View {
                 if isOptional {
                     Toggle(isOn: $toggle) {
                         Text(settings.localization.nullDate)
-                            .font(settings.typography.bodyFont)
-                            .foregroundColor(settings.typography.bodyColor)
+                            .font(settings.typography.promptFont)
+                            .foregroundColor(settings.typography.promptColor)
                     }
                     .tint(.accentColor)
                 }

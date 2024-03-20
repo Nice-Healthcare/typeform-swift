@@ -17,6 +17,7 @@ struct NumberView: View {
             if let description = properties.description {
                 Text(description)
                     .font(settings.typography.captionFont)
+                    .foregroundColor(settings.typography.captionColor)
             }
             
             TextField("", value: $value, format: .number)
