@@ -25,10 +25,10 @@ public struct Settings: Hashable, Codable {
             }
         }
         
-        public let e2e_encryption: EndToEndEncryption
+        public let e2e_encryption: EndToEndEncryption?
         
         public init(
-            e2e_encryption: EndToEndEncryption = .init()
+            e2e_encryption: EndToEndEncryption? = nil
         ) {
             self.e2e_encryption = e2e_encryption
         }
@@ -38,7 +38,7 @@ public struct Settings: Hashable, Codable {
     public let is_trial: Bool
     public let language: String
     public let is_public: Bool
-    public let capabilities: Capabilities
+    public let capabilities: Capabilities?
     public let progress_bar: String
     public let hide_navigation: Bool
     public let show_progress_bar: Bool
@@ -55,7 +55,7 @@ public struct Settings: Hashable, Codable {
         is_trial: Bool = false,
         language: String = "",
         is_public: Bool = false,
-        capabilities: Capabilities = .init(),
+        capabilities: Capabilities? = nil,
         progress_bar: String = "",
         hide_navigation: Bool = false,
         show_progress_bar: Bool = false,
