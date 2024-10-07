@@ -22,12 +22,6 @@ final class SchemeTests: TypeformTests {
           ],
           "settings" : {
             "are_uploads_public" : false,
-            "capabilities" : {
-              "e2e_encryption" : {
-                "enabled" : false,
-                "modifiable" : false
-              }
-            },
             "hide_navigation" : false,
             "is_public" : false,
             "is_trial" : false,
