@@ -310,7 +310,6 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
     }
 }
 
-#if swift(>=5.9)
 #Preview("Field View") {
     NavigationView {
         VStack {
@@ -333,5 +332,4 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
         }
     }
 }
-#endif
 #endif

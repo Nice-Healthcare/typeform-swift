@@ -9,17 +9,17 @@ public extension Form {
             if field.id == id {
                 return field
             }
-            
+
             if case .group(let group) = field.properties {
                 if let match = group.fields.field(withId: id) {
                     return match
                 }
             }
         }
-        
+
         return nil
     }
-    
+
     /// Locate a `Field` anywhere in the `Form` hierarchy with the specified `Reference`.
     ///
     /// - parameters:
@@ -30,17 +30,17 @@ public extension Form {
             if field.ref == ref {
                 return field
             }
-            
+
             if case .group(let group) = field.properties {
                 if let match = group.fields.field(withRef: ref) {
                     return match
                 }
             }
         }
-        
+
         return nil
     }
-    
+
     /// Locates the most distant ancestor (i.e. root `Field`) for a specified `Field.ID`.
     ///
     /// - parameters:
@@ -51,17 +51,17 @@ public extension Form {
             if field.id == id {
                 return .field(field, nil)
             }
-            
+
             if case .group(let group) = field.properties {
                 if group.fields.field(withId: id) != nil {
                     return .field(field, group)
                 }
             }
         }
-        
+
         return nil
     }
-    
+
     /// Locates the most distant ancestor (i.e. root `Field`) for a specified `Field.ID`.
     ///
     /// - parameters:
@@ -72,17 +72,17 @@ public extension Form {
             if field.ref == ref {
                 return .field(field, nil)
             }
-            
+
             if case .group(let group) = field.properties {
                 if group.fields.field(withRef: ref) != nil {
                     return .field(field, group)
                 }
             }
         }
-        
+
         return nil
     }
-    
+
     /// Locates the immediate parent for a specified `Field.ID`.
     ///
     /// - parameters:
@@ -91,7 +91,7 @@ public extension Form {
     func parent(forFieldWithId id: Field.ID) -> Position? {
         fields.parent(forFieldWithId: id)
     }
-    
+
     /// Locates the immediate parent for a `Field` specified by a `Reference`.
     ///
     /// - parameters:

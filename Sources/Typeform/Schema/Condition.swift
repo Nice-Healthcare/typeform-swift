@@ -1,20 +1,20 @@
 import Foundation
 
 public struct Condition: Hashable, Codable {
-    
+
     public enum Parameters: Hashable {
         case vars([Var])
         case conditions([Condition])
     }
-    
+
     enum CodingKeys: CodingKey {
         case op
         case vars
     }
-    
+
     public let op: Op
     public let parameters: Parameters
-    
+
     public init(
         op: Op = .equal,
         parameters: Parameters = .conditions([])
@@ -22,7 +22,7 @@ public struct Condition: Hashable, Codable {
         self.op = op
         self.parameters = parameters
     }
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         op = try container.decode(Op.self, forKey: .op)
@@ -33,7 +33,7 @@ public struct Condition: Hashable, Codable {
             parameters = .vars(vars)
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(op, forKey: .op)

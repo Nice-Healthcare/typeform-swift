@@ -1,13 +1,13 @@
-import XCTest
 @testable import Typeform
+import XCTest
 
 final class SchemeTests: TypeformTests {
-    
+
     func testEncodeForm() throws {
         let form = Form()
         let data = try TypeformTests.prettyEncoder.encode(form)
         let json = try XCTUnwrap(String(data: data, encoding: .utf8))
-        
+
         XCTAssertEqual(json, """
         {
           "_links" : {
@@ -52,7 +52,7 @@ final class SchemeTests: TypeformTests {
         }
         """)
     }
-    
+
     func testEncodeDefaultThankYou() throws {
         let screen = EndingScreen.defaultThankYou
         let data = try TypeformTests.prettyEncoder.encode(screen)
@@ -70,13 +70,13 @@ final class SchemeTests: TypeformTests {
         }
         """)
     }
-    
+
     func testDecodeIntake24() throws {
         let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "MedicalIntake24", withExtension: "json"))
         let data = try Data(contentsOf: url)
         _ = try Self.decoder.decode(Typeform.Form.self, from: data)
     }
-    
+
     func testDecodeIntake26() throws {
         let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "MedicalIntake26", withExtension: "json"))
         let data = try Data(contentsOf: url)
@@ -86,7 +86,7 @@ final class SchemeTests: TypeformTests {
             XCTFail("Invalid Field")
             return
         }
-        
+
         XCTAssertNotNil(statement.description)
         XCTAssertEqual(statement.button_text, "Acknowledge & Continue")
     }

@@ -1,4 +1,3 @@
-// swiftlint:disable force_cast
 #if canImport(SwiftUI)
 import SwiftUI
 import Typeform
@@ -230,7 +229,6 @@ extension ScreenView where Footer == EmptyView, Header == EmptyView {
     }
 }
 
-#if swift(>=5.9)
 #Preview("Welcome Screen") {
     NavigationView {
         ScreenView(
@@ -255,5 +253,3 @@ extension ScreenView where Footer == EmptyView, Header == EmptyView {
     }
 }
 #endif
-#endif
-// swiftlint:enable force_cast

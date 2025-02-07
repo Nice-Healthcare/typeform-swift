@@ -4,7 +4,7 @@ public struct Dropdown: Hashable, Codable {
     public let choices: [Choice]
     public let randomize: Bool
     public let alphabetical_order: Bool
-    
+
     public init(
         choices: [Choice] = [],
         randomize: Bool = false,

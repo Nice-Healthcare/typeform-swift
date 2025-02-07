@@ -5,7 +5,7 @@ public struct ScreenProperties: Hashable, Codable {
     public let button_text: String?
     public let share_icons: Bool?
     public let show_button: Bool
-    
+
     public init(
         button_mode: String? = nil,
         button_text: String? = nil,

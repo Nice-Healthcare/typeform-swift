@@ -130,7 +130,6 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
     }
 }
 
-#if swift(>=5.9)
 #Preview("Form View") {
     FormView(
         form: .medicalIntake35,
@@ -146,5 +145,4 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
         conclusion: { _ in }
     )
 }
-#endif
 #endif

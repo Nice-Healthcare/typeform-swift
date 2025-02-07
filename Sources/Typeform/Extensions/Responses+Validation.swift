@@ -9,8 +9,7 @@ public extension Responses {
     func validResponseValues(given fields: [Field]) -> Bool {
         invalidResponseValues(given: fields).isEmpty
     }
-    
-    // swiftlint:disable cyclomatic_complexity
+
     /// Collection of invalid `Reference` keys based on expected `ResponseValue` types.
     ///
     /// For instance: if a `MultipleChoice` field which only allows a single-selection has more than one `Choice`,
@@ -19,11 +18,11 @@ public extension Responses {
     /// - parameters:
     ///   - fields: The `Form.fields` used to validate the collection.
     func invalidResponseValues(given fields: [Field]) -> [Reference] {
-        compactMap { (key, value) -> Reference? in
+        compactMap { key, value -> Reference? in
             guard let field = fields.field(withRef: key) else {
                 return key
             }
-            
+
             switch field.properties {
             case .date:
                 guard case .date = value else {
@@ -72,9 +71,8 @@ public extension Responses {
                     return key
                 }
             }
-            
+
             return nil
         }
     }
-    // swiftlint:enable cyclomatic_complexity
 }

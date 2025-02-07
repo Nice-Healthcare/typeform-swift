@@ -22,11 +22,11 @@ public extension Field {
         guard let position = form.parent(forFieldWithRef: ref) else {
             preconditionFailure("Couldn't locate field with reference '\(ref)'.")
         }
-        
+
         guard case .field(let field, _) = position else {
             preconditionFailure("Couldn't locate field with reference '\(ref)'.")
         }
-        
+
         return field
     }
 }
@@ -36,7 +36,7 @@ public extension DateStamp {
         guard case let .date(properties) = Field.field(withRef: .date).properties else {
             preconditionFailure("Couldn't case field to 'date'.")
         }
-        
+
         return properties
     }()
 }
@@ -46,7 +46,7 @@ public extension Dropdown {
         guard case let .dropdown(dropdown) = Field.field(withRef: .dropdown).properties else {
             preconditionFailure("Failed to cast field properties to type 'dropdown'.")
         }
-        
+
         return dropdown
     }()
 }
@@ -56,7 +56,7 @@ public extension Group {
         guard case let .group(properties) = Field.field(withRef: .group).properties else {
             preconditionFailure("Failed to cast field properties to type 'group'.")
         }
-        
+
         return properties
     }()
 }
@@ -66,7 +66,7 @@ public extension LongText {
         guard case let .longText(properties) = Field.field(withRef: .longText).properties else {
             preconditionFailure("Couldn't case field to 'long-text'.")
         }
-        
+
         return properties
     }()
 }
@@ -76,15 +76,15 @@ public extension MultipleChoice {
         guard case let .multipleChoice(properties) = Field.field(withRef: .multipleChoice_Many).properties else {
             preconditionFailure("Failed to cast field properties to type 'multiple_choice'.")
         }
-        
+
         return properties
     }()
-    
+
     static var preview_One: MultipleChoice = {
         guard case let .multipleChoice(properties) = Field.field(withRef: .multipleChoice_One).properties else {
             preconditionFailure("Failed to cast field properties to type 'multiple_choice'.")
         }
-        
+
         return properties
     }()
 }
@@ -94,7 +94,7 @@ public extension Number {
         guard case let .number(properties) = Field.field(withRef: .number).properties else {
             preconditionFailure("Couldn't case field to 'number'.")
         }
-        
+
         return properties
     }()
 }
@@ -104,7 +104,7 @@ public extension OpinionScale {
         guard case let .opinionScale(properties) = Field.field(withRef: .opinionScale, in: .ptIntake42).properties else {
             preconditionFailure("Couldn't case field to 'opinionScale'.")
         }
-        
+
         return properties
     }()
 }
@@ -114,7 +114,7 @@ public extension Rating {
         guard case let .rating(properties) = Field.field(withRef: .rating).properties else {
             preconditionFailure("Couldn't case field to 'rating'.")
         }
-        
+
         return properties
     }()
 }
@@ -124,7 +124,7 @@ public extension ShortText {
         guard case let .shortText(shortText) = Field.field(withRef: .shortText).properties else {
             preconditionFailure("Couldn't case field to 'short-text'.")
         }
-        
+
         return shortText
     }()
 }
@@ -134,7 +134,7 @@ public extension YesNo {
         guard case let .yesNo(properties) = Field.field(withRef: .yesNo).properties else {
             preconditionFailure("Couldn't case field to 'yes-no'.")
         }
-        
+
         return properties
     }()
 }
@@ -144,7 +144,7 @@ public extension Statement {
         guard case let .statement(properties) = Field.field(withRef: .statement, in: .medicalIntake26).properties else {
             preconditionFailure("Couldn't case field to 'statement'.")
         }
-        
+
         return properties
     }()
 }
