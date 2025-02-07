@@ -4,14 +4,14 @@ import Typeform
 import TypeformPreview
 
 struct YesNoView: View {
-    
+
     var state: Binding<ResponseState>
     var properties: YesNo
     var settings: Settings
     var validations: Validations?
-    
+
     @State private var selected: Bool?
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
             if let description = properties.description {
@@ -19,7 +19,7 @@ struct YesNoView: View {
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
             }
-            
+
             VStack(spacing: settings.presentation.contentVerticalSpacing) {
                 Button {
                     selected = (selected == true) ? nil : true
@@ -32,7 +32,7 @@ struct YesNoView: View {
                     selected: selected == true,
                     settings: settings
                 ))
-                
+
                 Button {
                     selected = (selected == false) ? nil : false
                 } label: {
@@ -53,7 +53,7 @@ struct YesNoView: View {
             updateState()
         }
     }
-    
+
     private func registerState() {
         switch state.wrappedValue.response {
         case .bool(let bool):
@@ -61,25 +61,25 @@ struct YesNoView: View {
         default:
             selected = nil
         }
-        
+
         updateState()
     }
-    
+
     private func updateState() {
-        var state = self.state.wrappedValue
-        
+        var state = state.wrappedValue
+
         if let response = selected {
             state.response = .bool(response)
         } else {
             state.response = nil
         }
-        
-        if let validations = self.validations, validations.required {
+
+        if let validations, validations.required {
             state.invalid = selected == nil
         } else {
             state.invalid = false
         }
-        
+
         self.state.wrappedValue = state
     }
 }

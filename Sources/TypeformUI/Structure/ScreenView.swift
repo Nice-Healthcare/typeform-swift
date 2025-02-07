@@ -4,7 +4,7 @@ import Typeform
 import TypeformPreview
 
 struct ScreenView<Header: View, Footer: View>: View {
-    
+
     let form: Typeform.Form
     let screen: any Screen
     let settings: Settings
@@ -12,22 +12,22 @@ struct ScreenView<Header: View, Footer: View>: View {
     let conclusion: (Conclusion) -> Void
     let header: () -> Header
     let footer: () -> Footer
-    
+
     @State private var next: Position?
-    
+
     private var isWelcome: Bool {
         switch screen {
         case is WelcomeScreen:
-            return true
+            true
         default:
-            return false
+            false
         }
     }
-    
+
     private var showImage: Bool {
         isWelcome ? settings.presentation.showWelcomeImage : settings.presentation.showEndingImage
     }
-    
+
     init(
         form: Typeform.Form,
         screen: any Screen,
@@ -45,7 +45,7 @@ struct ScreenView<Header: View, Footer: View>: View {
         self.header = header
         self.footer = footer
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -59,16 +59,16 @@ struct ScreenView<Header: View, Footer: View>: View {
                             ProgressView()
                         }
                     }
-                    
+
                     Text(screen.title)
                         .font(settings.typography.titleFont)
                         .foregroundColor(settings.typography.titleColor)
-                    
+
                     if settings.presentation.layout == .inline {
-                        if let next = self.next {
+                        if let next {
                             navigation(next: next)
                         }
-                        
+
                         if !isWelcome {
                             Button {
                                 conclusion(.completed(responses, screen as! EndingScreen))
@@ -80,17 +80,17 @@ struct ScreenView<Header: View, Footer: View>: View {
                 }
                 .padding(settings.presentation.contentInsets)
             }
-            
+
             if settings.presentation.layout == .callToAction {
                 VStack(spacing: settings.callToAction.verticalSpacing) {
                     Divider()
                         .foregroundColor(settings.callToAction.dividerColor)
-                    
-                    if let next = self.next {
+
+                    if let next {
                         navigation(next: next)
                             .padding(settings.callToAction.insets)
                     }
-                    
+
                     if !isWelcome {
                         Button {
                             conclusion(.completed(responses, screen as! EndingScreen))
@@ -105,43 +105,43 @@ struct ScreenView<Header: View, Footer: View>: View {
         }
         .background(settings.presentation.backgroundColor)
         #if os(iOS)
-        .navigationBarBackButtonHidden()
+            .navigationBarBackButtonHidden()
         #endif
-        .onAppear {
-            next = try? form.next(from: .screen(screen), given: responses)
-            if !isWelcome && settings.presentation.skipEndingScreen {
-                conclusion(.completed(responses, screen as! EndingScreen))
-            }
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
-                if isWelcome {
-                    Button {
-                        conclusion(.canceled)
-                    } label: {
-                        Text(settings.localization.exit)
-                    }
-                    .buttonStyle(.borderless)
+            .onAppear {
+                next = try? form.next(from: .screen(screen), given: responses)
+                if !isWelcome, settings.presentation.skipEndingScreen {
+                    conclusion(.completed(responses, screen as! EndingScreen))
                 }
-                
-                if settings.presentation.layout == .navigation {
-                    if let next = self.next {
-                        navigation(next: next)
-                            .buttonStyle(.borderless)
-                    }
-                    
-                    if !isWelcome {
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .primaryAction) {
+                    if isWelcome {
                         Button {
-                            conclusion(.completed(responses, screen as! EndingScreen))
+                            conclusion(.canceled)
                         } label: {
-                            Text(settings.localization.finish)
+                            Text(settings.localization.exit)
+                        }
+                        .buttonStyle(.borderless)
+                    }
+
+                    if settings.presentation.layout == .navigation {
+                        if let next {
+                            navigation(next: next)
+                                .buttonStyle(.borderless)
+                        }
+
+                        if !isWelcome {
+                            Button {
+                                conclusion(.completed(responses, screen as! EndingScreen))
+                            } label: {
+                                Text(settings.localization.finish)
+                            }
                         }
                     }
                 }
             }
-        }
     }
-    
+
     private func navigation(next: Position) -> some View {
         NavigationLink {
             switch next {
@@ -188,7 +188,7 @@ extension ScreenView where Footer == EmptyView {
         self.responses = responses
         self.conclusion = conclusion
         self.header = header
-        self.footer = { Footer() }
+        footer = { Footer() }
     }
 }
 
@@ -206,7 +206,7 @@ extension ScreenView where Header == EmptyView {
         self.settings = settings
         self.responses = responses
         self.conclusion = conclusion
-        self.header = { Header() }
+        header = { Header() }
         self.footer = footer
     }
 }
@@ -224,8 +224,8 @@ extension ScreenView where Footer == EmptyView, Header == EmptyView {
         self.settings = settings
         self.responses = responses
         self.conclusion = conclusion
-        self.header = { Header() }
-        self.footer = { Footer() }
+        header = { Header() }
+        footer = { Footer() }
     }
 }
 

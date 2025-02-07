@@ -10,7 +10,7 @@ let package = Package(
         .macCatalyst(.v15),
         .iOS(.v15),
         .tvOS(.v15),
-        .watchOS(.v8)
+        .watchOS(.v8),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -19,7 +19,7 @@ let package = Package(
             targets: [
                 "Typeform",
                 "TypeformPreview",
-                "TypeformUI"
+                "TypeformUI",
             ]
         ),
     ],
@@ -38,24 +38,24 @@ let package = Package(
         .target(
             name: "TypeformPreview",
             dependencies: [
-                "Typeform"
+                "Typeform",
             ],
             resources: [
-                .process("Resources")
+                .process("Resources"),
             ]
         ),
         .target(
             name: "TypeformUI",
             dependencies: [
                 "Typeform",
-                "TypeformPreview"
+                "TypeformPreview",
             ]
         ),
         .testTarget(
             name: "TypeformTests",
             dependencies: [
                 "Typeform",
-                "TypeformPreview"
+                "TypeformPreview",
             ]
         ),
     ]

@@ -4,12 +4,12 @@ import Typeform
 import TypeformPreview
 
 struct RejectedView: View {
-    
+
     let form: Typeform.Form
     let settings: Settings
     let responses: Responses
     let conclusion: (Conclusion) -> Void
-    
+
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -20,7 +20,7 @@ struct RejectedView: View {
                         .frame(width: 50.0)
                         .foregroundColor(.accentColor)
                         .padding(.bottom, 40)
-                    
+
                     if settings.presentation.layout == .inline {
                         Button {
                             conclusion(.rejected(responses))
@@ -31,12 +31,12 @@ struct RejectedView: View {
                 }
                 .padding(settings.presentation.contentInsets)
             }
-            
+
             if settings.presentation.layout == .callToAction {
                 VStack(spacing: settings.callToAction.verticalSpacing) {
                     Divider()
                         .foregroundColor(settings.callToAction.dividerColor)
-                    
+
                     Button {
                         conclusion(.rejected(responses))
                     } label: {

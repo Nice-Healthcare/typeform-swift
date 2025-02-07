@@ -2,11 +2,11 @@
 import SwiftUI
 
 struct FieldStyleViewModifier: ViewModifier {
-    
+
     let settings: TypeformUI.Settings
-    
+
     private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: settings.field.cornerRadius) }
-    
+
     func body(content: Content) -> some View {
         content
             .padding(.horizontal, settings.field.horizontalInset)

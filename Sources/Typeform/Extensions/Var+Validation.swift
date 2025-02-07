@@ -42,14 +42,14 @@ extension Collection<Var> {
                 print(TypeformError.responseTypeMismatch(String.self))
                 return nil
             }
-            
+
             return responseValue == string
         case .int(let int):
             guard case .int(let responseValue) = response else {
                 print(TypeformError.responseTypeMismatch(Int.self))
                 return nil
             }
-            
+
             switch op {
             case .equal:
                 return responseValue == int

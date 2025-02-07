@@ -4,7 +4,7 @@ import Typeform
 import TypeformPreview
 
 struct FieldView<Header: View, Footer: View>: View {
-    
+
     let form: Typeform.Form
     let field: Field
     let group: Typeform.Group?
@@ -12,24 +12,24 @@ struct FieldView<Header: View, Footer: View>: View {
     let conclusion: (Conclusion) -> Void
     let header: () -> Header
     let footer: () -> Footer
-    
+
     @State private var responseState: ResponseState
     @State private var responses: Responses
     @State private var next: Position?
     @State private var cancel: Bool = false
     @FocusState private var focused: Bool
-    
+
     private var nextTitle: String {
         switch field.properties {
         case .group(let group):
-            return group.button_text
+            group.button_text
         case .statement(let statement):
-            return statement.button_text
+            statement.button_text
         default:
-            return settings.localization.next
+            settings.localization.next
         }
     }
-    
+
     init(
         form: Typeform.Form,
         field: Field,
@@ -50,18 +50,18 @@ struct FieldView<Header: View, Footer: View>: View {
         _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             header()
-            
+
             ScrollView {
                 VStack(alignment: .leading, spacing: settings.presentation.titleDescriptionVerticalSpacing) {
                     Text(field.title)
                         .font(settings.typography.titleFont)
                         .foregroundColor(settings.typography.titleColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     switch field.properties {
                     case .date(let properties):
                         DateStampView(
@@ -136,23 +136,23 @@ struct FieldView<Header: View, Footer: View>: View {
                             validations: field.validations
                         )
                     }
-                    
+
                     if settings.presentation.layout == .inline {
                         navigation(next: next)
                     }
                 }
                 .padding(settings.presentation.contentInsets)
             }
-            
+
             VStack(spacing: settings.callToAction.verticalSpacing) {
                 if settings.presentation.layout == .callToAction {
                     Divider()
                         .foregroundColor(settings.callToAction.dividerColor)
-                    
+
                     navigation(next: next)
                         .padding(settings.callToAction.insets)
                 }
-                
+
                 footer()
             }
             .background(
@@ -172,7 +172,7 @@ struct FieldView<Header: View, Footer: View>: View {
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
                     focused = false
-                    if settings.presentation.skipWelcomeScreen && responses.isEmpty {
+                    if settings.presentation.skipWelcomeScreen, responses.isEmpty {
                         conclusion(.canceled)
                     } else {
                         cancel = true
@@ -181,7 +181,7 @@ struct FieldView<Header: View, Footer: View>: View {
                     Text(settings.localization.exit)
                 }
                 .buttonStyle(.borderless)
-                
+
                 if settings.presentation.layout == .navigation {
                     navigation(next: next)
                         .buttonStyle(.borderless)
@@ -192,7 +192,7 @@ struct FieldView<Header: View, Footer: View>: View {
             Button(settings.localization.cancel, role: .cancel) {
                 cancel = false
             }
-            
+
             Button(settings.localization.abandonConfirmationAction, role: .destructive) {
                 cancel = false
                 conclusion(.abandoned(responses))
@@ -201,11 +201,11 @@ struct FieldView<Header: View, Footer: View>: View {
             Text(settings.localization.abandonConfirmationMessage)
         }
     }
-    
+
     private func determineNext() {
         next = try? form.next(from: .field(field, group), given: responses)
     }
-    
+
     private func navigation(next: Position?) -> some View {
         NavigationLink {
             switch next {
@@ -261,7 +261,7 @@ extension FieldView where Footer == EmptyView {
         self.settings = settings
         self.conclusion = conclusion
         self.header = header
-        self.footer = { Footer() }
+        footer = { Footer() }
         _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
@@ -282,7 +282,7 @@ extension FieldView where Header == EmptyView {
         self.group = group
         self.settings = settings
         self.conclusion = conclusion
-        self.header = { Header() }
+        header = { Header() }
         self.footer = footer
         _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
@@ -303,8 +303,8 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
         self.group = group
         self.settings = settings
         self.conclusion = conclusion
-        self.header = { Header() }
-        self.footer = { Footer() }
+        header = { Header() }
+        footer = { Footer() }
         _responseState = .init(initialValue: ResponseState(for: field, given: responses))
         _responses = .init(initialValue: responses)
     }
@@ -325,7 +325,7 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
                             ref: Reference(uuidString: "4f6732f3-d3b6-4c83-9c3e-a4945a004507")!,
                             label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider"
                         )
-                    )
+                    ),
                 ],
                 conclusion: { _ in }
             )
