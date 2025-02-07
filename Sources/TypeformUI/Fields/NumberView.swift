@@ -4,14 +4,14 @@ import Typeform
 import TypeformPreview
 
 struct NumberView: View {
-    
+
     var state: Binding<ResponseState>
     var properties: Number
     var settings: Settings
     var validations: Validations?
-    
+
     @State private var value: Int?
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
             if let description = properties.description {
@@ -19,11 +19,11 @@ struct NumberView: View {
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
             }
-            
+
             TextField("", value: $value, format: .number)
-                #if os(iOS) || os(tvOS)
+            #if os(iOS) || os(tvOS)
                 .keyboardType(.numberPad)
-                #endif
+            #endif
                 .fieldStyle(settings: settings)
         }
         .onAppear {
@@ -33,7 +33,7 @@ struct NumberView: View {
             updateState()
         }
     }
-    
+
     private func registerState() {
         switch state.wrappedValue.response {
         case .int(let int):
@@ -41,25 +41,25 @@ struct NumberView: View {
         default:
             value = nil
         }
-        
+
         updateState()
     }
-    
+
     private func updateState() {
-        var state = self.state.wrappedValue
-        
+        var state = state.wrappedValue
+
         if let response = value {
             state.response = .int(response)
         } else {
             state.response = nil
         }
-        
-        if let validations = self.validations, validations.required {
+
+        if let validations, validations.required {
             state.invalid = value == nil
         } else {
             state.invalid = false
         }
-        
+
         self.state.wrappedValue = state
     }
 }

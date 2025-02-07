@@ -1,13 +1,13 @@
-import XCTest
 @testable import Typeform
 @testable import TypeformPreview
+import XCTest
 
 class MedicalIntake35Tests: TypeformTests {
-    
+
     override var jsonResource: String { "MedicalIntake35" }
-    
+
     var responses: Responses = [:]
-    
+
     func testMultipleLogicPaths() throws {
         responses = [
             // State: Minnesota
@@ -49,9 +49,9 @@ class MedicalIntake35Tests: TypeformTests {
             // Followup Visit: False
             Reference(string: "reason-for-visit-acute-follow-up"): .bool(false),
             // Acute Other: Something
-            Reference(string: "reason-for-visit-acute-symptoms-other"): .string("Other symptoms")
+            Reference(string: "reason-for-visit-acute-symptoms-other"): .string("Other symptoms"),
         ]
-        
+
         let currentGroupField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-intro")))
         guard case .group(let currentGroup) = currentGroupField.properties else {
             XCTFail("Unexpected Properties")
@@ -59,7 +59,7 @@ class MedicalIntake35Tests: TypeformTests {
         }
         let currentField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-other")))
         let nextField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-duration")))
-        
+
         let next = try form.next(from: .field(currentField, currentGroup), given: responses)
         guard case .field(let field, let group) = next else {
             XCTFail("Unexpected Position")

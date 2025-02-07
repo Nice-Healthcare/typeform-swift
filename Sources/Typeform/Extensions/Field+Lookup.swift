@@ -1,4 +1,4 @@
-extension Collection where Element == Field {
+extension Collection<Field> {
     /// Locate a `Field` in the `Collection` with the specified `Field.ID`.
     ///
     /// This will also examine _sub-groups_ for a matching id.
@@ -11,17 +11,17 @@ extension Collection where Element == Field {
             if field.id == id {
                 return field
             }
-            
+
             if case .group(let group) = field.properties {
                 if let match = group.fields.field(withId: id) {
                     return match
                 }
             }
         }
-        
+
         return nil
     }
-    
+
     /// Locate a `Field` in the `Collection` with the specified `Reference`.
     ///
     /// This will also examine _sub-groups_ for a matching id.
@@ -34,19 +34,19 @@ extension Collection where Element == Field {
             if field.ref == ref {
                 return field
             }
-            
+
             if case .group(let group) = field.properties {
                 if let subField = group.fields.field(withRef: ref) {
                     return subField
                 }
             }
         }
-        
+
         return nil
     }
 }
 
-internal extension Collection where Element == Field {
+extension Collection<Field> {
     /// Locate a `Field` which is the immediate parent of the specified `Field.ID`.
     ///
     /// **This always assumes that you are starting at the top of a `Form` hierarchy, and should only be used there.**
@@ -59,19 +59,19 @@ internal extension Collection where Element == Field {
             if field.id == id {
                 return .field(field, group)
             }
-            
+
             guard case .group(let group) = field.properties else {
                 continue
             }
-            
+
             if let position = group.fields.parent(forFieldWithId: id, in: group) {
                 return position
             }
         }
-        
+
         return nil
     }
-    
+
     /// Locate a `Field` which is the immediate parent of the specified `Reference`.
     ///
     /// **This always assumes that you are starting at the top of a `Form` hierarchy, and should only be used there.**
@@ -84,16 +84,16 @@ internal extension Collection where Element == Field {
             if field.ref == ref {
                 return .field(field, group)
             }
-            
+
             guard case .group(let group) = field.properties else {
                 continue
             }
-            
+
             if let position = group.fields.parent(forFieldWithRef: ref, in: group) {
                 return position
             }
         }
-        
+
         return nil
     }
 }

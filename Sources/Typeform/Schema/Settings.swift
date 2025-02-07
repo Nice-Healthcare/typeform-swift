@@ -1,21 +1,21 @@
 import Foundation
 
 public struct Settings: Hashable, Codable {
-    
+
     public struct Meta: Hashable, Codable {
         public let allow_indexing: Bool
-        
+
         public init(allow_indexing: Bool = false) {
             self.allow_indexing = allow_indexing
         }
     }
-    
+
     public struct Capabilities: Hashable, Codable {
-        
+
         public struct EndToEndEncryption: Hashable, Codable {
             public let enabled: Bool
             public let modifiable: Bool
-            
+
             public init(
                 enabled: Bool = false,
                 modifiable: Bool = false
@@ -24,16 +24,16 @@ public struct Settings: Hashable, Codable {
                 self.modifiable = modifiable
             }
         }
-        
+
         public let e2e_encryption: EndToEndEncryption?
-        
+
         public init(
             e2e_encryption: EndToEndEncryption? = nil
         ) {
             self.e2e_encryption = e2e_encryption
         }
     }
-    
+
     public let meta: Meta
     public let is_trial: Bool
     public let language: String
@@ -49,7 +49,7 @@ public struct Settings: Hashable, Codable {
     public let show_time_to_complete: Bool
     public let show_typeform_branding: Bool
     public let show_number_of_submissions: Bool
-    
+
     public init(
         meta: Meta = .init(),
         is_trial: Bool = false,

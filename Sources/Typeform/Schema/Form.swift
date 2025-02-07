@@ -1,11 +1,11 @@
 import Foundation
 
 public struct Form: Hashable, Identifiable, Codable {
-    
+
     public enum Kind: String, Codable {
         case quiz
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case type
@@ -20,7 +20,7 @@ public struct Form: Hashable, Identifiable, Codable {
         case welcomeScreens = "welcome_screens"
         case endingScreens = "thankyou_screens"
     }
-    
+
     public let id: String
     public let type: Kind
     public let logic: [Logic]
@@ -33,7 +33,7 @@ public struct Form: Hashable, Identifiable, Codable {
     public let workspace: Workspace
     public let welcomeScreens: [WelcomeScreen]?
     public let endingScreens: [EndingScreen]
-    
+
     public init(
         id: String = "",
         type: Kind = .quiz,

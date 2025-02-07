@@ -7,7 +7,7 @@ public struct MultipleChoice: Hashable, Codable {
     public let allow_other_choice: Bool
     public let vertical_alignment: Bool
     public let description: String?
-    
+
     public init(
         choices: [Choice] = [],
         randomize: Bool = false,

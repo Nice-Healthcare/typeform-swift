@@ -4,7 +4,7 @@ public struct Group: Hashable, Codable {
     public let button_text: String
     public let fields: [Field]
     public let show_button: Bool
-    
+
     public init(
         button_text: String = "",
         fields: [Field] = [],

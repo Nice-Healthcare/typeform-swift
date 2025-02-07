@@ -6,7 +6,7 @@ public struct WelcomeScreen: Screen, Hashable, Codable {
     public let title: String
     public let attachment: ScreenAttachment?
     public let properties: ScreenProperties
-    
+
     public init(
         id: String = "",
         ref: Reference = Reference(),

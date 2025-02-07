@@ -4,14 +4,14 @@ import Typeform
 import TypeformPreview
 
 public struct FormView<Header: View, Footer: View>: View {
-    
+
     let form: Typeform.Form
     let settings: Settings
     let responses: Responses
     let conclusion: (Conclusion) -> Void
     let header: () -> Header
     let footer: () -> Footer
-    
+
     /// Launching point for a **Typeform** `Form`.
     ///
     /// - parameters:
@@ -36,7 +36,7 @@ public struct FormView<Header: View, Footer: View>: View {
         self.header = header
         self.footer = footer
     }
-    
+
     public var body: some View {
         NavigationView {
             ZStack {
@@ -93,7 +93,7 @@ public extension FormView where Footer == EmptyView {
         self.responses = responses
         self.conclusion = conclusion
         self.header = header
-        self.footer = { Footer() }
+        footer = { Footer() }
     }
 }
 
@@ -109,7 +109,7 @@ public extension FormView where Header == EmptyView {
         self.settings = settings
         self.responses = responses
         self.conclusion = conclusion
-        self.header = { Header() }
+        header = { Header() }
         self.footer = footer
     }
 }
@@ -125,12 +125,11 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
         self.settings = settings
         self.responses = responses
         self.conclusion = conclusion
-        self.header = { Header() }
-        self.footer = { Footer() }
+        header = { Header() }
+        footer = { Footer() }
     }
 }
 
-#if swift(>=5.9)
 #Preview("Form View") {
     FormView(
         form: .medicalIntake35,
@@ -141,10 +140,9 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
                     ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
                     label: "Minnesota"
                 )
-            )
+            ),
         ],
         conclusion: { _ in }
     )
 }
-#endif
 #endif

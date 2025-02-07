@@ -4,7 +4,7 @@ public struct Choice: Hashable, Identifiable, Codable {
     public let id: String
     public let ref: Reference
     public let label: String
-    
+
     public init(
         id: String = "",
         ref: Reference = Reference(),

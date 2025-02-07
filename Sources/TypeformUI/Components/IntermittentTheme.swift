@@ -10,7 +10,7 @@ public struct IntermittentTheme {
     public let selectedStrokeColor: Color
     public let selectedStrokeWidth: Double
     public let selectedForegroundColor: Color
-    
+
     public init(
         unselectedBackgroundColor: Color = .white,
         unselectedStrokeColor: Color = .black,

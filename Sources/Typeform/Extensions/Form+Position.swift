@@ -11,7 +11,7 @@ public extension Form {
         if let screen = firstScreen, !skipWelcomeScreen {
             return .screen(screen)
         }
-        
+
         guard let field = fields.first else {
             if let screen = defaultOrFirstEndingScreen {
                 return .screen(screen)
@@ -19,14 +19,13 @@ public extension Form {
                 throw TypeformError.couldNotDetermineFirst
             }
         }
-        
         if field.type == .statement {
             return .field(field, nil)
         }
-        
+
         return try next(from: .field(field), given: responses)
     }
-     
+
     /// Determine the next `Field` or `Screen` given the provided `Responses`.
     ///
     /// - parameters:
@@ -47,14 +46,14 @@ public extension Form {
             default:
                 break
             }
-            
+
             throw TypeformError.couldNotDetermineNext(position)
         case .field(let field, let group):
             var next: Position = .field(field, group)
             do {
                 next = try nextPosition(from: field, group: group, given: responses)
                 var requiresResponse = false
-                
+
                 while !requiresResponse {
                     switch next {
                     case .screen:
@@ -67,7 +66,7 @@ public extension Form {
                         }
                     }
                 }
-                
+
                 return next
             } catch TypeformError.noEntryForField {
                 return next
@@ -77,24 +76,23 @@ public extension Form {
 }
 
 private extension Form {
-    // swiftlint:disable cyclomatic_complexity
     func nextPosition(from field: Field, group: Group?, given responses: Responses) throws -> Position {
         let currentPosition: Position = .field(field, group)
-        
+
         // Is a response required of the current position?
         if responses.responseRequired(for: field) {
             throw TypeformError.noEntryForField
         }
-        
+
         // Is this `Field` of type `group`?
         if case .group(let properties) = field.properties {
             guard let firstGroupField = properties.fields.first else {
                 throw TypeformError.couldNotDetermineNext(currentPosition)
             }
-            
+
             return .field(firstGroupField, properties)
         }
-        
+
         // Is there `Logic` that applies to this `Field`?
         if let logic = logic.first(where: { $0.ref == field.ref }) {
             if let action = logic.actions.first(where: { $0.condition.satisfied(given: responses) }) {
@@ -103,7 +101,7 @@ private extension Form {
                     if let position = parent(forFieldWithRef: action.details.to.value) {
                         return position
                     }
-                    
+
                     throw TypeformError.couldNotDetermineNext(currentPosition)
                 case .ending:
                     if let screen = endingScreens.first(where: { $0.ref == .ref(action.details.to.value) }) {
@@ -111,39 +109,39 @@ private extension Form {
                     } else if let screen = endingScreens.first(where: { $0.ref == .default }) {
                         return .screen(screen)
                     }
-                    
+
                     throw TypeformError.couldNotDetermineNext(currentPosition)
                 }
             }
         }
-        
+
         // Are we already in a `Group`?
-        if let group = group {
+        if let group {
             // Is there a next `Field`
             guard let fieldIndex = group.fields.firstIndex(of: field) else {
                 throw TypeformError.couldNotDetermineNext(currentPosition)
             }
-            
+
             if (fieldIndex + 1) < group.fields.count {
                 return .field(group.fields[fieldIndex + 1], group)
             }
-            
+
             // Is the `Group` complete?
             if let ancestorPosition = ancestor(forFieldWithRef: field.ref) {
                 guard case .field(let ancestor, _) = ancestorPosition else {
                     throw TypeformError.couldNotDetermineNext(currentPosition)
                 }
-                
+
                 guard let ancestorIndex = fields.firstIndex(of: ancestor) else {
                     throw TypeformError.couldNotDetermineNext(currentPosition)
                 }
-                
+
                 if (ancestorIndex + 1) < fields.count {
                     return .field(fields[ancestorIndex + 1])
                 }
             }
         }
-        
+
         // Is there a next `Field`?
         if let index = fields.firstIndex(of: field) {
             switch index + 1 {
@@ -157,10 +155,9 @@ private extension Form {
                 break
             }
         }
-        
+
         throw TypeformError.couldNotDetermineNext(currentPosition)
     }
-    // swiftlint:enable cyclomatic_complexity
 }
 
 private extension Responses {
@@ -168,15 +165,15 @@ private extension Responses {
         guard let validations = field.validations else {
             return false
         }
-        
+
         guard validations.required else {
             return false
         }
-        
+
         guard self[field.ref] == nil else {
             return false
         }
-        
+
         return true
     }
 }

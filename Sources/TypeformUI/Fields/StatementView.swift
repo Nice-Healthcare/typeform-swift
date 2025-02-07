@@ -4,10 +4,10 @@ import Typeform
 import TypeformPreview
 
 struct StatementView: View {
-    
+
     var properties: Statement
     var settings: Settings
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
             if let description = properties.description {

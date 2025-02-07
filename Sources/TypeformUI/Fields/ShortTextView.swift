@@ -4,15 +4,15 @@ import Typeform
 import TypeformPreview
 
 struct ShortTextView: View {
-    
+
     var state: Binding<ResponseState>
     var properties: ShortText
     var settings: Settings
     var validations: Validations?
     var focused: FocusState<Bool>.Binding
-    
+
     @State private var value: String = ""
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
             if let description = properties.description {
@@ -20,7 +20,7 @@ struct ShortTextView: View {
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
             }
-            
+
             TextField("", text: $value)
                 .fieldStyle(settings: settings)
                 .focused(focused)
@@ -32,7 +32,7 @@ struct ShortTextView: View {
             updateState()
         }
     }
-    
+
     private func registerState() {
         switch state.wrappedValue.response {
         case .string(let string):
@@ -40,25 +40,25 @@ struct ShortTextView: View {
         default:
             value = ""
         }
-        
+
         updateState()
     }
-    
+
     private func updateState() {
-        var state = self.state.wrappedValue
-        
+        var state = state.wrappedValue
+
         if value.isEmpty {
             state.response = nil
         } else {
             state.response = .string(value)
         }
-        
-        if let validations = self.validations, validations.required {
+
+        if let validations, validations.required {
             state.invalid = value.isEmpty
         } else {
             state.invalid = false
         }
-        
+
         self.state.wrappedValue = state
     }
 }

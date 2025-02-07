@@ -1,28 +1,28 @@
 import Foundation
 
 public struct Var: Hashable, Codable {
-    
+
     public enum VarType: String, Codable {
         case choice
         case constant
         case field
     }
-    
+
     public enum Value: Hashable, Codable {
         case bool(Bool)
         case ref(Reference)
         case string(String)
         case int(Int)
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case type
         case value
     }
-    
+
     public let type: VarType
     public let value: Value
-    
+
     public init(
         type: VarType = .constant,
         value: Value = .bool(false)
@@ -30,7 +30,7 @@ public struct Var: Hashable, Codable {
         self.type = type
         self.value = value
     }
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         type = try container.decode(VarType.self, forKey: .type)
@@ -51,7 +51,7 @@ public struct Var: Hashable, Codable {
             }
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)

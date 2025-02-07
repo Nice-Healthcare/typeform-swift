@@ -1,6 +1,5 @@
 import Foundation
 
-// swiftlint:disable type_name
 public enum Op: String, Codable {
     case always
     case and
@@ -13,4 +12,3 @@ public enum Op: String, Codable {
     case lowerThan = "lower_than"
     case or
 }
-// swiftlint:enable type_name

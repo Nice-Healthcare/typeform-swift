@@ -4,17 +4,17 @@ import Typeform
 import TypeformPreview
 
 struct LongTextView: View {
-    
+
     var state: Binding<ResponseState>
     var properties: LongText
     var settings: Settings
     var validations: Validations?
     var focused: FocusState<Bool>.Binding
-    
+
     @State private var value: String = ""
-    
+
     private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: settings.field.cornerRadius) }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
             if let description = properties.description {
@@ -22,10 +22,10 @@ struct LongTextView: View {
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
             }
-            
+
             ZStack {
                 settings.field.backgroundColor.clipShape(shape)
-                
+
                 if #available(iOS 16.0, macOS 13.0, *) {
                     TextEditor(text: $value)
                         .scrollContentBackground(.hidden)
@@ -35,14 +35,14 @@ struct LongTextView: View {
                     TextEditor(text: $value)
                         .padding(.horizontal, settings.field.horizontalInset)
                         .padding(.vertical, settings.field.verticalInset)
-                        #if canImport(UIKit)
+                    #if canImport(UIKit)
                         .onAppear {
                             UITextView.appearance().backgroundColor = .clear
                         }
                         .onDisappear {
                             UITextView.appearance().backgroundColor = nil
                         }
-                        #endif
+                    #endif
                 }
             }
             .focused(focused)
@@ -58,7 +58,7 @@ struct LongTextView: View {
             updateState()
         }
     }
-    
+
     private func registerState() {
         switch state.wrappedValue.response {
         case .string(let string):
@@ -66,25 +66,25 @@ struct LongTextView: View {
         default:
             value = ""
         }
-        
+
         updateState()
     }
-    
+
     private func updateState() {
-        var state = self.state.wrappedValue
-        
+        var state = state.wrappedValue
+
         if value.isEmpty {
             state.response = nil
         } else {
             state.response = .string(value)
         }
-        
-        if let validations = self.validations, validations.required {
+
+        if let validations, validations.required {
             state.invalid = value.isEmpty
         } else {
             state.invalid = false
         }
-        
+
         self.state.wrappedValue = state
     }
 }

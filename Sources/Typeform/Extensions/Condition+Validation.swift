@@ -3,20 +3,18 @@ extension Condition {
         if case .always = op {
             return true
         }
-        
-        let satisfied: [Bool]
-        
-        switch parameters {
+
+        let satisfied: [Bool] = switch parameters {
         case .vars(let vars):
-            satisfied = vars.compactMatch(given: responses, op: op)
+            vars.compactMatch(given: responses, op: op)
         case .conditions(let conditions):
-            satisfied = conditions.map { $0.satisfied(given: responses) }
+            conditions.map { $0.satisfied(given: responses) }
         }
-        
+
         guard !satisfied.isEmpty else {
             return false
         }
-        
+
         switch op {
         case .and:
             return !satisfied.contains(false)

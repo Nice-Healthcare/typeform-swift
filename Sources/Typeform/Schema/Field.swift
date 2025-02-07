@@ -1,7 +1,7 @@
 import Foundation
 
 public struct Field: Hashable, Identifiable, Codable {
-    
+
     public enum Kind: String, Codable {
         case date
         case dropdown
@@ -15,7 +15,7 @@ public struct Field: Hashable, Identifiable, Codable {
         case statement
         case yes_no
     }
-    
+
     public enum Properties: Hashable, Codable {
         case date(DateStamp)
         case dropdown(Dropdown)
@@ -29,7 +29,7 @@ public struct Field: Hashable, Identifiable, Codable {
         case statement(Statement)
         case yesNo(YesNo)
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case ref
@@ -38,14 +38,14 @@ public struct Field: Hashable, Identifiable, Codable {
         case properties
         case validations
     }
-    
+
     public let id: String
     public let ref: Reference
     public let type: Kind
     public let title: String
     public let properties: Properties
     public let validations: Validations?
-    
+
     public init(
         id: String = "",
         ref: Reference = Reference(),
@@ -61,7 +61,7 @@ public struct Field: Hashable, Identifiable, Codable {
         self.properties = properties
         self.validations = validations
     }
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
@@ -105,7 +105,7 @@ public struct Field: Hashable, Identifiable, Codable {
             properties = .yesNo(yesNo)
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)

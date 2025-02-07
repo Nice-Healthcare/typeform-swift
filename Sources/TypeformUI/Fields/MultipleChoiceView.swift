@@ -4,14 +4,14 @@ import Typeform
 import TypeformPreview
 
 struct MultipleChoiceView: View {
-    
+
     var state: Binding<ResponseState>
     var properties: MultipleChoice
     var settings: Settings
     var validations: Validations?
-    
+
     @State private var selections: [Choice] = []
-    
+
     private var choices: [Choice] {
         var choices = properties.choices
         if properties.randomize {
@@ -19,7 +19,7 @@ struct MultipleChoiceView: View {
         }
         return choices
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
             if let description = properties.description {
@@ -27,7 +27,7 @@ struct MultipleChoiceView: View {
                     .font(settings.typography.captionFont)
                     .foregroundColor(settings.typography.captionColor)
             }
-            
+
             VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
                 ForEach(choices) { choice in
                     Button {
@@ -63,7 +63,7 @@ struct MultipleChoiceView: View {
             updateState()
         }
     }
-    
+
     private func registerState() {
         switch state.wrappedValue.response {
         case .choice(let choice):
@@ -73,13 +73,13 @@ struct MultipleChoiceView: View {
         default:
             selections = []
         }
-        
+
         updateState()
     }
-    
+
     private func updateState() {
-        var state = self.state.wrappedValue
-        
+        var state = state.wrappedValue
+
         if properties.allow_multiple_selection {
             if !selections.isEmpty {
                 state.response = .choices(selections)
@@ -93,8 +93,8 @@ struct MultipleChoiceView: View {
                 state.response = nil
             }
         }
-        
-        if let validations = self.validations, validations.required {
+
+        if let validations, validations.required {
             if properties.allow_multiple_selection {
                 state.invalid = selections.isEmpty
             } else {
@@ -103,7 +103,7 @@ struct MultipleChoiceView: View {
         } else {
             state.invalid = false
         }
-        
+
         self.state.wrappedValue = state
     }
 }
@@ -117,7 +117,7 @@ struct MultipleChoiceView_Previews: PreviewProvider {
                     properties: .preview_One,
                     settings: Settings()
                 )
-                
+
                 MultipleChoiceView(
                     state: .constant(ResponseState()),
                     properties: .preview_Many,

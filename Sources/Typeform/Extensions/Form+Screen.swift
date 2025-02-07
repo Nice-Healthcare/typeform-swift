@@ -3,9 +3,9 @@ public extension Form {
     ///
     /// In a properly formatted `Form` this will likely be a `WelcomeScreen`.
     var firstScreen: (any Screen)? {
-        return welcomeScreens?.first
+        welcomeScreens?.first
     }
-    
+
     /// The `EndingScreen` identified as the **default**, or the first available if none.
     var defaultOrFirstEndingScreen: EndingScreen? {
         if let screen = endingScreens.first(where: { $0.ref == .default }) {
@@ -13,7 +13,7 @@ public extension Form {
         } else if let screen = endingScreens.first {
             return screen
         }
-        
+
         return nil
     }
 }
