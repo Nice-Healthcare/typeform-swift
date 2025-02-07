@@ -13,25 +13,17 @@ struct NumberView: View {
     @State private var value: Int?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
+        TextField("", value: $value, format: .number)
+        #if os(iOS) || os(tvOS)
+            .keyboardType(.numberPad)
+        #endif
+            .fieldStyle(settings: settings)
+            .onAppear {
+                registerState()
             }
-
-            TextField("", value: $value, format: .number)
-            #if os(iOS) || os(tvOS)
-                .keyboardType(.numberPad)
-            #endif
-                .fieldStyle(settings: settings)
-        }
-        .onAppear {
-            registerState()
-        }
-        .onChange(of: value) { _ in
-            updateState()
-        }
+            .onChange(of: value) { _ in
+                updateState()
+            }
     }
 
     private func registerState() {

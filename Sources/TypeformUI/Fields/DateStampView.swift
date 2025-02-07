@@ -22,29 +22,21 @@ struct DateStampView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
+        VStack(spacing: settings.presentation.contentVerticalSpacing) {
+            if isOptional {
+                Toggle(isOn: $toggle) {
+                    Text(settings.localization.nullDate)
+                        .font(settings.typography.promptFont)
+                        .foregroundColor(settings.typography.promptColor)
+                }
+                .tint(.accentColor)
             }
 
-            VStack(spacing: settings.presentation.contentVerticalSpacing) {
-                if isOptional {
-                    Toggle(isOn: $toggle) {
-                        Text(settings.localization.nullDate)
-                            .font(settings.typography.promptFont)
-                            .foregroundColor(settings.typography.promptColor)
-                    }
-                    .tint(.accentColor)
-                }
-
-                if !isOptional || !toggle {
-                    HStack {
-                        DatePicker("", selection: $value, displayedComponents: .date)
-                            .datePickerStyle(.graphical)
-                            .disabled(toggle)
-                    }
+            if !isOptional || !toggle {
+                HStack {
+                    DatePicker("", selection: $value, displayedComponents: .date)
+                        .datePickerStyle(.graphical)
+                        .disabled(toggle)
                 }
             }
         }

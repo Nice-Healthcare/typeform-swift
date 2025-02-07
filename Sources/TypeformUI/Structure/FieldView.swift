@@ -62,79 +62,91 @@ struct FieldView<Header: View, Footer: View>: View {
                         .foregroundColor(settings.typography.titleColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    switch field.properties {
-                    case .date(let properties):
-                        DateStampView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
-                    case .dropdown(let properties):
-                        DropdownView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
-                    case .group:
-                        EmptyView()
-                    case .longText(let properties):
-                        LongTextView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations,
-                            focused: $focused
-                        )
-                    case .multipleChoice(let properties):
-                        MultipleChoiceView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
-                    case .number(let properties):
-                        NumberView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
-                    case .opinionScale(let properties):
-                        OpinionScaleView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
-                    case .rating(let properties):
-                        RatingView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
-                    case .shortText(let properties):
-                        ShortTextView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations,
-                            focused: $focused
-                        )
-                    case .statement(let properties):
-                        StatementView(
-                            properties: properties,
-                            settings: settings
-                        )
-                    case .yesNo(let properties):
-                        YesNoView(
-                            state: $responseState,
-                            properties: properties,
-                            settings: settings,
-                            validations: field.validations
-                        )
+                    VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
+                        if let description = field.description {
+                            Text(description)
+                                .font(settings.typography.captionFont)
+                                .foregroundColor(settings.typography.captionColor)
+                        }
+
+                        if let attachment = field.attachment {
+                            AttachmentView(attachment: attachment)
+                        }
+
+                        switch field.properties {
+                        case .date(let properties):
+                            DateStampView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        case .dropdown(let properties):
+                            DropdownView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        case .group:
+                            EmptyView()
+                        case .longText(let properties):
+                            LongTextView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations,
+                                focused: $focused
+                            )
+                        case .multipleChoice(let properties):
+                            MultipleChoiceView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        case .number(let properties):
+                            NumberView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        case .opinionScale(let properties):
+                            OpinionScaleView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        case .rating(let properties):
+                            RatingView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        case .shortText(let properties):
+                            ShortTextView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations,
+                                focused: $focused
+                            )
+                        case .statement(let properties):
+                            StatementView(
+                                properties: properties,
+                                settings: settings
+                            )
+                        case .yesNo(let properties):
+                            YesNoView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
+                        }
                     }
 
                     if settings.presentation.layout == .inline {

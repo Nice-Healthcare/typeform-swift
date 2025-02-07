@@ -37,6 +37,7 @@ public struct Field: Hashable, Identifiable, Codable {
         case title
         case properties
         case validations
+        case attachment
     }
 
     public let id: String
@@ -45,6 +46,7 @@ public struct Field: Hashable, Identifiable, Codable {
     public let title: String
     public let properties: Properties
     public let validations: Validations?
+    public let attachment: Attachment?
 
     public init(
         id: String = "",
@@ -52,7 +54,8 @@ public struct Field: Hashable, Identifiable, Codable {
         type: Kind = .yes_no,
         title: String = "",
         properties: Properties = .yesNo(YesNo()),
-        validations: Validations? = nil
+        validations: Validations? = nil,
+        attachment: Attachment? = nil
     ) {
         self.id = id
         self.ref = ref
@@ -60,6 +63,7 @@ public struct Field: Hashable, Identifiable, Codable {
         self.title = title
         self.properties = properties
         self.validations = validations
+        self.attachment = attachment
     }
 
     public init(from decoder: Decoder) throws {
@@ -69,6 +73,7 @@ public struct Field: Hashable, Identifiable, Codable {
         type = try container.decode(Kind.self, forKey: .type)
         title = try container.decode(String.self, forKey: .title)
         validations = try container.decodeIfPresent(Validations.self, forKey: .validations)
+        attachment = try container.decodeIfPresent(Attachment.self, forKey: .attachment)
         switch type {
         case .date:
             let date = try container.decode(DateStamp.self, forKey: .properties)
@@ -113,6 +118,7 @@ public struct Field: Hashable, Identifiable, Codable {
         try container.encode(type, forKey: .type)
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(validations, forKey: .validations)
+        try container.encodeIfPresent(attachment, forKey: .attachment)
         switch properties {
         case .date(let dateStamp):
             try container.encode(dateStamp, forKey: .properties)
@@ -136,6 +142,24 @@ public struct Field: Hashable, Identifiable, Codable {
             try container.encode(statement, forKey: .properties)
         case .yesNo(let yesNo):
             try container.encode(yesNo, forKey: .properties)
+        }
+    }
+}
+
+public extension Field {
+    var description: String? {
+        switch properties {
+        case .date(let value): value.description
+        case .dropdown: nil
+        case .group: nil
+        case .longText(let value): value.description
+        case .multipleChoice(let value): value.description
+        case .number(let value): value.description
+        case .opinionScale: nil
+        case .rating(let value): value.description
+        case .shortText(let value): value.description
+        case .statement(let value): value.description
+        case .yesNo(let value): value.description
         }
     }
 }

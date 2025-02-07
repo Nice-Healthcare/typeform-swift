@@ -9,13 +9,7 @@ struct StatementView: View {
     var settings: Settings
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
-            }
-        }
+        EmptyView()
     }
 }
 

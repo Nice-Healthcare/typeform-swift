@@ -21,39 +21,31 @@ struct MultipleChoiceView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
-            }
-
-            VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
-                ForEach(choices) { choice in
-                    Button {
-                        if properties.allow_multiple_selection {
-                            if let index = selections.firstIndex(of: choice) {
-                                selections.remove(at: index)
-                            } else {
-                                selections.append(choice)
-                            }
+        VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
+            ForEach(choices) { choice in
+                Button {
+                    if properties.allow_multiple_selection {
+                        if let index = selections.firstIndex(of: choice) {
+                            selections.remove(at: index)
                         } else {
-                            selections = [choice]
+                            selections.append(choice)
                         }
-                    } label: {
-                        Text(choice.label)
-                            .font(settings.typography.bodyFont)
-                            .foregroundColor(settings.typography.bodyColor)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
+                        selections = [choice]
                     }
-                    .buttonStyle(
-                        IntermittentChoiceButtonStyle(
-                            allowsMultipleSelection: properties.allow_multiple_selection,
-                            selected: selections.contains(choice),
-                            settings: settings
-                        )
-                    )
+                } label: {
+                    Text(choice.label)
+                        .font(settings.typography.bodyFont)
+                        .foregroundColor(settings.typography.bodyColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .buttonStyle(
+                    IntermittentChoiceButtonStyle(
+                        allowsMultipleSelection: properties.allow_multiple_selection,
+                        selected: selections.contains(choice),
+                        settings: settings
+                    )
+                )
             }
         }
         .onAppear {

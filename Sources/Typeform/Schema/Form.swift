@@ -61,4 +61,20 @@ public struct Form: Hashable, Identifiable, Codable {
         self.welcomeScreens = welcomeScreens
         self.endingScreens = endingScreens
     }
+
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        type = try container.decode(Form.Kind.self, forKey: .type)
+        logic = try container.decodeIfPresent([Logic].self, forKey: .logic) ?? []
+        theme = try container.decode(Theme.self, forKey: .theme)
+        title = try container.decode(String.self, forKey: .title)
+        links = try container.decode(Links.self, forKey: .links)
+        fields = try container.decode([Field].self, forKey: .fields)
+        hidden = try container.decodeIfPresent([String].self, forKey: .hidden)
+        settings = try container.decode(Settings.self, forKey: .settings)
+        workspace = try container.decode(Workspace.self, forKey: .workspace)
+        welcomeScreens = try container.decodeIfPresent([WelcomeScreen].self, forKey: .welcomeScreens)
+        endingScreens = try container.decode([EndingScreen].self, forKey: .endingScreens)
+    }
 }

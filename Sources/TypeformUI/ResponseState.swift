@@ -14,7 +14,9 @@ struct ResponseState: Equatable {
 
     init(for field: Field, given responses: Responses) {
         response = responses[field.ref]
-        if case .statement = field.properties {
+        if case .group = field.properties {
+            invalid = false
+        } else if case .statement = field.properties {
             invalid = false
         } else {
             invalid = true

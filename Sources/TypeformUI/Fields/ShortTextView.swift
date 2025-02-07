@@ -14,23 +14,15 @@ struct ShortTextView: View {
     @State private var value: String = ""
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
+        TextField("", text: $value)
+            .fieldStyle(settings: settings)
+            .focused(focused)
+            .onAppear {
+                registerState()
             }
-
-            TextField("", text: $value)
-                .fieldStyle(settings: settings)
-                .focused(focused)
-        }
-        .onAppear {
-            registerState()
-        }
-        .onChange(of: value) { _ in
-            updateState()
-        }
+            .onChange(of: value) { _ in
+                updateState()
+            }
     }
 
     private func registerState() {
