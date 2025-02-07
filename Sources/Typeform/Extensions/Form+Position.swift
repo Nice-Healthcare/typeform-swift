@@ -19,8 +19,9 @@ public extension Form {
                 throw TypeformError.couldNotDetermineFirst
             }
         }
-        if field.type == .statement {
-            return .field(field, nil)
+
+        if responses[field.ref] == nil {
+            return .field(field)
         }
 
         return try next(from: .field(field), given: responses)

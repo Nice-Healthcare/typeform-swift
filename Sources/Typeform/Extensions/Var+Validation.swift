@@ -38,33 +38,21 @@ extension Collection<Var> {
                 return false
             }
         case .string(let string):
-            guard case .string(let responseValue) = response else {
+            if case .string(let stringValue) = response {
+                return try? op.compareString(response: stringValue, to: string)
+            } else if case .date(let dateValue) = response {
+                return try? op.compareDate(response: dateValue, to: string)
+            } else {
                 print(TypeformError.responseTypeMismatch(String.self))
                 return nil
             }
-
-            return responseValue == string
         case .int(let int):
             guard case .int(let responseValue) = response else {
                 print(TypeformError.responseTypeMismatch(Int.self))
                 return nil
             }
 
-            switch op {
-            case .equal:
-                return responseValue == int
-            case .greaterThan:
-                return responseValue > int
-            case .greaterEqualThan:
-                return responseValue >= int
-            case .lowerEqualThan:
-                return responseValue <= int
-            case .lowerThan:
-                return responseValue < int
-            default:
-                print(TypeformError.unexpectedOperation(op))
-                return nil
-            }
+            return try? op.compareInt(response: responseValue, to: int)
         }
     }
 

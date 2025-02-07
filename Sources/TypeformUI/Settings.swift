@@ -57,7 +57,9 @@ public struct Settings {
         public var descriptionContentVerticalSpacing: Double
         public var contentInsets: EdgeInsets
         public var contentVerticalSpacing: Double
+        @available(*, deprecated)
         public var showWelcomeImage: Bool
+        @available(*, deprecated)
         public var showEndingImage: Bool
         public var skipWelcomeScreen: Bool
         public var skipEndingScreen: Bool

@@ -24,8 +24,21 @@ struct OpinionScaleView: View {
     }
 
     private var grid: [GridItem] { (0 ..< 6).map { _ in GridItem(.flexible()) } }
-    private var leadingLabel: String { String(format: "%d: %@", start, properties.labels.leading) }
-    private var trailingLabel: String { String(format: "%d: %@", end, properties.labels.trailing) }
+    private var leadingLabel: String {
+        if let labels = properties.labels {
+            String(format: "%d: %@", start, labels.leading)
+        } else {
+            String(format: "%d", start)
+        }
+    }
+
+    private var trailingLabel: String {
+        if let labels = properties.labels {
+            String(format: "%d: %@", end, labels.trailing)
+        } else {
+            String(format: "%d", end)
+        }
+    }
 
     var body: some View {
         VStack(alignment: .center, spacing: settings.presentation.contentVerticalSpacing) {

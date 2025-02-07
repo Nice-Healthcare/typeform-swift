@@ -16,41 +16,33 @@ struct LongTextView: View {
     private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: settings.field.cornerRadius) }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
-            }
+        ZStack {
+            settings.field.backgroundColor.clipShape(shape)
 
-            ZStack {
-                settings.field.backgroundColor.clipShape(shape)
-
-                if #available(iOS 16.0, macOS 13.0, *) {
-                    TextEditor(text: $value)
-                        .scrollContentBackground(.hidden)
-                        .padding(.horizontal, settings.field.horizontalInset)
-                        .padding(.vertical, settings.field.verticalInset)
-                } else {
-                    TextEditor(text: $value)
-                        .padding(.horizontal, settings.field.horizontalInset)
-                        .padding(.vertical, settings.field.verticalInset)
-                    #if canImport(UIKit)
-                        .onAppear {
-                            UITextView.appearance().backgroundColor = .clear
-                        }
-                        .onDisappear {
-                            UITextView.appearance().backgroundColor = nil
-                        }
-                    #endif
-                }
+            if #available(iOS 16.0, macOS 13.0, *) {
+                TextEditor(text: $value)
+                    .scrollContentBackground(.hidden)
+                    .padding(.horizontal, settings.field.horizontalInset)
+                    .padding(.vertical, settings.field.verticalInset)
+            } else {
+                TextEditor(text: $value)
+                    .padding(.horizontal, settings.field.horizontalInset)
+                    .padding(.vertical, settings.field.verticalInset)
+                #if canImport(UIKit)
+                    .onAppear {
+                        UITextView.appearance().backgroundColor = .clear
+                    }
+                    .onDisappear {
+                        UITextView.appearance().backgroundColor = nil
+                    }
+                #endif
             }
-            .focused(focused)
-            .frame(idealHeight: 200, maxHeight: 200)
-            .overlay(
-                shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth)
-            )
         }
+        .focused(focused)
+        .frame(idealHeight: 200, maxHeight: 200)
+        .overlay(
+            shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth)
+        )
         .onAppear {
             registerState()
         }

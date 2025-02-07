@@ -13,38 +13,30 @@ struct YesNoView: View {
     @State private var selected: Bool?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-            if let description = properties.description {
-                Text(description)
-                    .font(settings.typography.captionFont)
-                    .foregroundColor(settings.typography.captionColor)
+        VStack(spacing: settings.presentation.contentVerticalSpacing) {
+            Button {
+                selected = (selected == true) ? nil : true
+            } label: {
+                Text(settings.localization.yes)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .buttonStyle(IntermittentChoiceButtonStyle(
+                allowsMultipleSelection: false,
+                selected: selected == true,
+                settings: settings
+            ))
 
-            VStack(spacing: settings.presentation.contentVerticalSpacing) {
-                Button {
-                    selected = (selected == true) ? nil : true
-                } label: {
-                    Text(settings.localization.yes)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .buttonStyle(IntermittentChoiceButtonStyle(
-                    allowsMultipleSelection: false,
-                    selected: selected == true,
-                    settings: settings
-                ))
-
-                Button {
-                    selected = (selected == false) ? nil : false
-                } label: {
-                    Text(settings.localization.no)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .buttonStyle(IntermittentChoiceButtonStyle(
-                    allowsMultipleSelection: false,
-                    selected: selected == false,
-                    settings: settings
-                ))
+            Button {
+                selected = (selected == false) ? nil : false
+            } label: {
+                Text(settings.localization.no)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .buttonStyle(IntermittentChoiceButtonStyle(
+                allowsMultipleSelection: false,
+                selected: selected == false,
+                settings: settings
+            ))
         }
         .onAppear {
             registerState()

@@ -19,12 +19,12 @@ public struct OpinionScale: Hashable, Codable {
     }
 
     public let steps: Int
-    public let labels: Labels
+    public let labels: Labels?
     public let start_at_one: Bool
 
     public init(
         steps: Int = 0,
-        labels: Labels = Labels(),
+        labels: Labels? = nil,
         start_at_one: Bool = false
     ) {
         self.steps = steps
