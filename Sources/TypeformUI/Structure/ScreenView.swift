@@ -24,10 +24,6 @@ struct ScreenView<Header: View, Footer: View>: View {
         }
     }
 
-    private var showImage: Bool {
-        isWelcome ? settings.presentation.showWelcomeImage : settings.presentation.showEndingImage
-    }
-
     init(
         form: Typeform.Form,
         screen: any Screen,
@@ -50,14 +46,8 @@ struct ScreenView<Header: View, Footer: View>: View {
         VStack(spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading, spacing: settings.presentation.titleDescriptionVerticalSpacing) {
-                    if let attachment = screen.attachment, showImage {
-                        AsyncImage(url: attachment.href) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            ProgressView()
-                        }
+                    if let attachment = screen.attachment {
+                        AttachmentView(attachment: attachment)
                     }
 
                     Text(screen.title)
