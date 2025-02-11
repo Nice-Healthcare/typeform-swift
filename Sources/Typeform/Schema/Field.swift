@@ -28,6 +28,22 @@ public struct Field: Hashable, Identifiable, Codable {
         case shortText(ShortText)
         case statement(Statement)
         case yesNo(YesNo)
+
+        public var description: String? {
+            switch self {
+            case .date(let value): value.description
+            case .dropdown: nil
+            case .group: nil
+            case .longText(let value): value.description
+            case .multipleChoice(let value): value.description
+            case .number(let value): value.description
+            case .opinionScale: nil
+            case .rating(let value): value.description
+            case .shortText(let value): value.description
+            case .statement(let value): value.description
+            case .yesNo(let value): value.description
+            }
+        }
     }
 
     enum CodingKeys: String, CodingKey {
@@ -142,24 +158,6 @@ public struct Field: Hashable, Identifiable, Codable {
             try container.encode(statement, forKey: .properties)
         case .yesNo(let yesNo):
             try container.encode(yesNo, forKey: .properties)
-        }
-    }
-}
-
-public extension Field {
-    var description: String? {
-        switch properties {
-        case .date(let value): value.description
-        case .dropdown: nil
-        case .group: nil
-        case .longText(let value): value.description
-        case .multipleChoice(let value): value.description
-        case .number(let value): value.description
-        case .opinionScale: nil
-        case .rating(let value): value.description
-        case .shortText(let value): value.description
-        case .statement(let value): value.description
-        case .yesNo(let value): value.description
         }
     }
 }

@@ -8,8 +8,21 @@ struct AttachmentView: View {
     let attachment: Attachment
 
     var body: some View {
-        AsyncImage(url: attachment.href)
-            .aspectRatio(contentMode: .fit)
+        AsyncImage(url: attachment.href) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .accessibilityLabel(Text(attachment.properties?.description ?? "No Image Description"))
+            case .failure(let error):
+                Text(error.localizedDescription)
+            @unknown default:
+                EmptyView()
+            }
+        }
     }
 }
 
