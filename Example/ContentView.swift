@@ -132,15 +132,13 @@ struct ContentView: View {
 
         do {
             recent = try decoder.decode([String].self, from: recentForms)
-        } catch {
-        }
+        } catch {}
     }
 
     func saveRecents(_ recents: [String]) {
         do {
             recentForms = try encoder.encode(recents)
-        } catch {
-        }
+        } catch {}
     }
 
     func downloadSync() {
@@ -183,9 +181,9 @@ struct ContentView: View {
         } catch let decodingError as DecodingError {
             switch decodingError {
             case .typeMismatch(_, let context),
-                    .valueNotFound(_, let context),
-                    .keyNotFound(_, let context),
-                    .dataCorrupted(let context):
+                 .valueNotFound(_, let context),
+                 .keyNotFound(_, let context),
+                 .dataCorrupted(let context):
                 downloadFailure = "Decoding Failed\n\(context)"
             default:
                 downloadFailure = "Decoding Failed\n\(decodingError.localizedDescription)"

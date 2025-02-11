@@ -37,7 +37,7 @@ extension Op {
         case .contains: response.contains(condition)
         case .endsWith: response.hasSuffix(condition)
         case .equal: response == condition
-        case .notOn: !response.contains(condition)
+        case .notContains: !response.contains(condition)
         default:
             throw TypeformError.unexpectedOperation(self)
         }

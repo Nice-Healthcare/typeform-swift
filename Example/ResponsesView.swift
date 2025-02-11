@@ -50,7 +50,6 @@ struct ResponseValueView: View {
             case .string(let string):
                 Text(string)
             }
-            EmptyView()
         } else {
             EmptyView()
         }
@@ -80,7 +79,7 @@ struct ChoiceView: View {
 #Preview {
     ResponsesView(
         responses: [
-            .string("example-field"): .string("String Value")
+            .string("example-field"): .string("String Value"),
         ]
     )
 }

@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated, renamed: "Attachment")
 public typealias ScreenAttachment = Attachment
 
 public struct Attachment: Hashable, Codable {

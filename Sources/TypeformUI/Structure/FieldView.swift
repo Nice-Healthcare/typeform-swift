@@ -63,7 +63,7 @@ struct FieldView<Header: View, Footer: View>: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     VStack(alignment: .leading, spacing: settings.presentation.descriptionContentVerticalSpacing) {
-                        if let description = field.description {
+                        if let description = field.properties.description {
                             Text(description)
                                 .font(settings.typography.captionFont)
                                 .foregroundColor(settings.typography.captionColor)
@@ -134,11 +134,8 @@ struct FieldView<Header: View, Footer: View>: View {
                                 validations: field.validations,
                                 focused: $focused
                             )
-                        case .statement(let properties):
-                            StatementView(
-                                properties: properties,
-                                settings: settings
-                            )
+                        case .statement:
+                            EmptyView()
                         case .yesNo(let properties):
                             YesNoView(
                                 state: $responseState,
