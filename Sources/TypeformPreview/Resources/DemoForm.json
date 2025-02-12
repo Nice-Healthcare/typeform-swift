@@ -1,7 +1,7 @@
 {
   "id": "hu2FodCY",
   "type": "quiz",
-  "title": "Demo Form 2025-01-15",
+  "title": "All Question Types Demo Form",
   "workspace": {
     "href": "https://api.typeform.com/workspaces/5PY2Nu"
   },
@@ -99,7 +99,7 @@
           {
             "id": "M6IDI3o5xRXu",
             "title": "Do you enjoy using Typeform?",
-            "ref": "group-yes-no-typeform",
+            "ref": "question-group-yes-no-typeform",
             "properties": {
               "description": "Yes/No Question"
             },
@@ -107,21 +107,40 @@
               "required": false
             },
             "type": "yes_no"
+          },
+          {
+            "id": "aUWEtefTVNrl",
+            "title": "Upload your response",
+            "ref": "question-group-file-upload-typeform",
+            "properties": {
+              "description": "Choose a file"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "file_upload"
           }
         ]
       },
-      "type": "group"
-    },
-    {
-      "id": "7BP0MLinDRSK",
-      "title": "We're sorry to hear that you aren't enjoying Typeform.",
-      "ref": "statement-typeform",
-      "properties": {
-        "description": "Let us know how we can do better!",
-        "button_text": "Okay",
-        "hide_marks": true
+      "type": "group",
+      "attachment": {
+        "type": "image",
+        "href": "https://images.typeform.com/images/ehHzhjZQS4FL",
+        "properties": {
+          "description": "v4-460px-Calculate-Your-Heart-Rate-Step-1-Version-2"
+        }
       },
-      "type": "statement"
+      "layout": {
+        "type": "stack",
+        "attachment": {
+          "type": "image",
+          "href": "https://images.typeform.com/images/ehHzhjZQS4FL",
+          "properties": {
+            "description": "v4-460px-Calculate-Your-Heart-Rate-Step-1-Version-2"
+          }
+        },
+        "viewport_overrides": {}
+      }
     },
     {
       "id": "JmxJ5tpY1WQI",
@@ -134,6 +153,17 @@
         "required": true
       },
       "type": "yes_no"
+    },
+    {
+      "id": "7BP0MLinDRSK",
+      "title": "We're sorry to hear that you aren't enjoying Typeform.",
+      "ref": "statement-typeform",
+      "properties": {
+        "description": "Let us know how we can do better!",
+        "button_text": "Okay",
+        "hide_marks": true
+      },
+      "type": "statement"
     },
     {
       "id": "t5R9fs0sl5mo",
@@ -371,8 +401,8 @@
       },
       "validations": {
         "required": true,
-        "min_selection": 4,
-        "max_selection": 4
+        "min_selection": 1,
+        "max_selection": 5
       },
       "type": "multiple_choice"
     },
@@ -901,7 +931,7 @@
     },
     {
       "type": "field",
-      "ref": "group-yes-no-typeform",
+      "ref": "question-group-yes-no-typeform",
       "actions": [
         {
           "action": "jump",
@@ -916,7 +946,7 @@
             "vars": [
               {
                 "type": "field",
-                "value": "group-yes-no-typeform"
+                "value": "question-group-yes-no-typeform"
               },
               {
                 "type": "constant",
@@ -930,7 +960,7 @@
           "details": {
             "to": {
               "type": "field",
-              "value": "number-typeform"
+              "value": "question-group-file-upload-typeform"
             }
           },
           "condition": {
@@ -948,8 +978,8 @@
           "action": "jump",
           "details": {
             "to": {
-              "type": "thankyou",
-              "value": "thank-you-2-typeform"
+              "type": "field",
+              "value": "number-typeform"
             }
           },
           "condition": {
@@ -1010,6 +1040,25 @@
             "to": {
               "type": "field",
               "value": "multiple-choice-typeform"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "question-group-file-upload-typeform",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "yes-no-typeform"
             }
           },
           "condition": {

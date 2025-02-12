@@ -7,4 +7,5 @@ public enum ResponseValue: Equatable {
     case date(Date)
     case int(Int)
     case string(String)
+    case upload(Upload)
 }

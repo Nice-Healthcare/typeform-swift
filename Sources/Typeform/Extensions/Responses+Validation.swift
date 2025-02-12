@@ -32,6 +32,10 @@ public extension Responses {
                 guard case .choice = value else {
                     return key
                 }
+            case .fileUpload:
+                guard case .upload = value else {
+                    return key
+                }
             case .group:
                 return key
             case .longText:

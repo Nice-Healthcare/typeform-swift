@@ -88,6 +88,13 @@ struct FieldView<Header: View, Footer: View>: View {
                                 settings: settings,
                                 validations: field.validations
                             )
+                        case .fileUpload(let properties):
+                            FileUploadView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: field.validations
+                            )
                         case .group:
                             EmptyView()
                         case .longText(let properties):
