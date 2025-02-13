@@ -42,9 +42,9 @@ struct ContentView: View {
                         )
                         .autocorrectionDisabled(true)
                         #if canImport(UIKit)
-                        .textInputAutocapitalization(.none)
+                            .textInputAutocapitalization(.none)
                         #endif
-                        .focused($focus)
+                            .focused($focus)
 
                         Menu("Recent") {
                             ForEach(recent, id: \.self) { item in

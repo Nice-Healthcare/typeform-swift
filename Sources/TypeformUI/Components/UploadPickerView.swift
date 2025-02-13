@@ -32,7 +32,7 @@ struct UploadPickerView: UIViewControllerRepresentable {
                 .heic,
                 .heif,
             ]
-            
+
             let controller = UIDocumentPickerViewController(forOpeningContentTypes: contentTypes)
             controller.delegate = context.coordinator
             return controller
@@ -61,7 +61,7 @@ class UploadPickerCoordinator: NSObject, UINavigationControllerDelegate {
 }
 
 extension UploadPickerCoordinator: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let image: UIImage? = if let image = info[.editedImage] as? UIImage {
             image
         } else if let image = info[.originalImage] as? UIImage {

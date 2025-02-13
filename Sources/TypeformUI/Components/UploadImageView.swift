@@ -7,7 +7,7 @@ struct UploadImageView: View {
 
     var upload: Upload
     var settings: Settings
-    var removeAction: () -> Void = { }
+    var removeAction: () -> Void = {}
 
     private let padding = EdgeInsets(top: 8.0, leading: 8.0, bottom: 8.0, trailing: 8.0)
 

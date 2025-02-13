@@ -66,7 +66,6 @@ struct FileUploadView: View {
             UploadPickerView(path: uploadPath) { result in
                 handlePickerResult(result)
             }
-
         }
         #endif
         .onAppear {
