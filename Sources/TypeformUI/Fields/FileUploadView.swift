@@ -14,50 +14,17 @@ struct FileUploadView: View {
     @State private var path: Upload.Path?
     @State private var error: Error?
 
-    private var image: UIImage? {
-        guard let value else {
-            return nil
-        }
-
-        guard value.mimeType.hasPrefix("image") else {
-            return nil
-        }
-
-        return UIImage(data: value.bytes)
-    }
-
     var body: some View {
         VStack(spacing: settings.presentation.contentVerticalSpacing) {
-            if value != nil {
-                ZStack(alignment: .topTrailing) {
-                    if let image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: settings.upload.imageRadius)
-                            )
-                            .padding(8)
-                    } else {
-                        Image(systemName: "doc")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: settings.upload.imageRadius)
-                            )
-                            .padding(8)
-                    }
-
-                    Button {
-                        value = nil
-                    } label: {
-                        Label("Remove", systemImage: "x.circle.fill")
-                            .labelStyle(.iconOnly)
-                            .background(settings.button.theme.unselectedBackgroundColor)
-                            .clipShape(Circle())
-                    }
+            if let value {
+                UploadImageView(
+                    upload: value,
+                    settings: settings
+                ) {
+                    self.value = nil
                 }
             } else {
+                #if canImport(UIKit)
                 Menu {
                     Button {
                         path = .camera
@@ -78,17 +45,30 @@ struct FileUploadView: View {
                     Label(settings.localization.uploadAction, systemImage: "plus")
                         .labelStyle(UploadLabelStyle(settings: settings))
                 }
+                #elseif canImport(AppKit)
+                Button {
+                    selectFile()
+                } label: {
+                    Label(settings.localization.uploadAction, systemImage: "plus")
+                        .labelStyle(UploadLabelStyle(settings: settings))
+                }
+                #else
+                Text("Unsupported Platform")
+                #endif
             }
 
             if let error {
                 Text(error.localizedDescription)
             }
         }
+        #if canImport(UIKit)
         .sheet(item: $path) { uploadPath in
             UploadPickerView(path: uploadPath) { result in
                 handlePickerResult(result)
             }
+
         }
+        #endif
         .onAppear {
             registerState()
         }
@@ -141,6 +121,53 @@ struct FileUploadView: View {
             error = nil
         }
     }
+
+    #if canImport(AppKit)
+    private func selectFile() {
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = false
+        panel.canChooseFiles = true
+        panel.allowedContentTypes = [
+            .pdf,
+            .jpeg,
+            .png,
+            .heic,
+            .heif,
+        ]
+
+        guard case .OK = panel.runModal() else {
+            return
+        }
+
+        guard let url = panel.url else {
+            return
+        }
+
+        guard let bytes = try? Data(contentsOf: url) else {
+            handlePickerResult(.failure(TypeformError.fileUploadData))
+            return
+        }
+
+        guard let resourceValues = try? url.resourceValues(forKeys: [.contentTypeKey, .nameKey]) else {
+            handlePickerResult(.failure(TypeformError.fileUploadData))
+            return
+        }
+
+        let uniformType = resourceValues.contentType ?? .fileURL
+        let mimeType = uniformType.preferredMIMEType ?? "application/octet-stream"
+        let fileName = resourceValues.name ?? "New Document\(uniformType.preferredFilenameExtension ?? "")"
+
+        let upload = Upload(
+            bytes: bytes,
+            path: .documents,
+            mimeType: mimeType,
+            fileName: fileName
+        )
+
+        handlePickerResult(.success(upload))
+    }
+    #endif
 }
 
 #Preview("File Upload View") {

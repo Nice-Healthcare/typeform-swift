@@ -83,14 +83,20 @@ struct MyView: View {
 All of the _structural_ components are supported: Welcome Screen, Ending, Statement, and Question Group. Learn more about Typeform [Question Types](https://www.typeform.com/help/a/question-types-360051789692/?attribution_user_id=1dbdf7d8-4d28-44f6-8536-d95cf65b0311). The currently supported types are:
 
 * Date
-* Short Text
-* Long Text
-* Number
-* Rating
-* Multiple Choice
-* Yes/No
 * Dropdown
+* File Upload
+* Number
+* Long Text
+* Multiple Choice
 * Opinion Scale
+* Rating
+* Short Text
+* Yes/No
+
+### File Upload
+
+* File uploads are only supported on `UIKit` environments (iOS/iPad OS) at this time.
+* Only Image Files and PDFs are selectable. 
 
 ## Customization
 

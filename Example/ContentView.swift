@@ -41,7 +41,9 @@ struct ContentView: View {
                             text: $formId
                         )
                         .autocorrectionDisabled(true)
+                        #if canImport(UIKit)
                         .textInputAutocapitalization(.none)
+                        #endif
                         .focused($focus)
 
                         Menu("Recent") {

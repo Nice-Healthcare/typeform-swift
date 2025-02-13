@@ -26,9 +26,11 @@ struct UploadPickerView: UIViewControllerRepresentable {
             return controller
         case .documents:
             let contentTypes: [UTType] = [
+                .pdf,
                 .jpeg,
                 .png,
-                .pdf
+                .heic,
+                .heif,
             ]
             
             let controller = UIDocumentPickerViewController(forOpeningContentTypes: contentTypes)
@@ -81,7 +83,8 @@ extension UploadPickerCoordinator: UIImagePickerControllerDelegate {
         let upload = Upload(
             bytes: bytes,
             path: .camera,
-            mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg"
+            mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
+            fileName: "New Image.jpeg"
         )
 
         resultHandler(.success(upload))
@@ -107,6 +110,7 @@ extension UploadPickerCoordinator: PHPickerViewControllerDelegate {
         Task {
             let result: Result<Upload, Error>
             do {
+                let fileName = try await fileName(from: provider)
                 let image = try await image(from: provider)
                 guard let bytes = image.jpegData(compressionQuality: 0.9) else {
                     throw TypeformError.fileUploadData
@@ -115,7 +119,8 @@ extension UploadPickerCoordinator: PHPickerViewControllerDelegate {
                 let upload = Upload(
                     bytes: bytes,
                     path: .photoLibrary,
-                    mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg"
+                    mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
+                    fileName: fileName
                 )
                 result = .success(upload)
             } catch {
@@ -142,9 +147,23 @@ extension UploadPickerCoordinator: PHPickerViewControllerDelegate {
             }
         }
     }
+
+    private func fileName(from provider: NSItemProvider) async throws -> String {
+        try await withCheckedThrowingContinuation { continuation in
+            provider.loadFileRepresentation(forTypeIdentifier: UTType.item.identifier) { url, error in
+                switch (url, error) {
+                case (.some(let fileURL), _):
+                    continuation.resume(returning: fileURL.lastPathComponent)
+                case (_, .some(let throwing)):
+                    continuation.resume(throwing: throwing)
+                default:
+                    continuation.resume(throwing: CocoaError(.fileReadInvalidFileName))
+                }
+            }
+        }
+    }
 }
 
-// `UIDocumentPickerViewController` is automatically dismissed
 extension UploadPickerCoordinator: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let url = urls.first else {
@@ -165,17 +184,19 @@ extension UploadPickerCoordinator: UIDocumentPickerDelegate {
                 throw TypeformError.fileUploadData
             }
 
-            guard let resourceValues = try? url.resourceValues(forKeys: [.contentTypeKey]) else {
+            guard let resourceValues = try? url.resourceValues(forKeys: [.contentTypeKey, .nameKey]) else {
                 throw TypeformError.fileUploadData
             }
 
             let uniformType = resourceValues.contentType ?? .fileURL
             let mimeType = uniformType.preferredMIMEType ?? "application/octet-stream"
+            let fileName = resourceValues.name ?? "New Document\(uniformType.preferredFilenameExtension ?? "")"
 
             let upload = Upload(
                 bytes: bytes,
                 path: .documents,
-                mimeType: mimeType
+                mimeType: mimeType,
+                fileName: fileName
             )
 
             resultHandler(.success(upload))
