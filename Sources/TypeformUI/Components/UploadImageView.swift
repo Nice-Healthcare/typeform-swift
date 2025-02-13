@@ -9,6 +9,8 @@ struct UploadImageView: View {
     var settings: Settings
     var removeAction: () -> Void = { }
 
+    private let padding = EdgeInsets(top: 8.0, leading: 8.0, bottom: 8.0, trailing: 8.0)
+
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .topTrailing) {
@@ -20,19 +22,12 @@ struct UploadImageView: View {
                         .clipShape(
                             RoundedRectangle(cornerRadius: settings.upload.imageRadius)
                         )
-                        .padding(8)
+                        .padding(padding)
                 } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: settings.upload.imageRadius)
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(settings.upload.theme.selectedBackgroundColor)
-                            .padding(8)
-
-                        Image(systemName: "doc.on.clipboard")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60)
-                    }
+                    UploadPlaceholderView(
+                        settings: settings,
+                        padding: padding
+                    )
                 }
                 #elseif canImport(AppKit)
                 if let image = NSImage(data: upload.bytes) {
@@ -42,19 +37,12 @@ struct UploadImageView: View {
                         .clipShape(
                             RoundedRectangle(cornerRadius: settings.upload.imageRadius)
                         )
-                        .padding(8)
+                        .padding(padding)
                 } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: settings.upload.imageRadius)
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(settings.upload.theme.selectedBackgroundColor)
-                            .padding(8)
-
-                        Image(systemName: "doc.on.clipboard")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60)
-                    }
+                    UploadPlaceholderView(
+                        settings: settings,
+                        padding: padding
+                    )
                 }
                 #endif
 
@@ -67,12 +55,41 @@ struct UploadImageView: View {
                         .clipShape(Circle())
                 }
             }
-            .frame(maxWidth: 200)
+            .frame(maxWidth: settings.upload.imageMaxWidth)
 
             Text(upload.fileName)
                 .font(settings.typography.captionFont)
                 .foregroundStyle(settings.typography.captionColor)
-                .padding(.leading, 8)
+                .padding(.leading, padding.leading)
+        }
+    }
+}
+
+struct UploadPlaceholderView: View {
+
+    var settings: Settings
+    var padding: EdgeInsets
+
+    private var glyphWidth: CGFloat {
+        if let width = settings.upload.imageMaxWidth {
+            width * 0.3
+        } else {
+            60
+        }
+    }
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: settings.upload.imageRadius)
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(settings.upload.placeholderBackgroundColor)
+                .padding(padding)
+
+            Image(systemName: "doc.on.clipboard")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(settings.upload.placeholderForegroundColor)
+                .frame(width: glyphWidth)
         }
     }
 }

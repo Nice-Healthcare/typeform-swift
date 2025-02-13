@@ -79,10 +79,10 @@ public struct Settings {
         public init(
             layout: Layout = .callToAction,
             backgroundColor: Color = .white,
-            titleDescriptionVerticalSpacing: Double = 30.0,
-            descriptionContentVerticalSpacing: Double = 30.0,
+            titleDescriptionVerticalSpacing: CGFloat = 30.0,
+            descriptionContentVerticalSpacing: CGFloat = 30.0,
             contentInsets: EdgeInsets = EdgeInsets(),
-            contentVerticalSpacing: Double = 15.0,
+            contentVerticalSpacing: CGFloat = 15.0,
             showWelcomeImage: Bool = true,
             showEndingImage: Bool = true,
             skipWelcomeScreen: Bool = false,
@@ -147,13 +147,13 @@ public struct Settings {
         public var backgroundColor: Color
         public var dividerColor: Color
         public var insets: EdgeInsets
-        public var verticalSpacing: Double
+        public var verticalSpacing: CGFloat
 
         public init(
             backgroundColor: Color = .white,
             dividerColor: Color = .black,
             insets: EdgeInsets = EdgeInsets(),
-            verticalSpacing: Double = 0.0
+            verticalSpacing: CGFloat = 0.0
         ) {
             self.backgroundColor = backgroundColor
             self.dividerColor = dividerColor
@@ -165,18 +165,18 @@ public struct Settings {
     public struct Field {
         public var backgroundColor: Color
         public var strokeColor: Color
-        public var strokeWidth: Double
-        public var verticalInset: Double
-        public var horizontalInset: Double
-        public var cornerRadius: Double
+        public var strokeWidth: CGFloat
+        public var verticalInset: CGFloat
+        public var horizontalInset: CGFloat
+        public var cornerRadius: CGFloat
 
         public init(
             backgroundColor: Color = .gray.opacity(0.2),
             strokeColor: Color = .gray.opacity(0.8),
-            strokeWidth: Double = 1.0,
-            verticalInset: Double = 10.0,
-            horizontalInset: Double = 15.0,
-            cornerRadius: Double = 6.0
+            strokeWidth: CGFloat = 1.0,
+            verticalInset: CGFloat = 10.0,
+            horizontalInset: CGFloat = 15.0,
+            cornerRadius: CGFloat = 6.0
         ) {
             self.backgroundColor = backgroundColor
             self.strokeColor = strokeColor
@@ -189,12 +189,12 @@ public struct Settings {
 
     public struct Button {
         public var theme: IntermittentTheme
-        public var cornerRadius: Double
+        public var cornerRadius: CGFloat
         public var padding: EdgeInsets
 
         public init(
             theme: IntermittentTheme = .button,
-            cornerRadius: Double = 6.0,
+            cornerRadius: CGFloat = 6.0,
             padding: EdgeInsets = EdgeInsets(top: 15.0, leading: 10.0, bottom: 15.0, trailing: 10.0)
         ) {
             self.theme = theme
@@ -205,11 +205,11 @@ public struct Settings {
 
     public struct Checkbox {
         public var theme: IntermittentTheme
-        public var cornerRadius: Double
+        public var cornerRadius: CGFloat
 
         public init(
             theme: IntermittentTheme = .checkbox,
-            cornerRadius: Double = 3.0
+            cornerRadius: CGFloat = 3.0
         ) {
             self.theme = theme
             self.cornerRadius = cornerRadius
@@ -242,20 +242,26 @@ public struct Settings {
 
     public struct Upload {
         public var theme: IntermittentTheme
-        public var actionRadius: Double
-        public var imageRadius: Double
-        public var padding: EdgeInsets
+        public var actionRadius: CGFloat
+        public var imageRadius: CGFloat
+        public var imageMaxWidth: CGFloat?
+        public var placeholderBackgroundColor: Color
+        public var placeholderForegroundColor: Color
 
         public init(
             theme: IntermittentTheme = .upload,
-            actionRadius: Double = 3.0,
-            imageRadius: Double = 6.0,
-            padding: EdgeInsets = EdgeInsets(top: 15.0, leading: 10.0, bottom: 15.0, trailing: 10.0)
+            actionRadius: CGFloat = 3.0,
+            imageRadius: CGFloat = 16.0,
+            imageMaxWidth: CGFloat? = 200,
+            placeholderBackgroundColor: Color = .blue,
+            placeholderForegroundColor: Color = .white
         ) {
             self.theme = theme
             self.actionRadius = actionRadius
             self.imageRadius = imageRadius
-            self.padding = padding
+            self.imageMaxWidth = imageMaxWidth
+            self.placeholderBackgroundColor = placeholderBackgroundColor
+            self.placeholderForegroundColor = placeholderForegroundColor
         }
     }
 
