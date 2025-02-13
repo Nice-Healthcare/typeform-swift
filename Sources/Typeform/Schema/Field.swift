@@ -5,20 +5,22 @@ public struct Field: Hashable, Identifiable, Codable {
     public enum Kind: String, Codable {
         case date
         case dropdown
+        case fileUpload = "file_upload"
         case group
-        case long_text
-        case multiple_choice
+        case longText = "long_text"
+        case multipleChoice = "multiple_choice"
         case number
-        case opinion_scale
+        case opinionScale = "opinion_scale"
         case rating
-        case short_text
+        case shortText = "short_text"
         case statement
-        case yes_no
+        case yesNo = "yes_no"
     }
 
     public enum Properties: Hashable, Codable {
         case date(DateStamp)
         case dropdown(Dropdown)
+        case fileUpload(FileUpload)
         case group(Group)
         case longText(LongText)
         case multipleChoice(MultipleChoice)
@@ -32,7 +34,8 @@ public struct Field: Hashable, Identifiable, Codable {
         public var description: String? {
             switch self {
             case .date(let value): value.description
-            case .dropdown: nil
+            case .dropdown(let value): value.description
+            case .fileUpload(let value): value.description
             case .group: nil
             case .longText(let value): value.description
             case .multipleChoice(let value): value.description
@@ -67,7 +70,7 @@ public struct Field: Hashable, Identifiable, Codable {
     public init(
         id: String = "",
         ref: Reference = Reference(),
-        type: Kind = .yes_no,
+        type: Kind = .yesNo,
         title: String = "",
         properties: Properties = .yesNo(YesNo()),
         validations: Validations? = nil,
@@ -97,31 +100,34 @@ public struct Field: Hashable, Identifiable, Codable {
         case .dropdown:
             let dropdown = try container.decode(Dropdown.self, forKey: .properties)
             properties = .dropdown(dropdown)
+        case .fileUpload:
+            let fileUpload = try container.decode(FileUpload.self, forKey: .properties)
+            properties = .fileUpload(fileUpload)
         case .group:
             let group = try container.decode(Group.self, forKey: .properties)
             properties = .group(group)
-        case .long_text:
+        case .longText:
             let longText = try container.decode(LongText.self, forKey: .properties)
             properties = .longText(longText)
-        case .multiple_choice:
+        case .multipleChoice:
             let multipleChoice = try container.decode(MultipleChoice.self, forKey: .properties)
             properties = .multipleChoice(multipleChoice)
         case .number:
             let number = try container.decode(Number.self, forKey: .properties)
             properties = .number(number)
-        case .opinion_scale:
+        case .opinionScale:
             let optionScale = try container.decode(OpinionScale.self, forKey: .properties)
             properties = .opinionScale(optionScale)
         case .rating:
             let rating = try container.decode(Rating.self, forKey: .properties)
             properties = .rating(rating)
-        case .short_text:
+        case .shortText:
             let shortText = try container.decode(ShortText.self, forKey: .properties)
             properties = .shortText(shortText)
         case .statement:
             let statement = try container.decode(Statement.self, forKey: .properties)
             properties = .statement(statement)
-        case .yes_no:
+        case .yesNo:
             let yesNo = try container.decode(YesNo.self, forKey: .properties)
             properties = .yesNo(yesNo)
         }
@@ -140,6 +146,8 @@ public struct Field: Hashable, Identifiable, Codable {
             try container.encode(dateStamp, forKey: .properties)
         case .dropdown(let dropdown):
             try container.encode(dropdown, forKey: .properties)
+        case .fileUpload(let fileUpload):
+            try container.encode(fileUpload, forKey: .properties)
         case .group(let group):
             try container.encode(group, forKey: .properties)
         case .longText(let longText):
@@ -160,4 +168,19 @@ public struct Field: Hashable, Identifiable, Codable {
             try container.encode(yesNo, forKey: .properties)
         }
     }
+}
+
+public extension Field.Kind {
+    @available(*, deprecated, renamed: "fileUpload")
+    static let file_upload: Self = .fileUpload
+    @available(*, deprecated, renamed: "longText")
+    static let long_text: Self = .longText
+    @available(*, deprecated, renamed: "multipleChoice")
+    static let multiple_choice: Self = .multipleChoice
+    @available(*, deprecated, renamed: "opinionScale")
+    static let opinion_scale: Self = .opinionScale
+    @available(*, deprecated, renamed: "shortText")
+    static let short_text: Self = .shortText
+    @available(*, deprecated, renamed: "yesNo")
+    static let yes_no: Self = .yesNo
 }

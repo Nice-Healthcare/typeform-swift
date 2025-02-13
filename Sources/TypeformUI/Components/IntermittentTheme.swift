@@ -33,6 +33,7 @@ public struct IntermittentTheme {
 }
 
 public extension IntermittentTheme {
+    static let upload: IntermittentTheme = IntermittentTheme()
     static let button: IntermittentTheme = IntermittentTheme()
     static let checkbox: IntermittentTheme = IntermittentTheme()
     static let radio: IntermittentTheme = IntermittentTheme(

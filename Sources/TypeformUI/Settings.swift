@@ -16,6 +16,10 @@ public struct Settings {
         public var abandonConfirmationAction: String
         public var emptyChoice: String
         public var nullDate: String
+        public var uploadAction: String
+        public var uploadCamera: String
+        public var uploadPhotoLibrary: String
+        public var uploadDocument: String
 
         public init(
             next: String = "Next",
@@ -28,7 +32,11 @@ public struct Settings {
             abandonConfirmationMessage: String = "Are you sure you want to abandon the form?",
             abandonConfirmationAction: String = "Abandon",
             emptyChoice: String = "Select Option",
-            nullDate: String = "I'm not sure…"
+            nullDate: String = "I'm not sure…",
+            uploadAction: String = "Select File",
+            uploadCamera: String = "Camera",
+            uploadPhotoLibrary: String = "Photo Library",
+            uploadDocument: String = "Documents"
         ) {
             self.next = next
             self.cancel = cancel
@@ -41,6 +49,10 @@ public struct Settings {
             self.abandonConfirmationMessage = abandonConfirmationMessage
             self.emptyChoice = emptyChoice
             self.nullDate = nullDate
+            self.uploadAction = uploadAction
+            self.uploadCamera = uploadCamera
+            self.uploadPhotoLibrary = uploadPhotoLibrary
+            self.uploadDocument = uploadDocument
         }
     }
 
@@ -67,10 +79,10 @@ public struct Settings {
         public init(
             layout: Layout = .callToAction,
             backgroundColor: Color = .white,
-            titleDescriptionVerticalSpacing: Double = 30.0,
-            descriptionContentVerticalSpacing: Double = 30.0,
+            titleDescriptionVerticalSpacing: CGFloat = 30.0,
+            descriptionContentVerticalSpacing: CGFloat = 30.0,
             contentInsets: EdgeInsets = EdgeInsets(),
-            contentVerticalSpacing: Double = 15.0,
+            contentVerticalSpacing: CGFloat = 15.0,
             showWelcomeImage: Bool = true,
             showEndingImage: Bool = true,
             skipWelcomeScreen: Bool = false,
@@ -135,13 +147,13 @@ public struct Settings {
         public var backgroundColor: Color
         public var dividerColor: Color
         public var insets: EdgeInsets
-        public var verticalSpacing: Double
+        public var verticalSpacing: CGFloat
 
         public init(
             backgroundColor: Color = .white,
             dividerColor: Color = .black,
             insets: EdgeInsets = EdgeInsets(),
-            verticalSpacing: Double = 0.0
+            verticalSpacing: CGFloat = 0.0
         ) {
             self.backgroundColor = backgroundColor
             self.dividerColor = dividerColor
@@ -153,18 +165,18 @@ public struct Settings {
     public struct Field {
         public var backgroundColor: Color
         public var strokeColor: Color
-        public var strokeWidth: Double
-        public var verticalInset: Double
-        public var horizontalInset: Double
-        public var cornerRadius: Double
+        public var strokeWidth: CGFloat
+        public var verticalInset: CGFloat
+        public var horizontalInset: CGFloat
+        public var cornerRadius: CGFloat
 
         public init(
             backgroundColor: Color = .gray.opacity(0.2),
             strokeColor: Color = .gray.opacity(0.8),
-            strokeWidth: Double = 1.0,
-            verticalInset: Double = 10.0,
-            horizontalInset: Double = 15.0,
-            cornerRadius: Double = 6.0
+            strokeWidth: CGFloat = 1.0,
+            verticalInset: CGFloat = 10.0,
+            horizontalInset: CGFloat = 15.0,
+            cornerRadius: CGFloat = 6.0
         ) {
             self.backgroundColor = backgroundColor
             self.strokeColor = strokeColor
@@ -177,12 +189,12 @@ public struct Settings {
 
     public struct Button {
         public var theme: IntermittentTheme
-        public var cornerRadius: Double
+        public var cornerRadius: CGFloat
         public var padding: EdgeInsets
 
         public init(
             theme: IntermittentTheme = .button,
-            cornerRadius: Double = 6.0,
+            cornerRadius: CGFloat = 6.0,
             padding: EdgeInsets = EdgeInsets(top: 15.0, leading: 10.0, bottom: 15.0, trailing: 10.0)
         ) {
             self.theme = theme
@@ -193,11 +205,11 @@ public struct Settings {
 
     public struct Checkbox {
         public var theme: IntermittentTheme
-        public var cornerRadius: Double
+        public var cornerRadius: CGFloat
 
         public init(
             theme: IntermittentTheme = .checkbox,
-            cornerRadius: Double = 3.0
+            cornerRadius: CGFloat = 3.0
         ) {
             self.theme = theme
             self.cornerRadius = cornerRadius
@@ -228,6 +240,31 @@ public struct Settings {
         public init() {}
     }
 
+    public struct Upload {
+        public var theme: IntermittentTheme
+        public var actionRadius: CGFloat
+        public var imageRadius: CGFloat
+        public var imageMaxWidth: CGFloat?
+        public var placeholderBackgroundColor: Color
+        public var placeholderForegroundColor: Color
+
+        public init(
+            theme: IntermittentTheme = .upload,
+            actionRadius: CGFloat = 3.0,
+            imageRadius: CGFloat = 16.0,
+            imageMaxWidth: CGFloat? = 200,
+            placeholderBackgroundColor: Color = .blue,
+            placeholderForegroundColor: Color = .white
+        ) {
+            self.theme = theme
+            self.actionRadius = actionRadius
+            self.imageRadius = imageRadius
+            self.imageMaxWidth = imageMaxWidth
+            self.placeholderBackgroundColor = placeholderBackgroundColor
+            self.placeholderForegroundColor = placeholderForegroundColor
+        }
+    }
+
     public var localization: Localization
     public var presentation: Presentation
     public var typography: Typography
@@ -238,6 +275,7 @@ public struct Settings {
     public var radio: Radio
     public var rating: Rating
     public var opinionScale: OpinionScale
+    public var upload: Upload
 
     public init(
         localization: Localization = Localization(),
@@ -249,7 +287,8 @@ public struct Settings {
         checkbox: Checkbox = Checkbox(),
         radio: Radio = Radio(),
         rating: Rating = Rating(),
-        opinionScale: OpinionScale = OpinionScale()
+        opinionScale: OpinionScale = OpinionScale(),
+        upload: Upload = Upload()
     ) {
         self.localization = localization
         self.presentation = presentation
@@ -261,6 +300,7 @@ public struct Settings {
         self.radio = radio
         self.rating = rating
         self.opinionScale = opinionScale
+        self.upload = upload
     }
 }
 #endif

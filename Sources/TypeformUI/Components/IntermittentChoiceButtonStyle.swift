@@ -78,7 +78,7 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
     }
 }
 
-struct ChoiceButtonStyle_Previews: PreviewProvider {
+struct IntermittentChoiceButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
             MultipleChoiceView(

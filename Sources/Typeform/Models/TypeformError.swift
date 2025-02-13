@@ -10,4 +10,8 @@ public enum TypeformError: Error {
     case varCollectionMissingInvalidValue
     case responseTypeMismatch(Any.Type)
     case unexpectedOperation(Op)
+
+    case fileUploadSelection
+    case fileUploadData
+    case fileUploadSecurity
 }

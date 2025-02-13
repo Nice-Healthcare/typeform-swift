@@ -49,6 +49,8 @@ struct ResponseValueView: View {
                 Text(int.formatted())
             case .string(let string):
                 Text(string)
+            case .upload(let upload):
+                Text(upload.mimeType)
             }
         } else {
             EmptyView()

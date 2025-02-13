@@ -41,8 +41,10 @@ struct ContentView: View {
                             text: $formId
                         )
                         .autocorrectionDisabled(true)
-                        .textInputAutocapitalization(.none)
-                        .focused($focus)
+                        #if canImport(UIKit)
+                            .textInputAutocapitalization(.none)
+                        #endif
+                            .focused($focus)
 
                         Menu("Recent") {
                             ForEach(recent, id: \.self) { item in

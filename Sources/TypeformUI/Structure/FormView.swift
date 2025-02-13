@@ -77,6 +77,9 @@ public struct FormView<Header: View, Footer: View>: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
         }
+        #if os(iOS)
+        .navigationViewStyle(.stack)
+        #endif
     }
 }
 
