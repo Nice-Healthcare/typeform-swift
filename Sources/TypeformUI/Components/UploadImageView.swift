@@ -51,9 +51,11 @@ struct UploadImageView: View {
                 } label: {
                     Label("Remove", systemImage: "x.circle.fill")
                         .labelStyle(.iconOnly)
-                        .background(settings.button.theme.unselectedBackgroundColor)
+                        .background(settings.radio.theme.selectedBackgroundColor)
+                        .foregroundStyle(settings.radio.theme.selectedForegroundColor)
                         .clipShape(Circle())
                 }
+                .buttonStyle(.plain)
             }
             .frame(maxWidth: settings.upload.imageMaxWidth)
 
