@@ -45,6 +45,7 @@ struct FileUploadView: View {
                     Label(settings.localization.uploadAction, systemImage: "plus")
                         .labelStyle(UploadLabelStyle(settings: settings))
                 }
+                .buttonStyle(.plain)
                 #elseif canImport(AppKit)
                 Button {
                     selectFile()
@@ -52,6 +53,7 @@ struct FileUploadView: View {
                     Label(settings.localization.uploadAction, systemImage: "plus")
                         .labelStyle(UploadLabelStyle(settings: settings))
                 }
+                .buttonStyle(.plain)
                 #else
                 Text("Unsupported Platform")
                 #endif
