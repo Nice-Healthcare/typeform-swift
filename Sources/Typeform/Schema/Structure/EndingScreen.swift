@@ -33,7 +33,7 @@ public struct EndingScreen: Screen, Hashable, Codable {
     public let ref: Ref
     public let type: String
     public let title: String
-    public let attachment: ScreenAttachment?
+    public let attachment: Attachment?
     public let properties: ScreenProperties
 
     public init(
@@ -41,7 +41,7 @@ public struct EndingScreen: Screen, Hashable, Codable {
         ref: Ref = .default,
         type: String = "thankyou_screen",
         title: String = "",
-        attachment: ScreenAttachment? = nil,
+        attachment: Attachment? = nil,
         properties: ScreenProperties = ScreenProperties()
     ) {
         self.id = id

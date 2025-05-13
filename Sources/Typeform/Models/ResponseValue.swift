@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ResponseValue: Equatable {
+public enum ResponseValue: Hashable {
     case bool(Bool)
     case choice(Choice)
     case choices([Choice])
