@@ -4,14 +4,14 @@ public struct WelcomeScreen: Screen, Hashable, Codable {
     public let id: String
     public let ref: Reference
     public let title: String
-    public let attachment: ScreenAttachment?
+    public let attachment: Attachment?
     public let properties: ScreenProperties
 
     public init(
         id: String = "",
         ref: Reference = Reference(),
         title: String = "",
-        attachment: ScreenAttachment? = nil,
+        attachment: Attachment? = nil,
         properties: ScreenProperties = ScreenProperties()
     ) {
         self.id = id

@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Upload: Equatable {
+public struct Upload: Hashable {
 
-    public enum Path: String, Identifiable {
+    public enum Path: String, Hashable, Identifiable {
         case camera
         case photoLibrary
         case documents
