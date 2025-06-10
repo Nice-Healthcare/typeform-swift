@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Settings: Hashable, Codable {
+public struct Settings: Hashable, Codable, Sendable {
 
-    public struct Meta: Hashable, Codable {
+    public struct Meta: Hashable, Codable, Sendable {
         public let allow_indexing: Bool
 
         public init(allow_indexing: Bool = false) {
@@ -10,9 +10,9 @@ public struct Settings: Hashable, Codable {
         }
     }
 
-    public struct Capabilities: Hashable, Codable {
+    public struct Capabilities: Hashable, Codable, Sendable {
 
-        public struct EndToEndEncryption: Hashable, Codable {
+        public struct EndToEndEncryption: Hashable, Codable, Sendable {
             public let enabled: Bool
             public let modifiable: Bool
 

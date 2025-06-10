@@ -1,25 +1,25 @@
 import Foundation
 
-public struct Action: Hashable, Codable {
+public struct Action: Hashable, Codable, Sendable {
 
-    public enum Kind: String, Codable {
+    public enum Kind: String, Codable, Sendable {
         case jump
     }
 
-    public struct Details: Hashable, Codable {
+    public struct Details: Hashable, Codable, Sendable {
 
-        public enum ToType: String, Codable {
+        public enum ToType: String, Codable, Sendable {
             case field
             case ending = "thankyou"
         }
 
-        public struct To: Hashable, Codable {
+        public struct To: Hashable, Codable, Sendable {
             public let type: ToType
             public let value: Reference
 
             public init(
                 type: ToType = .field,
-                value: Reference = Reference()
+                value: Reference = ""
             ) {
                 self.type = type
                 self.value = value

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MultipleChoice: Hashable, Codable {
+public struct MultipleChoice: Hashable, Codable, Sendable {
     public let choices: [Choice]
     public let randomize: Bool
     public let allow_multiple_selection: Bool

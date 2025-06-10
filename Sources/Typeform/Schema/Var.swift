@@ -1,14 +1,14 @@
 import Foundation
 
-public struct Var: Hashable, Codable {
+public struct Var: Hashable, Codable, Sendable {
 
-    public enum VarType: String, Codable {
+    public enum VarType: String, Codable, Sendable {
         case choice
         case constant
         case field
     }
 
-    public enum Value: Hashable, Codable {
+    public enum Value: Hashable, Codable, Sendable {
         case bool(Bool)
         case ref(Reference)
         case string(String)

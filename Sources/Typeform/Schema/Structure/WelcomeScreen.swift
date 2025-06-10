@@ -1,6 +1,6 @@
 import Foundation
 
-public struct WelcomeScreen: Screen, Hashable, Codable {
+public struct WelcomeScreen: Screen, Hashable, Codable, Sendable {
     public let id: String
     public let ref: Reference
     public let title: String
@@ -9,7 +9,7 @@ public struct WelcomeScreen: Screen, Hashable, Codable {
 
     public init(
         id: String = "",
-        ref: Reference = Reference(),
+        ref: Reference = "",
         title: String = "",
         attachment: Attachment? = nil,
         properties: ScreenProperties = ScreenProperties()

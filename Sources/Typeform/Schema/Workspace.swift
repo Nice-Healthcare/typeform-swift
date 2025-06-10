@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Workspace: Hashable, Codable {
+public struct Workspace: Hashable, Codable, Sendable {
     public let href: URL
 
     public init(

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DateStamp: Hashable, Codable {
+public struct DateStamp: Hashable, Codable, Sendable {
     public let separator: String
     public let structure: String
     public let description: String?

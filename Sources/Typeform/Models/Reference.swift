@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Reference: Hashable, RawRepresentable, Codable {
+public enum Reference: Hashable, RawRepresentable, ExpressibleByStringLiteral, Codable, Sendable {
     case string(String)
     case uuid(UUID)
 
@@ -31,7 +31,15 @@ public enum Reference: Hashable, RawRepresentable, Codable {
         get {
             switch self {
             case .string(let string): string
-            case .uuid(let uuid): uuid.uuidString
+            case .uuid(let uuid):
+                switch Self.valueEncodingCase {
+                case .automatic:
+                    uuid.uuidString
+                case .uppercase:
+                    uuid.uuidString.uppercased()
+                case .lowercase:
+                    uuid.uuidString.lowercased()
+                }
             }
         }
         set {
@@ -53,6 +61,10 @@ public enum Reference: Hashable, RawRepresentable, Codable {
 
     public init(string: String) {
         self = .string(string)
+    }
+
+    public init(stringLiteral value: String) {
+        self = Self.make(with: value)
     }
 
     public init?(uuidString: String) {

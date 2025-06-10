@@ -1,13 +1,13 @@
 import Foundation
 
-public struct Choice: Hashable, Identifiable, Codable {
+public struct Choice: Hashable, Identifiable, Codable, Sendable {
     public let id: String
     public let ref: Reference
     public let label: String
 
     public init(
         id: String = "",
-        ref: Reference = Reference(),
+        ref: Reference = "",
         label: String = ""
     ) {
         self.id = id

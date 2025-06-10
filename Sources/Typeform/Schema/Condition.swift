@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Condition: Hashable, Codable {
+public struct Condition: Hashable, Codable, Sendable {
 
-    public enum Parameters: Hashable {
+    public enum Parameters: Hashable, Sendable {
         case vars([Var])
         case conditions([Condition])
     }

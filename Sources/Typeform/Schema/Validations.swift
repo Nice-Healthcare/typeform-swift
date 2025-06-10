@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Validations: Hashable, Codable {
+public struct Validations: Hashable, Codable, Sendable {
     public let required: Bool
 
     public init(

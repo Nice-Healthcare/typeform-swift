@@ -1,8 +1,8 @@
 import Foundation
 
-public struct EndingScreen: Screen, Hashable, Codable {
+public struct EndingScreen: Screen, Hashable, Codable, Sendable {
 
-    public enum Ref: Hashable, Codable {
+    public enum Ref: Hashable, Codable, Sendable {
         case `default`
         case ref(Reference)
 

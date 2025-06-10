@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Statement: Hashable, Codable {
+public struct Statement: Hashable, Codable, Sendable {
     public let hide_marks: Bool
     public let button_text: String
     public let description: String?

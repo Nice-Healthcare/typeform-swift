@@ -1,6 +1,6 @@
 import Foundation
 
-public struct LongText: Hashable, Codable {
+public struct LongText: Hashable, Codable, Sendable {
     public let description: String?
 
     public init(

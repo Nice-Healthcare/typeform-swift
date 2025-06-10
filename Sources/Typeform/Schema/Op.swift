@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Op: String, Codable {
+public enum Op: String, Codable, Sendable {
     case always
     case and
     case beginsWith = "begins_with"

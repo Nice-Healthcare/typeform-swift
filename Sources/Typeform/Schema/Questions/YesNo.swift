@@ -1,6 +1,6 @@
 import Foundation
 
-public struct YesNo: Hashable, Codable {
+public struct YesNo: Hashable, Codable, Sendable {
 
     public let description: String?
 

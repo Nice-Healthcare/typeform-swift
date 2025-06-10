@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Links: Hashable, Codable {
+public struct Links: Hashable, Codable, Sendable {
     public let display: URL
 
     public init(
