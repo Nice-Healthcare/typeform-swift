@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Reference: Hashable, RawRepresentable, ExpressibleByStringLiteral, Codable, Sendable {
+public enum Reference: Hashable, Sendable {
     case string(String)
     case uuid(UUID)
 
@@ -27,26 +27,6 @@ public enum Reference: Hashable, RawRepresentable, ExpressibleByStringLiteral, C
         return .string(value)
     }
 
-    public var rawValue: String {
-        get {
-            switch self {
-            case .string(let string): string
-            case .uuid(let uuid):
-                switch Self.valueEncodingCase {
-                case .automatic:
-                    uuid.uuidString
-                case .uppercase:
-                    uuid.uuidString.uppercased()
-                case .lowercase:
-                    uuid.uuidString.lowercased()
-                }
-            }
-        }
-        set {
-            self = Self.make(with: newValue)
-        }
-    }
-
     public var uuidString: String? {
         guard case .uuid(let uuid) = self else {
             return nil
@@ -55,16 +35,8 @@ public enum Reference: Hashable, RawRepresentable, ExpressibleByStringLiteral, C
         return uuid.uuidString
     }
 
-    public init?(rawValue: String) {
-        self = Self.make(with: rawValue)
-    }
-
-    public init(string: String) {
+    public init(string: String = "") {
         self = .string(string)
-    }
-
-    public init(stringLiteral value: String) {
-        self = Self.make(with: value)
     }
 
     public init?(uuidString: String) {
@@ -74,11 +46,9 @@ public enum Reference: Hashable, RawRepresentable, ExpressibleByStringLiteral, C
 
         self = .uuid(uuid)
     }
+}
 
-    public init() {
-        self = .string("")
-    }
-
+extension Reference: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
 
@@ -107,6 +77,38 @@ public enum Reference: Hashable, RawRepresentable, ExpressibleByStringLiteral, C
             case .lowercase:
                 try container.encode(uuid.uuidString.lowercased())
             }
+        }
+    }
+}
+
+extension Reference: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        self = Self.make(with: value)
+    }
+}
+
+extension Reference: RawRepresentable {
+    public init?(rawValue: String) {
+        self = Self.make(with: rawValue)
+    }
+
+    public var rawValue: String {
+        get {
+            switch self {
+            case .string(let string): string
+            case .uuid(let uuid):
+                switch Self.valueEncodingCase {
+                case .automatic:
+                    uuid.uuidString
+                case .uppercase:
+                    uuid.uuidString.uppercased()
+                case .lowercase:
+                    uuid.uuidString.lowercased()
+                }
+            }
+        }
+        set {
+            self = Self.make(with: newValue)
         }
     }
 }
