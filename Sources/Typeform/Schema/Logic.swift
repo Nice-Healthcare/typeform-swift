@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Logic: Hashable, Codable {
+public struct Logic: Hashable, Codable, Sendable {
 
-    public enum Kind: String, Codable {
+    public enum Kind: String, Codable, Sendable {
         case field
     }
 

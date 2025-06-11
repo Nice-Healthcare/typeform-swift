@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Field: Hashable, Identifiable, Codable {
+public struct Field: Hashable, Identifiable, Codable, Sendable {
 
-    public enum Kind: String, Codable {
+    public enum Kind: String, Codable, Sendable {
         case date
         case dropdown
         case fileUpload = "file_upload"
@@ -17,7 +17,7 @@ public struct Field: Hashable, Identifiable, Codable {
         case yesNo = "yes_no"
     }
 
-    public enum Properties: Hashable, Codable {
+    public enum Properties: Hashable, Codable, Sendable {
         case date(DateStamp)
         case dropdown(Dropdown)
         case fileUpload(FileUpload)
@@ -69,7 +69,7 @@ public struct Field: Hashable, Identifiable, Codable {
 
     public init(
         id: String = "",
-        ref: Reference = Reference(),
+        ref: Reference = "",
         type: Kind = .yesNo,
         title: String = "",
         properties: Properties = .yesNo(YesNo()),

@@ -3,14 +3,14 @@ import Foundation
 @available(*, deprecated, renamed: "Attachment")
 public typealias ScreenAttachment = Attachment
 
-public struct Attachment: Hashable, Codable {
+public struct Attachment: Hashable, Codable, Sendable {
 
-    public enum Kind: String, Codable {
+    public enum Kind: String, Codable, Sendable {
         case image
         case video
     }
 
-    public struct Properties: Hashable, Codable {
+    public struct Properties: Hashable, Codable, Sendable {
         public let description: String?
 
         public init(description: String? = nil) {

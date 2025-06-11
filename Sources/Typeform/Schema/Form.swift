@@ -1,8 +1,8 @@
 import Foundation
 
-public struct Form: Hashable, Identifiable, Codable {
+public struct Form: Hashable, Identifiable, Codable, Sendable {
 
-    public enum Kind: String, Codable {
+    public enum Kind: String, Codable, Sendable {
         case quiz
     }
 

@@ -1,8 +1,8 @@
 import Foundation
 
-public struct OpinionScale: Hashable, Codable {
+public struct OpinionScale: Hashable, Codable, Sendable {
 
-    public struct Labels: Hashable, Codable {
+    public struct Labels: Hashable, Codable, Sendable {
 
         enum CodingKeys: String, CodingKey {
             case leading = "left"

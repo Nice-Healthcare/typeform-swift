@@ -76,4 +76,83 @@ final class ResponsesTests: TypeformTests {
             .multipleChoice_One, .number, .rating, .shortText, .yesNo,
         ])
     }
+
+    func testDefaultResponseValueEncoding() throws {
+        responses = [
+            "one": .int(6),
+            "two": .choice(
+                Choice(
+                    id: "s83hchg83",
+                    ref: "sex-at-birth",
+                    label: "Female"
+                )
+            ),
+            "three": .string("Hello"),
+        ]
+
+        let data = try Self.prettyEncoder.encode(responses.encodableDictionary)
+        let json = String(decoding: data, as: UTF8.self)
+        XCTAssertEqual(json, """
+        {
+          "one" : {
+            "int" : 6
+          },
+          "three" : {
+            "string" : "Hello"
+          },
+          "two" : {
+            "choice" : {
+              "id" : "s83hchg83",
+              "label" : "Female",
+              "ref" : "sex-at-birth"
+            }
+          }
+        }
+        """)
+    }
+
+    func testDefaultResponseValueDecoding() throws {
+        let dateComponents = DateComponents(
+            calendar: Calendar(identifier: .gregorian),
+            timeZone: TimeZone(identifier: "America/Chicago"),
+            year: 2025,
+            month: 6,
+            day: 10,
+            hour: 13,
+            minute: 27,
+            second: 00
+        )
+        let date = try XCTUnwrap(dateComponents.date)
+
+        let json = """
+        {
+          "553D6E8C-5562-4A7B-89AF-9C8428428197": {
+            "bool" : false
+          },
+          "alpha" : {
+            "choice" : {
+              "id" : "something",
+              "label" : "Battlestar",
+              "ref" : "70675439-3BA3-44F9-8807-949A5375ACEC"
+            }
+          },
+          "beta" : {
+            "date" : "2025-06-10T13:27:00-05:00"
+          }
+        }
+        """
+        let data = try XCTUnwrap(json.data(using: .utf8))
+        responses = try Self.decoder.decodeResponses(from: data)
+        XCTAssertEqual(responses, [
+            .uuid(UUID(uuidString: "553D6E8C-5562-4A7B-89AF-9C8428428197")!): .bool(false),
+            "alpha": .choice(
+                Choice(
+                    id: "something",
+                    ref: .uuid(UUID(uuidString: "70675439-3BA3-44F9-8807-949A5375ACEC")!),
+                    label: "Battlestar"
+                )
+            ),
+            "beta": .date(date),
+        ])
+    }
 }

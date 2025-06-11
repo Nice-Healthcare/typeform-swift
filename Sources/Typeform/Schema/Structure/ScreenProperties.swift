@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ScreenProperties: Hashable, Codable {
+public struct ScreenProperties: Hashable, Codable, Sendable {
     public let button_mode: String?
     public let button_text: String?
     public let share_icons: Bool?

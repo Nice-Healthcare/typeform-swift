@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Theme: Hashable, Codable {
+public struct Theme: Hashable, Codable, Sendable {
     public let href: URL
 
     public init(

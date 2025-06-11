@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Rating: Hashable, Codable {
+public struct Rating: Hashable, Codable, Sendable {
     public let shape: String
     public let steps: Int
     public let description: String?
