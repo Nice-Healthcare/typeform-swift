@@ -24,7 +24,7 @@ extension TranslatedForm: Codable {
     }
 }
 
-extension Form {
+public extension Form {
     func merging(translatedForm: TranslatedForm) -> Form {
         Form(
             id: id,
