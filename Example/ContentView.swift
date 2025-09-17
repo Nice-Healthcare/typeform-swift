@@ -16,6 +16,9 @@ struct ContentView: View {
     @State private var downloading: Bool = false
     @State private var downloadFailure: String?
     @State private var form: Typeform.Form?
+    @State private var languageCode: Locale.LanguageCode?
+    @State private var translatedForm: Typeform.Form?
+    @State private var presentedForm: Typeform.Form?
     @State private var conclusion: Conclusion?
     @FocusState private var focus: Bool
 
@@ -30,11 +33,8 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("Preview any form by entering its unique ID.")
-                        .font(.headline)
-
+            List {
+                Section {
                     HStack {
                         TextField(
                             "Form ID",
@@ -60,32 +60,66 @@ struct ContentView: View {
                         }
                     }
 
+                    Button {
+                        downloadSync()
+                    } label: {
+                        Text("Download")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .overlay(alignment: .trailing) {
+                                if downloading {
+                                    ProgressView()
+                                        .controlSize(.regular)
+                                }
+                            }
+                    }
+                    .disabled(formId.isEmpty)
+                } header: {
+                    Text("Retrive")
+                } footer: {
+                    Text("Preview any form by entering its unique ID.")
+                }
+
+                Section("Settings") {
+                    Toggle("Skip Welcome", isOn: $skipWelcome)
+
+                    Toggle("Skip Ending", isOn: $skipEnding)
+
                     HStack {
-                        Toggle("Skip Welcome", isOn: $skipWelcome)
-                        Toggle("Skip Ending", isOn: $skipEnding)
+                        Picker(selection: $languageCode) {
+                            Text("Default \(form?.settings.language ?? "N/A")")
+                                .tag(Locale.LanguageCode?.none)
+
+                            if let languageCodes = form?.settings.translationLanguageCodes {
+                                ForEach(languageCodes, id: \.self) { code in
+                                    Text(code.identifier)
+                                        .tag(Locale.LanguageCode?.some(code))
+                                }
+                            }
+                        } label: {
+                            Text("Language")
+                        }
+                        .onChange(of: languageCode) { _, _ in
+                            translateSync()
+                        }
                     }
 
-                    HStack {
-                        Button("Download") {
-                            downloadSync()
-                        }
-                        .disabled(formId.isEmpty)
-
-                        if downloading {
-                            ProgressView()
-                                .controlSize(.regular)
-                        }
+                    Button {
+                        presentedForm = translatedForm ?? form
+                    } label: {
+                        Text("Present")
                     }
+                }
+                .disabled(form == nil)
 
-                    if let downloadFailure {
+                if let downloadFailure {
+                    Section {
                         Text(downloadFailure)
                             .bold()
                             .foregroundStyle(Color.red)
                     }
+                }
 
-                    Text("Last form conclusion")
-                        .font(.headline)
-
+                Section("Conclusion") {
                     if let conclusion {
                         switch conclusion {
                         case .completed(let responses, _):
@@ -105,18 +139,17 @@ struct ContentView: View {
                         }
                     }
                 }
-                .padding()
-                .disabled(downloading)
             }
+            .disabled(downloading)
             .navigationTitle("Typeform")
         }
-        .sheet(item: $form) { typeformForm in
+        .sheet(item: $presentedForm) { typeformForm in
             FormView(
                 form: typeformForm,
                 settings: settings
             ) { typeformConclusion in
                 conclusion = typeformConclusion
-                form = nil
+                presentedForm = nil
             }
         }
         .onAppear {
@@ -158,28 +191,17 @@ struct ContentView: View {
             return
         }
 
-        guard let url = URL(string: "https://api.typeform.com/forms/\(formId)") else {
-            downloadFailure = "Invalid URL"
-            return
-        }
-
         downloading = true
         defer {
             downloading = false
         }
 
-        let data: Data
         do {
-            let request = URLRequest(url: url)
-            let response = try await URLSession.shared.data(for: request)
-            data = response.0
-        } catch {
-            downloadFailure = "Download Failed"
-            return
-        }
+            form = try await Typeform.Form.download(formId)
 
-        do {
-            form = try decoder.decode(Typeform.Form.self, from: data)
+            if !recent.contains(formId) {
+                recent.insert(formId, at: 0)
+            }
         } catch let decodingError as DecodingError {
             switch decodingError {
             case .typeMismatch(_, let context),
@@ -190,14 +212,49 @@ struct ContentView: View {
             default:
                 downloadFailure = "Decoding Failed\n\(decodingError.localizedDescription)"
             }
-            return
         } catch {
             downloadFailure = "Decoding Failed\n\(error.localizedDescription)"
+        }
+    }
+
+    func translateSync() {
+        downloadFailure = nil
+
+        Task {
+            await translate()
+        }
+    }
+
+    @MainActor func translate() async {
+        guard let form else {
+            translatedForm = nil
             return
         }
 
-        if !recent.contains(formId) {
-            recent.insert(formId, at: 0)
+        guard let languageCode else {
+            translatedForm = nil
+            return
+        }
+
+        downloading = true
+        defer {
+            downloading = false
+        }
+
+        do {
+            translatedForm = try await form.translatedTo(languageCode)
+        } catch let decodingError as DecodingError {
+            switch decodingError {
+            case .typeMismatch(_, let context),
+                 .valueNotFound(_, let context),
+                 .keyNotFound(_, let context),
+                 .dataCorrupted(let context):
+                downloadFailure = "Decoding Failed\n\(context)"
+            default:
+                downloadFailure = "Decoding Failed\n\(decodingError.localizedDescription)"
+            }
+        } catch {
+            downloadFailure = "Decoding Failed\n\(error.localizedDescription)"
         }
     }
 }

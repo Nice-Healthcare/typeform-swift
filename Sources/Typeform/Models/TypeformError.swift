@@ -14,4 +14,9 @@ public enum TypeformError: Error {
     case fileUploadSelection
     case fileUploadData
     case fileUploadSecurity
+
+    /// A requested `Locale.LanguageCode` was invalid for the `Form`.
+    ///
+    /// A code must match one in `Form.Settings.translation_languages`.
+    case notAvailableInLanguage
 }
