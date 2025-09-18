@@ -76,6 +76,35 @@ struct MyView: View {
 }
 ```
 
+## Translation
+
+Typeform has support for language translation. Every additional supported language for a specific `Form` is noted in its `Settings`. Translations, when retrieved from the API, only have a subset of changed values, so those changes must be _merged_ into a `Form` in order to make it usable in the TypeformUI code. For example:
+
+```swift
+let form = Form()
+let translation = TranslatedForm()
+let translatedForm = form.merging(translatedForm: translation)
+```
+
+This merging process leaves the original `Form` logic and metadata intact, but displays the questions using the translated text. There are helper functions on `Form` for retrieval and translation:
+
+```
+extension Form {
+    // https://api.typeform.com/forms/{id}
+    static func download(_ id: Form.ID) async throws -> Form
+    // https://api.typeform.com/forms/{id}/translation/{language}
+    func translatedTo(_ languageCode: Locale.LanguageCode) async throws -> Form
+}
+
+do {
+    // Base language 'en' (English)
+    let form = try await Form.download("abcde12345")
+    // form.settings.translationLanguageCode contains 'es' (Spanish)
+    let translatedForm = try await form.translatedTo(.spanish)
+} catch {
+}
+```
+
 ## Supported Question Types
 
 > Note, this library is _incomplete_; not every question type or condition has been implemented. Want to help fix a bug or make improvements? Consider becoming a contributor!
