@@ -2,6 +2,8 @@
 
 Swift library for parsing and displaying [Typeform](https://www.typeform.com) questionnaires.
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNice-Healthcare%2Ftypeform-swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Nice-Healthcare/typeform-swift) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNice-Healthcare%2Ftypeform-swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Nice-Healthcare/typeform-swift)
+
 If you're just getting started with Typeform, be sure to check out the [Developer Platform Documentation](https://www.typeform.com/developers/get-started/).
 
 ## Installation
@@ -73,6 +75,35 @@ struct MyView: View {
             .interactiveDismissDisabled()
         }
     }
+}
+```
+
+## Translation
+
+Typeform has support for language translation. Every additional supported language for a specific `Form` is noted in its `Settings`. Translations, when retrieved from the API, only have a subset of changed values, so those changes must be _merged_ into a `Form` in order to make it usable in the TypeformUI code. For example:
+
+```swift
+let form = Form()
+let translation = TranslatedForm()
+let translatedForm = form.merging(translatedForm: translation)
+```
+
+This merging process leaves the original `Form` logic and metadata intact, but displays the questions using the translated text. There are helper functions on `Form` for retrieval and translation:
+
+```swift
+extension Form {
+    // https://api.typeform.com/forms/{id}
+    static func download(_ id: Form.ID) async throws -> Form
+    // https://api.typeform.com/forms/{id}/translation/{language}
+    func translatedTo(_ languageCode: Locale.LanguageCode) async throws -> Form
+}
+
+do {
+    // Base language 'en' (English)
+    let form = try await Form.download("abcde12345")
+    // form.settings.translationLanguageCode contains 'es' (Spanish)
+    let translatedForm = try await form.translatedTo(.spanish)
+} catch {
 }
 ```
 
