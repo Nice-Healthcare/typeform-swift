@@ -2,6 +2,8 @@
 
 Swift library for parsing and displaying [Typeform](https://www.typeform.com) questionnaires.
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNice-Healthcare%2Ftypeform-swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Nice-Healthcare/typeform-swift) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FNice-Healthcare%2Ftypeform-swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Nice-Healthcare/typeform-swift)
+
 If you're just getting started with Typeform, be sure to check out the [Developer Platform Documentation](https://www.typeform.com/developers/get-started/).
 
 ## Installation
@@ -88,7 +90,7 @@ let translatedForm = form.merging(translatedForm: translation)
 
 This merging process leaves the original `Form` logic and metadata intact, but displays the questions using the translated text. There are helper functions on `Form` for retrieval and translation:
 
-```
+```swift
 extension Form {
     // https://api.typeform.com/forms/{id}
     static func download(_ id: Form.ID) async throws -> Form
