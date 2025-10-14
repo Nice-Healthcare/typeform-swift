@@ -58,7 +58,7 @@ struct OpinionScaleView: View {
                         if newValue == Double(start - 1) {
                             value = nil
                         } else {
-                            value = Int(newValue)
+                            value = Int(newValue.rounded())
                         }
                     }
                 ),
