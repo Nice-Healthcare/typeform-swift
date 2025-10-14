@@ -37,7 +37,7 @@ public extension Form {
             settings: settings,
             workspace: workspace,
             welcomeScreens: welcomeScreens?.merging(translatedScreens: translatedForm.welcomeScreens),
-            endingScreens: endingScreens.merging(translatedScreens: translatedForm.endingScreens),
+            endingScreens: endingScreens.merging(translatedScreens: translatedForm.endingScreens)
         )
     }
 }
