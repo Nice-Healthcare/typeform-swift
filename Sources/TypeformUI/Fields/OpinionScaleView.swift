@@ -55,10 +55,11 @@ struct OpinionScaleView: View {
                             Double(start - 1)
                         }
                     }, set: { newValue in
-                        if newValue == Double(start - 1) {
+                        let rounded = Int(newValue.rounded())
+                        if rounded == (start - 1) {
                             value = nil
                         } else {
-                            value = Int(newValue.rounded())
+                            value = rounded
                         }
                     }
                 ),
