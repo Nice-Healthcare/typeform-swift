@@ -1,0 +1,69 @@
+name: Android
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+
+  Android-Library:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    permissions:
+      actions: read
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+      security-events: write
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # Install Dependencies
+    - name: Dependencies
+      shell: bash
+      run: sudo apt-get -y install libcurl4-openssl-dev
+
+    # Install Swiftly
+    - name: Swiftly
+      shell: bash
+      run: |
+        curl -O https://download.swift.org/swiftly/linux/swiftly-$(uname -m).tar.gz && \
+        tar zxf swiftly-$(uname -m).tar.gz && \
+        ./swiftly init --quiet-shell-followup --skip-install --assume-yes && \
+        . "${SWIFTLY_HOME_DIR:-$HOME/.local/share/swiftly}/env.sh" && \
+        hash -r
+
+    # Use 'swiftly' to setup the swift toolchain
+    - name: Toolchain
+      shell: bash
+      run: |
+        /home/runner/.local/share/swiftly/bin/swiftly install main-snapshot-2025-10-17 --use --assume-yes && \
+        swift --version
+
+    # Install and link the Swift SDK for Android
+    - name: Swift SDK for Android
+      shell: bash
+      run: |
+        mkdir -p ~/.swiftpm/swift-sdks
+        swift sdk install https://download.swift.org/development/android-sdk/swift-DEVELOPMENT-SNAPSHOT-2025-10-17-a/swift-DEVELOPMENT-SNAPSHOT-2025-10-17-a_android-0.1.artifactbundle.tar.gz --checksum ba57d4663be0ebba2a22d8377a282a37d2d801aa25e5c5ed4b8d9b7769ae6782 --swift-sdks-path ~/.swiftpm/swift-sdks && \
+        swift sdk list --swift-sdks-path ~/.swiftpm/swift-sdks && \
+        cd ~/.swiftpm/swift-sdks && \
+        ./swift-DEVELOPMENT-SNAPSHOT-2025-10-17-a-android-0.1.artifactbundle/swift-android/scripts/setup-android-sdk.sh
+
+    # Cross-Compile the package
+    - name: Build
+      shell: bash
+      run: |
+        cd /home/runner/work/typeform-swift/typeform-swift && \
+        swift build --swift-sdks-path ~/.swiftpm/swift-sdks --swift-sdk aarch64-unknown-linux-android28 --static-swift-stdlib
