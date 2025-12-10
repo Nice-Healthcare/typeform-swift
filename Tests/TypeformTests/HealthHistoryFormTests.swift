@@ -1,16 +1,21 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-final class HealthHistoryFormTests: TypeformTests {
+struct HealthHistoryFormTests {
 
-    override var jsonResource: String { "HealthHistoryV3" }
+    private let form: Typeform.Form
 
-    func testDecoding() throws {
-        XCTAssertEqual(form.id, "dmsX77W1")
+    init() throws {
+        form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "HealthHistoryV3")
     }
 
-    func testMinorImmunization() throws {
+    @Test func decoding() throws {
+        #expect(form.id == "dmsX77W1")
+    }
+
+    @Test func minorImmunization() throws {
         let responses: Responses = [
             .string("health-history-form-completed"): .bool(false),
             .string("patient-age"): .int(17),
@@ -23,14 +28,14 @@ final class HealthHistoryFormTests: TypeformTests {
             .string("family-medical-history"): .string(""),
         ]
 
-        let lastField = try XCTUnwrap(form.field(withRef: .string("family-medical-history")))
+        let lastField = try #require(form.field(withRef: .string("family-medical-history")))
         let position = Position.field(lastField, nil)
         let next = try form.next(from: position, given: responses)
         guard case .field(let field, let group) = next else {
             throw TypeformError.couldNotDetermineNext(position)
         }
 
-        XCTAssertEqual(field.ref, .string("minor-immunization-status"))
-        XCTAssertNil(group)
+        #expect(field.ref == .string("minor-immunization-status"))
+        #expect(group == nil)
     }
 }

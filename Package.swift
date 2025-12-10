@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,11 +6,12 @@ import PackageDescription
 let package = Package(
     name: "Typeform",
     platforms: [
-        .macOS(.v12),
-        .macCatalyst(.v15),
-        .iOS(.v15),
-        .tvOS(.v15),
-        .watchOS(.v8),
+        .macOS(.v13),
+        .macCatalyst(.v16),
+        .iOS(.v16),
+        .tvOS(.v16),
+        .watchOS(.v9),
+        .visionOS(.v1), // .v2 ~ iOS 18
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -26,7 +27,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.55.0"),
+        .package(url: "https://github.com/swiftlang/swift-testing.git", branch: "swift-6.2-RELEASE"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -56,7 +57,11 @@ let package = Package(
             dependencies: [
                 "Typeform",
                 "TypeformPreview",
+                .product(name: "Testing", package: "swift-testing"),
             ]
         ),
+    ],
+    swiftLanguageModes: [
+        .v5,
     ]
 )

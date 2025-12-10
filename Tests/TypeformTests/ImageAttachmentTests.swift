@@ -1,22 +1,27 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-class ImageAttachmentTests: TypeformTests {
+struct ImageAttachmentTests {
 
-    override var jsonResource: String { "ImageAttachment" }
+    private let form: Typeform.Form
 
-    func testFormStart() throws {
+    init() throws {
+        form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "ImageAttachment")
+    }
+
+    @Test func formStart() throws {
         let firstPosition = try form.firstPosition(
             skipWelcomeScreen: false,
             given: [:]
         )
 
         guard case .field(let field, _) = firstPosition else {
-            XCTFail()
+            Issue.record()
             return
         }
 
-        XCTAssertEqual(field.id, "21xteNrP8VJs")
+        #expect(field.id == "21xteNrP8VJs")
     }
 }

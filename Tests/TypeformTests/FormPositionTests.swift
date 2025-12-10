@@ -1,50 +1,59 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-final class FormPositionTests: TypeformTests {
+struct FormPositionTests {
 
-    var responses: Responses = [:]
+    private let form: Typeform.Form
+
+    init() throws {
+        form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake23")
+    }
 
     /// Verify the transition from a `WelcomeScreen` to the first `Field` in a `Form`.
-    func testNextFromWelcome() throws {
+    @Test func nextFromWelcome() throws {
+        let responses: Responses = [:]
         let welcome = WelcomeScreen.preview
         let next = try form.next(from: .screen(welcome), given: responses)
 
         guard case .field(let field, let group) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertNil(group)
-        XCTAssertEqual(field.id, "5kmu6eCtBcYH")
-        XCTAssertEqual(field.ref, Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))
-        XCTAssertEqual(field.title, "What state do you live in?")
-        XCTAssertEqual(field.type, .dropdown)
+        #expect(group == nil)
+        #expect(field.id == "5kmu6eCtBcYH")
+        #expect(field.ref == Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))
+        #expect(field.title == "What state do you live in?")
+        #expect(field.type == .dropdown)
     }
 
     /// Verify that responses change the result of calling `Form.next(from:given:)`
     ///
     /// In this test, the first _state_ selection changes which `Field` is presented _next_.
-    func testLogicChangesNext() throws {
-        let stateField = try XCTUnwrap(form.fields.first(where: { $0.id == "5kmu6eCtBcYH" }))
+    @Test func logicChangesNext() throws {
+        let stateField = try #require(form.fields.first(where: { $0.id == "5kmu6eCtBcYH" }))
         guard case .dropdown(let stateDropdown) = stateField.properties else {
-            return XCTFail("Unexpected `Field.Properties`")
+            Issue.record("Unexpected `Field.Properties`")
+            return
         }
-        let stateMinnesota = try XCTUnwrap(stateDropdown.choices.first(where: { $0.id == "ki7l02wXkJJB" }))
-        let stateLouisiana = try XCTUnwrap(stateDropdown.choices.first(where: { $0.id == "44eDpNiPK9Lp" }))
+        let stateMinnesota = try #require(stateDropdown.choices.first(where: { $0.id == "ki7l02wXkJJB" }))
+        let stateLouisiana = try #require(stateDropdown.choices.first(where: { $0.id == "44eDpNiPK9Lp" }))
 
-        responses = [
+        var responses: Responses = [
             stateField.ref: .choice(stateLouisiana),
         ]
 
         var next = try form.next(from: .field(stateField, nil), given: responses)
 
         guard case .field(let field1, let group1) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertNil(group1)
-        XCTAssertEqual(field1.id, "eG0YCnJUpu1N")
+        #expect(group1 == nil)
+        #expect(field1.id == "eG0YCnJUpu1N")
 
         responses = [
             stateField.ref: .choice(stateMinnesota),
@@ -53,16 +62,17 @@ final class FormPositionTests: TypeformTests {
         next = try form.next(from: .field(stateField, nil), given: responses)
 
         guard case .field(let field2, let group2) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertNil(group2)
-        XCTAssertEqual(field2.id, "qCewzRklnpSW")
+        #expect(group2 == nil)
+        #expect(field2.id == "qCewzRklnpSW")
     }
 
     /// Verify a `Group` of questions can be entered from a `Field` without specific `Logic`.
-    func testBeginGroup() throws {
-        responses = [
+    @Test func beginGroup() throws {
+        let responses: Responses = [
             Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!: .choice(Choice(
                 id: "ki7l02wXkJJB",
                 ref: Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!,
@@ -80,30 +90,32 @@ final class FormPositionTests: TypeformTests {
             )),
         ]
 
-        let genderField = try XCTUnwrap(form.fields.first(where: { $0.id == "gFDX3w26M8yg" }))
+        let genderField = try #require(form.fields.first(where: { $0.id == "gFDX3w26M8yg" }))
         var next = try form.next(from: .field(genderField, nil), given: responses)
 
         guard case .field(let field1, let group1) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertEqual(field1.id, "us8oIodSBXkx")
-        XCTAssertEqual(field1.type, .group)
-        XCTAssertNil(group1)
+        #expect(field1.id == "us8oIodSBXkx")
+        #expect(field1.type == .group)
+        #expect(group1 == nil)
 
         next = try form.next(from: .field(field1, group1), given: responses)
 
         guard case .field(let field2, let group2) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertEqual(field2.id, "33TQPEdKii8T")
-        XCTAssertEqual(group2?.fields.count, 4)
+        #expect(field2.id == "33TQPEdKii8T")
+        #expect(group2?.fields.count == 4)
     }
 
     /// Verify leaving a `Group` without specific `Logic` returns to the next `Field`.
-    func testEndGroup() throws {
-        responses = [
+    @Test func endGroup() throws {
+        let responses: Responses = [
             Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!: .choice(Choice(
                 id: "ki7l02wXkJJB",
                 ref: Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!,
@@ -128,24 +140,26 @@ final class FormPositionTests: TypeformTests {
             )),
         ]
 
-        let location = try XCTUnwrap(form.fields.first(where: { $0.id == "XisVeizxVZm0" }))
+        let location = try #require(form.fields.first(where: { $0.id == "XisVeizxVZm0" }))
         guard case .group(let group) = location.properties else {
-            return XCTFail("Unexpected `Field`")
+            Issue.record("Unexpected `Field`")
+            return
         }
 
-        let parkingInstructions = try XCTUnwrap(group.fields.first(where: { $0.id == "giRxNIAxLYEh" }))
+        let parkingInstructions = try #require(group.fields.first(where: { $0.id == "giRxNIAxLYEh" }))
 
         let next = try form.next(from: .field(parkingInstructions, group), given: responses)
 
         guard case .field(let field, _) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertEqual(field.id, "G8f85EPqK4wy")
+        #expect(field.id == "G8f85EPqK4wy")
     }
 
-    func testNoLogicNextField() throws {
-        responses = [
+    @Test func noLogicNextField() throws {
+        let responses: Responses = [
             Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!: .choice(Choice(
                 id: "ki7l02wXkJJB",
                 ref: Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!,
@@ -170,14 +184,15 @@ final class FormPositionTests: TypeformTests {
             )),
         ]
 
-        let whatsNext = try XCTUnwrap(form.fields.first(where: { $0.id == "G8f85EPqK4wy" }))
+        let whatsNext = try #require(form.fields.first(where: { $0.id == "G8f85EPqK4wy" }))
 
         let next = try form.next(from: .field(whatsNext, nil), given: responses)
 
         guard case .field(let field, _) = next else {
-            return XCTFail("Unexpected `Position`.")
+            Issue.record("Unexpected `Position`.")
+            return
         }
 
-        XCTAssertEqual(field.id, "VIFWzjRMJ9sE")
+        #expect(field.id == "VIFWzjRMJ9sE")
     }
 }

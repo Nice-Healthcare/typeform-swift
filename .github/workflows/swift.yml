@@ -14,7 +14,7 @@ jobs:
   SwiftActions:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-26, ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -34,16 +34,16 @@ jobs:
       run: swift build -v
 
     - name: Test (Reporting)
-      if: matrix.os == 'macos-latest'
+      if: ${{ runner.os == 'macOS' }}
       run: swift test --enable-code-coverage -v 2>&1 | xcbeautify --report junit
 
     - name: Code Coverage
-      if: matrix.os == 'macos-latest'
+      if: ${{ runner.os == 'macOS' }}
       run: xcrun llvm-cov export -format="lcov" .build/debug/${{ env.PACKAGE_NAME }}PackageTests.xctest/Contents/MacOS/${{ env.PACKAGE_NAME }}PackageTests -instr-profile .build/debug/codecov/default.profdata > build/reports/coverage.lcov
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
-      if: matrix.os == 'macos-latest'
+      if: ${{ runner.os == 'macOS' }}
       with:
         name: test-results
         path: |
@@ -53,20 +53,20 @@ jobs:
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/macos@v2
-      if: matrix.os == 'macos-latest'
+      if: ${{ runner.os == 'macOS' }}
       with:
         files: build/reports/junit.xml
 
     - name: Publish Code Coverage
       uses: lifeart/jest-lcov-reporter@v0.4.0
-      if: matrix.os == 'macos-latest'
+      if: ${{ runner.os == 'macOS' }}
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         lcov-file: build/reports/coverage.lcov
         update-comment: true
 
     - name: Test (Execution Only)
-      if: matrix.os == 'ubuntu-latest'
+      if: ${{ runner.os == 'Linux' }}
       run: swift test -v
 
     - name: Lint Annotations

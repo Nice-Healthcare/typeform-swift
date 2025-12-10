@@ -1,14 +1,16 @@
+import Foundation
+import Testing
 @testable import Typeform
-import XCTest
+import TypeformPreview
 
-final class SchemeTests: TypeformTests {
+struct SchemeTests {
 
-    func testEncodeForm() throws {
+    @Test func encodeForm() throws {
         let form = Form()
         let data = try TypeformTests.prettyEncoder.encode(form)
-        let json = try XCTUnwrap(String(data: data, encoding: .utf8))
+        let json = String(String(decoding: data, as: UTF8.self))
 
-        XCTAssertEqual(json, """
+        #expect(json == """
         {
           "_links" : {
             "display" : "https:\\/\\/www.typeform.com"
@@ -53,11 +55,11 @@ final class SchemeTests: TypeformTests {
         """)
     }
 
-    func testEncodeDefaultThankYou() throws {
+    @Test func encodeDefaultThankYou() throws {
         let screen = EndingScreen.defaultThankYou
         let data = try TypeformTests.prettyEncoder.encode(screen)
-        let json = try XCTUnwrap(String(data: data, encoding: .utf8))
-        XCTAssertEqual(json, """
+        let json = String(decoding: data, as: UTF8.self)
+        #expect(json == """
         {
           "id" : "DefaultTyScreen",
           "properties" : {
@@ -72,22 +74,18 @@ final class SchemeTests: TypeformTests {
     }
 
     func testDecodeIntake24() throws {
-        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "MedicalIntake24", withExtension: "json"))
-        let data = try Data(contentsOf: url)
-        _ = try Self.decoder.decode(Typeform.Form.self, from: data)
+        _ = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake24")
     }
 
     func testDecodeIntake26() throws {
-        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "MedicalIntake26", withExtension: "json"))
-        let data = try Data(contentsOf: url)
-        let form = try Self.decoder.decode(Typeform.Form.self, from: data)
-        let field = try XCTUnwrap(form.field(withId: "0mMHJCj4JoPr"))
+        let form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake23")
+        let field = try #require(form.field(withId: "0mMHJCj4JoPr"))
         guard case .statement(let statement) = field.properties else {
-            XCTFail("Invalid Field")
+            Issue.record()
             return
         }
 
-        XCTAssertNotNil(statement.description)
-        XCTAssertEqual(statement.button_text, "Acknowledge & Continue")
+        #expect(statement.description != nil)
+        #expect(statement.button_text == "Acknowledge & Continue")
     }
 }

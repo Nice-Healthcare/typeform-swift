@@ -1,28 +1,33 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-final class PreLoadedResponsesTests: TypeformTests {
+struct PreLoadedResponsesTests {
 
-    override var jsonResource: String { "MedicalIntake26" }
+    private let form: Typeform.Form
 
-    func testNotSkippingWelcomeEmptyResponses() throws {
+    init() throws {
+        form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake26")
+    }
+
+    @Test func notSkippingWelcomeEmptyResponses() throws {
         let responses: Responses = [:]
         let position = try form.firstPosition(skipWelcomeScreen: false, given: responses)
         guard case let .screen(screen) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
         guard let welcomeScreen = screen as? WelcomeScreen else {
-            XCTFail("Unexpected Screen")
+            Issue.record("Unexpected Screen")
             return
         }
 
-        XCTAssertEqual(welcomeScreen.id, "NGCT4k03bG7W")
+        #expect(welcomeScreen.id == "NGCT4k03bG7W")
     }
 
-    func testNotSkippingWelcomeFirstFieldResponses() throws {
+    @Test func notSkippingWelcomeFirstFieldResponses() throws {
         let responses: Responses = [
             .uuid(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!): .choice(
                 Choice(
@@ -35,32 +40,32 @@ final class PreLoadedResponsesTests: TypeformTests {
 
         let position = try form.firstPosition(skipWelcomeScreen: false, given: responses)
         guard case let .screen(screen) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
         guard let welcomeScreen = screen as? WelcomeScreen else {
-            XCTFail("Unexpected Screen")
+            Issue.record("Unexpected Screen")
             return
         }
 
-        XCTAssertEqual(welcomeScreen.id, "NGCT4k03bG7W")
+        #expect(welcomeScreen.id == "NGCT4k03bG7W")
     }
 
-    func testSkippingWelcomeEmptyResponses() throws {
+    @Test func skippingWelcomeEmptyResponses() throws {
         let responses: Responses = [:]
 
         let position = try form.firstPosition(skipWelcomeScreen: true, given: responses)
         guard case let .field(field, group) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(field.id, "89Ofk9JaI4M1")
-        XCTAssertNil(group)
+        #expect(field.id == "89Ofk9JaI4M1")
+        #expect(group == nil)
     }
 
-    func testSkippingWelcomeFirstFieldResponses() throws {
+    @Test func skippingWelcomeFirstFieldResponses() throws {
         let responses: Responses = [
             .uuid(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!): .choice(
                 Choice(
@@ -73,16 +78,16 @@ final class PreLoadedResponsesTests: TypeformTests {
 
         let position = try form.firstPosition(skipWelcomeScreen: true, given: responses)
         guard case let .field(field, group) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(field.id, "0mMHJCj4JoPr")
-        XCTAssertNil(group)
+        #expect(field.id == "0mMHJCj4JoPr")
+        #expect(group == nil)
     }
 
     /// There is a 'Statement' field after the first response, and before the second response. What comes after that field?
-    func testSkippingWelcomePostStatementResponses() throws {
+    @Test func skippingWelcomePostStatementResponses() throws {
         let responses: Responses = [
             .uuid(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!): .choice(
                 Choice(
@@ -102,21 +107,21 @@ final class PreLoadedResponsesTests: TypeformTests {
 
         var position = try form.firstPosition(skipWelcomeScreen: true, given: responses)
         guard case let .field(field, group) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(field.id, "0mMHJCj4JoPr")
-        XCTAssertNil(group)
+        #expect(field.id == "0mMHJCj4JoPr")
+        #expect(group == nil)
 
         position = try form.next(from: position, given: responses)
 
         guard case let .field(nextField, nextGroup) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(nextField.id, "0QSfTuGGV8W5")
-        XCTAssertNil(nextGroup)
+        #expect(nextField.id == "0QSfTuGGV8W5")
+        #expect(nextGroup == nil)
     }
 }
