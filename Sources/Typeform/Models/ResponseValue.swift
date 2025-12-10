@@ -4,6 +4,7 @@ public enum ResponseValue: Hashable, Codable, Sendable {
     case bool(Bool)
     case choice(Choice)
     case choices([Choice])
+    case choicesByReference([Reference: [Choice]])
     case date(Date)
     case int(Int)
     case string(String)
@@ -13,6 +14,7 @@ public enum ResponseValue: Hashable, Codable, Sendable {
         case bool
         case choice
         case choices
+        case choicesByReference
         case date
         case int
         case string
@@ -39,6 +41,8 @@ public enum ResponseValue: Hashable, Codable, Sendable {
             self = try ResponseValue.choice(container.decode(Choice.self, forKey: .choice))
         case .choices:
             self = try ResponseValue.choices(container.decode([Choice].self, forKey: .choices))
+        case .choicesByReference:
+            self = try ResponseValue.choicesByReference(container.decode([Reference: [Choice]].self, forKey: .choicesByReference))
         case .date:
             self = try ResponseValue.date(container.decode(Date.self, forKey: .date))
         case .int:
@@ -59,6 +63,8 @@ public enum ResponseValue: Hashable, Codable, Sendable {
             try container.encode(value, forKey: .choice)
         case .choices(let value):
             try container.encode(value, forKey: .choices)
+        case .choicesByReference(let value):
+            try container.encode(value, forKey: .choicesByReference)
         case .date(let value):
             try container.encode(value, forKey: .date)
         case .int(let value):

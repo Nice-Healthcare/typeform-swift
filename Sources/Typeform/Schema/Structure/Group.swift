@@ -1,6 +1,4 @@
-import Foundation
-
-public struct Group: Hashable, Codable, Sendable {
+public struct Group: FieldContainer, Hashable, Sendable, Codable {
     public let button_text: String
     public let fields: [Field]
     public let show_button: Bool

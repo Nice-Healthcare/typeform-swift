@@ -36,13 +36,15 @@ struct ResponseValueView: View {
         if let value {
             switch value {
             case .bool(let bool):
-                Text("\(bool)")
+                Text(bool.description)
             case .choice(let choice):
                 ChoiceView(choice: choice)
             case .choices(let array):
                 ForEach(array) { choice in
                     ChoiceView(choice: choice)
                 }
+            case .choicesByReference(let dictionary):
+                ChoicesByReferenceView(choices: dictionary)
             case .date(let date):
                 Text(date, style: .date)
             case .int(let int):
@@ -73,6 +75,22 @@ struct ChoiceView: View {
             GridRow {
                 Text("Label")
                 Text(choice.label)
+            }
+        }
+    }
+}
+
+struct ChoicesByReferenceView: View {
+    let choices: [Reference: [Choice]]
+    var body: some View {
+        Grid(alignment: .leading) {
+            ForEach(choices.map { ($0.key, $0.value) }, id: \.0) { pair in
+                GridRow {
+                    Text(pair.0.rawValue)
+                    ForEach(pair.1) { choice in
+                        Text("✔️ \(choice.label)")
+                    }
+                }
             }
         }
     }
