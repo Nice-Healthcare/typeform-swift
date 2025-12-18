@@ -8,6 +8,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case fileUpload = "file_upload"
         case group
         case longText = "long_text"
+        case matrix
         case multipleChoice = "multiple_choice"
         case number
         case opinionScale = "opinion_scale"
@@ -23,6 +24,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case fileUpload(FileUpload)
         case group(Group)
         case longText(LongText)
+        case matrix(Matrix)
         case multipleChoice(MultipleChoice)
         case number(Number)
         case opinionScale(OpinionScale)
@@ -38,6 +40,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             case .fileUpload(let value): value.description
             case .group: nil
             case .longText(let value): value.description
+            case .matrix: nil
             case .multipleChoice(let value): value.description
             case .number(let value): value.description
             case .opinionScale: nil
@@ -109,6 +112,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .longText:
             let longText = try container.decode(LongText.self, forKey: .properties)
             properties = .longText(longText)
+        case .matrix:
+            let matrix = try container.decode(Matrix.self, forKey: .properties)
+            properties = .matrix(matrix)
         case .multipleChoice:
             let multipleChoice = try container.decode(MultipleChoice.self, forKey: .properties)
             properties = .multipleChoice(multipleChoice)
@@ -152,6 +158,8 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(group, forKey: .properties)
         case .longText(let longText):
             try container.encode(longText, forKey: .properties)
+        case .matrix(let matrix):
+            try container.encode(matrix, forKey: .properties)
         case .multipleChoice(let multipleChoice):
             try container.encode(multipleChoice, forKey: .properties)
         case .number(let number):

@@ -42,6 +42,10 @@ public extension Responses {
                 guard case .string = value else {
                     return key
                 }
+            case .matrix:
+                guard case .choicesByReference = value else {
+                    return key
+                }
             case .multipleChoice(let multipleChoice):
                 if multipleChoice.allow_multiple_selection {
                     guard case .choices = value else {

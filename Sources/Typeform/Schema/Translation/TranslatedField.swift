@@ -72,6 +72,12 @@ extension Field.Properties {
                     description: translatedProperties.description ?? longText.description
                 )
             )
+        case .matrix(let matrix):
+            return .matrix(
+                Matrix(
+                    fields: matrix.fields.merging(translatedFields: translatedProperties.fields)
+                )
+            )
         case .multipleChoice(let multipleChoice):
             return .multipleChoice(
                 MultipleChoice(

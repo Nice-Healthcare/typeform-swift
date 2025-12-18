@@ -118,6 +118,7 @@ All of the _structural_ components are supported: Welcome Screen, Ending, Statem
 * File Upload
 * Number
 * Long Text
+* Matrix
 * Multiple Choice
 * Opinion Scale
 * Rating

@@ -105,6 +105,14 @@ struct FieldView<Header: View, Footer: View>: View {
                                 validations: field.validations,
                                 focused: $focused
                             )
+                        case .matrix(let properties):
+                            // Note `properties.validations` as `Matrix` utilize their `fields` validations.
+                            MatrixView(
+                                state: $responseState,
+                                properties: properties,
+                                settings: settings,
+                                validations: properties.validations
+                            )
                         case .multipleChoice(let properties):
                             MultipleChoiceView(
                                 state: $responseState,

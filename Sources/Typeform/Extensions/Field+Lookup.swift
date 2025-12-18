@@ -12,10 +12,17 @@ extension Collection<Field> {
                 return field
             }
 
-            if case .group(let group) = field.properties {
+            switch field.properties {
+            case .group(let group):
                 if let match = group.fields.field(withId: id) {
                     return match
                 }
+            case .matrix(let matrix):
+                if let match = matrix.fields.field(withId: id) {
+                    return match
+                }
+            default:
+                break
             }
         }
 
@@ -35,10 +42,17 @@ extension Collection<Field> {
                 return field
             }
 
-            if case .group(let group) = field.properties {
-                if let subField = group.fields.field(withRef: ref) {
-                    return subField
+            switch field.properties {
+            case .group(let group):
+                if let match = group.fields.field(withRef: ref) {
+                    return match
                 }
+            case .matrix(let matrix):
+                if let match = matrix.fields.field(withRef: ref) {
+                    return match
+                }
+            default:
+                break
             }
         }
 
@@ -54,18 +68,23 @@ extension Collection<Field> {
     /// - parameters:
     ///   - id: Unique identifier of the `Field` being requested.
     /// - returns: The direct parent `Field` (or self) anywhere in the hierarchy that matches.
-    func parent(forFieldWithId id: Field.ID, in group: Group? = nil) -> Position? {
+    func parent(forFieldWithId id: Field.ID, in container: (any FieldContainer)? = nil) -> Position? {
         for field in self {
             if field.id == id {
-                return .field(field, group)
+                return .field(field, container as? Group)
             }
 
-            guard case .group(let group) = field.properties else {
-                continue
-            }
-
-            if let position = group.fields.parent(forFieldWithId: id, in: group) {
-                return position
+            switch field.properties {
+            case .group(let group):
+                if let position = group.fields.parent(forFieldWithId: id, in: group) {
+                    return position
+                }
+            case .matrix(let matrix):
+                if let position = matrix.fields.parent(forFieldWithId: id, in: matrix) {
+                    return position
+                }
+            default:
+                break
             }
         }
 
@@ -79,18 +98,23 @@ extension Collection<Field> {
     /// - parameters:
     ///   - ref: `Reference` identifier of the `Field` being requested.
     /// - returns: The direct parent `Field` (or self) anywhere in the hierarchy that matches.
-    func parent(forFieldWithRef ref: Reference, in group: Group? = nil) -> Position? {
+    func parent(forFieldWithRef ref: Reference, in container: (any FieldContainer)? = nil) -> Position? {
         for field in self {
             if field.ref == ref {
-                return .field(field, group)
+                return .field(field, container as? Group)
             }
 
-            guard case .group(let group) = field.properties else {
-                continue
-            }
-
-            if let position = group.fields.parent(forFieldWithRef: ref, in: group) {
-                return position
+            switch field.properties {
+            case .group(let group):
+                if let position = group.fields.parent(forFieldWithRef: ref, in: group) {
+                    return position
+                }
+            case .matrix(let matrix):
+                if let position = matrix.fields.parent(forFieldWithRef: ref, in: matrix) {
+                    return position
+                }
+            default:
+                break
             }
         }
 
