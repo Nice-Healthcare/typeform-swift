@@ -1,12 +1,17 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-final class PTIntakeTests: TypeformTests {
+struct PTIntakeTests {
 
-    override var jsonResource: String { "PTIntake42" }
+    let form: Typeform.Form
 
-    func testLastFieldToThankYouScreen() throws {
+    init() throws {
+        form = try Bundle.typeformPreview.decode(forResource: "PTIntake42")
+    }
+
+    @Test func lastFieldToThankYouScreen() throws {
         let responses: Responses = [
             .string("age-category"): .int(30),
             .string("biological-sex"): .choice(
@@ -41,34 +46,34 @@ final class PTIntakeTests: TypeformTests {
 
         var position = try form.firstPosition(skipWelcomeScreen: true, given: responses)
         guard case let .field(statementField, _) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(statementField.id, "iJolnxu6Sftn")
+        #expect(statementField.id == "iJolnxu6Sftn")
         position = try form.next(from: position, given: responses)
 
         guard case let .field(continueField, _) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(continueField.id, "cLKRIr0wbDP9")
+        #expect(continueField.id == "cLKRIr0wbDP9")
 
         position = try form.next(from: position, given: responses)
         guard case let .field(reasonField, _) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(reasonField.id, "XrGAAaW3t7BW")
+        #expect(reasonField.id == "XrGAAaW3t7BW")
 
         position = try form.next(from: position, given: responses)
         guard case let .screen(thankYouScreen) = position else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(thankYouScreen.id, "DefaultTyScreen")
+        #expect(thankYouScreen.id == "DefaultTyScreen")
     }
 }

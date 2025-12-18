@@ -1,23 +1,31 @@
+import Foundation
+import Testing
 @testable import Typeform
-import XCTest
+import TypeformPreview
 
-final class FormScreenTests: TypeformTests {
+struct FormScreenTests {
 
-    func testFirstScreen() throws {
-        let screen = try XCTUnwrap(form.firstScreen)
-        let welcomeScreen = try XCTUnwrap(screen as? WelcomeScreen)
+    private let form: Typeform.Form
 
-        XCTAssertEqual(welcomeScreen.id, "DmQFaO34DUcM")
-        XCTAssertEqual(welcomeScreen.ref, Reference(uuidString: "122872b0-4de9-42c2-9204-fdec922538af"))
-        XCTAssertTrue(welcomeScreen.title.hasPrefix("Hello and thanks for reaching out"))
-        XCTAssertEqual(welcomeScreen.properties.button_text, "Start")
+    init() throws {
+        form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake23")
     }
 
-    func testDefaultOrFirstEndingScreen() throws {
-        let endingScreen = try XCTUnwrap(form.defaultOrFirstEndingScreen)
+    @Test func testFirstScreen() throws {
+        let screen = try #require(form.firstScreen)
+        let welcomeScreen = try #require(screen as? WelcomeScreen)
 
-        XCTAssertEqual(endingScreen.id, "DefaultTyScreen")
-        XCTAssertEqual(endingScreen.ref, .default)
-        XCTAssertEqual(endingScreen.title, "All done! Thanks for your time.")
+        #expect(welcomeScreen.id == "DmQFaO34DUcM")
+        #expect(welcomeScreen.ref == Reference(uuidString: "122872b0-4de9-42c2-9204-fdec922538af"))
+        #expect(welcomeScreen.title.hasPrefix("Hello and thanks for reaching out"))
+        #expect(welcomeScreen.properties.button_text == "Start")
+    }
+
+    @Test func testDefaultOrFirstEndingScreen() throws {
+        let endingScreen = try #require(form.defaultOrFirstEndingScreen)
+
+        #expect(endingScreen.id == "DefaultTyScreen")
+        #expect(endingScreen.ref == .default)
+        #expect(endingScreen.title == "All done! Thanks for your time.")
     }
 }

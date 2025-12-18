@@ -1,15 +1,18 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-class MedicalIntake35Tests: TypeformTests {
+struct MedicalIntake35Tests {
 
-    override var jsonResource: String { "MedicalIntake35" }
+    private let form: Typeform.Form
 
-    var responses: Responses = [:]
+    init() throws {
+        form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake35")
+    }
 
-    func testMultipleLogicPaths() throws {
-        responses = [
+    @Test func multipleLogicPaths() throws {
+        let responses: Responses = [
             // State: Minnesota
             Reference(string: "appointment-state"): .choice(Choice(
                 id: "0H6r4PQIWFI6",
@@ -52,21 +55,21 @@ class MedicalIntake35Tests: TypeformTests {
             Reference(string: "reason-for-visit-acute-symptoms-other"): .string("Other symptoms"),
         ]
 
-        let currentGroupField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-intro")))
+        let currentGroupField = try #require(form.field(withRef: Reference(string: "reason-for-visit-acute-intro")))
         guard case .group(let currentGroup) = currentGroupField.properties else {
-            XCTFail("Unexpected Properties")
+            Issue.record("Unexpected Properties")
             return
         }
-        let currentField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-other")))
-        let nextField = try XCTUnwrap(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-duration")))
+        let currentField = try #require(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-other")))
+        let nextField = try #require(form.field(withRef: Reference(string: "reason-for-visit-acute-symptoms-duration")))
 
         let next = try form.next(from: .field(currentField, currentGroup), given: responses)
         guard case .field(let field, let group) = next else {
-            XCTFail("Unexpected Position")
+            Issue.record("Unexpected Position")
             return
         }
 
-        XCTAssertEqual(group, currentGroup)
-        XCTAssertEqual(field.id, nextField.id)
+        #expect(group == currentGroup)
+        #expect(field.id == nextField.id)
     }
 }

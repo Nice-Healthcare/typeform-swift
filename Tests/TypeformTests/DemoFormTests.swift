@@ -1,42 +1,42 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-class DemoFormTests: TypeformTests {
+struct DemoFormTests {
 
-    override var jsonResource: String { "DemoForm" }
-
-    func testFormStart() throws {
+    @Test func formStart() throws {
+        let form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "DemoForm")
         var position = try form.firstPosition(
             skipWelcomeScreen: false,
             given: [:]
         )
 
         guard case .screen(let welcomeScreen) = position else {
-            XCTFail()
+            Issue.record()
             return
         }
 
-        XCTAssertEqual(welcomeScreen.id, "iVVVXbYhFAqt")
+        #expect(welcomeScreen.id == "iVVVXbYhFAqt")
 
         position = try form.next(from: position, given: [:])
 
         guard case .field(let field, _) = position else {
-            XCTFail()
+            Issue.record()
             return
         }
 
-        XCTAssertEqual(field.id, "UKrtkRy8EAY2")
-        XCTAssertEqual(field.type, .group)
+        #expect(field.id == "UKrtkRy8EAY2")
+        #expect(field.type == .group)
 
         position = try form.next(from: position, given: [:])
 
         guard case .field(let nextField, let group) = position else {
-            XCTFail()
+            Issue.record()
             return
         }
 
-        XCTAssertEqual(nextField.id, "M6IDI3o5xRXu")
-        XCTAssertNotNil(group)
+        #expect(nextField.id == "M6IDI3o5xRXu")
+        #expect(group != nil)
     }
 }

@@ -1,25 +1,25 @@
+import Foundation
+import Testing
 @testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import TypeformPreview
 
-final class ReferenceTests: TypeformTests {
+struct ReferenceTests {
 
     /// Test that `Reference.string` cases are successfully decoded.
     ///
     /// Earlier iterations of this work expected a `UUID` for all references.
     func testGenericReferences() throws {
-        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: "GenericSlugs", withExtension: "json"))
-        let data = try Data(contentsOf: url)
-        let form = try Self.decoder.decode(Typeform.Form.self, from: data)
+        let form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "GenericSlugs")
 
-        let launchField = try XCTUnwrap(form.fields.first)
-        XCTAssertEqual(launchField.id, "ShzJTN0Q8FUf")
+        let launchField = try #require(form.fields.first)
+        #expect(launchField.id == "ShzJTN0Q8FUf")
 
-        let field = try XCTUnwrap(form.field(withId: "ylVxZah5X9Sq"))
+        let field = try #require(form.field(withId: "ylVxZah5X9Sq"))
         guard case .string(let value) = field.ref else {
-            return XCTFail("Unexpected Field Ref Type")
+            Issue.record("Unexpected Field Ref Type")
+            return
         }
 
-        XCTAssertEqual(value, "preferred-pharmacy")
+        #expect(value == "preferred-pharmacy")
     }
 }

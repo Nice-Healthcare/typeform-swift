@@ -1,9 +1,7 @@
-@testable import Typeform
-@testable import TypeformPreview
-import XCTest
+import Foundation
 
 /// Base class which initializes a form for which to test against.
-class TypeformTests: XCTestCase {
+enum TypeformTests {
 
     /// Date formatter that uses the format **2023-03-57T10:30:23+00:00**.
     static let dateFormatter: DateFormatter = {
@@ -49,18 +47,4 @@ class TypeformTests: XCTestCase {
         }
         return encoder
     }()
-
-    private(set) var form: Form!
-
-    open var jsonResource: String {
-        "MedicalIntake23"
-    }
-
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-
-        let url = try XCTUnwrap(Bundle.typeformPreview.url(forResource: jsonResource, withExtension: "json"))
-        let data = try Data(contentsOf: url)
-        form = try Self.decoder.decode(Typeform.Form.self, from: data)
-    }
 }
