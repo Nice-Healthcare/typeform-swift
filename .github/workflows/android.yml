@@ -59,7 +59,7 @@ jobs:
         swift sdk install https://download.swift.org/development/android-sdk/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a_android.artifactbundle.tar.gz --checksum eeea539df8edcf1bfd1abeb01c8b240e251a81caeb5403c095882bcc9b8384aa --swift-sdks-path ~/.swiftpm/swift-sdks && \
         swift sdk list --swift-sdks-path ~/.swiftpm/swift-sdks && \
         cd ~/.swiftpm/swift-sdks && \
-        ./swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a-android.artifactbundle/swift-android/scripts/setup-android-sdk.sh
+        ./swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a_android.artifactbundle/swift-android/scripts/setup-android-sdk.sh
 
     # Cross-Compile the package
     - name: Build
@@ -92,3 +92,4 @@ jobs:
       uses: skiptools/swift-android-action@v2
       with:
         swift-version: '6.2'
+        free-disk-space: true
