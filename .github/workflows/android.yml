@@ -48,7 +48,7 @@ jobs:
     - name: Toolchain
       shell: bash
       run: |
-        /home/runner/.local/share/swiftly/bin/swiftly install main-snapshot-2025-10-17 --use --assume-yes && \
+        /home/runner/.local/share/swiftly/bin/swiftly install main-snapshot-2026-01-09 --use --assume-yes && \
         swift --version
 
     # Install and link the Swift SDK for Android
@@ -56,10 +56,10 @@ jobs:
       shell: bash
       run: |
         mkdir -p ~/.swiftpm/swift-sdks
-        swift sdk install https://download.swift.org/development/android-sdk/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a_android-0.1.artifactbundle.tar.gz --checksum eeea539df8edcf1bfd1abeb01c8b240e251a81caeb5403c095882bcc9b8384aa --swift-sdks-path ~/.swiftpm/swift-sdks && \
+        swift sdk install https://download.swift.org/development/android-sdk/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a_android.artifactbundle.tar.gz --checksum eeea539df8edcf1bfd1abeb01c8b240e251a81caeb5403c095882bcc9b8384aa --swift-sdks-path ~/.swiftpm/swift-sdks && \
         swift sdk list --swift-sdks-path ~/.swiftpm/swift-sdks && \
         cd ~/.swiftpm/swift-sdks && \
-        ./swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a-android-0.1.artifactbundle/swift-android/scripts/setup-android-sdk.sh
+        ./swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a-android.artifactbundle/swift-android/scripts/setup-android-sdk.sh
 
     # Cross-Compile the package
     - name: Build
@@ -73,7 +73,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        
+
     permissions:
       actions: read
       contents: read
@@ -81,13 +81,13 @@ jobs:
       checks: write
       pull-requests: write
       security-events: write
-      
+
     runs-on: ${{ matrix.os }}
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v6
-      
+
     - name: Build & Test
       uses: skiptools/swift-android-action@v2
       with:
