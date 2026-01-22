@@ -61,7 +61,7 @@ struct NumberView_Previews: PreviewProvider {
         NumberView(
             state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings()
+            settings: Settings(),
         )
     }
 }

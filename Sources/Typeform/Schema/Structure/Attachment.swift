@@ -25,7 +25,7 @@ public struct Attachment: Hashable, Codable, Sendable {
     public init(
         href: URL = URL(string: "https://www.typeform.com")!,
         type: Kind = .image,
-        properties: Properties? = nil
+        properties: Properties? = nil,
     ) {
         self.href = href
         self.type = type

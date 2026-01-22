@@ -29,8 +29,8 @@ struct AttachmentView: View {
 #Preview("Attachment View") {
     AttachmentView(
         attachment: Attachment(
-            href: URL(string: "https://images.typeform.com/images/aiEV7G3rFMzd")!
-        )
+            href: URL(string: "https://images.typeform.com/images/aiEV7G3rFMzd")!,
+        ),
     )
 }
 #endif

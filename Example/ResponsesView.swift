@@ -100,6 +100,6 @@ struct ChoicesByReferenceView: View {
     ResponsesView(
         responses: [
             .string("example-field"): .string("String Value"),
-        ]
+        ],
     )
 }

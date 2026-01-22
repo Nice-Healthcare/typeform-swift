@@ -25,13 +25,13 @@ public struct Var: Hashable, Codable, Sendable {
 
     public init(
         type: VarType = .constant,
-        value: Value = .bool(false)
+        value: Value = .bool(false),
     ) {
         self.type = type
         self.value = value
     }
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         type = try container.decode(VarType.self, forKey: .type)
         switch type {
@@ -52,7 +52,7 @@ public struct Var: Hashable, Codable, Sendable {
         }
     }
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
         switch value {

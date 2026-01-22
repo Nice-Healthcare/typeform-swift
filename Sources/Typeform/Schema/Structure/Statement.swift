@@ -8,7 +8,7 @@ public struct Statement: Hashable, Codable, Sendable {
     public init(
         hide_marks: Bool = false,
         button_text: String = "",
-        description: String? = nil
+        description: String? = nil,
     ) {
         self.hide_marks = hide_marks
         self.button_text = button_text

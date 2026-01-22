@@ -13,7 +13,7 @@ public struct Logic: Hashable, Codable, Sendable {
     public init(
         ref: Reference = .init(),
         type: Kind = .field,
-        actions: [Action] = []
+        actions: [Action] = [],
     ) {
         self.ref = ref
         self.type = type

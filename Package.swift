@@ -21,20 +21,20 @@ let package = Package(
                 "Typeform",
                 "TypeformPreview",
                 "TypeformUI",
-            ]
+            ],
         ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/swiftlang/swift-testing.git", branch: "swift-6.2-RELEASE"),
+        .package(url: "https://github.com/swiftlang/swift-testing.git", from: "6.2.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Typeform",
-            dependencies: []
+            dependencies: [],
         ),
         .target(
             name: "TypeformPreview",
@@ -43,14 +43,14 @@ let package = Package(
             ],
             resources: [
                 .process("Resources"),
-            ]
+            ],
         ),
         .target(
             name: "TypeformUI",
             dependencies: [
                 "Typeform",
                 "TypeformPreview",
-            ]
+            ],
         ),
         .testTarget(
             name: "TypeformTests",
@@ -58,10 +58,20 @@ let package = Package(
                 "Typeform",
                 "TypeformPreview",
                 .product(name: "Testing", package: "swift-testing"),
-            ]
+            ],
         ),
     ],
     swiftLanguageModes: [
         .v5,
-    ]
+    ],
 )
+
+for target in package.targets {
+    var settings = target.swiftSettings ?? []
+    settings.append(contentsOf: [
+        .enableUpcomingFeature("ExistentialAny"),
+        .enableUpcomingFeature("MemberImportVisibility"),
+        .enableUpcomingFeature("StrictConcurrency=complete"),
+    ])
+    target.swiftSettings = settings
+}

@@ -21,7 +21,7 @@ enum TypeformTests {
             }
             let context = DecodingError.Context(
                 codingPath: dateDecoder.codingPath,
-                debugDescription: "Could not decode `Date` with value '\(rawValue)'."
+                debugDescription: "Could not decode `Date` with value '\(rawValue)'.",
             )
             throw DecodingError.dataCorrupted(context)
         }

@@ -53,7 +53,7 @@ class UploadPickerCoordinator: NSObject, UINavigationControllerDelegate {
 
     init(
         path: Upload.Path,
-        resultHandler: @escaping (Result<Upload, Error>?) -> Void
+        resultHandler: @escaping (Result<Upload, Error>?) -> Void,
     ) {
         self.path = path
         self.resultHandler = resultHandler
@@ -84,7 +84,7 @@ extension UploadPickerCoordinator: UIImagePickerControllerDelegate {
             bytes: bytes,
             path: .camera,
             mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
-            fileName: "New Image.jpeg"
+            fileName: "New Image.jpeg",
         )
 
         resultHandler(.success(upload))
@@ -120,7 +120,7 @@ extension UploadPickerCoordinator: PHPickerViewControllerDelegate {
                     bytes: bytes,
                     path: .photoLibrary,
                     mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
-                    fileName: fileName
+                    fileName: fileName,
                 )
                 result = .success(upload)
             } catch {
@@ -196,7 +196,7 @@ extension UploadPickerCoordinator: UIDocumentPickerDelegate {
                 bytes: bytes,
                 path: .documents,
                 mimeType: mimeType,
-                fileName: fileName
+                fileName: fileName,
             )
 
             resultHandler(.success(upload))

@@ -6,7 +6,7 @@ public struct TranslatedScreen: Hashable, Identifiable, Codable, Sendable {
     public init(
         id: String,
         title: String,
-        properties: TranslatedProperties?
+        properties: TranslatedProperties?,
     ) {
         self.id = id
         self.title = title
@@ -24,7 +24,7 @@ extension ScreenProperties {
             button_mode: button_mode,
             button_text: translatedProperties.button_text ?? button_text,
             share_icons: share_icons,
-            show_button: show_button
+            show_button: show_button,
         )
     }
 }
@@ -36,7 +36,7 @@ extension WelcomeScreen {
             ref: ref,
             title: translatedScreen.title,
             attachment: attachment,
-            properties: properties.merging(translatedProperties: translatedScreen.properties)
+            properties: properties.merging(translatedProperties: translatedScreen.properties),
         )
     }
 }
@@ -66,7 +66,7 @@ extension EndingScreen {
             type: type,
             title: translatedScreen.title,
             attachment: attachment,
-            properties: properties.merging(translatedProperties: translatedScreen.properties)
+            properties: properties.merging(translatedProperties: translatedScreen.properties),
         )
     }
 }

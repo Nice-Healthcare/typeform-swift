@@ -53,12 +53,12 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
                 case .radio:
                     Radio(
                         radio: settings.radio,
-                        selected: selected
+                        selected: selected,
                     )
                 case .checkbox:
                     Checkbox(
                         checkbox: settings.checkbox,
-                        selected: selected
+                        selected: selected,
                     )
                 }
             }
@@ -70,10 +70,10 @@ struct IntermittentChoiceButtonStyle: ButtonStyle {
         }
         .padding(settings.button.padding)
         .background(
-            backgroundColor.clipShape(shape)
+            backgroundColor.clipShape(shape),
         )
         .overlay(
-            shape.stroke(strokeColor, lineWidth: strokeWidth)
+            shape.stroke(strokeColor, lineWidth: strokeWidth),
         )
     }
 }
@@ -84,7 +84,7 @@ struct IntermittentChoiceButtonStyle_Previews: PreviewProvider {
             MultipleChoiceView(
                 state: .constant(ResponseState()),
                 properties: .preview_One,
-                settings: Settings()
+                settings: Settings(),
             )
             .padding()
         }
@@ -94,7 +94,7 @@ struct IntermittentChoiceButtonStyle_Previews: PreviewProvider {
             MultipleChoiceView(
                 state: .constant(ResponseState()),
                 properties: .preview_Many,
-                settings: Settings()
+                settings: Settings(),
             )
             .padding()
         }

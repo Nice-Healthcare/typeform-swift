@@ -61,10 +61,10 @@ struct OpinionScaleView: View {
                         } else {
                             value = rounded
                         }
-                    }
+                    },
                 ),
                 in: range,
-                step: 1.0
+                step: 1.0,
             )
 
             HStack(alignment: .top) {
@@ -125,7 +125,7 @@ struct OpinionScaleView_Previews: PreviewProvider {
         OpinionScaleView(
             state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings()
+            settings: Settings(),
         )
     }
 }

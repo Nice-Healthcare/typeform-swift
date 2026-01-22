@@ -26,8 +26,8 @@ struct ContentView: View {
         TypeformUI.Settings(
             presentation: TypeformUI.Settings.Presentation(
                 skipWelcomeScreen: skipWelcome,
-                skipEndingScreen: skipEnding
-            )
+                skipEndingScreen: skipEnding,
+            ),
         )
     }
 
@@ -38,7 +38,7 @@ struct ContentView: View {
                     HStack {
                         TextField(
                             "Form ID",
-                            text: $formId
+                            text: $formId,
                         )
                         .autocorrectionDisabled(true)
                         #if canImport(UIKit)
@@ -146,7 +146,7 @@ struct ContentView: View {
         .sheet(item: $presentedForm) { typeformForm in
             FormView(
                 form: typeformForm,
-                settings: settings
+                settings: settings,
             ) { typeformConclusion in
                 conclusion = typeformConclusion
                 presentedForm = nil

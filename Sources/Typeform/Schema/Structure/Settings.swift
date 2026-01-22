@@ -18,7 +18,7 @@ public struct Settings: Hashable, Codable, Sendable {
 
             public init(
                 enabled: Bool = false,
-                modifiable: Bool = false
+                modifiable: Bool = false,
             ) {
                 self.enabled = enabled
                 self.modifiable = modifiable
@@ -28,7 +28,7 @@ public struct Settings: Hashable, Codable, Sendable {
         public let e2e_encryption: EndToEndEncryption?
 
         public init(
-            e2e_encryption: EndToEndEncryption? = nil
+            e2e_encryption: EndToEndEncryption? = nil,
         ) {
             self.e2e_encryption = e2e_encryption
         }
@@ -67,7 +67,7 @@ public struct Settings: Hashable, Codable, Sendable {
         pro_subdomain_enabled: Bool = false,
         show_time_to_complete: Bool = false,
         show_typeform_branding: Bool = false,
-        show_number_of_submissions: Bool = false
+        show_number_of_submissions: Bool = false,
     ) {
         self.meta = meta
         self.is_trial = is_trial

@@ -77,7 +77,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         title: String = "",
         properties: Properties = .yesNo(YesNo()),
         validations: Validations? = nil,
-        attachment: Attachment? = nil
+        attachment: Attachment? = nil,
     ) {
         self.id = id
         self.ref = ref
@@ -88,7 +88,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         self.attachment = attachment
     }
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         ref = try container.decode(Reference.self, forKey: .ref)
@@ -139,7 +139,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         }
     }
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(ref, forKey: .ref)

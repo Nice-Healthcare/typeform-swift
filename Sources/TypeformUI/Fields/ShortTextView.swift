@@ -62,7 +62,7 @@ struct ShortTextView_Previews: PreviewProvider {
             state: .constant(ResponseState()),
             properties: .preview,
             settings: Settings(),
-            focused: $focused
+            focused: $focused,
         )
     }
 }

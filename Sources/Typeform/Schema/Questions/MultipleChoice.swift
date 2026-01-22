@@ -14,7 +14,7 @@ public struct MultipleChoice: Hashable, Codable, Sendable {
         allow_multiple_selection: Bool = false,
         allow_other_choice: Bool = false,
         vertical_alignment: Bool = false,
-        description: String? = nil
+        description: String? = nil,
     ) {
         self.choices = choices
         self.randomize = randomize

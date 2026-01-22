@@ -6,7 +6,7 @@ public struct TranslatedField: Hashable, Identifiable, Codable, Sendable {
     public init(
         id: String,
         title: String?,
-        properties: TranslatedProperties?
+        properties: TranslatedProperties?,
     ) {
         self.id = id
         self.title = title
@@ -23,7 +23,7 @@ extension Field {
             title: translatedField.title ?? title,
             properties: properties.merging(translatedProperties: translatedField.properties),
             validations: validations,
-            attachment: attachment
+            attachment: attachment,
         )
     }
 }
@@ -40,8 +40,8 @@ extension Field.Properties {
                 DateStamp(
                     separator: dateStamp.separator,
                     structure: dateStamp.structure,
-                    description: translatedProperties.description ?? dateStamp.description
-                )
+                    description: translatedProperties.description ?? dateStamp.description,
+                ),
             )
         case .dropdown(let dropdown):
             return .dropdown(
@@ -49,34 +49,34 @@ extension Field.Properties {
                     choices: dropdown.choices.merging(translatedChoices: translatedProperties.choices),
                     description: translatedProperties.description ?? dropdown.description,
                     randomize: dropdown.randomize,
-                    alphabetical_order: dropdown.alphabetical_order
-                )
+                    alphabetical_order: dropdown.alphabetical_order,
+                ),
             )
         case .fileUpload(let fileUpload):
             return .fileUpload(
                 FileUpload(
-                    description: translatedProperties.description ?? fileUpload.description
-                )
+                    description: translatedProperties.description ?? fileUpload.description,
+                ),
             )
         case .group(let group):
             return .group(
                 Group(
                     button_text: translatedProperties.button_text ?? group.button_text,
                     fields: group.fields.merging(translatedFields: translatedProperties.fields),
-                    show_button: group.show_button
-                )
+                    show_button: group.show_button,
+                ),
             )
         case .longText(let longText):
             return .longText(
                 LongText(
-                    description: translatedProperties.description ?? longText.description
-                )
+                    description: translatedProperties.description ?? longText.description,
+                ),
             )
         case .matrix(let matrix):
             return .matrix(
                 Matrix(
-                    fields: matrix.fields.merging(translatedFields: translatedProperties.fields)
-                )
+                    fields: matrix.fields.merging(translatedFields: translatedProperties.fields),
+                ),
             )
         case .multipleChoice(let multipleChoice):
             return .multipleChoice(
@@ -86,50 +86,50 @@ extension Field.Properties {
                     allow_multiple_selection: multipleChoice.allow_multiple_selection,
                     allow_other_choice: multipleChoice.allow_other_choice,
                     vertical_alignment: multipleChoice.vertical_alignment,
-                    description: translatedProperties.description ?? multipleChoice.description
-                )
+                    description: translatedProperties.description ?? multipleChoice.description,
+                ),
             )
         case .number(let number):
             return .number(
                 Number(
-                    description: translatedProperties.description ?? number.description
-                )
+                    description: translatedProperties.description ?? number.description,
+                ),
             )
         case .opinionScale(let opinionScale):
             return .opinionScale(
                 OpinionScale(
                     steps: opinionScale.steps,
                     labels: translatedProperties.labels ?? opinionScale.labels,
-                    start_at_one: opinionScale.start_at_one
-                )
+                    start_at_one: opinionScale.start_at_one,
+                ),
             )
         case .rating(let rating):
             return .rating(
                 Rating(
                     shape: rating.shape,
                     steps: rating.steps,
-                    description: translatedProperties.description ?? rating.description
-                )
+                    description: translatedProperties.description ?? rating.description,
+                ),
             )
         case .shortText(let shortText):
             return .shortText(
                 ShortText(
-                    description: translatedProperties.description ?? shortText.description
-                )
+                    description: translatedProperties.description ?? shortText.description,
+                ),
             )
         case .statement(let statement):
             return .statement(
                 Statement(
                     hide_marks: statement.hide_marks,
                     button_text: translatedProperties.button_text ?? statement.button_text,
-                    description: translatedProperties.description ?? statement.description
-                )
+                    description: translatedProperties.description ?? statement.description,
+                ),
             )
         case .yesNo(let yesNo):
             return .yesNo(
                 YesNo(
-                    description: translatedProperties.description ?? yesNo.description
-                )
+                    description: translatedProperties.description ?? yesNo.description,
+                ),
             )
         }
     }

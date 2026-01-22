@@ -20,7 +20,7 @@ struct HealthHistoryFormTests {
             .string("health-history-form-completed"): .bool(false),
             .string("patient-age"): .int(17),
             .string("sex-assigned-at-birth"): .choice(
-                Choice(id: "gYxjsy4loTDH", ref: .string("sex-assigned-at-birth-answer-male"), label: "Male")
+                Choice(id: "gYxjsy4loTDH", ref: .string("sex-assigned-at-birth-answer-male"), label: "Male"),
             ),
             .string("medications-usage"): .bool(false),
             .string("medication-allergies"): .bool(false),

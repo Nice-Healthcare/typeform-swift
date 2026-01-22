@@ -36,7 +36,7 @@ public struct Settings {
             uploadAction: String = "Select File",
             uploadCamera: String = "Camera",
             uploadPhotoLibrary: String = "Photo Library",
-            uploadDocument: String = "Documents"
+            uploadDocument: String = "Documents",
         ) {
             self.next = next
             self.cancel = cancel
@@ -86,7 +86,7 @@ public struct Settings {
             showWelcomeImage: Bool = true,
             showEndingImage: Bool = true,
             skipWelcomeScreen: Bool = false,
-            skipEndingScreen: Bool = false
+            skipEndingScreen: Bool = false,
         ) {
             self.layout = layout
             self.backgroundColor = backgroundColor
@@ -130,7 +130,7 @@ public struct Settings {
             bodyFont: Font = .body,
             bodyColor: Color = .black,
             captionFont: Font = .caption,
-            captionColor: Color = .gray
+            captionColor: Color = .gray,
         ) {
             self.titleFont = titleFont
             self.titleColor = titleColor
@@ -153,7 +153,7 @@ public struct Settings {
             backgroundColor: Color = .white,
             dividerColor: Color = .black,
             insets: EdgeInsets = EdgeInsets(),
-            verticalSpacing: CGFloat = 0.0
+            verticalSpacing: CGFloat = 0.0,
         ) {
             self.backgroundColor = backgroundColor
             self.dividerColor = dividerColor
@@ -176,7 +176,7 @@ public struct Settings {
             strokeWidth: CGFloat = 1.0,
             verticalInset: CGFloat = 10.0,
             horizontalInset: CGFloat = 15.0,
-            cornerRadius: CGFloat = 6.0
+            cornerRadius: CGFloat = 6.0,
         ) {
             self.backgroundColor = backgroundColor
             self.strokeColor = strokeColor
@@ -195,7 +195,7 @@ public struct Settings {
         public init(
             theme: IntermittentTheme = .button,
             cornerRadius: CGFloat = 6.0,
-            padding: EdgeInsets = EdgeInsets(top: 15.0, leading: 10.0, bottom: 15.0, trailing: 10.0)
+            padding: EdgeInsets = EdgeInsets(top: 15.0, leading: 10.0, bottom: 15.0, trailing: 10.0),
         ) {
             self.theme = theme
             self.cornerRadius = cornerRadius
@@ -209,7 +209,7 @@ public struct Settings {
 
         public init(
             theme: IntermittentTheme = .checkbox,
-            cornerRadius: CGFloat = 3.0
+            cornerRadius: CGFloat = 3.0,
         ) {
             self.theme = theme
             self.cornerRadius = cornerRadius
@@ -220,7 +220,7 @@ public struct Settings {
         public var theme: IntermittentTheme
 
         public init(
-            theme: IntermittentTheme = .radio
+            theme: IntermittentTheme = .radio,
         ) {
             self.theme = theme
         }
@@ -230,7 +230,7 @@ public struct Settings {
         public var theme: IntermittentTheme
 
         public init(
-            theme: IntermittentTheme = .rating
+            theme: IntermittentTheme = .rating,
         ) {
             self.theme = theme
         }
@@ -254,7 +254,7 @@ public struct Settings {
             imageRadius: CGFloat = 16.0,
             imageMaxWidth: CGFloat? = 200,
             placeholderBackgroundColor: Color = .blue,
-            placeholderForegroundColor: Color = .white
+            placeholderForegroundColor: Color = .white,
         ) {
             self.theme = theme
             self.actionRadius = actionRadius
@@ -288,7 +288,7 @@ public struct Settings {
         radio: Radio = Radio(),
         rating: Rating = Rating(),
         opinionScale: OpinionScale = OpinionScale(),
-        upload: Upload = Upload()
+        upload: Upload = Upload(),
     ) {
         self.localization = localization
         self.presentation = presentation

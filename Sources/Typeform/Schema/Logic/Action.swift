@@ -19,7 +19,7 @@ public struct Action: Hashable, Codable, Sendable {
 
             public init(
                 type: ToType = .field,
-                value: Reference = ""
+                value: Reference = "",
             ) {
                 self.type = type
                 self.value = value
@@ -29,7 +29,7 @@ public struct Action: Hashable, Codable, Sendable {
         public let to: To
 
         public init(
-            to: To = To()
+            to: To = To(),
         ) {
             self.to = to
         }
@@ -48,7 +48,7 @@ public struct Action: Hashable, Codable, Sendable {
     public init(
         type: Kind = .jump,
         details: Details = Details(),
-        condition: Condition = Condition()
+        condition: Condition = Condition(),
     ) {
         self.type = type
         self.details = details

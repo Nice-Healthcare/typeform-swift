@@ -10,7 +10,7 @@ public struct ScreenProperties: Hashable, Codable, Sendable {
         button_mode: String? = nil,
         button_text: String? = nil,
         share_icons: Bool? = nil,
-        show_button: Bool = false
+        show_button: Bool = false,
     ) {
         self.button_mode = button_mode
         self.button_text = button_text

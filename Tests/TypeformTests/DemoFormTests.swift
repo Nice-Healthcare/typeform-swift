@@ -9,7 +9,7 @@ struct DemoFormTests {
         let form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "DemoForm")
         var position = try form.firstPosition(
             skipWelcomeScreen: false,
-            given: [:]
+            given: [:],
         )
 
         guard case .screen(let welcomeScreen) = position else {

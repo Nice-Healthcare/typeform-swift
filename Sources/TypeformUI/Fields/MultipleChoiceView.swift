@@ -43,8 +43,8 @@ struct MultipleChoiceView: View {
                     IntermittentChoiceButtonStyle(
                         allowsMultipleSelection: properties.allow_multiple_selection,
                         selected: selections.contains(choice),
-                        settings: settings
-                    )
+                        settings: settings,
+                    ),
                 )
             }
         }
@@ -107,13 +107,13 @@ struct MultipleChoiceView_Previews: PreviewProvider {
                 MultipleChoiceView(
                     state: .constant(ResponseState()),
                     properties: .preview_One,
-                    settings: Settings()
+                    settings: Settings(),
                 )
 
                 MultipleChoiceView(
                     state: .constant(ResponseState()),
                     properties: .preview_Many,
-                    settings: Settings()
+                    settings: Settings(),
                 )
             }
             .padding()

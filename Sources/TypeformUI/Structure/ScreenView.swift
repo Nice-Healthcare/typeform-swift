@@ -31,7 +31,7 @@ struct ScreenView<Header: View, Footer: View>: View {
         responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header,
-        @ViewBuilder footer: @escaping () -> Footer
+        @ViewBuilder footer: @escaping () -> Footer,
     ) {
         self.form = form
         self.screen = screen
@@ -144,7 +144,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                     responses: responses,
                     conclusion: conclusion,
                     header: header,
-                    footer: footer
+                    footer: footer,
                 )
             case .screen(let screen):
                 ScreenView(
@@ -154,7 +154,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                     responses: responses,
                     conclusion: conclusion,
                     header: header,
-                    footer: footer
+                    footer: footer,
                 )
             }
         } label: {
@@ -170,7 +170,7 @@ extension ScreenView where Footer == EmptyView {
         settings: Settings,
         responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
-        @ViewBuilder header: @escaping () -> Header
+        @ViewBuilder header: @escaping () -> Header,
     ) {
         self.form = form
         self.screen = screen
@@ -189,7 +189,7 @@ extension ScreenView where Header == EmptyView {
         settings: Settings,
         responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
-        @ViewBuilder footer: @escaping () -> Footer
+        @ViewBuilder footer: @escaping () -> Footer,
     ) {
         self.form = form
         self.screen = screen
@@ -207,7 +207,7 @@ extension ScreenView where Footer == EmptyView, Header == EmptyView {
         screen: any Screen,
         settings: Settings,
         responses: Responses,
-        conclusion: @escaping (Conclusion) -> Void
+        conclusion: @escaping (Conclusion) -> Void,
     ) {
         self.form = form
         self.screen = screen
@@ -226,7 +226,7 @@ extension ScreenView where Footer == EmptyView, Header == EmptyView {
             screen: WelcomeScreen.preview,
             settings: Settings(),
             responses: [:],
-            conclusion: { _ in }
+            conclusion: { _ in },
         )
     }
 }
@@ -238,7 +238,7 @@ extension ScreenView where Footer == EmptyView, Header == EmptyView {
             screen: EndingScreen.preview,
             settings: Settings(),
             responses: [:],
-            conclusion: { _ in }
+            conclusion: { _ in },
         )
     }
 }

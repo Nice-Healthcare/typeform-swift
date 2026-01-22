@@ -12,10 +12,10 @@ struct FieldStyleViewModifier: ViewModifier {
             .padding(.horizontal, settings.field.horizontalInset)
             .padding(.vertical, settings.field.verticalInset)
             .background(
-                settings.field.backgroundColor.clipShape(shape)
+                settings.field.backgroundColor.clipShape(shape),
             )
             .overlay(
-                shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth)
+                shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth),
             )
     }
 }

@@ -10,7 +10,7 @@ public struct Dropdown: Hashable, Codable, Sendable {
         choices: [Choice] = [],
         description: String? = nil,
         randomize: Bool = false,
-        alphabetical_order: Bool = true
+        alphabetical_order: Bool = true,
     ) {
         self.choices = choices
         self.description = description

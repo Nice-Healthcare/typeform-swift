@@ -106,7 +106,7 @@ struct RatingView_Previews: PreviewProvider {
         RatingView(
             state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings()
+            settings: Settings(),
         )
     }
 }

@@ -29,12 +29,12 @@ struct Radio_Previews: PreviewProvider {
         VStack {
             Radio(
                 radio: Settings.Radio(),
-                selected: false
+                selected: false,
             )
 
             Radio(
                 radio: Settings.Radio(),
-                selected: true
+                selected: true,
             )
         }
         .frame(width: 20, height: 20)

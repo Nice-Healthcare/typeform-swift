@@ -41,10 +41,10 @@ struct UploadLabelStyle: LabelStyle {
         .frame(maxWidth: .infinity)
         .padding(settings.button.padding)
         .background(
-            backgroundColor.clipShape(shape)
+            backgroundColor.clipShape(shape),
         )
         .overlay(
-            shape.stroke(strokeColor, lineWidth: strokeWidth)
+            shape.stroke(strokeColor, lineWidth: strokeWidth),
         )
     }
 }
@@ -57,8 +57,8 @@ struct UploadLabelStyle: LabelStyle {
         Label("Add", systemImage: "plus")
             .labelStyle(
                 UploadLabelStyle(
-                    settings: Settings()
-                )
+                    settings: Settings(),
+                ),
             )
     }
 }

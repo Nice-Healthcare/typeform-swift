@@ -33,8 +33,8 @@ struct PreLoadedResponsesTests {
                 Choice(
                     id: "eSMBTpzeqJYQ",
                     ref: .string("65fd22c3-32ec-4c92-b194-5aef3a10fe60"),
-                    label: "Alabama"
-                )
+                    label: "Alabama",
+                ),
             ),
         ]
 
@@ -71,8 +71,8 @@ struct PreLoadedResponsesTests {
                 Choice(
                     id: "Rh7fHLNn7tRV",
                     ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
-                    label: "Minnesota"
-                )
+                    label: "Minnesota",
+                ),
             ),
         ]
 
@@ -93,15 +93,15 @@ struct PreLoadedResponsesTests {
                 Choice(
                     id: "Rh7fHLNn7tRV",
                     ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
-                    label: "Minnesota"
-                )
+                    label: "Minnesota",
+                ),
             ),
             .uuid(UUID(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")!): .choice(
                 Choice(
                     id: "QQP6V2LnuOBK",
                     ref: .uuid(UUID(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")!),
-                    label: "Adult, 18-64 years of age"
-                )
+                    label: "Adult, 18-64 years of age",
+                ),
             ),
         ]
 

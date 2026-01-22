@@ -2,6 +2,7 @@
 import SwiftUI
 import Typeform
 import TypeformPreview
+import UniformTypeIdentifiers
 
 struct FileUploadView: View {
 
@@ -12,14 +13,14 @@ struct FileUploadView: View {
 
     @State private var value: Upload?
     @State private var path: Upload.Path?
-    @State private var error: Error?
+    @State private var error: (any Error)?
 
     var body: some View {
         VStack(spacing: settings.presentation.contentVerticalSpacing) {
             if let value {
                 UploadImageView(
                     upload: value,
-                    settings: settings
+                    settings: settings,
                 ) {
                     self.value = nil
                 }
@@ -107,7 +108,7 @@ struct FileUploadView: View {
         self.state.wrappedValue = state
     }
 
-    private func handlePickerResult(_ result: Result<Upload, Error>?) {
+    private func handlePickerResult(_ result: Result<Upload, any Error>?) {
         path = nil
 
         switch result {
@@ -163,7 +164,7 @@ struct FileUploadView: View {
             bytes: bytes,
             path: .documents,
             mimeType: mimeType,
-            fileName: fileName
+            fileName: fileName,
         )
 
         handlePickerResult(.success(upload))
@@ -175,7 +176,7 @@ struct FileUploadView: View {
     FileUploadView(
         state: .constant(ResponseState()),
         properties: FileUpload(description: nil),
-        settings: Settings()
+        settings: Settings(),
     )
 }
 #endif

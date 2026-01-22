@@ -6,7 +6,7 @@ public struct EndingScreen: Screen, Hashable, Codable, Sendable {
         case `default`
         case ref(Reference)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             let reference = try container.decode(Reference.self)
             if case .string(let stringValue) = reference, stringValue == EndingScreen.defaultTYSKey {
@@ -16,7 +16,7 @@ public struct EndingScreen: Screen, Hashable, Codable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .default:
@@ -42,7 +42,7 @@ public struct EndingScreen: Screen, Hashable, Codable, Sendable {
         type: String = "thankyou_screen",
         title: String = "",
         attachment: Attachment? = nil,
-        properties: ScreenProperties = ScreenProperties()
+        properties: ScreenProperties = ScreenProperties(),
     ) {
         self.id = id
         self.ref = ref
@@ -63,8 +63,8 @@ public struct EndingScreen: Screen, Hashable, Codable, Sendable {
             title: "All done!, Thanks for you time.",
             properties: ScreenProperties(
                 share_icons: false,
-                show_button: false
-            )
+                show_button: false,
+            ),
         )
     }
 }

@@ -7,7 +7,7 @@ public extension Bundle {
         _ type: T.Type,
         forResource resource: String,
         withExtension: String = "json",
-        using decoder: JSONDecoder = JSONDecoder()
+        using decoder: JSONDecoder = JSONDecoder(),
     ) throws -> T where T: Decodable {
         guard let url = url(forResource: resource, withExtension: withExtension) else {
             throw URLError(.badURL)
@@ -21,7 +21,7 @@ public extension Bundle {
     func decode<T: Decodable>(
         forResource resource: String,
         withExtension: String = "json",
-        using decoder: JSONDecoder = JSONDecoder()
+        using decoder: JSONDecoder = JSONDecoder(),
     ) throws -> T {
         guard let url = url(forResource: resource, withExtension: withExtension) else {
             throw URLError(.badURL)

@@ -8,7 +8,7 @@ public struct Choice: Hashable, Identifiable, Codable, Sendable {
     public init(
         id: String = "",
         ref: Reference = "",
-        label: String = ""
+        label: String = "",
     ) {
         self.id = id
         self.ref = ref
