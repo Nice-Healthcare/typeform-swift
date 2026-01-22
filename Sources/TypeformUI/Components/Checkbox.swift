@@ -31,12 +31,12 @@ struct Checkbox_Previews: PreviewProvider {
         VStack {
             Checkbox(
                 checkbox: Settings.Checkbox(),
-                selected: false
+                selected: false,
             )
 
             Checkbox(
                 checkbox: Settings.Checkbox(),
-                selected: true
+                selected: true,
             )
         }
         .frame(width: 20, height: 20)

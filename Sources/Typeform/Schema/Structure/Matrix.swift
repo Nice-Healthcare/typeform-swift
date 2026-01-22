@@ -10,7 +10,7 @@ public struct Matrix: FieldContainer, Hashable, Sendable, Codable {
     public let fields: [Field]
 
     public init(
-        fields: [Field] = []
+        fields: [Field] = [],
     ) {
         self.fields = fields
     }
@@ -26,8 +26,8 @@ public struct Matrix: FieldContainer, Hashable, Sendable, Codable {
                     id: field.id,
                     ref: field.ref,
                     title: field.title,
-                    question: multipleChoice
-                )
+                    question: multipleChoice,
+                ),
             )
         }
     }

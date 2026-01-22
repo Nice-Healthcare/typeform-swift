@@ -20,7 +20,7 @@ struct FileUploadView: View {
             if let value {
                 UploadImageView(
                     upload: value,
-                    settings: settings
+                    settings: settings,
                 ) {
                     self.value = nil
                 }
@@ -164,7 +164,7 @@ struct FileUploadView: View {
             bytes: bytes,
             path: .documents,
             mimeType: mimeType,
-            fileName: fileName
+            fileName: fileName,
         )
 
         handlePickerResult(.success(upload))
@@ -176,7 +176,7 @@ struct FileUploadView: View {
     FileUploadView(
         state: .constant(ResponseState()),
         properties: FileUpload(description: nil),
-        settings: Settings()
+        settings: Settings(),
     )
 }
 #endif

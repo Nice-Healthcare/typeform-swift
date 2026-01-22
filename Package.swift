@@ -21,7 +21,7 @@ let package = Package(
                 "Typeform",
                 "TypeformPreview",
                 "TypeformUI",
-            ]
+            ],
         ),
     ],
     dependencies: [
@@ -34,7 +34,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Typeform",
-            dependencies: []
+            dependencies: [],
         ),
         .target(
             name: "TypeformPreview",
@@ -43,14 +43,14 @@ let package = Package(
             ],
             resources: [
                 .process("Resources"),
-            ]
+            ],
         ),
         .target(
             name: "TypeformUI",
             dependencies: [
                 "Typeform",
                 "TypeformPreview",
-            ]
+            ],
         ),
         .testTarget(
             name: "TypeformTests",
@@ -58,12 +58,12 @@ let package = Package(
                 "Typeform",
                 "TypeformPreview",
                 .product(name: "Testing", package: "swift-testing"),
-            ]
+            ],
         ),
     ],
     swiftLanguageModes: [
         .v5,
-    ]
+    ],
 )
 
 for target in package.targets {

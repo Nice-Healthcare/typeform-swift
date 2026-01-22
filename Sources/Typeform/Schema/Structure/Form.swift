@@ -34,7 +34,7 @@ public struct Form: Hashable, Sendable, Identifiable {
         settings: Settings = Settings(),
         workspace: Workspace = Workspace(),
         welcomeScreens: [WelcomeScreen]? = nil,
-        endingScreens: [EndingScreen] = []
+        endingScreens: [EndingScreen] = [],
     ) {
         self.id = id
         self.type = type

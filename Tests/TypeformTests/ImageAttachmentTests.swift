@@ -14,7 +14,7 @@ struct ImageAttachmentTests {
     @Test func formStart() throws {
         let firstPosition = try form.firstPosition(
             skipWelcomeScreen: false,
-            given: [:]
+            given: [:],
         )
 
         guard case .field(let field, _) = firstPosition else {

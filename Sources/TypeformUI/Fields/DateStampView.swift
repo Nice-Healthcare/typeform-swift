@@ -86,7 +86,7 @@ struct DateStampView_Previews: PreviewProvider {
         DateStampView(
             state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings()
+            settings: Settings(),
         )
     }
 }

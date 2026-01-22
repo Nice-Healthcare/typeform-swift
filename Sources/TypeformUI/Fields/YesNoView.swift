@@ -23,7 +23,7 @@ struct YesNoView: View {
             .buttonStyle(IntermittentChoiceButtonStyle(
                 allowsMultipleSelection: false,
                 selected: selected == true,
-                settings: settings
+                settings: settings,
             ))
 
             Button {
@@ -35,7 +35,7 @@ struct YesNoView: View {
             .buttonStyle(IntermittentChoiceButtonStyle(
                 allowsMultipleSelection: false,
                 selected: selected == false,
-                settings: settings
+                settings: settings,
             ))
         }
         .onAppear {
@@ -81,7 +81,7 @@ struct YesNoView_Previews: PreviewProvider {
         YesNoView(
             state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings()
+            settings: Settings(),
         )
     }
 }

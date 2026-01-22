@@ -38,7 +38,7 @@ struct FieldView<Header: View, Footer: View>: View {
         responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header,
-        @ViewBuilder footer: @escaping () -> Footer
+        @ViewBuilder footer: @escaping () -> Footer,
     ) {
         self.form = form
         self.field = field
@@ -79,21 +79,21 @@ struct FieldView<Header: View, Footer: View>: View {
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .dropdown(let properties):
                             DropdownView(
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .fileUpload(let properties):
                             FileUploadView(
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .group:
                             EmptyView()
@@ -103,7 +103,7 @@ struct FieldView<Header: View, Footer: View>: View {
                                 properties: properties,
                                 settings: settings,
                                 validations: field.validations,
-                                focused: $focused
+                                focused: $focused,
                             )
                         case .matrix(let properties):
                             // Note `properties.validations` as `Matrix` utilize their `fields` validations.
@@ -111,35 +111,35 @@ struct FieldView<Header: View, Footer: View>: View {
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: properties.validations
+                                validations: properties.validations,
                             )
                         case .multipleChoice(let properties):
                             MultipleChoiceView(
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .number(let properties):
                             NumberView(
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .opinionScale(let properties):
                             OpinionScaleView(
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .rating(let properties):
                             RatingView(
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         case .shortText(let properties):
                             ShortTextView(
@@ -147,7 +147,7 @@ struct FieldView<Header: View, Footer: View>: View {
                                 properties: properties,
                                 settings: settings,
                                 validations: field.validations,
-                                focused: $focused
+                                focused: $focused,
                             )
                         case .statement:
                             EmptyView()
@@ -156,7 +156,7 @@ struct FieldView<Header: View, Footer: View>: View {
                                 state: $responseState,
                                 properties: properties,
                                 settings: settings,
-                                validations: field.validations
+                                validations: field.validations,
                             )
                         }
                     }
@@ -181,7 +181,7 @@ struct FieldView<Header: View, Footer: View>: View {
             }
             .background(
                 settings.callToAction.backgroundColor
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.bottom),
             )
         }
         .background(settings.presentation.backgroundColor)
@@ -242,7 +242,7 @@ struct FieldView<Header: View, Footer: View>: View {
                     responses: responses,
                     conclusion: conclusion,
                     header: header,
-                    footer: footer
+                    footer: footer,
                 )
             case .screen(let screen):
                 ScreenView(
@@ -252,14 +252,14 @@ struct FieldView<Header: View, Footer: View>: View {
                     responses: responses,
                     conclusion: conclusion,
                     header: header,
-                    footer: footer
+                    footer: footer,
                 )
             case .none:
                 RejectedView(
                     form: form,
                     settings: settings,
                     responses: responses,
-                    conclusion: conclusion
+                    conclusion: conclusion,
                 )
             }
         } label: {
@@ -277,7 +277,7 @@ extension FieldView where Footer == EmptyView {
         settings: Settings,
         responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
-        @ViewBuilder header: @escaping () -> Header
+        @ViewBuilder header: @escaping () -> Header,
     ) {
         self.form = form
         self.field = field
@@ -299,7 +299,7 @@ extension FieldView where Header == EmptyView {
         settings: Settings,
         responses: Responses,
         conclusion: @escaping (Conclusion) -> Void,
-        @ViewBuilder footer: @escaping () -> Footer
+        @ViewBuilder footer: @escaping () -> Footer,
     ) {
         self.form = form
         self.field = field
@@ -320,7 +320,7 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
         group: Typeform.Group?,
         settings: Settings,
         responses: Responses,
-        conclusion: @escaping (Conclusion) -> Void
+        conclusion: @escaping (Conclusion) -> Void,
     ) {
         self.form = form
         self.field = field
@@ -347,11 +347,11 @@ extension FieldView where Footer == EmptyView, Header == EmptyView {
                         Choice(
                             id: "Sx6ZqqmkAHOI",
                             ref: Reference(uuidString: "4f6732f3-d3b6-4c83-9c3e-a4945a004507")!,
-                            label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider"
-                        )
+                            label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider",
+                        ),
                     ),
                 ],
-                conclusion: { _ in }
+                conclusion: { _ in },
             )
         }
     }

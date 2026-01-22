@@ -27,7 +27,7 @@ public struct FormView<Header: View, Footer: View>: View {
         responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void,
         @ViewBuilder header: @escaping () -> Header,
-        @ViewBuilder footer: @escaping () -> Footer
+        @ViewBuilder footer: @escaping () -> Footer,
     ) {
         self.form = form
         self.settings = settings
@@ -50,7 +50,7 @@ public struct FormView<Header: View, Footer: View>: View {
                             responses: responses,
                             conclusion: conclusion,
                             header: header,
-                            footer: footer
+                            footer: footer,
                         )
                     case .field(let field, let group):
                         FieldView(
@@ -61,7 +61,7 @@ public struct FormView<Header: View, Footer: View>: View {
                             responses: responses,
                             conclusion: conclusion,
                             header: header,
-                            footer: footer
+                            footer: footer,
                         )
                     }
                 } else {
@@ -69,7 +69,7 @@ public struct FormView<Header: View, Footer: View>: View {
                         form: form,
                         settings: settings,
                         responses: responses,
-                        conclusion: conclusion
+                        conclusion: conclusion,
                     )
                 }
             }
@@ -89,7 +89,7 @@ public extension FormView where Footer == EmptyView {
         settings: Settings = Settings(),
         responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void,
-        @ViewBuilder header: @escaping () -> Header
+        @ViewBuilder header: @escaping () -> Header,
     ) {
         self.form = form
         self.settings = settings
@@ -106,7 +106,7 @@ public extension FormView where Header == EmptyView {
         settings: Settings = Settings(),
         responses: Responses = [:],
         conclusion: @escaping (Conclusion) -> Void,
-        @ViewBuilder footer: @escaping () -> Footer
+        @ViewBuilder footer: @escaping () -> Footer,
     ) {
         self.form = form
         self.settings = settings
@@ -122,7 +122,7 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
         form: Typeform.Form,
         settings: Settings = Settings(),
         responses: Responses = [:],
-        conclusion: @escaping (Conclusion) -> Void
+        conclusion: @escaping (Conclusion) -> Void,
     ) {
         self.form = form
         self.settings = settings
@@ -141,11 +141,11 @@ public extension FormView where Footer == EmptyView, Header == EmptyView {
                 Choice(
                     id: "0H6r4PQIWFI6",
                     ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
-                    label: "Minnesota"
-                )
+                    label: "Minnesota",
+                ),
             ),
         ],
-        conclusion: { _ in }
+        conclusion: { _ in },
     )
 }
 #endif

@@ -20,13 +20,13 @@ struct UploadImageView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(
-                            RoundedRectangle(cornerRadius: settings.upload.imageRadius)
+                            RoundedRectangle(cornerRadius: settings.upload.imageRadius),
                         )
                         .padding(padding)
                 } else {
                     UploadPlaceholderView(
                         settings: settings,
-                        padding: padding
+                        padding: padding,
                     )
                 }
                 #elseif canImport(AppKit)
@@ -35,13 +35,13 @@ struct UploadImageView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(
-                            RoundedRectangle(cornerRadius: settings.upload.imageRadius)
+                            RoundedRectangle(cornerRadius: settings.upload.imageRadius),
                         )
                         .padding(padding)
                 } else {
                     UploadPlaceholderView(
                         settings: settings,
-                        padding: padding
+                        padding: padding,
                     )
                 }
                 #endif
@@ -102,9 +102,9 @@ struct UploadPlaceholderView: View {
             bytes: Data(),
             path: .camera,
             mimeType: "image/jpeg",
-            fileName: "IMG_1234567890.jpg"
+            fileName: "IMG_1234567890.jpg",
         ),
-        settings: Settings()
+        settings: Settings(),
     )
 }
 #endif

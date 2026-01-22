@@ -6,7 +6,7 @@ public struct Group: FieldContainer, Hashable, Sendable, Codable {
     public init(
         button_text: String = "",
         fields: [Field] = [],
-        show_button: Bool = false
+        show_button: Bool = false,
     ) {
         self.button_text = button_text
         self.fields = fields

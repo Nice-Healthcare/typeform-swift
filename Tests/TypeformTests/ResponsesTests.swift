@@ -10,7 +10,7 @@ struct ResponsesTests {
     private let visitChoice = Choice(
         id: "Sx6ZqqmkAHOI",
         ref: Reference(uuidString: "4f6732f3-d3b6-4c83-9c3e-a4945a004507")!,
-        label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider"
+        label: "An update or follow-up on how you are feeling regarding an illness or injury that was discussed with a Specialty medical provider",
     )
 
     init() throws {
@@ -93,8 +93,8 @@ struct ResponsesTests {
                 Choice(
                     id: "s83hchg83",
                     ref: "sex-at-birth",
-                    label: "Female"
-                )
+                    label: "Female",
+                ),
             ),
             "three": .string("Hello"),
         ]
@@ -129,7 +129,7 @@ struct ResponsesTests {
             day: 10,
             hour: 13,
             minute: 27,
-            second: 00
+            second: 00,
         )
         let date = try #require(dateComponents.date)
 
@@ -158,8 +158,8 @@ struct ResponsesTests {
                 Choice(
                     id: "something",
                     ref: .uuid(UUID(uuidString: "70675439-3BA3-44F9-8807-949A5375ACEC")!),
-                    label: "Battlestar"
-                )
+                    label: "Battlestar",
+                ),
             ),
             "beta": .date(date),
         ])

@@ -25,7 +25,7 @@ public struct OpinionScale: Hashable, Codable, Sendable {
     public init(
         steps: Int = 0,
         labels: Labels? = nil,
-        start_at_one: Bool = false
+        start_at_one: Bool = false,
     ) {
         self.steps = steps
         self.labels = labels

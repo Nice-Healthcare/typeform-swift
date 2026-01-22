@@ -77,7 +77,7 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         title: String = "",
         properties: Properties = .yesNo(YesNo()),
         validations: Validations? = nil,
-        attachment: Attachment? = nil
+        attachment: Attachment? = nil,
     ) {
         self.id = id
         self.ref = ref

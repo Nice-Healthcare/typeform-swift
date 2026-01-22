@@ -8,7 +8,7 @@ public struct Rating: Hashable, Codable, Sendable {
     public init(
         shape: String = "",
         steps: Int = 0,
-        description: String? = nil
+        description: String? = nil,
     ) {
         self.shape = shape
         self.steps = steps

@@ -19,7 +19,7 @@ public struct IntermittentTheme: Sendable {
         selectedBackgroundColor: Color = .blue,
         selectedStrokeColor: Color = .blue,
         selectedStrokeWidth: Double = 2.0,
-        selectedForegroundColor: Color = .white
+        selectedForegroundColor: Color = .white,
     ) {
         self.unselectedBackgroundColor = unselectedBackgroundColor
         self.unselectedStrokeColor = unselectedStrokeColor
@@ -39,10 +39,10 @@ public extension IntermittentTheme {
     static let radio: IntermittentTheme = IntermittentTheme(
         selectedBackgroundColor: .white,
         selectedStrokeColor: .black,
-        selectedForegroundColor: .blue
+        selectedForegroundColor: .blue,
     )
     static let rating: IntermittentTheme = IntermittentTheme(
-        selectedForegroundColor: .blue
+        selectedForegroundColor: .blue,
     )
     static let opinionScale: IntermittentTheme = IntermittentTheme()
 }

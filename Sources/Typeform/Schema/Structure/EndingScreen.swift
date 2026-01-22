@@ -42,7 +42,7 @@ public struct EndingScreen: Screen, Hashable, Codable, Sendable {
         type: String = "thankyou_screen",
         title: String = "",
         attachment: Attachment? = nil,
-        properties: ScreenProperties = ScreenProperties()
+        properties: ScreenProperties = ScreenProperties(),
     ) {
         self.id = id
         self.ref = ref
@@ -63,8 +63,8 @@ public struct EndingScreen: Screen, Hashable, Codable, Sendable {
             title: "All done!, Thanks for you time.",
             properties: ScreenProperties(
                 share_icons: false,
-                show_button: false
-            )
+                show_button: false,
+            ),
         )
     }
 }

@@ -80,7 +80,7 @@ struct DropdownView_Previews: PreviewProvider {
         DropdownView(
             state: .constant(ResponseState()),
             properties: .preview,
-            settings: Settings()
+            settings: Settings(),
         )
     }
 }

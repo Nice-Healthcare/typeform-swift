@@ -8,7 +8,7 @@ public struct DateStamp: Hashable, Codable, Sendable {
     public init(
         separator: String = "",
         structure: String = "",
-        description: String? = nil
+        description: String? = nil,
     ) {
         self.separator = separator
         self.structure = structure

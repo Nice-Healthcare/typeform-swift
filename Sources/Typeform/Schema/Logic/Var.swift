@@ -25,7 +25,7 @@ public struct Var: Hashable, Codable, Sendable {
 
     public init(
         type: VarType = .constant,
-        value: Value = .bool(false)
+        value: Value = .bool(false),
     ) {
         self.type = type
         self.value = value

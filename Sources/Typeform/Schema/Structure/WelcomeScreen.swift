@@ -12,7 +12,7 @@ public struct WelcomeScreen: Screen, Hashable, Codable, Sendable {
         ref: Reference = "",
         title: String = "",
         attachment: Attachment? = nil,
-        properties: ScreenProperties = ScreenProperties()
+        properties: ScreenProperties = ScreenProperties(),
     ) {
         self.id = id
         self.ref = ref

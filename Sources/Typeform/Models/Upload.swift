@@ -19,7 +19,7 @@ public struct Upload: Hashable, Codable, Sendable {
         bytes: Data,
         path: Path,
         mimeType: String,
-        fileName: String
+        fileName: String,
     ) {
         self.bytes = bytes
         self.path = path

@@ -41,7 +41,7 @@ struct LongTextView: View {
         .focused(focused)
         .frame(idealHeight: 200, maxHeight: 200)
         .overlay(
-            shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth)
+            shape.stroke(settings.field.strokeColor, lineWidth: settings.field.strokeWidth),
         )
         .onAppear {
             registerState()
@@ -88,7 +88,7 @@ struct LongTextView_Previews: PreviewProvider {
             state: .constant(ResponseState()),
             properties: .preview,
             settings: Settings(),
-            focused: $focused
+            focused: $focused,
         )
     }
 }

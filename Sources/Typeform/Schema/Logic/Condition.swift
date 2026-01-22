@@ -17,7 +17,7 @@ public struct Condition: Hashable, Codable, Sendable {
 
     public init(
         op: Op = .equal,
-        parameters: Parameters = .conditions([])
+        parameters: Parameters = .conditions([]),
     ) {
         self.op = op
         self.parameters = parameters

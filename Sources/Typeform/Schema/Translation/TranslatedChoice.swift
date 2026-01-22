@@ -4,7 +4,7 @@ public struct TranslatedChoice: Hashable, Identifiable, Codable, Sendable {
 
     public init(
         id: String,
-        label: String
+        label: String,
     ) {
         self.id = id
         self.label = label
@@ -16,7 +16,7 @@ extension Choice {
         Choice(
             id: id,
             ref: ref,
-            label: translatedChoice.label
+            label: translatedChoice.label,
         )
     }
 }

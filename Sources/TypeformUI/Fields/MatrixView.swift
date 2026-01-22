@@ -51,8 +51,8 @@ struct MatrixView: View {
                                     IntermittentChoiceButtonStyle(
                                         allowsMultipleSelection: properties.allow_multiple_selections,
                                         selected: selections[iteration.ref]?.contains(choice) ?? false,
-                                        settings: settings
-                                    )
+                                        settings: settings,
+                                    ),
                                 )
                         }
                     }
@@ -117,7 +117,7 @@ struct MatrixView: View {
 
                 return matrix
             }(),
-            settings: Settings()
+            settings: Settings(),
         )
         .padding()
     }

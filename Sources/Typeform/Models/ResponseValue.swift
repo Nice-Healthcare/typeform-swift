@@ -28,7 +28,7 @@ public enum ResponseValue: Hashable, Codable, Sendable {
         guard let key = allKeys.popFirst(), allKeys.isEmpty else {
             let context = DecodingError.Context(
                 codingPath: container.codingPath,
-                debugDescription: "Invalid number of keys found, expected one."
+                debugDescription: "Invalid number of keys found, expected one.",
             )
 
             throw DecodingError.typeMismatch(ResponseValue.self, context)

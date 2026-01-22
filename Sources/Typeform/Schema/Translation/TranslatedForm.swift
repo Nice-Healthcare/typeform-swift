@@ -8,7 +8,7 @@ public struct TranslatedForm: Hashable, Sendable {
     public init(
         fields: [TranslatedField],
         welcomeScreens: [TranslatedScreen]?,
-        endingScreens: [TranslatedScreen]?
+        endingScreens: [TranslatedScreen]?,
     ) {
         self.fields = fields
         self.welcomeScreens = welcomeScreens
@@ -37,7 +37,7 @@ public extension Form {
             settings: settings,
             workspace: workspace,
             welcomeScreens: welcomeScreens?.merging(translatedScreens: translatedForm.welcomeScreens),
-            endingScreens: endingScreens.merging(translatedScreens: translatedForm.endingScreens)
+            endingScreens: endingScreens.merging(translatedScreens: translatedForm.endingScreens),
         )
     }
 }

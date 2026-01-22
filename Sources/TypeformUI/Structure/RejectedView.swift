@@ -69,7 +69,7 @@ struct RejectedView_Previews: PreviewProvider {
                 form: .medicalIntake23,
                 settings: Settings(),
                 responses: [:],
-                conclusion: { _ in }
+                conclusion: { _ in },
             )
         }
     }
