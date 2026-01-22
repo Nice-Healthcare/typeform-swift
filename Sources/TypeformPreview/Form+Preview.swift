@@ -2,7 +2,7 @@ import Foundation
 import Typeform
 
 public extension Form {
-    private static var decoder: JSONDecoder = {
+    private static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return decoder
@@ -21,12 +21,12 @@ public extension Form {
         }
     }
 
-    static var medicalIntake22 = intakeForm("MedicalIntake")
-    static var medicalIntake23 = intakeForm("MedicalIntake23")
-    static var medicalIntake24 = intakeForm("MedicalIntake24")
-    static var medicalIntake26 = intakeForm("MedicalIntake26")
-    static var medicalIntake35 = intakeForm("MedicalIntake35")
-    static var genericSlugs = intakeForm("GenericSlugs")
+    static let medicalIntake22 = intakeForm("MedicalIntake")
+    static let medicalIntake23 = intakeForm("MedicalIntake23")
+    static let medicalIntake24 = intakeForm("MedicalIntake24")
+    static let medicalIntake26 = intakeForm("MedicalIntake26")
+    static let medicalIntake35 = intakeForm("MedicalIntake35")
+    static let genericSlugs = intakeForm("GenericSlugs")
     static let ptIntake42 = intakeForm("PTIntake42")
     static let primaryCare3 = intakeForm("PrimaryCareV3")
     static let physicalTherapy3 = intakeForm("PhysicalTherapyV3")
@@ -34,7 +34,7 @@ public extension Form {
 }
 
 public extension WelcomeScreen {
-    static var preview: WelcomeScreen = {
+    static let preview: WelcomeScreen = {
         guard let screen = Form.medicalIntake23.welcomeScreens?.first else {
             preconditionFailure("Failed to find first 'WelcomeScreen'.")
         }
@@ -44,7 +44,7 @@ public extension WelcomeScreen {
 }
 
 public extension EndingScreen {
-    static var preview: EndingScreen = {
+    static let preview: EndingScreen = {
         guard let screen = Form.medicalIntake23.endingScreens.first else {
             preconditionFailure("Failed to find default 'EndingScreen'.")
         }
@@ -52,7 +52,7 @@ public extension EndingScreen {
         return screen
     }()
 
-    static var `default`: EndingScreen = {
+    static let `default`: EndingScreen = {
         guard let screen = Form.medicalIntake23.endingScreens.first(where: { $0.ref == .default }) else {
             preconditionFailure("Failed to find default 'EndingScreen'.")
         }

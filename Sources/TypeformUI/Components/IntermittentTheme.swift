@@ -1,7 +1,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-public struct IntermittentTheme {
+public struct IntermittentTheme: Sendable {
     public let unselectedBackgroundColor: Color
     public let unselectedStrokeColor: Color
     public let unselectedStrokeWidth: Double

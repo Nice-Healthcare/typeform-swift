@@ -1,5 +1,5 @@
 /// A reference to a screen or field for which navigation is occurring.
-public enum Position {
+public enum Position: Sendable {
     case screen(any Screen)
     case field(Field, Group? = nil)
 

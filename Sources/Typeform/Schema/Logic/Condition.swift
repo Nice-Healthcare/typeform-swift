@@ -23,7 +23,7 @@ public struct Condition: Hashable, Codable, Sendable {
         self.parameters = parameters
     }
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         op = try container.decode(Op.self, forKey: .op)
         if let conditions = try? container.decode([Condition].self, forKey: .vars) {
@@ -34,7 +34,7 @@ public struct Condition: Hashable, Codable, Sendable {
         }
     }
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(op, forKey: .op)
         switch parameters {

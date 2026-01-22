@@ -27,7 +27,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/swiftlang/swift-testing.git", branch: "main"),
+        .package(url: "https://github.com/swiftlang/swift-testing.git", from: "6.2.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -65,3 +65,13 @@ let package = Package(
         .v5,
     ]
 )
+
+for target in package.targets {
+    var settings = target.swiftSettings ?? []
+    settings.append(contentsOf: [
+        .enableUpcomingFeature("ExistentialAny"),
+        .enableUpcomingFeature("MemberImportVisibility"),
+        .enableUpcomingFeature("StrictConcurrency=complete"),
+    ])
+    target.swiftSettings = settings
+}

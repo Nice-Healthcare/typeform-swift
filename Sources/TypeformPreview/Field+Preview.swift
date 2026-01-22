@@ -32,7 +32,7 @@ public extension Field {
 }
 
 public extension DateStamp {
-    static var preview: DateStamp = {
+    static let preview: DateStamp = {
         guard case let .date(properties) = Field.field(withRef: .date).properties else {
             preconditionFailure("Couldn't case field to 'date'.")
         }
@@ -42,7 +42,7 @@ public extension DateStamp {
 }
 
 public extension Dropdown {
-    static var preview: Dropdown = {
+    static let preview: Dropdown = {
         guard case let .dropdown(dropdown) = Field.field(withRef: .dropdown).properties else {
             preconditionFailure("Failed to cast field properties to type 'dropdown'.")
         }
@@ -52,7 +52,7 @@ public extension Dropdown {
 }
 
 public extension Group {
-    static var preview: Group = {
+    static let preview: Group = {
         guard case let .group(properties) = Field.field(withRef: .group).properties else {
             preconditionFailure("Failed to cast field properties to type 'group'.")
         }
@@ -62,7 +62,7 @@ public extension Group {
 }
 
 public extension LongText {
-    static var preview: LongText = {
+    static let preview: LongText = {
         guard case let .longText(properties) = Field.field(withRef: .longText).properties else {
             preconditionFailure("Couldn't case field to 'long-text'.")
         }
@@ -72,7 +72,7 @@ public extension LongText {
 }
 
 public extension MultipleChoice {
-    static var preview_Many: MultipleChoice = {
+    static let preview_Many: MultipleChoice = {
         guard case let .multipleChoice(properties) = Field.field(withRef: .multipleChoice_Many).properties else {
             preconditionFailure("Failed to cast field properties to type 'multiple_choice'.")
         }
@@ -80,7 +80,7 @@ public extension MultipleChoice {
         return properties
     }()
 
-    static var preview_One: MultipleChoice = {
+    static let preview_One: MultipleChoice = {
         guard case let .multipleChoice(properties) = Field.field(withRef: .multipleChoice_One).properties else {
             preconditionFailure("Failed to cast field properties to type 'multiple_choice'.")
         }
@@ -90,7 +90,7 @@ public extension MultipleChoice {
 }
 
 public extension Number {
-    static var preview: Number = {
+    static let preview: Number = {
         guard case let .number(properties) = Field.field(withRef: .number).properties else {
             preconditionFailure("Couldn't case field to 'number'.")
         }
@@ -100,7 +100,7 @@ public extension Number {
 }
 
 public extension OpinionScale {
-    static var preview: OpinionScale = {
+    static let preview: OpinionScale = {
         guard case let .opinionScale(properties) = Field.field(withRef: .opinionScale, in: .ptIntake42).properties else {
             preconditionFailure("Couldn't case field to 'opinionScale'.")
         }
@@ -110,7 +110,7 @@ public extension OpinionScale {
 }
 
 public extension Rating {
-    static var preview: Rating = {
+    static let preview: Rating = {
         guard case let .rating(properties) = Field.field(withRef: .rating).properties else {
             preconditionFailure("Couldn't case field to 'rating'.")
         }
@@ -120,7 +120,7 @@ public extension Rating {
 }
 
 public extension ShortText {
-    static var preview: ShortText = {
+    static let preview: ShortText = {
         guard case let .shortText(shortText) = Field.field(withRef: .shortText).properties else {
             preconditionFailure("Couldn't case field to 'short-text'.")
         }
@@ -130,7 +130,7 @@ public extension ShortText {
 }
 
 public extension YesNo {
-    static var preview: YesNo = {
+    static let preview: YesNo = {
         guard case let .yesNo(properties) = Field.field(withRef: .yesNo).properties else {
             preconditionFailure("Couldn't case field to 'yes-no'.")
         }
@@ -140,7 +140,7 @@ public extension YesNo {
 }
 
 public extension Statement {
-    static var preview: Statement = {
+    static let preview: Statement = {
         guard case let .statement(properties) = Field.field(withRef: .statement, in: .medicalIntake26).properties else {
             preconditionFailure("Couldn't case field to 'statement'.")
         }
