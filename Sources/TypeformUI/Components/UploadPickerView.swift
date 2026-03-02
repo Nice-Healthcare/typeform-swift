@@ -7,7 +7,7 @@ import UniformTypeIdentifiers
 struct UploadPickerView: UIViewControllerRepresentable {
 
     var path: Upload.Path
-    var resultHandler: (Result<Upload, Error>?) -> Void
+    var resultHandler: (Result<Upload, any Error>?) -> Void
 
     func makeUIViewController(context: Context) -> UIViewController {
         switch path {
@@ -51,11 +51,11 @@ struct UploadPickerView: UIViewControllerRepresentable {
 class UploadPickerCoordinator: NSObject, UINavigationControllerDelegate {
 
     let path: Upload.Path
-    let resultHandler: (Result<Upload, Error>?) -> Void
+    let resultHandler: (Result<Upload, any Error>?) -> Void
 
     init(
         path: Upload.Path,
-        resultHandler: @escaping (Result<Upload, Error>?) -> Void,
+        resultHandler: @escaping (Result<Upload, any Error>?) -> Void,
     ) {
         self.path = path
         self.resultHandler = resultHandler
@@ -119,7 +119,7 @@ extension UploadPickerCoordinator: PHPickerViewControllerDelegate {
         }
 
         Task {
-            let result: Result<Upload, Error>
+            let result: Result<Upload, any Error>
             do {
                 let fileName = try await fileName(from: provider)
                 let image = try await image(from: provider)
