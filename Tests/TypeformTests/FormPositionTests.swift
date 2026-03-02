@@ -72,20 +72,20 @@ struct FormPositionTests {
 
     /// Verify a `Group` of questions can be entered from a `Field` without specific `Logic`.
     @Test func beginGroup() throws {
-        let responses: Responses = [
-            Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!: .choice(Choice(
+        let responses: Responses = try [
+            #require(Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")): .choice(Choice(
                 id: "ki7l02wXkJJB",
-                ref: Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!,
+                ref: #require(Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")),
                 label: "Minnesota",
             )),
-            Reference(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")!: .choice(Choice(
+            #require(Reference(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")): .choice(Choice(
                 id: "zkoKtHgiYyKt",
-                ref: Reference(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")!,
+                ref: #require(Reference(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")),
                 label: "Adult, 18-64 years of age",
             )),
-            Reference(uuidString: "c09778dd-d584-40cc-8517-a627592ca5f1")!: .choice(Choice(
+            #require(Reference(uuidString: "c09778dd-d584-40cc-8517-a627592ca5f1")): .choice(Choice(
                 id: "FRF7t7yJYhEd",
-                ref: Reference(uuidString: "a5e3cd94-58f6-4701-8632-dc3cc030dde5")!,
+                ref: #require(Reference(uuidString: "a5e3cd94-58f6-4701-8632-dc3cc030dde5")),
                 label: "Male",
             )),
         ]
@@ -115,27 +115,27 @@ struct FormPositionTests {
 
     /// Verify leaving a `Group` without specific `Logic` returns to the next `Field`.
     @Test func endGroup() throws {
-        let responses: Responses = [
-            Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!: .choice(Choice(
+        let responses: Responses = try [
+            #require(Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")): .choice(Choice(
                 id: "ki7l02wXkJJB",
-                ref: Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!,
+                ref: #require(Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")),
                 label: "Minnesota",
             )),
-            Reference(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")!: .choice(Choice(
+            #require(Reference(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")): .choice(Choice(
                 id: "zkoKtHgiYyKt",
-                ref: Reference(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")!,
+                ref: #require(Reference(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")),
                 label: "Adult, 18-64 years of age",
             )),
-            Reference(uuidString: "c09778dd-d584-40cc-8517-a627592ca5f1")!: .choice(Choice(
+            #require(Reference(uuidString: "c09778dd-d584-40cc-8517-a627592ca5f1")): .choice(Choice(
                 id: "FRF7t7yJYhEd",
-                ref: Reference(uuidString: "a5e3cd94-58f6-4701-8632-dc3cc030dde5")!,
+                ref: #require(Reference(uuidString: "a5e3cd94-58f6-4701-8632-dc3cc030dde5")),
                 label: "Male",
             )),
-            Reference(uuidString: "7f57a989-19d3-40b8-af66-d022d3ebb73f")!: .bool(true),
-            Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")!: .bool(false),
-            Reference(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")!: .choice(Choice(
+            #require(Reference(uuidString: "7f57a989-19d3-40b8-af66-d022d3ebb73f")): .bool(true),
+            #require(Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")): .bool(false),
+            #require(Reference(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")): .choice(Choice(
                 id: "BQbGWsw0MzIZ",
-                ref: Reference(uuidString: "c9291e36-0cf3-454c-b9f6-c96538ef6b5f")!,
+                ref: #require(Reference(uuidString: "c9291e36-0cf3-454c-b9f6-c96538ef6b5f")),
                 label: "A follow-up visit for continued wellness coaching",
             )),
         ]
@@ -159,27 +159,27 @@ struct FormPositionTests {
     }
 
     @Test func noLogicNextField() throws {
-        let responses: Responses = [
-            Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!: .choice(Choice(
+        let responses: Responses = try [
+            #require(Reference(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")): .choice(Choice(
                 id: "ki7l02wXkJJB",
-                ref: Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!,
+                ref: #require(Reference(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")),
                 label: "Minnesota",
             )),
-            Reference(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")!: .choice(Choice(
+            #require(Reference(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")): .choice(Choice(
                 id: "zkoKtHgiYyKt",
-                ref: Reference(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")!,
+                ref: #require(Reference(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")),
                 label: "Adult, 18-64 years of age",
             )),
-            Reference(uuidString: "c09778dd-d584-40cc-8517-a627592ca5f1")!: .choice(Choice(
+            #require(Reference(uuidString: "c09778dd-d584-40cc-8517-a627592ca5f1")): .choice(Choice(
                 id: "FRF7t7yJYhEd",
-                ref: Reference(uuidString: "a5e3cd94-58f6-4701-8632-dc3cc030dde5")!,
+                ref: #require(Reference(uuidString: "a5e3cd94-58f6-4701-8632-dc3cc030dde5")),
                 label: "Male",
             )),
-            Reference(uuidString: "7f57a989-19d3-40b8-af66-d022d3ebb73f")!: .bool(true),
-            Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")!: .bool(false),
-            Reference(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")!: .choice(Choice(
+            #require(Reference(uuidString: "7f57a989-19d3-40b8-af66-d022d3ebb73f")): .bool(true),
+            #require(Reference(uuidString: "5d99768b-65af-4f68-9939-87dfbd29f49a")): .bool(false),
+            #require(Reference(uuidString: "aea7a268-64d4-4f16-920a-b9afe317e3b6")): .choice(Choice(
                 id: "BQbGWsw0MzIZ",
-                ref: Reference(uuidString: "c9291e36-0cf3-454c-b9f6-c96538ef6b5f")!,
+                ref: #require(Reference(uuidString: "c9291e36-0cf3-454c-b9f6-c96538ef6b5f")),
                 label: "A follow-up visit for continued wellness coaching",
             )),
         ]
