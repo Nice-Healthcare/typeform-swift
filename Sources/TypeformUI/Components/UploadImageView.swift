@@ -100,7 +100,7 @@ struct UploadPlaceholderView: View {
     UploadImageView(
         upload: Upload(
             bytes: Data(),
-            path: .camera,
+            path: .photoLibrary,
             mimeType: "image/jpeg",
             fileName: "IMG_1234567890.jpg",
         ),

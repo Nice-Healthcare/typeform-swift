@@ -1,4 +1,4 @@
-#if canImport(SwiftUI) && canImport(UIKit)
+#if canImport(SwiftUI) && canImport(UIKit) && !os(watchOS) && !os(tvOS)
 import PhotosUI
 import SwiftUI
 import Typeform
@@ -11,12 +11,14 @@ struct UploadPickerView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIViewController {
         switch path {
+        #if !os(visionOS)
         case .camera:
             let controller = UIImagePickerController()
             controller.sourceType = .camera
             controller.delegate = context.coordinator
             controller.allowsEditing = true
             return controller
+        #endif
         case .photoLibrary:
             var config = PHPickerConfiguration()
             config.filter = .any(of: [.images, .screenshots])
@@ -80,12 +82,21 @@ extension UploadPickerCoordinator: UIImagePickerControllerDelegate {
             return
         }
 
+        #if !os(visionOS)
         let upload = Upload(
             bytes: bytes,
             path: .camera,
             mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
             fileName: "New Image.jpeg",
         )
+        #else
+        let upload = Upload(
+            bytes: bytes,
+            path: .photoLibrary,
+            mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
+            fileName: "New Image.jpeg",
+        )
+        #endif
 
         resultHandler(.success(upload))
     }
