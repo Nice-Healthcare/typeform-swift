@@ -50,8 +50,7 @@ struct UploadLabelStyle: LabelStyle {
 }
 
 #Preview("Upload Label Style") {
-    Button {
-    } label: {
+    Button {} label: {
         Label("Add", systemImage: "plus")
             .labelStyle(
                 UploadLabelStyle(
