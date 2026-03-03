@@ -1,8 +1,6 @@
 name: Android
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -32,7 +30,10 @@ jobs:
     # Install Dependencies
     - name: Dependencies
       shell: bash
-      run: sudo apt-get -y install libcurl4-openssl-dev
+      run: |
+        sudo apt clean -y
+        sudo apt update -y
+        sudo apt-get -y install libcurl4-openssl-dev
 
     # Install Swiftly
     - name: Swiftly
