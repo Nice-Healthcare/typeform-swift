@@ -37,21 +37,21 @@ struct ResponsesTests {
         #expect(value == #""aea7a268-64d4-4f16-920a-b9afe317e3b6""#)
     }
 
-    @Test func validVisitReasonResponses() throws {
+    @Test func validVisitReasonResponses() {
         let responses: Responses = [
             visitReason: .choice(visitChoice),
         ]
         #expect(responses.validResponseValues(given: form.fields))
     }
 
-    @Test func invalidVisitReasonResponses() throws {
+    @Test func invalidVisitReasonResponses() {
         let responses: Responses = [
             visitReason: .choices([visitChoice]),
         ]
         #expect(!responses.validResponseValues(given: form.fields))
     }
 
-    @Test func validResponseValueTypes() throws {
+    @Test func validResponseValueTypes() {
         let responses: Responses = [
             .date: .date(Date()),
             .dropdown: .choice(Choice()),
@@ -66,7 +66,7 @@ struct ResponsesTests {
         #expect(responses.validResponseValues(given: form.fields))
     }
 
-    @Test func invalidResponseValueTypes() throws {
+    @Test func invalidResponseValueTypes() {
         let responses: Responses = [
             .date: .choice(Choice()),
             .dropdown: .date(Date()),
@@ -152,12 +152,12 @@ struct ResponsesTests {
         """
         let data = try #require(json.data(using: .utf8))
         let responses = try TypeformTests.decoder.decodeResponses(from: data)
-        #expect(responses == [
-            .uuid(UUID(uuidString: "553D6E8C-5562-4A7B-89AF-9C8428428197")!): .bool(false),
+        #expect(try responses == [
+            .uuid(#require(UUID(uuidString: "553D6E8C-5562-4A7B-89AF-9C8428428197"))): .bool(false),
             "alpha": .choice(
                 Choice(
                     id: "something",
-                    ref: .uuid(UUID(uuidString: "70675439-3BA3-44F9-8807-949A5375ACEC")!),
+                    ref: .uuid(#require(UUID(uuidString: "70675439-3BA3-44F9-8807-949A5375ACEC"))),
                     label: "Battlestar",
                 ),
             ),

@@ -1,4 +1,4 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && !os(watchOS) && !os(tvOS)
 import SwiftUI
 import Typeform
 import TypeformPreview

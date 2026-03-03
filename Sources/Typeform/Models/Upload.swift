@@ -3,7 +3,9 @@ import Foundation
 public struct Upload: Hashable, Codable, Sendable {
 
     public enum Path: String, Hashable, Identifiable, Codable, Sendable {
+        #if !os(visionOS)
         case camera
+        #endif
         case photoLibrary
         case documents
 

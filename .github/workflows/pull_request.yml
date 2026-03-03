@@ -1,0 +1,112 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  SCHEME: "Typeform"
+
+jobs:
+  Lint:
+    # Verify Swift code matches expected formatting & style.
+    runs-on: macos-26
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Lint
+        run: swiftformat --lint . --reporter github-actions-log
+
+  SwiftMacOS:
+    # Verify Swift code will compile against MacOS. (`swift build`)
+    runs-on: macos-26
+    permissions:
+      actions: read
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+      security-events: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Build
+      shell: bash
+      run: swift build
+
+    - name: Test
+      shell: bash
+      run: swift test --enable-code-coverage 2>&1 | xcbeautify --report junit
+
+    - name: Code Coverage
+      shell: bash
+      run: xcrun llvm-cov export -format="lcov" .build/debug/${{ env.SCHEME }}PackageTests.xctest/Contents/MacOS/${{ env.SCHEME }}PackageTests -instr-profile .build/debug/codecov/default.profdata > build/reports/coverage.lcov
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v6
+      with:
+        name: test-results
+        path: |
+          build/reports/junit.xml
+          build/reports/coverage.lcov
+        retention-days: 7
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/macos@v2
+      with:
+        files: build/reports/junit.xml
+
+    - name: Publish Code Coverage
+      uses: lifeart/jest-lcov-reporter@v0.4.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        lcov-file: build/reports/coverage.lcov
+        update-comment: true
+
+  SwiftLinux:
+    # Verify Swift code will compile against Linux. (`swift build`)
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+      security-events: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      
+    - name: Build
+      shell: bash
+      run: swift build
+
+    - name: Test
+      shell: bash
+      run: swift test
+
+  Xcode:
+    # Verify Swift code will compile against the Apple Platform SDKs. (`xcodebuild`)
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [
+          "macOS",
+          "iOS",
+          "tvOS",
+          "watchOS",
+          "visionOS",
+          "macOS,variant=Mac Catalyst",
+        ]
+    runs-on: macos-26
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Build
+      env:
+        DESTINATION: "generic/platform=${{ matrix.platform }}"
+      run: set -o pipefail && xcodebuild build -scheme "$SCHEME" -destination "$DESTINATION" | xcbeautify

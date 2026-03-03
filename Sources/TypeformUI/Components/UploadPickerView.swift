@@ -1,4 +1,4 @@
-#if canImport(SwiftUI) && canImport(UIKit)
+#if canImport(SwiftUI) && canImport(UIKit) && !os(watchOS) && !os(tvOS)
 import PhotosUI
 import SwiftUI
 import Typeform
@@ -7,16 +7,18 @@ import UniformTypeIdentifiers
 struct UploadPickerView: UIViewControllerRepresentable {
 
     var path: Upload.Path
-    var resultHandler: (Result<Upload, Error>?) -> Void
+    var resultHandler: (Result<Upload, any Error>?) -> Void
 
     func makeUIViewController(context: Context) -> UIViewController {
         switch path {
+        #if !os(visionOS)
         case .camera:
             let controller = UIImagePickerController()
             controller.sourceType = .camera
             controller.delegate = context.coordinator
             controller.allowsEditing = true
             return controller
+        #endif
         case .photoLibrary:
             var config = PHPickerConfiguration()
             config.filter = .any(of: [.images, .screenshots])
@@ -49,11 +51,11 @@ struct UploadPickerView: UIViewControllerRepresentable {
 class UploadPickerCoordinator: NSObject, UINavigationControllerDelegate {
 
     let path: Upload.Path
-    let resultHandler: (Result<Upload, Error>?) -> Void
+    let resultHandler: (Result<Upload, any Error>?) -> Void
 
     init(
         path: Upload.Path,
-        resultHandler: @escaping (Result<Upload, Error>?) -> Void,
+        resultHandler: @escaping (Result<Upload, any Error>?) -> Void,
     ) {
         self.path = path
         self.resultHandler = resultHandler
@@ -80,12 +82,21 @@ extension UploadPickerCoordinator: UIImagePickerControllerDelegate {
             return
         }
 
+        #if !os(visionOS)
         let upload = Upload(
             bytes: bytes,
             path: .camera,
             mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
             fileName: "New Image.jpeg",
         )
+        #else
+        let upload = Upload(
+            bytes: bytes,
+            path: .photoLibrary,
+            mimeType: UTType.jpeg.preferredMIMEType ?? "image/jpeg",
+            fileName: "New Image.jpeg",
+        )
+        #endif
 
         resultHandler(.success(upload))
     }
@@ -108,7 +119,7 @@ extension UploadPickerCoordinator: PHPickerViewControllerDelegate {
         }
 
         Task {
-            let result: Result<Upload, Error>
+            let result: Result<Upload, any Error>
             do {
                 let fileName = try await fileName(from: provider)
                 let image = try await image(from: provider)

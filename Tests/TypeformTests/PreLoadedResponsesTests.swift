@@ -28,8 +28,8 @@ struct PreLoadedResponsesTests {
     }
 
     @Test func notSkippingWelcomeFirstFieldResponses() throws {
-        let responses: Responses = [
-            .uuid(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!): .choice(
+        let responses: Responses = try [
+            .uuid(#require(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))): .choice(
                 Choice(
                     id: "eSMBTpzeqJYQ",
                     ref: .string("65fd22c3-32ec-4c92-b194-5aef3a10fe60"),
@@ -66,11 +66,11 @@ struct PreLoadedResponsesTests {
     }
 
     @Test func skippingWelcomeFirstFieldResponses() throws {
-        let responses: Responses = [
-            .uuid(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!): .choice(
+        let responses: Responses = try [
+            .uuid(#require(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))): .choice(
                 Choice(
                     id: "Rh7fHLNn7tRV",
-                    ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
+                    ref: .uuid(#require(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1"))),
                     label: "Minnesota",
                 ),
             ),
@@ -88,18 +88,18 @@ struct PreLoadedResponsesTests {
 
     /// There is a 'Statement' field after the first response, and before the second response. What comes after that field?
     @Test func skippingWelcomePostStatementResponses() throws {
-        let responses: Responses = [
-            .uuid(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2")!): .choice(
+        let responses: Responses = try [
+            .uuid(#require(UUID(uuidString: "508ea9df-177c-4cda-8371-8f7cc1bc60a2"))): .choice(
                 Choice(
                     id: "Rh7fHLNn7tRV",
-                    ref: .uuid(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1")!),
+                    ref: .uuid(#require(UUID(uuidString: "aa028c7c-ce34-428f-8563-35bce5201dc1"))),
                     label: "Minnesota",
                 ),
             ),
-            .uuid(UUID(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761")!): .choice(
+            .uuid(#require(UUID(uuidString: "4915db69-55ca-4a00-b57e-893d7ea3e761"))): .choice(
                 Choice(
                     id: "QQP6V2LnuOBK",
-                    ref: .uuid(UUID(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9")!),
+                    ref: .uuid(#require(UUID(uuidString: "a66c1065-4e4f-46fc-8a26-794cc46a59f9"))),
                     label: "Adult, 18-64 years of age",
                 ),
             ),

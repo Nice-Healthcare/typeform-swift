@@ -1,4 +1,4 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && !os(watchOS) && !os(tvOS)
 import SwiftUI
 import Typeform
 import TypeformPreview
@@ -27,11 +27,13 @@ struct FileUploadView: View {
             } else {
                 #if canImport(UIKit)
                 Menu {
+                    #if !os(visionOS)
                     Button {
                         path = .camera
                     } label: {
                         Label(settings.localization.uploadCamera, systemImage: "camera")
                     }
+                    #endif
                     Button {
                         path = .photoLibrary
                     } label: {
@@ -47,7 +49,7 @@ struct FileUploadView: View {
                         .labelStyle(UploadLabelStyle(settings: settings))
                 }
                 .buttonStyle(.plain)
-                #elseif canImport(AppKit)
+                #elseif canImport(AppKit) && !targetEnvironment(macCatalyst)
                 Button {
                     selectFile()
                 } label: {
@@ -124,7 +126,7 @@ struct FileUploadView: View {
         }
     }
 
-    #if canImport(AppKit)
+    #if canImport(AppKit) && !targetEnvironment(macCatalyst)
     private func selectFile() {
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = false

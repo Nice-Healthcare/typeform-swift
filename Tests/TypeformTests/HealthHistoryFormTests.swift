@@ -11,7 +11,7 @@ struct HealthHistoryFormTests {
         form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "HealthHistoryV3")
     }
 
-    @Test func decoding() throws {
+    @Test func decoding() {
         #expect(form.id == "dmsX77W1")
     }
 

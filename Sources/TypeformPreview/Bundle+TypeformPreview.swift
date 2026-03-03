@@ -3,12 +3,12 @@ import Foundation
 public extension Bundle {
     static var typeformPreview: Bundle { Bundle.module }
 
-    func decode<T>(
+    func decode<T: Decodable>(
         _ type: T.Type,
         forResource resource: String,
         withExtension: String = "json",
         using decoder: JSONDecoder = JSONDecoder(),
-    ) throws -> T where T: Decodable {
+    ) throws -> T {
         guard let url = url(forResource: resource, withExtension: withExtension) else {
             throw URLError(.badURL)
         }
