@@ -104,7 +104,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                 }
             }
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItemGroup(placement: .primaryAction) {
                     if isWelcome {
                         Button {
                             conclusion(.canceled)
