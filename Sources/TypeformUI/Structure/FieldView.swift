@@ -185,7 +185,7 @@ struct FieldView<Header: View, Footer: View>: View {
             )
         }
         .background(settings.presentation.backgroundColor)
-        #if !os(tvOS)
+        #if !os(tvOS) && !os(visionOS)
             .scrollDismissesKeyboard(.immediately)
         #endif
             .onAppear {
