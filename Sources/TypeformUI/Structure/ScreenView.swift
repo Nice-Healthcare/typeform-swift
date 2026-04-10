@@ -104,27 +104,25 @@ struct ScreenView<Header: View, Footer: View>: View {
                 }
             }
             .toolbar {
-                ToolbarItemGroup(placement: .primaryAction) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
                     if isWelcome {
-                        Button {
+                        Button(role: .destructive) {
                             conclusion(.canceled)
                         } label: {
-                            Text(settings.localization.exit)
+                            Label(settings.localization.exit, systemImage: "xmark")
                         }
-                        .buttonStyle(.borderless)
                     }
 
                     if settings.presentation.layout == .navigation {
                         if let next {
                             navigation(next: next)
-                                .buttonStyle(.borderless)
                         }
 
                         if !isWelcome {
                             Button {
                                 conclusion(.completed(responses, screen as! EndingScreen))
                             } label: {
-                                Text(settings.localization.finish)
+                                Label(settings.localization.finish, systemImage: "checkmark")
                             }
                         }
                     }

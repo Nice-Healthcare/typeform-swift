@@ -185,6 +185,7 @@ struct FieldView<Header: View, Footer: View>: View {
             )
         }
         .background(settings.presentation.backgroundColor)
+        .scrollDismissesKeyboard(.immediately)
         .onAppear {
             determineNext()
         }
@@ -194,7 +195,7 @@ struct FieldView<Header: View, Footer: View>: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
-                Button {
+                Button(role: .destructive) {
                     focused = false
                     if settings.presentation.skipWelcomeScreen, responses.isEmpty {
                         conclusion(.canceled)
@@ -202,13 +203,11 @@ struct FieldView<Header: View, Footer: View>: View {
                         cancel = true
                     }
                 } label: {
-                    Text(settings.localization.exit)
+                    Label(settings.localization.exit, systemImage: "xmark")
                 }
-                .buttonStyle(.borderless)
 
                 if settings.presentation.layout == .navigation {
                     navigation(next: next)
-                        .buttonStyle(.borderless)
                 }
             }
         }
