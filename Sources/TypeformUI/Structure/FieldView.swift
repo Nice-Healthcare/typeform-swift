@@ -205,9 +205,11 @@ struct FieldView<Header: View, Footer: View>: View {
                 } label: {
                     Label(settings.localization.exit, systemImage: "xmark")
                 }
+                .buttonStyle(.borderless)
 
                 if settings.presentation.layout == .navigation {
                     navigation(next: next)
+                        .buttonStyle(.borderless)
                 }
             }
         }
