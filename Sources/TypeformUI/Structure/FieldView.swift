@@ -195,7 +195,7 @@ struct FieldView<Header: View, Footer: View>: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
-                Button(role: .destructive) {
+                Button {
                     focused = false
                     if settings.presentation.skipWelcomeScreen, responses.isEmpty {
                         conclusion(.canceled)

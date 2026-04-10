@@ -106,7 +106,7 @@ struct ScreenView<Header: View, Footer: View>: View {
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     if isWelcome {
-                        Button(role: .destructive) {
+                        Button {
                             conclusion(.canceled)
                         } label: {
                             Label(settings.localization.exit, systemImage: "xmark")
