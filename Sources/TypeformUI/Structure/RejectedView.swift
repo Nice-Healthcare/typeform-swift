@@ -49,12 +49,12 @@ struct RejectedView: View {
         }
         .background(settings.presentation.backgroundColor)
         .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .confirmationAction) {
                 if settings.presentation.layout == .navigation {
                     Button {
                         conclusion(.rejected(responses))
                     } label: {
-                        Text(settings.localization.finish)
+                        Label(settings.localization.finish, systemImage: "checkmark")
                     }
                 }
             }

@@ -109,7 +109,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                         Button {
                             conclusion(.canceled)
                         } label: {
-                            Text(settings.localization.exit)
+                            Label(settings.localization.exit, systemImage: "xmark")
                         }
                         .buttonStyle(.borderless)
                     }
@@ -124,7 +124,7 @@ struct ScreenView<Header: View, Footer: View>: View {
                             Button {
                                 conclusion(.completed(responses, screen as! EndingScreen))
                             } label: {
-                                Text(settings.localization.finish)
+                                Label(settings.localization.finish, systemImage: "checkmark")
                             }
                         }
                     }
