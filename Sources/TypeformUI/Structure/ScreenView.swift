@@ -95,41 +95,41 @@ struct ScreenView<Header: View, Footer: View>: View {
         }
         .background(settings.presentation.backgroundColor)
         #if os(iOS)
-            .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden()
         #endif
-            .onAppear {
-                next = try? form.next(from: .screen(screen), given: responses)
-                if !isWelcome, settings.presentation.skipEndingScreen {
-                    conclusion(.completed(responses, screen as! EndingScreen))
-                }
+        .onAppear {
+            next = try? form.next(from: .screen(screen), given: responses)
+            if !isWelcome, settings.presentation.skipEndingScreen {
+                conclusion(.completed(responses, screen as! EndingScreen))
             }
-            .toolbar {
-                ToolbarItemGroup(placement: .primaryAction) {
-                    if isWelcome {
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .primaryAction) {
+                if isWelcome {
+                    Button {
+                        conclusion(.canceled)
+                    } label: {
+                        Label(settings.localization.exit, systemImage: "xmark")
+                    }
+                    .buttonStyle(.borderless)
+                }
+
+                if settings.presentation.layout == .navigation {
+                    if let next {
+                        navigation(next: next)
+                            .buttonStyle(.borderless)
+                    }
+
+                    if !isWelcome {
                         Button {
-                            conclusion(.canceled)
+                            conclusion(.completed(responses, screen as! EndingScreen))
                         } label: {
-                            Label(settings.localization.exit, systemImage: "xmark")
-                        }
-                        .buttonStyle(.borderless)
-                    }
-
-                    if settings.presentation.layout == .navigation {
-                        if let next {
-                            navigation(next: next)
-                                .buttonStyle(.borderless)
-                        }
-
-                        if !isWelcome {
-                            Button {
-                                conclusion(.completed(responses, screen as! EndingScreen))
-                            } label: {
-                                Label(settings.localization.finish, systemImage: "checkmark")
-                            }
+                            Label(settings.localization.finish, systemImage: "checkmark")
                         }
                     }
                 }
             }
+        }
     }
 
     private func navigation(next: Position) -> some View {

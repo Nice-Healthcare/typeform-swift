@@ -46,15 +46,15 @@ extension Op {
     func compareInt(response: Int, to condition: Int) throws -> Bool {
         switch self {
         case .equal:
-            return response == condition
+            response == condition
         case .greaterThan:
-            return response > condition
+            response > condition
         case .greaterEqualThan:
-            return response >= condition
+            response >= condition
         case .lowerEqualThan:
-            return response <= condition
+            response <= condition
         case .lowerThan:
-            return response < condition
+            response < condition
         default:
             throw TypeformError.unexpectedOperation(self)
         }

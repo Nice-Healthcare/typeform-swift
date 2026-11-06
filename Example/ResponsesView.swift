@@ -54,8 +54,6 @@ struct ResponseValueView: View {
             case .upload(let upload):
                 Text(upload.mimeType)
             }
-        } else {
-            EmptyView()
         }
     }
 }
