@@ -14,9 +14,9 @@ struct NumberView: View {
 
     var body: some View {
         TextField("", value: $value, format: .number)
-        #if os(iOS) || os(tvOS)
+            #if os(iOS) || os(tvOS)
             .keyboardType(.numberPad)
-        #endif
+            #endif
             .fieldStyle(settings: settings)
             .onAppear {
                 registerState()

@@ -186,47 +186,47 @@ struct FieldView<Header: View, Footer: View>: View {
         }
         .background(settings.presentation.backgroundColor)
         #if !os(tvOS) && !os(visionOS)
-            .scrollDismissesKeyboard(.immediately)
+        .scrollDismissesKeyboard(.interactively)
         #endif
-            .onAppear {
-                determineNext()
-            }
-            .onChange(of: responseState) { newValue in
-                responses[field.ref] = newValue.response
-                determineNext()
-            }
-            .toolbar {
-                ToolbarItemGroup(placement: .primaryAction) {
-                    Button {
-                        focused = false
-                        if settings.presentation.skipWelcomeScreen, responses.isEmpty {
-                            conclusion(.canceled)
-                        } else {
-                            cancel = true
-                        }
-                    } label: {
-                        Label(settings.localization.exit, systemImage: "xmark")
+        .onAppear {
+            determineNext()
+        }
+        .onChange(of: responseState) { newValue in
+            responses[field.ref] = newValue.response
+            determineNext()
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .primaryAction) {
+                Button {
+                    focused = false
+                    if settings.presentation.skipWelcomeScreen, responses.isEmpty {
+                        conclusion(.canceled)
+                    } else {
+                        cancel = true
                     }
-                    .buttonStyle(.borderless)
+                } label: {
+                    Label(settings.localization.exit, systemImage: "xmark")
+                }
+                .buttonStyle(.borderless)
 
-                    if settings.presentation.layout == .navigation {
-                        navigation(next: next)
-                            .buttonStyle(.borderless)
-                    }
+                if settings.presentation.layout == .navigation {
+                    navigation(next: next)
+                        .buttonStyle(.borderless)
                 }
             }
-            .alert(settings.localization.abandonConfirmationTitle, isPresented: $cancel) {
-                Button(settings.localization.cancel, role: .cancel) {
-                    cancel = false
-                }
-
-                Button(settings.localization.abandonConfirmationAction, role: .destructive) {
-                    cancel = false
-                    conclusion(.abandoned(responses))
-                }
-            } message: {
-                Text(settings.localization.abandonConfirmationMessage)
+        }
+        .alert(settings.localization.abandonConfirmationTitle, isPresented: $cancel) {
+            Button(settings.localization.cancel, role: .cancel) {
+                cancel = false
             }
+
+            Button(settings.localization.abandonConfirmationAction, role: .destructive) {
+                cancel = false
+                conclusion(.abandoned(responses))
+            }
+        } message: {
+            Text(settings.localization.abandonConfirmationMessage)
+        }
     }
 
     private func determineNext() {

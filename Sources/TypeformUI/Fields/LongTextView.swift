@@ -28,14 +28,14 @@ struct LongTextView: View {
                 TextEditor(text: $value)
                     .padding(.horizontal, settings.field.horizontalInset)
                     .padding(.vertical, settings.field.verticalInset)
-                #if canImport(UIKit)
+                    #if canImport(UIKit)
                     .onAppear {
                         UITextView.appearance().backgroundColor = .clear
                     }
                     .onDisappear {
                         UITextView.appearance().backgroundColor = nil
                     }
-                #endif
+                    #endif
             }
         }
         .focused(focused)
