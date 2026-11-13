@@ -1,4 +1,10 @@
+#if canImport(FoundationInternationalization)
+import FoundatonInternationalization
+#elseif canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 
 public struct Settings: Hashable, Codable, Sendable {
 
@@ -95,12 +101,7 @@ public extension Settings {
     }
 
     var languageCode: Locale.LanguageCode? {
-        let code = Locale.LanguageCode(language)
-        guard code.isISOLanguage else {
-            return nil
-        }
-
-        return code
+        Locale.LanguageCode(language).isoLanguageCodeOrNil
     }
 
     var translationLanguageCodes: [Locale.LanguageCode] {
@@ -109,12 +110,27 @@ public extension Settings {
         }
 
         return translation_languages.compactMap {
-            let code = Locale.LanguageCode($0)
-            guard code.isISOLanguage else {
-                return nil
-            }
-
-            return code
+            Locale.LanguageCode($0).isoLanguageCodeOrNil
         }
+    }
+}
+
+extension Locale.LanguageCode {
+    var isoLanguageCodeOrNil: Self? {
+        #if canImport(FoundationInternationalization)
+        guard isISOLanguage else {
+            return nil
+        }
+
+        return self
+        #elseif canImport(FoundationEssentials)
+        return self
+        #else
+        guard isISOLanguage else {
+            return nil
+        }
+
+        return self
+        #endif
     }
 }

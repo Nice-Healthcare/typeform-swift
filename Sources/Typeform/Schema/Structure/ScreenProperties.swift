@@ -1,5 +1,3 @@
-import Foundation
-
 public struct ScreenProperties: Hashable, Codable, Sendable {
     public let button_mode: String?
     public let button_text: String?

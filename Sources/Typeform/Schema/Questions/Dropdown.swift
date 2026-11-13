@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Dropdown: Hashable, Codable, Sendable {
     public let choices: [Choice]
     public let description: String?

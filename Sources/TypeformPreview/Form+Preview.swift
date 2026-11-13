@@ -1,3 +1,4 @@
+#if canImport(Foundation)
 import Foundation
 import Typeform
 
@@ -60,3 +61,4 @@ public extension EndingScreen {
         return screen
     }()
 }
+#endif

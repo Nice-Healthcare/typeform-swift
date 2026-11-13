@@ -1,4 +1,8 @@
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 
 public enum ResponseValue: Hashable, Codable, Sendable {
     case bool(Bool)

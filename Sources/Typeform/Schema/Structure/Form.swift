@@ -1,4 +1,8 @@
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
@@ -96,7 +100,7 @@ public extension Form {
     /// - throws: `URLError`, `DecodingError`
     static func download(_ id: Form.ID) async throws -> Form {
         guard let url = URL(string: "https://api.typeform.com/forms/\(id)") else {
-            throw URLError(.badURL)
+            throw TypeformError.parseURL
         }
 
         let request = URLRequest(url: url)
@@ -120,7 +124,7 @@ public extension Form {
         }
 
         guard let url = URL(string: "https://api.typeform.com/forms/\(id)/translation/\(languageCode.identifier)") else {
-            throw URLError(.badURL)
+            throw TypeformError.parseURL
         }
 
         let request = URLRequest(url: url)

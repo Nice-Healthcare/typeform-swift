@@ -1,5 +1,3 @@
-import Foundation
-
 public struct EndingScreen: Screen, Hashable, Codable, Sendable {
 
     public enum Ref: Hashable, Codable, Sendable {
