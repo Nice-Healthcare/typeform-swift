@@ -1,5 +1,5 @@
 #if canImport(FoundationInternationalization)
-import FoundatonInternationalization
+import FoundationInternationalization
 #elseif canImport(FoundationEssentials)
 import FoundationEssentials
 #else
