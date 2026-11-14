@@ -1,7 +1,7 @@
 import Foundation
 import Typeform
 #if canImport(FoundationNetworking)
-import FoundationNeworking
+import FoundationNetworking
 #endif
 
 public extension Form {
