@@ -23,20 +23,10 @@ public extension Settings {
 
 extension Locale.LanguageCode {
     var isoLanguageCodeOrNil: Self? {
-        #if canImport(FoundationInternationalization)
         guard isISOLanguage else {
             return nil
         }
 
         return self
-        #elseif canImport(FoundationEssentials)
-        return self
-        #else
-        guard isISOLanguage else {
-            return nil
-        }
-
-        return self
-        #endif
     }
 }

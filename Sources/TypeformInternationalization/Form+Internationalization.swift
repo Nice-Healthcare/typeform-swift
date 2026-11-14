@@ -1,5 +1,8 @@
 import Foundation
 import Typeform
+#if canImport(FoundationNetworking)
+import FoundationNeworking
+#endif
 
 public extension Form {
     private static let decoder: JSONDecoder = JSONDecoder()
