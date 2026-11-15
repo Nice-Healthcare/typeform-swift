@@ -19,7 +19,8 @@ jobs:
       - name: Lint
         run: swiftformat --lint . --reporter github-actions-log
 
-  Swift (macOS):
+  SwiftMacOS:
+    name: Swift (macOS)
     # Verify Swift code will compile against MacOS. (`swift build`)
     runs-on: macos-26
     permissions:
@@ -66,7 +67,8 @@ jobs:
         lcov-file: build/reports/coverage.lcov
         update-comment: true
 
-  Swift (Linux):
+  SwiftLinux:
+    name: Swift (Linux)
     # Verify Swift code will compile against Linux. (`swift build`)
     runs-on: ubuntu-latest
     permissions:
@@ -88,7 +90,8 @@ jobs:
       shell: bash
       run: swift test
 
-  Swift (Android):
+  SwiftAndroid:
+    name: Swift (Android)
     # Verify Swift code will compile for Android targets.
     strategy:
       fail-fast: false
