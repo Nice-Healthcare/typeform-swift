@@ -19,7 +19,7 @@ jobs:
       - name: Lint
         run: swiftformat --lint . --reporter github-actions-log
 
-  SwiftMacOS:
+  Swift (macOS):
     # Verify Swift code will compile against MacOS. (`swift build`)
     runs-on: macos-26
     permissions:
@@ -66,7 +66,7 @@ jobs:
         lcov-file: build/reports/coverage.lcov
         update-comment: true
 
-  SwiftLinux:
+  Swift (Linux):
     # Verify Swift code will compile against Linux. (`swift build`)
     runs-on: ubuntu-latest
     permissions:
@@ -87,6 +87,21 @@ jobs:
     - name: Test
       shell: bash
       run: swift test
+
+  Swift (Android):
+    # Verify Swift code will compile for Android targets.
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      
+    - name: Build & Test
+      uses: skiptools/swift-android-action@v2
+      with:
+        free-disk-space: true
+        copy-files: ./.build/out/Products/Debug-android-x86_64/Typeform_TypeformPreview.bundle
 
   Xcode:
     # Verify Swift code will compile against the Apple Platform SDKs. (`xcodebuild`)
@@ -109,19 +124,5 @@ jobs:
     - name: Build
       env:
         DESTINATION: "generic/platform=${{ matrix.platform }}"
-      run: set -o pipefail && xcodebuild build -scheme "$SCHEME" -destination "$DESTINATION" | xcbeautify
-
-  Android:
-    # Verify Swift code will compile for Android targets.
-    strategy:
-      fail-fast: false
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v6
-
-    - name: Build & Test
-      uses: skiptools/swift-android-action@v2
-      with:
-        free-disk-space: true
-        copy-files: ./.build/out/Products/Debug-android-x86_64/Typeform_TypeformPreview.bundle
+      shell: bash
+      run: xcodebuild build -scheme "$SCHEME" -destination "$DESTINATION" | xcbeautify
