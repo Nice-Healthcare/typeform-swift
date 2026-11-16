@@ -1,0 +1,237 @@
+{
+  "id": "uWFxvuWr",
+  "type": "quiz",
+  "title": "Contact Question Types",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/Wkp2vs"
+  },
+  "theme": {
+    "href": "https://api.typeform.com/themes/M5WM3KsV"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "email_consent_notifications_config": {
+      "send_email_copy": true
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true,
+    "webmcp_enabled": false,
+    "webmcp_submit_hitl_enabled": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, \u0026 beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "Sd8RNRIe0DLs",
+      "title": "Contact Info",
+      "ref": "86fed743-0e00-46a0-9651-e835afde7ce1",
+      "properties": {
+        "description": "This is the 'Contact Info' question type. It contains fields for 'First Name', 'Last Name', 'Phone Number', 'Email' and 'Company'.",
+        "fields": [
+          {
+            "id": "0nTBs1ZHkLmI",
+            "title": "First name",
+            "ref": "1ff78247-682b-4b5d-a36e-486c5e3b76ef",
+            "properties": {
+              "placeholder_text": "Jane"
+            },
+            "validations": {
+              "required": true,
+              "max_length": 50
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "4pmkmxDkIQci",
+            "title": "Last name",
+            "ref": "43517325-419f-4a72-bd6d-82dbe98acafc",
+            "properties": {
+              "placeholder_text": "Smith"
+            },
+            "validations": {
+              "required": true,
+              "max_length": 50
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "I4qpyh1KwqdV",
+            "title": "Phone number",
+            "ref": "2835950d-02fd-4eaa-963a-a813147d1146",
+            "properties": {
+              "default_country_code": "US"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "phone_number"
+          },
+          {
+            "id": "i38tIuczZfYW",
+            "title": "Email",
+            "ref": "62816f0c-6f2e-44dd-958d-2f346c8ecc5f",
+            "properties": {
+              "placeholder_text": "example@domain.com"
+            },
+            "validations": {
+              "required": true
+            },
+            "type": "email"
+          },
+          {
+            "id": "iLLv0PV9OiaU",
+            "title": "Company",
+            "ref": "fb7ddee0-cebc-43d2-920d-28db07ebfbcd",
+            "properties": {
+              "placeholder_text": "Acme Corporation"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          }
+        ]
+      },
+      "type": "inline_group"
+    },
+    {
+      "id": "0s9cQ23UZKIg",
+      "title": "Address",
+      "ref": "2ddb9599-cd0d-48c7-b75d-8044477d495c",
+      "properties": {
+        "description": "This is the Address Question Type. It contains fields for 'Address', 'Address Line 2', 'City/Town', 'State/Region/Province', 'Zip/Postal Code', and 'Country'.",
+        "fields": [
+          {
+            "id": "X5n09jCGwutB",
+            "title": "Address",
+            "ref": "712f4084-ce73-41af-8655-75f983ed2e49",
+            "properties": {
+              "placeholder_text": "65 Hansen Way"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "7OjeqfhP958M",
+            "title": "Address line 2",
+            "ref": "dbf40813-d9fc-4b40-8ceb-781cf05d5e8f",
+            "properties": {
+              "placeholder_text": "Apartment 4"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "XT9r4EZY4Bl0",
+            "title": "City/Town",
+            "ref": "2fa621bd-42fc-474a-b550-0deb2e314a48",
+            "properties": {
+              "placeholder_text": "Palo Alto"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "UjCC69tawWnr",
+            "title": "State/Region/Province",
+            "ref": "78d2fc88-c7bb-4759-b2b9-85b9b4f702a4",
+            "properties": {
+              "placeholder_text": "California"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "u8TiAAXaXnhw",
+            "title": "Zip/Post code",
+            "ref": "dab5c172-4d96-4e63-bf9b-5c531aac4591",
+            "properties": {
+              "placeholder_text": "90210"
+            },
+            "validations": {
+              "required": false,
+              "regexp": "d{5}"
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "T1QujFHCeG7I",
+            "title": "Country",
+            "ref": "11bbe736-2c0b-4c81-ade5-8eea9f11e78d",
+            "properties": {
+              "placeholder_text": "United States"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          }
+        ]
+      },
+      "type": "inline_group"
+    },
+    {
+      "id": "N2g68xJKg7xg",
+      "title": "Website",
+      "ref": "69507396-0c6b-4ba8-84a8-e9398359d527",
+      "properties": {
+        "description": "This is the last of the question types, the 'Website'."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "website"
+    }
+  ],
+  "created_at": "2026-11-15T19:35:22+00:00",
+  "last_updated_at": "2026-11-15T19:57:59+00:00",
+  "published_at": "2026-11-15T19:57:59+00:00",
+  "_links": {
+    "display": "https://form.typeform.com/to/uWFxvuWr",
+    "responses": "https://api.typeform.com/forms/uWFxvuWr/responses"
+  }
+}

@@ -88,6 +88,9 @@ struct FieldView<Header: View, Footer: View>: View {
                                 settings: settings,
                                 validations: field.validations,
                             )
+                        case .email(let properties):
+                            #warning("TODO")
+                            Text("Unsupported Field Type")
                         case .fileUpload(let properties):
                             FileUploadView(
                                 state: $responseState,
@@ -97,6 +100,9 @@ struct FieldView<Header: View, Footer: View>: View {
                             )
                         case .group:
                             EmptyView()
+                        case .inlineGroup(let properties):
+                            #warning("TODO")
+                            Text("Unsupported Field Type")
                         case .longText(let properties):
                             LongTextView(
                                 state: $responseState,
@@ -134,6 +140,9 @@ struct FieldView<Header: View, Footer: View>: View {
                                 settings: settings,
                                 validations: field.validations,
                             )
+                        case .phoneNumber(let properties):
+                            #warning("TODO")
+                            Text("Unsupported Field Type")
                         case .rating(let properties):
                             RatingView(
                                 state: $responseState,
@@ -151,6 +160,9 @@ struct FieldView<Header: View, Footer: View>: View {
                             )
                         case .statement:
                             EmptyView()
+                        case .website(let properties):
+                            #warning("TODO")
+                            Text("Unsupported Field Type")
                         case .yesNo(let properties):
                             YesNoView(
                                 state: $responseState,

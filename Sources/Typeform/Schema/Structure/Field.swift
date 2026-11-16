@@ -3,48 +3,60 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
     public enum Kind: String, Codable, Sendable {
         case date
         case dropdown
+        case email
         case fileUpload = "file_upload"
         case group
+        case inlineGroup = "inline_group"
         case longText = "long_text"
         case matrix
         case multipleChoice = "multiple_choice"
         case number
         case opinionScale = "opinion_scale"
+        case phoneNumber = "phone_number"
         case rating
         case shortText = "short_text"
         case statement
+        case website
         case yesNo = "yes_no"
     }
 
     public enum Properties: Hashable, Codable, Sendable {
         case date(DateStamp)
         case dropdown(Dropdown)
+        case email(Email)
         case fileUpload(FileUpload)
         case group(Group)
+        case inlineGroup(InlineGroup)
         case longText(LongText)
         case matrix(Matrix)
         case multipleChoice(MultipleChoice)
         case number(Number)
         case opinionScale(OpinionScale)
+        case phoneNumber(PhoneNumber)
         case rating(Rating)
         case shortText(ShortText)
         case statement(Statement)
+        case website(Website)
         case yesNo(YesNo)
 
         public var description: String? {
             switch self {
             case .date(let value): value.description
             case .dropdown(let value): value.description
+            case .email: nil
             case .fileUpload(let value): value.description
             case .group: nil
+            case .inlineGroup(let value): value.description
             case .longText(let value): value.description
             case .matrix: nil
             case .multipleChoice(let value): value.description
             case .number(let value): value.description
             case .opinionScale: nil
+            case .phoneNumber: nil
             case .rating(let value): value.description
             case .shortText(let value): value.description
             case .statement(let value): value.description
+            case .website(let value): value.description
             case .yesNo(let value): value.description
             }
         }
@@ -101,12 +113,18 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .dropdown:
             let dropdown = try container.decode(Dropdown.self, forKey: .properties)
             properties = .dropdown(dropdown)
+        case .email:
+            let email = try container.decode(Email.self, forKey: .properties)
+            properties = .email(email)
         case .fileUpload:
             let fileUpload = try container.decode(FileUpload.self, forKey: .properties)
             properties = .fileUpload(fileUpload)
         case .group:
             let group = try container.decode(Group.self, forKey: .properties)
             properties = .group(group)
+        case .inlineGroup:
+            let inlineGroup = try container.decode(InlineGroup.self, forKey: .properties)
+            properties = .inlineGroup(inlineGroup)
         case .longText:
             let longText = try container.decode(LongText.self, forKey: .properties)
             properties = .longText(longText)
@@ -122,6 +140,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .opinionScale:
             let optionScale = try container.decode(OpinionScale.self, forKey: .properties)
             properties = .opinionScale(optionScale)
+        case .phoneNumber:
+            let phoneNumber = try container.decode(PhoneNumber.self, forKey: .properties)
+            properties = .phoneNumber(phoneNumber)
         case .rating:
             let rating = try container.decode(Rating.self, forKey: .properties)
             properties = .rating(rating)
@@ -131,6 +152,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .statement:
             let statement = try container.decode(Statement.self, forKey: .properties)
             properties = .statement(statement)
+        case .website:
+            let website = try container.decode(Website.self, forKey: .properties)
+            properties = .website(website)
         case .yesNo:
             let yesNo = try container.decode(YesNo.self, forKey: .properties)
             properties = .yesNo(yesNo)
@@ -150,10 +174,14 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(dateStamp, forKey: .properties)
         case .dropdown(let dropdown):
             try container.encode(dropdown, forKey: .properties)
+        case .email(let email):
+            try container.encode(email, forKey: .properties)
         case .fileUpload(let fileUpload):
             try container.encode(fileUpload, forKey: .properties)
         case .group(let group):
             try container.encode(group, forKey: .properties)
+        case .inlineGroup(let inlineGroup):
+            try container.encode(inlineGroup, forKey: .properties)
         case .longText(let longText):
             try container.encode(longText, forKey: .properties)
         case .matrix(let matrix):
@@ -164,12 +192,16 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(number, forKey: .properties)
         case .opinionScale(let optionScale):
             try container.encode(optionScale, forKey: .properties)
+        case .phoneNumber(let phoneNumber):
+            try container.encode(phoneNumber, forKey: .properties)
         case .rating(let rating):
             try container.encode(rating, forKey: .properties)
         case .shortText(let shortText):
             try container.encode(shortText, forKey: .properties)
         case .statement(let statement):
             try container.encode(statement, forKey: .properties)
+        case .website(let website):
+            try container.encode(website, forKey: .properties)
         case .yesNo(let yesNo):
             try container.encode(yesNo, forKey: .properties)
         }

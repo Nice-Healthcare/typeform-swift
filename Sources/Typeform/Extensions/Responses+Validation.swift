@@ -32,11 +32,17 @@ public extension Responses {
                 guard case .choice = value else {
                     return key
                 }
+            case .email:
+                #warning("Check")
+                return key
             case .fileUpload:
                 guard case .upload = value else {
                     return key
                 }
             case .group:
+                return key
+            case .inlineGroup:
+                #warning("Check")
                 return key
             case .longText:
                 guard case .string = value else {
@@ -64,6 +70,9 @@ public extension Responses {
                 guard case .int = value else {
                     return key
                 }
+            case .phoneNumber:
+                #warning("Check")
+                return key
             case .rating:
                 guard case .int = value else {
                     return key
@@ -73,6 +82,9 @@ public extension Responses {
                     return key
                 }
             case .statement:
+                return key
+            case .website:
+                #warning("Check")
                 return key
             case .yesNo:
                 guard case .bool = value else {

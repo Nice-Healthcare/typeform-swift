@@ -52,6 +52,8 @@ extension Field.Properties {
                     alphabetical_order: dropdown.alphabetical_order,
                 ),
             )
+        case .email:
+            return self
         case .fileUpload(let fileUpload):
             return .fileUpload(
                 FileUpload(
@@ -65,6 +67,13 @@ extension Field.Properties {
                     fields: group.fields.merging(translatedFields: translatedProperties.fields),
                     show_button: group.show_button,
                 ),
+            )
+        case .inlineGroup(let inlineGroup):
+            return .inlineGroup(
+                InlineGroup(
+                    description: translatedProperties.description,
+                    fields: inlineGroup.fields.merging(translatedFields: translatedProperties.fields),
+                )
             )
         case .longText(let longText):
             return .longText(
@@ -103,6 +112,8 @@ extension Field.Properties {
                     start_at_one: opinionScale.start_at_one,
                 ),
             )
+        case .phoneNumber:
+            return self
         case .rating(let rating):
             return .rating(
                 Rating(
@@ -123,6 +134,12 @@ extension Field.Properties {
                     hide_marks: statement.hide_marks,
                     button_text: translatedProperties.button_text ?? statement.button_text,
                     description: translatedProperties.description ?? statement.description,
+                ),
+            )
+        case .website(let website):
+            return .website(
+                Website(
+                    description: translatedProperties.description ?? website.description,
                 ),
             )
         case .yesNo(let yesNo):
