@@ -1,5 +1,6 @@
 import SwiftUI
 import Typeform
+import TypeformInternationalization
 import TypeformUI
 
 struct ContentView: View {

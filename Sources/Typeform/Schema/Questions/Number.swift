@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Number: Hashable, Codable, Sendable {
     public let description: String?
 

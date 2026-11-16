@@ -19,6 +19,7 @@ let package = Package(
             name: "Typeform",
             targets: [
                 "Typeform",
+                "TypeformInternationalization",
                 "TypeformPreview",
                 "TypeformUI",
             ],
@@ -34,6 +35,12 @@ let package = Package(
         .target(
             name: "Typeform",
             dependencies: [],
+        ),
+        .target(
+            name: "TypeformInternationalization",
+            dependencies: [
+                "Typeform",
+            ],
         ),
         .target(
             name: "TypeformPreview",

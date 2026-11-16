@@ -19,4 +19,7 @@ public enum TypeformError: Error {
     ///
     /// A code must match one in `Form.Settings.translation_languages`.
     case notAvailableInLanguage
+
+    /// A URL failed to be initialized.
+    case parseURL
 }

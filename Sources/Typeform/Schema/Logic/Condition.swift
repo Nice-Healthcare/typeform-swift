@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Condition: Hashable, Codable, Sendable {
 
     public enum Parameters: Hashable, Sendable {

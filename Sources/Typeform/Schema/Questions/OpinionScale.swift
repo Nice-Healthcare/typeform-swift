@@ -1,5 +1,3 @@
-import Foundation
-
 public struct OpinionScale: Hashable, Codable, Sendable {
 
     public struct Labels: Hashable, Codable, Sendable {

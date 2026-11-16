@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Validations: Hashable, Codable, Sendable {
     public let required: Bool
 

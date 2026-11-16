@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Field: Hashable, Identifiable, Codable, Sendable {
 
     public enum Kind: String, Codable, Sendable {

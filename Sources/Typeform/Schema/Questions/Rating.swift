@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Rating: Hashable, Codable, Sendable {
     public let shape: String
     public let steps: Int

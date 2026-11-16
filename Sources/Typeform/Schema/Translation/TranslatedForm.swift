@@ -1,5 +1,3 @@
-import Foundation
-
 public struct TranslatedForm: Hashable, Sendable {
     public let fields: [TranslatedField]
     public let welcomeScreens: [TranslatedScreen]?

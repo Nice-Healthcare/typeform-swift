@@ -1,5 +1,3 @@
-import Foundation
-
 public struct WelcomeScreen: Screen, Hashable, Codable, Sendable {
     public let id: String
     public let ref: Reference

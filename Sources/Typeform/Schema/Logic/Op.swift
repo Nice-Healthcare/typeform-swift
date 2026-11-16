@@ -1,4 +1,8 @@
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 
 public enum Op: String, Codable, Sendable {
     case always
@@ -24,13 +28,6 @@ public enum Op: String, Codable, Sendable {
 }
 
 extension Op {
-    static let yearMonthDay: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-
     func compareString(response: String, to condition: String) throws -> Bool {
         switch self {
         case .beginsWith: response.hasPrefix(condition)
@@ -61,9 +58,7 @@ extension Op {
     }
 
     func compareDate(response: Date, to condition: String) throws -> Bool {
-        guard let conditionDate = Self.yearMonthDay.date(from: condition) else {
-            throw TypeformError.responseTypeMismatch(Date.self)
-        }
+        let conditionDate = try Date(condition, strategy: Date.ISO8601FormatStyle.yearMonthDayDate.parseStrategy)
 
         let comparison = Calendar.current.compare(response, to: conditionDate, toGranularity: .day)
 

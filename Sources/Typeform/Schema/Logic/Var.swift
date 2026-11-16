@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Var: Hashable, Codable, Sendable {
 
     public enum VarType: String, Codable, Sendable {

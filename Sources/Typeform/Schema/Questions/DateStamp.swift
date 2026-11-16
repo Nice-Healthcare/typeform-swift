@@ -1,5 +1,3 @@
-import Foundation
-
 public struct DateStamp: Hashable, Codable, Sendable {
     public let separator: String
     public let structure: String

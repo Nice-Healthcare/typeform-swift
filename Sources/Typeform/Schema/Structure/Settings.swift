@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Settings: Hashable, Codable, Sendable {
 
     public struct Meta: Hashable, Codable, Sendable {
@@ -85,36 +83,5 @@ public struct Settings: Hashable, Codable, Sendable {
         self.show_time_to_complete = show_time_to_complete
         self.show_typeform_branding = show_typeform_branding
         self.show_number_of_submissions = show_number_of_submissions
-    }
-}
-
-@available(macOS 13.0, macCatalyst 16.0, iOS 16.0, tvOS 16.0, watchOS 9.0, *)
-public extension Settings {
-    var locale: Locale {
-        Locale(identifier: language)
-    }
-
-    var languageCode: Locale.LanguageCode? {
-        let code = Locale.LanguageCode(language)
-        guard code.isISOLanguage else {
-            return nil
-        }
-
-        return code
-    }
-
-    var translationLanguageCodes: [Locale.LanguageCode] {
-        guard let translation_languages, !translation_languages.isEmpty else {
-            return []
-        }
-
-        return translation_languages.compactMap {
-            let code = Locale.LanguageCode($0)
-            guard code.isISOLanguage else {
-                return nil
-            }
-
-            return code
-        }
     }
 }

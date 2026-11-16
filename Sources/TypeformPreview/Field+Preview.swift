@@ -1,4 +1,3 @@
-import Foundation
 import Typeform
 
 /// `MedicalIntake.json` Field References

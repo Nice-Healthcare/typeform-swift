@@ -42,6 +42,10 @@ let responses: [Reference: ResponseValue] = [:]
 let nextPosition = try form.next(from: position, given: responses)
 ```
 
+### TypeformInternationalization
+
+This module has extensions to support localization/translation of `Form`s that support them. See the 'Translation' section for more details.
+
 ### TypeformPreview
 
 This module is used primarily internal to the library. It provides some example resources for decoding/parsing tests as well as references to support SwiftUI previews.

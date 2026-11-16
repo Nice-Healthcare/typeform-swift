@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Choice: Hashable, Identifiable, Codable, Sendable {
     public let id: String
     public let ref: Reference

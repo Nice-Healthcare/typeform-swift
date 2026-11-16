@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Action: Hashable, Codable, Sendable {
 
     public enum Kind: String, Codable, Sendable {

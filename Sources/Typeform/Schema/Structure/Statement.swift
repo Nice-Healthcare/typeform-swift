@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Statement: Hashable, Codable, Sendable {
     public let hide_marks: Bool
     public let button_text: String
