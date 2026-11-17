@@ -35,6 +35,14 @@ extension Field.Properties {
         }
 
         switch self {
+        case .checkbox(let checkbox):
+            #warning("Checkbox")
+            return .checkbox(
+                Checkbox(
+                    description: translatedProperties.description ?? checkbox.description,
+                    choices: checkbox.choices.merging(translatedChoices: translatedProperties.choices),
+                ),
+            )
         case .date(let dateStamp):
             return .date(
                 DateStamp(
@@ -73,7 +81,13 @@ extension Field.Properties {
                 InlineGroup(
                     description: translatedProperties.description,
                     fields: inlineGroup.fields.merging(translatedFields: translatedProperties.fields),
-                )
+                ),
+            )
+        case .legal(let legal):
+            return .legal(
+                Legal(
+                    description: translatedProperties.description ?? legal.description,
+                ),
             )
         case .longText(let longText):
             return .longText(
@@ -110,6 +124,13 @@ extension Field.Properties {
                     steps: opinionScale.steps,
                     labels: translatedProperties.labels ?? opinionScale.labels,
                     start_at_one: opinionScale.start_at_one,
+                ),
+            )
+        case .pictureChoice(let pictureChoice):
+            #warning("PictureChoice")
+            return .pictureChoice(
+                PictureChoice(
+                    description: translatedProperties.description ?? pictureChoice.description,
                 ),
             )
         case .phoneNumber:

@@ -1,17 +1,20 @@
 public struct Field: Hashable, Identifiable, Codable, Sendable {
 
     public enum Kind: String, Codable, Sendable {
+        case checkbox
         case date
         case dropdown
         case email
         case fileUpload = "file_upload"
         case group
         case inlineGroup = "inline_group"
+        case legal
         case longText = "long_text"
         case matrix
         case multipleChoice = "multiple_choice"
         case number
         case opinionScale = "opinion_scale"
+        case pictureChoice = "picture_choice"
         case phoneNumber = "phone_number"
         case rating
         case shortText = "short_text"
@@ -20,18 +23,21 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case yesNo = "yes_no"
     }
 
-    public enum Properties: Hashable, Codable, Sendable {
+    public enum Properties: Hashable, Sendable, Codable {
+        case checkbox(Checkbox)
         case date(DateStamp)
         case dropdown(Dropdown)
         case email(Email)
         case fileUpload(FileUpload)
         case group(Group)
         case inlineGroup(InlineGroup)
+        case legal(Legal)
         case longText(LongText)
         case matrix(Matrix)
         case multipleChoice(MultipleChoice)
         case number(Number)
         case opinionScale(OpinionScale)
+        case pictureChoice(PictureChoice)
         case phoneNumber(PhoneNumber)
         case rating(Rating)
         case shortText(ShortText)
@@ -41,17 +47,20 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
 
         public var description: String? {
             switch self {
+            case .checkbox(let value): value.description
             case .date(let value): value.description
             case .dropdown(let value): value.description
             case .email: nil
             case .fileUpload(let value): value.description
             case .group: nil
             case .inlineGroup(let value): value.description
+            case .legal(let value): value.description
             case .longText(let value): value.description
             case .matrix: nil
             case .multipleChoice(let value): value.description
             case .number(let value): value.description
             case .opinionScale: nil
+            case .pictureChoice(let value): value.description
             case .phoneNumber: nil
             case .rating(let value): value.description
             case .shortText(let value): value.description
@@ -107,6 +116,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         validations = try container.decodeIfPresent(Validations.self, forKey: .validations)
         attachment = try container.decodeIfPresent(Attachment.self, forKey: .attachment)
         switch type {
+        case .checkbox:
+            let checkbox = try container.decode(Checkbox.self, forKey: .properties)
+            properties = .checkbox(checkbox)
         case .date:
             let date = try container.decode(DateStamp.self, forKey: .properties)
             properties = .date(date)
@@ -125,6 +137,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .inlineGroup:
             let inlineGroup = try container.decode(InlineGroup.self, forKey: .properties)
             properties = .inlineGroup(inlineGroup)
+        case .legal:
+            let legal = try container.decode(Legal.self, forKey: .properties)
+            properties = .legal(legal)
         case .longText:
             let longText = try container.decode(LongText.self, forKey: .properties)
             properties = .longText(longText)
@@ -140,6 +155,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .opinionScale:
             let optionScale = try container.decode(OpinionScale.self, forKey: .properties)
             properties = .opinionScale(optionScale)
+        case .pictureChoice:
+            let pictureChoice = try container.decode(PictureChoice.self, forKey: .properties)
+            properties = .pictureChoice(pictureChoice)
         case .phoneNumber:
             let phoneNumber = try container.decode(PhoneNumber.self, forKey: .properties)
             properties = .phoneNumber(phoneNumber)
@@ -170,6 +188,8 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         try container.encodeIfPresent(validations, forKey: .validations)
         try container.encodeIfPresent(attachment, forKey: .attachment)
         switch properties {
+        case .checkbox(let checkbox):
+            try container.encode(checkbox, forKey: .properties)
         case .date(let dateStamp):
             try container.encode(dateStamp, forKey: .properties)
         case .dropdown(let dropdown):
@@ -182,6 +202,8 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(group, forKey: .properties)
         case .inlineGroup(let inlineGroup):
             try container.encode(inlineGroup, forKey: .properties)
+        case .legal(let legal):
+            try container.encode(legal, forKey: .properties)
         case .longText(let longText):
             try container.encode(longText, forKey: .properties)
         case .matrix(let matrix):
@@ -192,6 +214,8 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(number, forKey: .properties)
         case .opinionScale(let optionScale):
             try container.encode(optionScale, forKey: .properties)
+        case .pictureChoice(let pictureChoice):
+            try container.encode(pictureChoice, forKey: .properties)
         case .phoneNumber(let phoneNumber):
             try container.encode(phoneNumber, forKey: .properties)
         case .rating(let rating):

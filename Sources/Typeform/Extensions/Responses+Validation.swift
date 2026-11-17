@@ -24,6 +24,9 @@ public extension Responses {
             }
 
             switch field.properties {
+            case .checkbox:
+                #warning("Checkbox")
+                return key
             case .date:
                 guard case .date = value else {
                     return key
@@ -33,7 +36,7 @@ public extension Responses {
                     return key
                 }
             case .email:
-                #warning("Check")
+                #warning("Email")
                 return key
             case .fileUpload:
                 guard case .upload = value else {
@@ -42,8 +45,12 @@ public extension Responses {
             case .group:
                 return key
             case .inlineGroup:
-                #warning("Check")
+                #warning("InlineGroup")
                 return key
+            case .legal:
+                guard case .bool = value else {
+                    return key
+                }
             case .longText:
                 guard case .string = value else {
                     return key
@@ -70,8 +77,11 @@ public extension Responses {
                 guard case .int = value else {
                     return key
                 }
+            case .pictureChoice:
+                #warning("PictureChoice")
+                return key
             case .phoneNumber:
-                #warning("Check")
+                #warning("PhoneNumber")
                 return key
             case .rating:
                 guard case .int = value else {
@@ -84,7 +94,7 @@ public extension Responses {
             case .statement:
                 return key
             case .website:
-                #warning("Check")
+                #warning("Website")
                 return key
             case .yesNo:
                 guard case .bool = value else {

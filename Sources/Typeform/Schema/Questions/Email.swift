@@ -1,6 +1,6 @@
 public struct Email: Hashable, Sendable {
     public let placeholder: String?
-    
+
     public init(placeholder: String? = nil) {
         self.placeholder = placeholder
     }
