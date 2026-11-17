@@ -7,5 +7,6 @@ struct ContactQuestionTests {
         let url = try #require(Bundle.module.url(forResource: "ContactQuestions", withExtension: "json"))
         let data = try Data(contentsOf: url)
         let form = try JSONDecoder().decode(Form.self, from: data)
+        #expect(form.id == "uWFxvuWr")
     }
 }

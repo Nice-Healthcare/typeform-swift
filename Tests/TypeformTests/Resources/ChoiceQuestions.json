@@ -1,0 +1,232 @@
+{
+  "id": "rjfMk8d6",
+  "type": "quiz",
+  "title": "Choice Question Types",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/Wkp2vs"
+  },
+  "theme": {
+    "href": "https://api.typeform.com/themes/M5WM3KsV"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "email_consent_notifications_config": {
+      "send_email_copy": true
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true,
+    "webmcp_enabled": false,
+    "webmcp_submit_hitl_enabled": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, \u0026 beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "G9ClmExohfBK",
+      "title": "Multiple Choice Question (Default)",
+      "ref": "6600722d-bccc-4565-ba8a-fc0db05d4257",
+      "properties": {
+        "description": "The default configuration, in which:\n\\* Not Required\n\\* Multiple selection not defined\n\\* Not Randomized\n\\* No 'Other' option\n\\* No 'None' option",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "XiRtgJHbCNP8",
+            "ref": "f292159d-107d-4535-95d6-8376b9ec7c7d",
+            "label": "A first choice"
+          },
+          {
+            "id": "HvQd2hkG65vC",
+            "ref": "dbc92a02-1b71-4fc7-a9c9-925f59394af1",
+            "label": "A second choice"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "OHqUNUZag8is",
+      "title": "Drop Down",
+      "ref": "10d8e0e9-3bd2-4594-b26e-1fc7935a8af8",
+      "properties": {
+        "description": "A drop-down style question with the default options:\n\\* Not Request\n\\* Not Random\n\\* Not Alphabetical\n\\* No Placeholder",
+        "randomize": false,
+        "alphabetical_order": false,
+        "choices": [
+          {
+            "id": "kx3fSUoBwX9E",
+            "ref": "a0e43714-3ca2-455d-85bf-09034836574b",
+            "label": "Alpha"
+          },
+          {
+            "id": "9LuZmc3xuRee",
+            "ref": "dc04babe-44cc-4e0e-9285-9ef775193c7e",
+            "label": "Beta"
+          },
+          {
+            "id": "LbQjrdlacHZW",
+            "ref": "cf9524d1-0a9e-4b2f-9122-4c87470f3914",
+            "label": "Charlie"
+          },
+          {
+            "id": "wtI7XVpXQcNd",
+            "ref": "2f5ada71-33ac-4dea-80ac-c916ad02ea49",
+            "label": "Delta"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "dropdown"
+    },
+    {
+      "id": "8er9WLcAq5gh",
+      "title": "Picture Question",
+      "ref": "5fbf5d92-8c1b-48c8-a7d7-53428061b136",
+      "properties": {
+        "description": "Default for the picture option only has 'show labels' enabled.",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "supersized": false,
+        "show_labels": true,
+        "choices": [
+          {
+            "id": "KxGK0FkDoLgz",
+            "ref": "b9018029-b0ad-4a58-99df-5aa179964ed2",
+            "label": "choice 1",
+            "attachment": {
+              "type": "image",
+              "href": "https://images.typeform.com/images/JTYVBCEJvDht",
+              "properties": {
+                "description": "Heart"
+              }
+            }
+          },
+          {
+            "id": "OpcISKOUSrsN",
+            "ref": "d37bd29f-9949-4e31-80ff-6900e44431f3",
+            "label": "choice 2",
+            "attachment": {
+              "type": "image",
+              "href": "https://images.typeform.com/images/iHmBQyWzrAJG",
+              "properties": {
+                "description": "Dog"
+              }
+            }
+          },
+          {
+            "id": "IcWZgpOs1Kas",
+            "ref": "72b6ea22-e117-4078-afc6-1a663a65514c",
+            "label": "choice 3",
+            "attachment": {
+              "type": "image",
+              "href": "https://images.typeform.com/images/QhYkmCRpICSP",
+              "properties": {
+                "description": "Command"
+              }
+            }
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "picture_choice"
+    },
+    {
+      "id": "6NlxFD1EEUee",
+      "title": "Yes/No Question",
+      "ref": "2594763a-5bb2-40f2-a2fb-ee4f43e166d3",
+      "properties": {
+        "description": "This is a yes or no question. Pretty straightforward."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "yes_no"
+    },
+    {
+      "id": "p747qlN7Wu4V",
+      "title": "Legal Question",
+      "ref": "86ac9b9d-2150-4af2-98c3-42fc5018e070",
+      "properties": {
+        "description": "I bet this is similar to yes/no, just with \"I accept\" and \"I don't accept\" options."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "legal"
+    },
+    {
+      "id": "A6ZTXJEWjKu0",
+      "title": "Checkbox",
+      "ref": "2c06ed55-2359-4ac8-b4f3-2796b3740fc8",
+      "properties": {
+        "description": "This style of question presents a single checkable item that is not checked by default.",
+        "choices": [
+          {
+            "id": "X3iiShSzi1Zi",
+            "ref": "8c9476a5-6fdd-423c-8c5d-23c3579c2eb4",
+            "label": "Checkbox default description"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "checkbox"
+    }
+  ],
+  "created_at": "2026-11-16T13:48:14+00:00",
+  "last_updated_at": "2026-11-17T22:45:46+00:00",
+  "published_at": "2026-11-16T13:49:08+00:00",
+  "_links": {
+    "display": "https://form.typeform.com/to/rjfMk8d6",
+    "responses": "https://api.typeform.com/forms/rjfMk8d6/responses"
+  }
+}
