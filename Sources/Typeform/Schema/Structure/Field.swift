@@ -12,10 +12,12 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case longText = "long_text"
         case matrix
         case multipleChoice = "multiple_choice"
+        case netPromoterScore = "nps"
         case number
         case opinionScale = "opinion_scale"
         case pictureChoice = "picture_choice"
         case phoneNumber = "phone_number"
+        case ranking
         case rating
         case shortText = "short_text"
         case statement
@@ -35,10 +37,12 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case longText(LongText)
         case matrix(Matrix)
         case multipleChoice(MultipleChoice)
+        case netPromoterScore(NetPromoterScore)
         case number(Number)
         case opinionScale(OpinionScale)
         case pictureChoice(PictureChoice)
         case phoneNumber(PhoneNumber)
+        case ranking(Ranking)
         case rating(Rating)
         case shortText(ShortText)
         case statement(Statement)
@@ -58,10 +62,12 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             case .longText(let value): value.description
             case .matrix: nil
             case .multipleChoice(let value): value.description
+            case .netPromoterScore(let value): value.description
             case .number(let value): value.description
             case .opinionScale: nil
             case .pictureChoice(let value): value.description
             case .phoneNumber: nil
+            case .ranking(let value): value.description
             case .rating(let value): value.description
             case .shortText(let value): value.description
             case .statement(let value): value.description
@@ -149,6 +155,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .multipleChoice:
             let multipleChoice = try container.decode(MultipleChoice.self, forKey: .properties)
             properties = .multipleChoice(multipleChoice)
+        case .netPromoterScore:
+            let netPromoterScore = try container.decode(NetPromoterScore.self, forKey: .properties)
+            properties = .netPromoterScore(netPromoterScore)
         case .number:
             let number = try container.decode(Number.self, forKey: .properties)
             properties = .number(number)
@@ -161,6 +170,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .phoneNumber:
             let phoneNumber = try container.decode(PhoneNumber.self, forKey: .properties)
             properties = .phoneNumber(phoneNumber)
+        case .ranking:
+            let ranking = try container.decode(Ranking.self, forKey: .properties)
+            properties = .ranking(ranking)
         case .rating:
             let rating = try container.decode(Rating.self, forKey: .properties)
             properties = .rating(rating)
@@ -210,6 +222,8 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(matrix, forKey: .properties)
         case .multipleChoice(let multipleChoice):
             try container.encode(multipleChoice, forKey: .properties)
+        case .netPromoterScore(let netPromoterScore):
+            try container.encode(netPromoterScore, forKey: .properties)
         case .number(let number):
             try container.encode(number, forKey: .properties)
         case .opinionScale(let optionScale):
@@ -218,6 +232,8 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
             try container.encode(pictureChoice, forKey: .properties)
         case .phoneNumber(let phoneNumber):
             try container.encode(phoneNumber, forKey: .properties)
+        case .ranking(let ranking):
+            try container.encode(ranking, forKey: .properties)
         case .rating(let rating):
             try container.encode(rating, forKey: .properties)
         case .shortText(let shortText):

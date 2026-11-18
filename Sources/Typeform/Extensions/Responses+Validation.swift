@@ -69,6 +69,9 @@ public extension Responses {
                         return key
                     }
                 }
+            case .netPromoterScore:
+                #warning("NetPromoterScore")
+                return key
             case .number:
                 guard case .int = value else {
                     return key
@@ -82,6 +85,9 @@ public extension Responses {
                 return key
             case .phoneNumber:
                 #warning("PhoneNumber")
+                return key
+            case .ranking:
+                #warning("Ranking")
                 return key
             case .rating:
                 guard case .int = value else {

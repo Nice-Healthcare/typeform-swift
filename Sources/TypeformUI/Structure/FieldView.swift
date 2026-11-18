@@ -132,6 +132,9 @@ struct FieldView<Header: View, Footer: View>: View {
                                 settings: settings,
                                 validations: field.validations,
                             )
+                        case .netPromoterScore(let properties):
+                            #warning("NetPromoterScore")
+                            Text("Unsupported Field Type")
                         case .number(let properties):
                             NumberView(
                                 state: $responseState,
@@ -151,6 +154,9 @@ struct FieldView<Header: View, Footer: View>: View {
                             Text("Unsupported Field Type")
                         case .phoneNumber(let properties):
                             #warning("PhoneNumber")
+                            Text("Unsupported Field Type")
+                        case .ranking(let properties):
+                            #warning("Ranking")
                             Text("Unsupported Field Type")
                         case .rating(let properties):
                             RatingView(

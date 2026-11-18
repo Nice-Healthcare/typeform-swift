@@ -105,11 +105,19 @@ extension Field.Properties {
             return .multipleChoice(
                 MultipleChoice(
                     choices: multipleChoice.choices.merging(translatedChoices: translatedProperties.choices),
-                    randomize: multipleChoice.randomize,
-                    allow_multiple_selection: multipleChoice.allow_multiple_selection,
-                    allow_other_choice: multipleChoice.allow_other_choice,
-                    vertical_alignment: multipleChoice.vertical_alignment,
                     description: translatedProperties.description ?? multipleChoice.description,
+                    randomize: multipleChoice.randomize,
+                    allowMultipleSelection: multipleChoice.allowMultipleSelection,
+                    allowOtherChoice: multipleChoice.allowOtherChoice,
+                    allowNoneOfTheAbove: multipleChoice.allowNoneOfTheAbove,
+                    verticalAlignment: multipleChoice.verticalAlignment,
+                ),
+            )
+        case .netPromoterScore(let netPromoterScore):
+            return .netPromoterScore(
+                NetPromoterScore(
+                    description: translatedProperties.description ?? netPromoterScore.description,
+                    steps: netPromoterScore.steps,
                 ),
             )
         case .number(let number):
@@ -135,6 +143,15 @@ extension Field.Properties {
             )
         case .phoneNumber:
             return self
+        case .ranking(let ranking):
+            return .ranking(
+                Ranking(
+                    choices: ranking.choices.merging(translatedChoices: translatedProperties.choices),
+                    description: translatedProperties.description ?? ranking.description,
+                    randomize: ranking.randomize,
+                    allowMultipleSelection: ranking.allowMultipleSelection,
+                ),
+            )
         case .rating(let rating):
             return .rating(
                 Rating(
