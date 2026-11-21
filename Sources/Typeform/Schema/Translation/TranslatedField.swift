@@ -36,7 +36,6 @@ extension Field.Properties {
 
         switch self {
         case .checkbox(let checkbox):
-            #warning("Checkbox")
             return .checkbox(
                 Checkbox(
                     description: translatedProperties.description ?? checkbox.description,
@@ -57,7 +56,7 @@ extension Field.Properties {
                     choices: dropdown.choices.merging(translatedChoices: translatedProperties.choices),
                     description: translatedProperties.description ?? dropdown.description,
                     randomize: dropdown.randomize,
-                    alphabetical_order: dropdown.alphabetical_order,
+                    alphabeticalOrder: dropdown.alphabeticalOrder,
                 ),
             )
         case .email:
@@ -135,10 +134,16 @@ extension Field.Properties {
                 ),
             )
         case .pictureChoice(let pictureChoice):
-            #warning("PictureChoice")
             return .pictureChoice(
                 PictureChoice(
+                    choices: pictureChoice.choices.merging(translatedChoices: translatedProperties.choices),
                     description: translatedProperties.description ?? pictureChoice.description,
+                    randomize: pictureChoice.randomize,
+                    allowMultipleSelection: pictureChoice.allowMultipleSelection,
+                    allowOtherChoice: pictureChoice.allowOtherChoice,
+                    allowNoneOfTheAbove: pictureChoice.allowNoneOfTheAbove,
+                    supersized: pictureChoice.supersized,
+                    showLabels: pictureChoice.showLabels,
                 ),
             )
         case .phoneNumber:

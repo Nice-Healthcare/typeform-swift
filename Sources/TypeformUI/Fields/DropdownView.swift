@@ -14,7 +14,7 @@ struct DropdownView: View {
 
     private var choices: [Choice] {
         var choices = properties.choices
-        if properties.alphabetical_order {
+        if properties.alphabeticalOrder {
             choices.sort(by: { $0.label < $1.label })
         }
         if properties.randomize {

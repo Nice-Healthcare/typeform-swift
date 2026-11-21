@@ -49,7 +49,7 @@ public struct Matrix: FieldContainer, Hashable, Sendable, Codable {
             return false
         }
 
-        return multipleChoice.allow_multiple_selection
+        return multipleChoice.allowMultipleSelection
     }
 
     public var validations: Validations? {

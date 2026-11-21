@@ -1,0 +1,165 @@
+{
+  "id": "pUoGuGJD",
+  "type": "quiz",
+  "title": "Structural Question Types",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/Wkp2vs"
+  },
+  "theme": {
+    "href": "https://api.typeform.com/themes/M5WM3KsV"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "email_consent_notifications_config": {
+      "send_email_copy": true
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true,
+    "webmcp_enabled": false,
+    "webmcp_submit_hitl_enabled": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "wCxF1Dz66atR",
+      "ref": "5c10d098-319b-456e-996c-81b075913c99",
+      "title": "Say Bye!",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": true,
+        "button_mode": "default_redirect",
+        "button_text": "Create a typeform",
+        "description": "Options include the ability to disable the button and social icons."
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, \u0026 beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "welcome_screens": [
+    {
+      "id": "Xj7uCP5TbAvA",
+      "ref": "f54033ff-ac43-4791-be05-0ce6479b06d1",
+      "title": "Welcome Screen",
+      "properties": {
+        "show_button": true,
+        "button_text": "Start",
+        "description": "This has the automatic 'time to complete' option turned on."
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "zQ79Qa2xC30i",
+      "title": "Here's a statement",
+      "ref": "8834eeb2-9ad4-49f0-a595-4c1704f626ab",
+      "properties": {
+        "description": "The option available is to turn on/off the quotation marks. The button title can be specified as well.",
+        "button_text": "Continue",
+        "hide_marks": false
+      },
+      "type": "statement"
+    },
+    {
+      "id": "irLik1A6XLu2",
+      "title": "A question Group",
+      "ref": "267f05fa-a533-4524-ad99-23132ad1559a",
+      "properties": {
+        "description": "With a optional description",
+        "button_text": "Continue",
+        "show_button": true,
+        "fields": [
+          {
+            "id": "umBBxT1kfDyK",
+            "title": "Question 1a",
+            "ref": "11a5749d-62c1-4cc6-9925-04da36bdc3a4",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          }
+        ]
+      },
+      "type": "group"
+    },
+    {
+      "id": "eWwsszZhuTHX",
+      "title": "Another Group",
+      "ref": "6768358d-78e8-4e13-8abe-258736042c9c",
+      "properties": {
+        "description": "Looks like you can't nest groups, so that makes things a bit easier.",
+        "button_text": "Continue",
+        "show_button": true,
+        "fields": [
+          {
+            "id": "J6oqb3mrrAep",
+            "title": "2A is a number",
+            "ref": "13a8d981-2389-4b3b-ba0e-0581c776bee5",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "number"
+          },
+          {
+            "id": "EaHwvnXEMR0u",
+            "title": "2B is a date",
+            "ref": "95a746fc-bb61-45f7-b8fa-5d4480ffc66d",
+            "properties": {
+              "separator": "-",
+              "structure": "YYYYMMDD"
+            },
+            "validations": {
+              "required": false,
+              "date_min": "today",
+              "date_max": "2028-02-29"
+            },
+            "type": "date"
+          }
+        ]
+      },
+      "type": "group"
+    }
+  ],
+  "created_at": "2026-11-21T22:50:32+00:00",
+  "last_updated_at": "2026-11-21T22:57:36+00:00",
+  "published_at": "2026-11-21T22:57:10+00:00",
+  "_links": {
+    "display": "https://form.typeform.com/to/pUoGuGJD",
+    "responses": "https://api.typeform.com/forms/pUoGuGJD/responses"
+  }
+}

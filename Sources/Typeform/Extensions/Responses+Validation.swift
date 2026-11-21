@@ -25,8 +25,9 @@ public extension Responses {
 
             switch field.properties {
             case .checkbox:
-                #warning("Checkbox")
-                return key
+                guard case .bool = value else {
+                    return key
+                }
             case .date:
                 guard case .date = value else {
                     return key
@@ -36,17 +37,24 @@ public extension Responses {
                     return key
                 }
             case .email:
-                #warning("Email")
-                return key
+                guard case .string = value else {
+                    return key
+                }
             case .fileUpload:
                 guard case .upload = value else {
                     return key
                 }
             case .group:
                 return key
-            case .inlineGroup:
-                #warning("InlineGroup")
-                return key
+            case .inlineGroup(let inlineGroup):
+                guard case .responseValueByReference(let responses) = value else {
+                    return key
+                }
+
+                // TODO: collect the sub references?
+                guard responses.invalidResponseValues(given: inlineGroup.fields).isEmpty else {
+                    return key
+                }
             case .legal:
                 guard case .bool = value else {
                     return key
@@ -60,7 +68,7 @@ public extension Responses {
                     return key
                 }
             case .multipleChoice(let multipleChoice):
-                if multipleChoice.allow_multiple_selection {
+                if multipleChoice.allowMultipleSelection {
                     guard case .choices = value else {
                         return key
                     }
@@ -70,8 +78,9 @@ public extension Responses {
                     }
                 }
             case .netPromoterScore:
-                #warning("NetPromoterScore")
-                return key
+                guard case .int = value else {
+                    return key
+                }
             case .number:
                 guard case .int = value else {
                     return key
@@ -80,15 +89,30 @@ public extension Responses {
                 guard case .int = value else {
                     return key
                 }
-            case .pictureChoice:
-                #warning("PictureChoice")
-                return key
+            case .pictureChoice(let pictureChoice):
+                if pictureChoice.allowMultipleSelection {
+                    guard case .choices = value else {
+                        return key
+                    }
+                } else {
+                    guard case .choice = value else {
+                        return key
+                    }
+                }
             case .phoneNumber:
-                #warning("PhoneNumber")
-                return key
-            case .ranking:
-                #warning("Ranking")
-                return key
+                guard case .string = value else {
+                    return key
+                }
+            case .ranking(let ranking):
+                if ranking.allowMultipleSelection {
+                    guard case .choices = value else {
+                        return key
+                    }
+                } else {
+                    guard case .choice = value else {
+                        return key
+                    }
+                }
             case .rating:
                 guard case .int = value else {
                     return key
@@ -98,10 +122,12 @@ public extension Responses {
                     return key
                 }
             case .statement:
+                // Statements shouldn't contain a response value
                 return key
             case .website:
-                #warning("Website")
-                return key
+                guard case .string = value else {
+                    return key
+                }
             case .yesNo:
                 guard case .bool = value else {
                     return key

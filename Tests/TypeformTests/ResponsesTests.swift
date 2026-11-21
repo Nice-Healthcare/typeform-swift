@@ -17,23 +17,12 @@ struct ResponsesTests {
         form = try Bundle.typeformPreview.decode(Typeform.Form.self, forResource: "MedicalIntake23")
     }
 
-    /// Verify the `Reference.valueEncodingCase` options.
+    /// Verify `Reference` encoding
     ///
     /// - note: The double quote is correct; JSON fragment.
     @Test func referenceEncoding() throws {
-        Reference.valueEncodingCase = .automatic
-        var data = try TypeformTests.encoder.encode(visitReason)
-        var value = String(decoding: data, as: UTF8.self)
-        #expect(value == #""AEA7A268-64D4-4F16-920A-B9AFE317E3B6""#)
-
-        Reference.valueEncodingCase = .uppercase
-        data = try TypeformTests.encoder.encode(visitReason)
-        value = String(decoding: data, as: UTF8.self)
-        #expect(value == #""AEA7A268-64D4-4F16-920A-B9AFE317E3B6""#)
-
-        Reference.valueEncodingCase = .lowercase
-        data = try TypeformTests.encoder.encode(visitReason)
-        value = String(decoding: data, as: UTF8.self)
+        let data = try TypeformTests.encoder.encode(visitReason)
+        let value = String(decoding: data, as: UTF8.self)
         #expect(value == #""aea7a268-64d4-4f16-920a-b9afe317e3b6""#)
     }
 

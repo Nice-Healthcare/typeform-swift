@@ -24,7 +24,7 @@ struct MultipleChoiceView: View {
         VStack(alignment: .leading, spacing: settings.presentation.contentVerticalSpacing) {
             ForEach(choices) { choice in
                 Button {
-                    if properties.allow_multiple_selection {
+                    if properties.allowMultipleSelection {
                         if let index = selections.firstIndex(of: choice) {
                             selections.remove(at: index)
                         } else {
@@ -41,7 +41,7 @@ struct MultipleChoiceView: View {
                 }
                 .buttonStyle(
                     IntermittentChoiceButtonStyle(
-                        allowsMultipleSelection: properties.allow_multiple_selection,
+                        allowsMultipleSelection: properties.allowMultipleSelection,
                         selected: selections.contains(choice),
                         settings: settings,
                     ),
@@ -72,7 +72,7 @@ struct MultipleChoiceView: View {
     private func updateState() {
         var state = state.wrappedValue
 
-        if properties.allow_multiple_selection {
+        if properties.allowMultipleSelection {
             if !selections.isEmpty {
                 state.response = .choices(selections)
             } else {
@@ -87,7 +87,7 @@ struct MultipleChoiceView: View {
         }
 
         if let validations, validations.required {
-            if properties.allow_multiple_selection {
+            if properties.allowMultipleSelection {
                 state.invalid = selections.isEmpty
             } else {
                 state.invalid = selections.count != 1
