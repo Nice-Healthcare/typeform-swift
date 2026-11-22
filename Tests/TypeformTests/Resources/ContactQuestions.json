@@ -194,7 +194,7 @@
             },
             "validations": {
               "required": false,
-              "regexp": "d{5}"
+              "regexp": "\\d{5}"
             },
             "type": "short_text"
           },

@@ -56,7 +56,7 @@ extension Field.Properties {
                     choices: dropdown.choices.merging(translatedChoices: translatedProperties.choices),
                     description: translatedProperties.description ?? dropdown.description,
                     randomize: dropdown.randomize,
-                    alphabeticalOrder: dropdown.alphabeticalOrder,
+                    alphabetical: dropdown.alphabetical,
                 ),
             )
         case .email:

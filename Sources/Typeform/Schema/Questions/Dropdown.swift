@@ -2,24 +2,24 @@ public struct Dropdown: Hashable, Sendable {
     public let choices: [Choice]
     public let description: String?
     public let randomize: Bool
-    public let alphabeticalOrder: Bool
+    public let alphabetical: Bool
 
-    @available(*, deprecated, renamed: "alphabeticalOrder")
-    public var alphabetical_order: Bool { alphabeticalOrder }
+    @available(*, deprecated, renamed: "alphabetical")
+    public var alphabetical_order: Bool { alphabetical }
 
     public init(
         choices: [Choice] = [],
         description: String? = nil,
         randomize: Bool = false,
-        alphabeticalOrder: Bool = true,
+        alphabetical: Bool = true,
     ) {
         self.choices = choices
         self.description = description
         self.randomize = randomize
-        self.alphabeticalOrder = alphabeticalOrder
+        self.alphabetical = alphabetical
     }
 
-    @available(*, deprecated, renamed: "init(choices:description:randomize:alphabeticalOrder:)")
+    @available(*, deprecated, renamed: "init(choices:description:randomize:alphabetical:)")
     public init(
         choices: [Choice] = [],
         description: String? = nil,
@@ -29,7 +29,7 @@ public struct Dropdown: Hashable, Sendable {
         self.choices = choices
         self.description = description
         self.randomize = randomize
-        alphabeticalOrder = alphabetical_order
+        alphabetical = alphabetical_order
     }
 }
 
@@ -38,6 +38,6 @@ extension Dropdown: Codable {
         case choices
         case description
         case randomize
-        case alphabeticalOrder = "alphabetical_order"
+        case alphabetical = "alphabetical_order"
     }
 }

@@ -5,6 +5,7 @@ public struct MultipleChoice: Hashable, Sendable {
     public let allowMultipleSelection: Bool
     public let allowOtherChoice: Bool
     public let allowNoneOfTheAbove: Bool
+    /// As far a I can tell, this is purely for visual alignment when presented.
     public let verticalAlignment: Bool
 
     @available(*, deprecated, renamed: "allowMultipleSelection")

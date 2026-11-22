@@ -262,3 +262,181 @@ public extension Field.Kind {
     @available(*, deprecated, renamed: "yesNo")
     static let yes_no: Self = .yesNo
 }
+
+public extension Field.Properties {
+    func asCheckbox() -> Checkbox? {
+        guard case .checkbox(let checkbox) = self else {
+            return nil
+        }
+
+        return checkbox
+    }
+
+    func asDate() -> DateStamp? {
+        guard case .date(let dateStamp) = self else {
+            return nil
+        }
+
+        return dateStamp
+    }
+
+    func asDropdown() -> Dropdown? {
+        guard case .dropdown(let dropdown) = self else {
+            return nil
+        }
+
+        return dropdown
+    }
+
+    func asEmail() -> Email? {
+        guard case .email(let email) = self else {
+            return nil
+        }
+
+        return email
+    }
+
+    func asFileUpload() -> FileUpload? {
+        guard case .fileUpload(let fileUpload) = self else {
+            return nil
+        }
+
+        return fileUpload
+    }
+
+    func asGroup() -> Group? {
+        guard case .group(let group) = self else {
+            return nil
+        }
+
+        return group
+    }
+
+    func asInlineGroup() -> InlineGroup? {
+        guard case .inlineGroup(let inlineGroup) = self else {
+            return nil
+        }
+
+        return inlineGroup
+    }
+
+    func asLegal() -> Legal? {
+        guard case .legal(let legal) = self else {
+            return nil
+        }
+
+        return legal
+    }
+
+    func asLongText() -> LongText? {
+        guard case .longText(let longText) = self else {
+            return nil
+        }
+
+        return longText
+    }
+
+    func asMatrix() -> Matrix? {
+        guard case .matrix(let matrix) = self else {
+            return nil
+        }
+
+        return matrix
+    }
+
+    func asMultipleChoice() -> MultipleChoice? {
+        guard case .multipleChoice(let multipleChoice) = self else {
+            return nil
+        }
+
+        return multipleChoice
+    }
+
+    func asNetPromoterScore() -> NetPromoterScore? {
+        guard case .netPromoterScore(let netPromoterScore) = self else {
+            return nil
+        }
+
+        return netPromoterScore
+    }
+
+    func asNumber() -> Number? {
+        guard case .number(let number) = self else {
+            return nil
+        }
+
+        return number
+    }
+
+    func asOpinionScale() -> OpinionScale? {
+        guard case .opinionScale(let opinionScale) = self else {
+            return nil
+        }
+
+        return opinionScale
+    }
+
+    func asPictureChoice() -> PictureChoice? {
+        guard case .pictureChoice(let pictureChoice) = self else {
+            return nil
+        }
+
+        return pictureChoice
+    }
+
+    func asPhoneNumber() -> PhoneNumber? {
+        guard case .phoneNumber(let phoneNumber) = self else {
+            return nil
+        }
+
+        return phoneNumber
+    }
+
+    func asRanking() -> Ranking? {
+        guard case .ranking(let ranking) = self else {
+            return nil
+        }
+
+        return ranking
+    }
+
+    func asRating() -> Rating? {
+        guard case .rating(let rating) = self else {
+            return nil
+        }
+
+        return rating
+    }
+
+    func asShortText() -> ShortText? {
+        guard case .shortText(let shortText) = self else {
+            return nil
+        }
+
+        return shortText
+    }
+
+    func asStatement() -> Statement? {
+        guard case .statement(let statement) = self else {
+            return nil
+        }
+
+        return statement
+    }
+
+    func asWebsite() -> Website? {
+        guard case .website(let website) = self else {
+            return nil
+        }
+
+        return website
+    }
+
+    func asYesNo() -> YesNo? {
+        guard case .yesNo(let yesNo) = self else {
+            return nil
+        }
+
+        return yesNo
+    }
+}

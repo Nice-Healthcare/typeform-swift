@@ -67,12 +67,12 @@
         "allow_multiple_selection": false,
         "allow_other_choice": false,
         "none_of_the_above": false,
-        "vertical_alignment": true,
+        "vertical_alignment": false,
         "choices": [
           {
             "id": "XiRtgJHbCNP8",
             "ref": "f292159d-107d-4535-95d6-8376b9ec7c7d",
-            "label": "A first choice"
+            "label": "A first choice (longer than the second)"
           },
           {
             "id": "HvQd2hkG65vC",
@@ -83,6 +83,42 @@
       },
       "validations": {
         "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "N6ZbDOKXnJvG",
+      "title": "Fancy Multiple Choice",
+      "ref": "bff834f1-9299-45cb-8c36-734b32c11853",
+      "properties": {
+        "description": "Even with 'randomize' turned on, 'other' and 'none of the above' always show at the bottom of the list (in that order). None of the above automatically clears any other selection. 'Other' turns to a text field to capture input.",
+        "randomize": true,
+        "allow_multiple_selection": true,
+        "allow_other_choice": true,
+        "none_of_the_above": true,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "vOWtI2uarOKU",
+            "ref": "66874075-0326-47b4-8bfe-cb6d958c9aac",
+            "label": "Alpha"
+          },
+          {
+            "id": "t8cRioF91Al8",
+            "ref": "8760ec35-9f3c-40aa-9c2a-f78f2105fe05",
+            "label": "Beta"
+          },
+          {
+            "id": "y8O8aZpDmhtp",
+            "ref": "9286a659-b58e-416b-a629-b2ab96ca9ce5",
+            "label": "Charlie"
+          }
+        ]
+      },
+      "validations": {
+        "required": false,
+        "min_selection": 1,
+        "max_selection": 3
       },
       "type": "multiple_choice"
     },
@@ -223,7 +259,7 @@
     }
   ],
   "created_at": "2026-11-16T13:48:14+00:00",
-  "last_updated_at": "2026-11-17T22:45:46+00:00",
+  "last_updated_at": "2026-11-21T23:34:02+00:00",
   "published_at": "2026-11-16T13:49:08+00:00",
   "_links": {
     "display": "https://form.typeform.com/to/rjfMk8d6",
