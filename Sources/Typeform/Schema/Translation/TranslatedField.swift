@@ -129,8 +129,8 @@ extension Field.Properties {
             return .opinionScale(
                 OpinionScale(
                     steps: opinionScale.steps,
+                    startAtOne: opinionScale.startAtOne,
                     labels: translatedProperties.labels ?? opinionScale.labels,
-                    start_at_one: opinionScale.start_at_one,
                 ),
             )
         case .pictureChoice(let pictureChoice):

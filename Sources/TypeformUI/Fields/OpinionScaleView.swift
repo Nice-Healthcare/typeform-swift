@@ -12,8 +12,8 @@ struct OpinionScaleView: View {
 
     @State private var value: Int?
 
-    private var start: Int { properties.start_at_one ? 1 : 0 }
-    private var end: Int { properties.start_at_one ? properties.steps : properties.steps - 1 }
+    private var start: Int { properties.startAtOne ? 1 : 0 }
+    private var end: Int { properties.startAtOne ? properties.steps : properties.steps - 1 }
     private var range: ClosedRange<Double> { Double(start - 1) ... Double(end) }
     private var sliderValue: String {
         if let value {
@@ -26,7 +26,7 @@ struct OpinionScaleView: View {
     private var grid: [GridItem] { (0 ..< 6).map { _ in GridItem(.flexible()) } }
     private var leadingLabel: String {
         if let labels = properties.labels {
-            String(format: "%d: %@", start, labels.leading)
+            String(format: "%d: %@", start, labels.leading ?? "")
         } else {
             String(format: "%d", start)
         }
@@ -34,7 +34,7 @@ struct OpinionScaleView: View {
 
     private var trailingLabel: String {
         if let labels = properties.labels {
-            String(format: "%d: %@", end, labels.trailing)
+            String(format: "%d: %@", end, labels.trailing ?? "")
         } else {
             String(format: "%d", end)
         }
@@ -74,6 +74,7 @@ struct OpinionScaleView: View {
                     .frame(width: 120, alignment: .leading)
 
                 Spacer()
+                // TODO: Handle Possible 'Center' Label
 
                 Text(trailingLabel)
                     .font(settings.typography.captionFont)

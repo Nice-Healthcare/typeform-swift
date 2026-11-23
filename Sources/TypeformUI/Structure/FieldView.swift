@@ -75,7 +75,7 @@ struct FieldView<Header: View, Footer: View>: View {
 
                         switch field.properties {
                         case .checkbox(let checkbox):
-                            #warning("Checkbox")
+                            #warning("TODO: Checkbox")
                             Text("Unsupported Field Type")
                         case .date(let properties):
                             DateStampView(
@@ -92,7 +92,7 @@ struct FieldView<Header: View, Footer: View>: View {
                                 validations: field.validations,
                             )
                         case .email(let properties):
-                            #warning("Email")
+                            #warning("TODO: Email")
                             Text("Unsupported Field Type")
                         case .fileUpload(let properties):
                             FileUploadView(
@@ -104,10 +104,10 @@ struct FieldView<Header: View, Footer: View>: View {
                         case .group:
                             EmptyView()
                         case .inlineGroup(let properties):
-                            #warning("InlineGroup")
+                            #warning("TODO: InlineGroup")
                             Text("Unsupported Field Type")
                         case .legal(let properties):
-                            #warning("Legal")
+                            #warning("TODO: Legal")
                             Text("Unsupported Field Type")
                         case .longText(let properties):
                             LongTextView(
@@ -133,7 +133,7 @@ struct FieldView<Header: View, Footer: View>: View {
                                 validations: field.validations,
                             )
                         case .netPromoterScore(let properties):
-                            #warning("NetPromoterScore")
+                            #warning("TODO: NetPromoterScore")
                             Text("Unsupported Field Type")
                         case .number(let properties):
                             NumberView(
@@ -150,13 +150,14 @@ struct FieldView<Header: View, Footer: View>: View {
                                 validations: field.validations,
                             )
                         case .pictureChoice(let properties):
-                            #warning("PictureChoice")
+                            #warning("TODO: PictureChoice")
                             Text("Unsupported Field Type")
                         case .phoneNumber(let properties):
-                            #warning("PhoneNumber")
+                            #warning("TODO: PhoneNumber")
                             Text("Unsupported Field Type")
                         case .ranking(let properties):
-                            #warning("Ranking")
+                            #warning("TODO: Ranking")
+                            // note - presented with a 'clear all' (aka reset) option.
                             Text("Unsupported Field Type")
                         case .rating(let properties):
                             RatingView(
@@ -176,7 +177,7 @@ struct FieldView<Header: View, Footer: View>: View {
                         case .statement:
                             EmptyView()
                         case .website(let properties):
-                            #warning("Website")
+                            #warning("TODO: Website")
                             Text("Unsupported Field Type")
                         case .yesNo(let properties):
                             YesNoView(

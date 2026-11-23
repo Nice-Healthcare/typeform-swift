@@ -2,6 +2,7 @@ public struct Ranking: Hashable, Sendable {
     public let choices: [Choice]
     public let description: String?
     public let randomize: Bool
+    /// API only - doesn't seem to apply to how question is answered.
     public let allowMultipleSelection: Bool
 
     public init(

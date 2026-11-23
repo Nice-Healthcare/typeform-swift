@@ -5,7 +5,9 @@ public struct Validations: Hashable, Sendable {
     public let minSelection: Int?
     public let maxValue: Int?
     public let minValue: Int?
+    /// 'start' and 'end dates - either being fixed to a specific date or 'dynamic' relative to when the form is opened (today)
     public let dateMin: String?
+    // TODO: Local Date or 'today'?
     public let dateMax: String?
     public let regularExpression: String?
 
