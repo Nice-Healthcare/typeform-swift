@@ -1,0 +1,217 @@
+{
+  "id": "gbyk9YV3",
+  "type": "quiz",
+  "title": "Rating Question Types",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/Wkp2vs"
+  },
+  "theme": {
+    "href": "https://api.typeform.com/themes/M5WM3KsV"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "email_consent_notifications_config": {
+      "send_email_copy": true
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true,
+    "webmcp_enabled": false,
+    "webmcp_submit_hitl_enabled": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, \u0026 beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "TAeseOB9Z6Om",
+      "title": "How likely are you to recommend us to a friend or colleague?",
+      "ref": "0db1da18-f411-42cd-86e6-04a42f387077",
+      "properties": {
+        "description": "This is the 'Net Promoter Score' component.",
+        "steps": 11
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "nps"
+    },
+    {
+      "id": "84g00Szs97Rx",
+      "title": "Opinion Scale Question Type",
+      "ref": "11962b75-e02f-454c-a38c-ac6837d32780",
+      "properties": {
+        "description": "This question type can be configured to start at either 0 or 1 and go up to 10. Three labels are provided for the first, last, and round-down middle positions.",
+        "start_at_one": true,
+        "steps": 5,
+        "labels": {
+          "left": "Min",
+          "center": "Mid",
+          "right": "Max"
+        }
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "opinion_scale"
+    },
+    {
+      "id": "ZZHumjUpFg8e",
+      "title": "Rating Question Type",
+      "ref": "e5b0a4ee-b5e9-4cd6-bce0-2f0d5495a5cb",
+      "properties": {
+        "description": "Configuration options here allow for the number of ranks 1-10 and the symbols of:\nStar, Heart, Face, Thumbs-Up, Crown, Cat, Dog, Circle, Flag, Drop, Check, Lightbulb, Trophy, Cloud, Lightning, Pencil, Skull",
+        "shape": "star",
+        "steps": 3
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "rating"
+    },
+    {
+      "id": "QihnYe13lg0F",
+      "title": "Ranking Question Type",
+      "ref": "750ed8a8-39a6-4072-91bd-b057270e2214",
+      "properties": {
+        "description": "What's the best quadrant in the Milky Way Galaxy? (There is a drop down to choose position or drag \u0026 drop)",
+        "randomize": false,
+        "allow_multiple_selection": true,
+        "choices": [
+          {
+            "id": "k1k3PTM5Quif",
+            "ref": "8c70a967-10dd-4ae5-8ced-09f7833268b5",
+            "label": "Alpha"
+          },
+          {
+            "id": "Ve7zF0y6Ii4R",
+            "ref": "12fea70b-7c67-4031-991f-4ab3ddcf1d63",
+            "label": "Beta"
+          },
+          {
+            "id": "kYP7WRFGUN5M",
+            "ref": "92ef9807-7b5d-4b85-a1bf-2b4bd603362d",
+            "label": "Gamma"
+          },
+          {
+            "id": "wykRcNYu2YUQ",
+            "ref": "a38d2fce-d1b6-4ac8-960e-e6ac418b5940",
+            "label": "Delta"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "ranking"
+    },
+    {
+      "id": "G7vDFLY4v8FI",
+      "title": "Matrix",
+      "ref": "2cf0c314-cac0-4f05-b127-5270196ca4f0",
+      "properties": {
+        "description": "A configurable grid of grouped selections; Many rows, and many columns. When multiple selection is enabled the rows convert from radio buttons to checkboxes.",
+        "fields": [
+          {
+            "id": "rrrrM5SQxsVf",
+            "title": "Row the First",
+            "ref": "7f773495-1a55-4ec3-a553-12f613563a15",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "none_of_the_above": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "3YH3BDrxmEAs",
+                  "ref": "1464b283-1258-4f79-a5a5-529ceda3c0e5",
+                  "label": "Column the First"
+                },
+                {
+                  "id": "ps6kwsrW0cze",
+                  "ref": "4db2bd33-de26-4a1a-accf-ca65b2f1e1c4",
+                  "label": "Column the Second"
+                }
+              ]
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "multiple_choice"
+          },
+          {
+            "id": "UqPlkLZrF9J1",
+            "title": "Row the Second",
+            "ref": "c2cb6904-67ff-4f82-97ea-0f37174a1bb1",
+            "properties": {
+              "randomize": false,
+              "allow_multiple_selection": false,
+              "allow_other_choice": false,
+              "none_of_the_above": false,
+              "vertical_alignment": true,
+              "choices": [
+                {
+                  "id": "NNwkawADy7Ge",
+                  "ref": "d15884b4-4d4c-4159-875b-a9681e2b22b8",
+                  "label": "Column the First"
+                },
+                {
+                  "id": "izQ2IVmxD15R",
+                  "ref": "210890a7-2657-4faf-a822-a2df0b8d7758",
+                  "label": "Column the Second"
+                }
+              ]
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "multiple_choice"
+          }
+        ]
+      },
+      "type": "matrix"
+    }
+  ],
+  "created_at": "2026-11-17T23:37:36+00:00",
+  "last_updated_at": "2026-11-17T23:47:44+00:00",
+  "published_at": "2026-11-17T23:38:09+00:00",
+  "_links": {
+    "display": "https://form.typeform.com/to/gbyk9YV3",
+    "responses": "https://api.typeform.com/forms/gbyk9YV3/responses"
+  }
+}

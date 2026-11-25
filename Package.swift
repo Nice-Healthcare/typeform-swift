@@ -64,6 +64,9 @@ let package = Package(
                 "Typeform",
                 "TypeformPreview",
             ],
+            resources: [
+                .process("Resources"),
+            ],
         ),
     ],
     swiftLanguageModes: [

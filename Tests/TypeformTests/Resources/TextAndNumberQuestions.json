@@ -1,0 +1,124 @@
+{
+  "id": "m8cCG2gj",
+  "type": "quiz",
+  "title": "Text \u0026 Number Question Types",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/Wkp2vs"
+  },
+  "theme": {
+    "href": "https://api.typeform.com/themes/M5WM3KsV"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "email_consent_notifications_config": {
+      "send_email_copy": true
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true,
+    "webmcp_enabled": false,
+    "webmcp_submit_hitl_enabled": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, \u0026 beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "ZnefciXJ0FCY",
+      "title": "The 'Long Text' Type",
+      "ref": "3415ebdb-94f4-479b-9235-bd89e7a15383",
+      "properties": {
+        "description": "An optional description; This type has abilities to autofill and validate based with a regular expression. The max length has been set at 250."
+      },
+      "validations": {
+        "required": false,
+        "max_length": 250
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "UA1FCXOGjdej",
+      "title": "Short Text Type",
+      "ref": "fbd5a9e2-5902-4479-a8d1-27000a98f4c3",
+      "properties": {
+        "description": "Is there much of a visual difference between this and the long variant?",
+        "placeholder_text": "Looks the same…"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "VzA8ZDkUiNwt",
+      "title": "Number Type",
+      "ref": "50f7eba6-4a90-4164-bb24-4b0ec5fc699e",
+      "properties": {
+        "description": "Does it handle decimal values?"
+      },
+      "validations": {
+        "required": true,
+        "min_value": 0,
+        "max_value": 1
+      },
+      "type": "number"
+    },
+    {
+      "id": "5hNHKNc04KD4",
+      "title": "Date Question Types",
+      "ref": "e1b6fd34-44ac-4d11-9639-37aaa5ba5a01",
+      "properties": {
+        "description": "Options include the ability to set the 'start' and 'end dates - either being fixed to a specific date or 'dynamic' relative to when the form is opened (today). Date formats include 'MMDDYYYY', 'DDMMYYYY', and 'YYYYMMDD', and can use one of three separators: '/', '-', or '.'.",
+        "separator": "/",
+        "structure": "MMDDYYYY"
+      },
+      "validations": {
+        "required": false,
+        "date_min": "2026-11-01",
+        "date_max": "today"
+      },
+      "type": "date"
+    }
+  ],
+  "created_at": "2026-11-21T22:35:59+00:00",
+  "last_updated_at": "2026-11-21T22:42:53+00:00",
+  "published_at": "2026-11-21T22:42:20+00:00",
+  "_links": {
+    "display": "https://form.typeform.com/to/m8cCG2gj",
+    "responses": "https://api.typeform.com/forms/m8cCG2gj/responses"
+  }
+}

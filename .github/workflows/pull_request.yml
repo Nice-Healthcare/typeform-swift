@@ -104,7 +104,7 @@ jobs:
       uses: skiptools/swift-android-action@v2
       with:
         free-disk-space: true
-        copy-files: ./.build/out/Products/Debug-android-x86_64/Typeform_TypeformPreview.bundle
+        copy-files: ./.build/out/Products/Debug-android-x86_64/Typeform_Typeform*.bundle
 
   Xcode:
     # Verify Swift code will compile against the Apple Platform SDKs. (`xcodebuild`)

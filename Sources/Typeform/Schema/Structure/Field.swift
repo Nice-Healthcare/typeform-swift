@@ -1,50 +1,77 @@
 public struct Field: Hashable, Identifiable, Codable, Sendable {
 
     public enum Kind: String, Codable, Sendable {
+        case checkbox
         case date
         case dropdown
+        case email
         case fileUpload = "file_upload"
         case group
+        case inlineGroup = "inline_group"
+        case legal
         case longText = "long_text"
         case matrix
         case multipleChoice = "multiple_choice"
+        case netPromoterScore = "nps"
         case number
         case opinionScale = "opinion_scale"
+        case pictureChoice = "picture_choice"
+        case phoneNumber = "phone_number"
+        case ranking
         case rating
         case shortText = "short_text"
         case statement
+        case website
         case yesNo = "yes_no"
     }
 
-    public enum Properties: Hashable, Codable, Sendable {
+    public enum Properties: Hashable, Sendable, Codable {
+        case checkbox(Checkbox)
         case date(DateStamp)
         case dropdown(Dropdown)
+        case email(Email)
         case fileUpload(FileUpload)
         case group(Group)
+        case inlineGroup(InlineGroup)
+        case legal(Legal)
         case longText(LongText)
         case matrix(Matrix)
         case multipleChoice(MultipleChoice)
+        case netPromoterScore(NetPromoterScore)
         case number(Number)
         case opinionScale(OpinionScale)
+        case pictureChoice(PictureChoice)
+        case phoneNumber(PhoneNumber)
+        case ranking(Ranking)
         case rating(Rating)
         case shortText(ShortText)
         case statement(Statement)
+        case website(Website)
         case yesNo(YesNo)
 
         public var description: String? {
             switch self {
+            case .checkbox(let value): value.description
             case .date(let value): value.description
             case .dropdown(let value): value.description
+            case .email: nil
             case .fileUpload(let value): value.description
             case .group: nil
+            case .inlineGroup(let value): value.description
+            case .legal(let value): value.description
             case .longText(let value): value.description
             case .matrix: nil
             case .multipleChoice(let value): value.description
+            case .netPromoterScore(let value): value.description
             case .number(let value): value.description
             case .opinionScale: nil
+            case .pictureChoice(let value): value.description
+            case .phoneNumber: nil
+            case .ranking(let value): value.description
             case .rating(let value): value.description
             case .shortText(let value): value.description
             case .statement(let value): value.description
+            case .website(let value): value.description
             case .yesNo(let value): value.description
             }
         }
@@ -95,18 +122,30 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         validations = try container.decodeIfPresent(Validations.self, forKey: .validations)
         attachment = try container.decodeIfPresent(Attachment.self, forKey: .attachment)
         switch type {
+        case .checkbox:
+            let checkbox = try container.decode(Checkbox.self, forKey: .properties)
+            properties = .checkbox(checkbox)
         case .date:
             let date = try container.decode(DateStamp.self, forKey: .properties)
             properties = .date(date)
         case .dropdown:
             let dropdown = try container.decode(Dropdown.self, forKey: .properties)
             properties = .dropdown(dropdown)
+        case .email:
+            let email = try container.decode(Email.self, forKey: .properties)
+            properties = .email(email)
         case .fileUpload:
             let fileUpload = try container.decode(FileUpload.self, forKey: .properties)
             properties = .fileUpload(fileUpload)
         case .group:
             let group = try container.decode(Group.self, forKey: .properties)
             properties = .group(group)
+        case .inlineGroup:
+            let inlineGroup = try container.decode(InlineGroup.self, forKey: .properties)
+            properties = .inlineGroup(inlineGroup)
+        case .legal:
+            let legal = try container.decode(Legal.self, forKey: .properties)
+            properties = .legal(legal)
         case .longText:
             let longText = try container.decode(LongText.self, forKey: .properties)
             properties = .longText(longText)
@@ -116,12 +155,24 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .multipleChoice:
             let multipleChoice = try container.decode(MultipleChoice.self, forKey: .properties)
             properties = .multipleChoice(multipleChoice)
+        case .netPromoterScore:
+            let netPromoterScore = try container.decode(NetPromoterScore.self, forKey: .properties)
+            properties = .netPromoterScore(netPromoterScore)
         case .number:
             let number = try container.decode(Number.self, forKey: .properties)
             properties = .number(number)
         case .opinionScale:
             let optionScale = try container.decode(OpinionScale.self, forKey: .properties)
             properties = .opinionScale(optionScale)
+        case .pictureChoice:
+            let pictureChoice = try container.decode(PictureChoice.self, forKey: .properties)
+            properties = .pictureChoice(pictureChoice)
+        case .phoneNumber:
+            let phoneNumber = try container.decode(PhoneNumber.self, forKey: .properties)
+            properties = .phoneNumber(phoneNumber)
+        case .ranking:
+            let ranking = try container.decode(Ranking.self, forKey: .properties)
+            properties = .ranking(ranking)
         case .rating:
             let rating = try container.decode(Rating.self, forKey: .properties)
             properties = .rating(rating)
@@ -131,6 +182,9 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         case .statement:
             let statement = try container.decode(Statement.self, forKey: .properties)
             properties = .statement(statement)
+        case .website:
+            let website = try container.decode(Website.self, forKey: .properties)
+            properties = .website(website)
         case .yesNo:
             let yesNo = try container.decode(YesNo.self, forKey: .properties)
             properties = .yesNo(yesNo)
@@ -146,30 +200,48 @@ public struct Field: Hashable, Identifiable, Codable, Sendable {
         try container.encodeIfPresent(validations, forKey: .validations)
         try container.encodeIfPresent(attachment, forKey: .attachment)
         switch properties {
+        case .checkbox(let checkbox):
+            try container.encode(checkbox, forKey: .properties)
         case .date(let dateStamp):
             try container.encode(dateStamp, forKey: .properties)
         case .dropdown(let dropdown):
             try container.encode(dropdown, forKey: .properties)
+        case .email(let email):
+            try container.encode(email, forKey: .properties)
         case .fileUpload(let fileUpload):
             try container.encode(fileUpload, forKey: .properties)
         case .group(let group):
             try container.encode(group, forKey: .properties)
+        case .inlineGroup(let inlineGroup):
+            try container.encode(inlineGroup, forKey: .properties)
+        case .legal(let legal):
+            try container.encode(legal, forKey: .properties)
         case .longText(let longText):
             try container.encode(longText, forKey: .properties)
         case .matrix(let matrix):
             try container.encode(matrix, forKey: .properties)
         case .multipleChoice(let multipleChoice):
             try container.encode(multipleChoice, forKey: .properties)
+        case .netPromoterScore(let netPromoterScore):
+            try container.encode(netPromoterScore, forKey: .properties)
         case .number(let number):
             try container.encode(number, forKey: .properties)
         case .opinionScale(let optionScale):
             try container.encode(optionScale, forKey: .properties)
+        case .pictureChoice(let pictureChoice):
+            try container.encode(pictureChoice, forKey: .properties)
+        case .phoneNumber(let phoneNumber):
+            try container.encode(phoneNumber, forKey: .properties)
+        case .ranking(let ranking):
+            try container.encode(ranking, forKey: .properties)
         case .rating(let rating):
             try container.encode(rating, forKey: .properties)
         case .shortText(let shortText):
             try container.encode(shortText, forKey: .properties)
         case .statement(let statement):
             try container.encode(statement, forKey: .properties)
+        case .website(let website):
+            try container.encode(website, forKey: .properties)
         case .yesNo(let yesNo):
             try container.encode(yesNo, forKey: .properties)
         }
@@ -189,4 +261,182 @@ public extension Field.Kind {
     static let short_text: Self = .shortText
     @available(*, deprecated, renamed: "yesNo")
     static let yes_no: Self = .yesNo
+}
+
+public extension Field.Properties {
+    func asCheckbox() -> Checkbox? {
+        guard case .checkbox(let checkbox) = self else {
+            return nil
+        }
+
+        return checkbox
+    }
+
+    func asDate() -> DateStamp? {
+        guard case .date(let dateStamp) = self else {
+            return nil
+        }
+
+        return dateStamp
+    }
+
+    func asDropdown() -> Dropdown? {
+        guard case .dropdown(let dropdown) = self else {
+            return nil
+        }
+
+        return dropdown
+    }
+
+    func asEmail() -> Email? {
+        guard case .email(let email) = self else {
+            return nil
+        }
+
+        return email
+    }
+
+    func asFileUpload() -> FileUpload? {
+        guard case .fileUpload(let fileUpload) = self else {
+            return nil
+        }
+
+        return fileUpload
+    }
+
+    func asGroup() -> Group? {
+        guard case .group(let group) = self else {
+            return nil
+        }
+
+        return group
+    }
+
+    func asInlineGroup() -> InlineGroup? {
+        guard case .inlineGroup(let inlineGroup) = self else {
+            return nil
+        }
+
+        return inlineGroup
+    }
+
+    func asLegal() -> Legal? {
+        guard case .legal(let legal) = self else {
+            return nil
+        }
+
+        return legal
+    }
+
+    func asLongText() -> LongText? {
+        guard case .longText(let longText) = self else {
+            return nil
+        }
+
+        return longText
+    }
+
+    func asMatrix() -> Matrix? {
+        guard case .matrix(let matrix) = self else {
+            return nil
+        }
+
+        return matrix
+    }
+
+    func asMultipleChoice() -> MultipleChoice? {
+        guard case .multipleChoice(let multipleChoice) = self else {
+            return nil
+        }
+
+        return multipleChoice
+    }
+
+    func asNetPromoterScore() -> NetPromoterScore? {
+        guard case .netPromoterScore(let netPromoterScore) = self else {
+            return nil
+        }
+
+        return netPromoterScore
+    }
+
+    func asNumber() -> Number? {
+        guard case .number(let number) = self else {
+            return nil
+        }
+
+        return number
+    }
+
+    func asOpinionScale() -> OpinionScale? {
+        guard case .opinionScale(let opinionScale) = self else {
+            return nil
+        }
+
+        return opinionScale
+    }
+
+    func asPictureChoice() -> PictureChoice? {
+        guard case .pictureChoice(let pictureChoice) = self else {
+            return nil
+        }
+
+        return pictureChoice
+    }
+
+    func asPhoneNumber() -> PhoneNumber? {
+        guard case .phoneNumber(let phoneNumber) = self else {
+            return nil
+        }
+
+        return phoneNumber
+    }
+
+    func asRanking() -> Ranking? {
+        guard case .ranking(let ranking) = self else {
+            return nil
+        }
+
+        return ranking
+    }
+
+    func asRating() -> Rating? {
+        guard case .rating(let rating) = self else {
+            return nil
+        }
+
+        return rating
+    }
+
+    func asShortText() -> ShortText? {
+        guard case .shortText(let shortText) = self else {
+            return nil
+        }
+
+        return shortText
+    }
+
+    func asStatement() -> Statement? {
+        guard case .statement(let statement) = self else {
+            return nil
+        }
+
+        return statement
+    }
+
+    func asWebsite() -> Website? {
+        guard case .website(let website) = self else {
+            return nil
+        }
+
+        return website
+    }
+
+    func asYesNo() -> YesNo? {
+        guard case .yesNo(let yesNo) = self else {
+            return nil
+        }
+
+        return yesNo
+    }
 }

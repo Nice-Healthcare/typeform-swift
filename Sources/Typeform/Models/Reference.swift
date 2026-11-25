@@ -12,6 +12,7 @@ public enum Reference: Hashable, Sendable {
     ///
     /// By default, `JSONEncoder` will encode the underlying `UUID` in all uppercase characters.
     /// Since the **Typeform** api uses lowercased GUID for reference strings, the default encoding behavior is to match.
+    @available(*, deprecated)
     public enum ValueEncodingCase {
         /// The system default behavior is used.
         case automatic
@@ -21,6 +22,7 @@ public enum Reference: Hashable, Sendable {
         case lowercase
     }
 
+    @available(*, deprecated, message: "UUIDs will be encoded in lowercase to match the Typeform API expectations.")
     public static var valueEncodingCase: ValueEncodingCase = .lowercase
 
     public static func make(with value: String) -> Reference {
@@ -73,14 +75,7 @@ extension Reference: Codable {
         case .string(let string):
             try container.encode(string)
         case .uuid(let uuid):
-            switch Self.valueEncodingCase {
-            case .automatic:
-                try container.encode(uuid)
-            case .uppercase:
-                try container.encode(uuid.uuidString.uppercased())
-            case .lowercase:
-                try container.encode(uuid.uuidString.lowercased())
-            }
+            try container.encode(uuid.uuidString.lowercased())
         }
     }
 }
@@ -101,14 +96,7 @@ extension Reference: RawRepresentable {
             switch self {
             case .string(let string): string
             case .uuid(let uuid):
-                switch Self.valueEncodingCase {
-                case .automatic:
-                    uuid.uuidString
-                case .uppercase:
-                    uuid.uuidString.uppercased()
-                case .lowercase:
-                    uuid.uuidString.lowercased()
-                }
+                uuid.uuidString.lowercased()
             }
         }
         set {

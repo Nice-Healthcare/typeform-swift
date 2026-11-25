@@ -35,6 +35,13 @@ extension Field.Properties {
         }
 
         switch self {
+        case .checkbox(let checkbox):
+            return .checkbox(
+                Checkbox(
+                    description: translatedProperties.description ?? checkbox.description,
+                    choices: checkbox.choices.merging(translatedChoices: translatedProperties.choices),
+                ),
+            )
         case .date(let dateStamp):
             return .date(
                 DateStamp(
@@ -49,9 +56,11 @@ extension Field.Properties {
                     choices: dropdown.choices.merging(translatedChoices: translatedProperties.choices),
                     description: translatedProperties.description ?? dropdown.description,
                     randomize: dropdown.randomize,
-                    alphabetical_order: dropdown.alphabetical_order,
+                    alphabetical: dropdown.alphabetical,
                 ),
             )
+        case .email:
+            return self
         case .fileUpload(let fileUpload):
             return .fileUpload(
                 FileUpload(
@@ -64,6 +73,19 @@ extension Field.Properties {
                     button_text: translatedProperties.button_text ?? group.button_text,
                     fields: group.fields.merging(translatedFields: translatedProperties.fields),
                     show_button: group.show_button,
+                ),
+            )
+        case .inlineGroup(let inlineGroup):
+            return .inlineGroup(
+                InlineGroup(
+                    description: translatedProperties.description,
+                    fields: inlineGroup.fields.merging(translatedFields: translatedProperties.fields),
+                ),
+            )
+        case .legal(let legal):
+            return .legal(
+                Legal(
+                    description: translatedProperties.description ?? legal.description,
                 ),
             )
         case .longText(let longText):
@@ -82,11 +104,19 @@ extension Field.Properties {
             return .multipleChoice(
                 MultipleChoice(
                     choices: multipleChoice.choices.merging(translatedChoices: translatedProperties.choices),
-                    randomize: multipleChoice.randomize,
-                    allow_multiple_selection: multipleChoice.allow_multiple_selection,
-                    allow_other_choice: multipleChoice.allow_other_choice,
-                    vertical_alignment: multipleChoice.vertical_alignment,
                     description: translatedProperties.description ?? multipleChoice.description,
+                    randomize: multipleChoice.randomize,
+                    allowMultipleSelection: multipleChoice.allowMultipleSelection,
+                    allowOtherChoice: multipleChoice.allowOtherChoice,
+                    allowNoneOfTheAbove: multipleChoice.allowNoneOfTheAbove,
+                    verticalAlignment: multipleChoice.verticalAlignment,
+                ),
+            )
+        case .netPromoterScore(let netPromoterScore):
+            return .netPromoterScore(
+                NetPromoterScore(
+                    description: translatedProperties.description ?? netPromoterScore.description,
+                    steps: netPromoterScore.steps,
                 ),
             )
         case .number(let number):
@@ -99,8 +129,32 @@ extension Field.Properties {
             return .opinionScale(
                 OpinionScale(
                     steps: opinionScale.steps,
+                    startAtOne: opinionScale.startAtOne,
                     labels: translatedProperties.labels ?? opinionScale.labels,
-                    start_at_one: opinionScale.start_at_one,
+                ),
+            )
+        case .pictureChoice(let pictureChoice):
+            return .pictureChoice(
+                PictureChoice(
+                    choices: pictureChoice.choices.merging(translatedChoices: translatedProperties.choices),
+                    description: translatedProperties.description ?? pictureChoice.description,
+                    randomize: pictureChoice.randomize,
+                    allowMultipleSelection: pictureChoice.allowMultipleSelection,
+                    allowOtherChoice: pictureChoice.allowOtherChoice,
+                    allowNoneOfTheAbove: pictureChoice.allowNoneOfTheAbove,
+                    supersized: pictureChoice.supersized,
+                    showLabels: pictureChoice.showLabels,
+                ),
+            )
+        case .phoneNumber:
+            return self
+        case .ranking(let ranking):
+            return .ranking(
+                Ranking(
+                    choices: ranking.choices.merging(translatedChoices: translatedProperties.choices),
+                    description: translatedProperties.description ?? ranking.description,
+                    randomize: ranking.randomize,
+                    allowMultipleSelection: ranking.allowMultipleSelection,
                 ),
             )
         case .rating(let rating):
@@ -123,6 +177,12 @@ extension Field.Properties {
                     hide_marks: statement.hide_marks,
                     button_text: translatedProperties.button_text ?? statement.button_text,
                     description: translatedProperties.description ?? statement.description,
+                ),
+            )
+        case .website(let website):
+            return .website(
+                Website(
+                    description: translatedProperties.description ?? website.description,
                 ),
             )
         case .yesNo(let yesNo):
